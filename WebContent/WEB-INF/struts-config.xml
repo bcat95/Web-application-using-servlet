@@ -44,9 +44,9 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="dangTinerror" path="/dangTin.jsp"></forward>
 		</action>
 		<action input="/xemChiTietBaiDang.jsp" name="baiDangForm"
-			path="/xembaidang" scope="request" type="action.baidang.BaiDangAction">
+			path="/xembaidang" scope="session" type="action.baidang.BaiDangAction">
 			<forward name="binhLuanxong" path="/xemChiTietBaiDang.jsp" redirect="true"/>
-			<forward name="chitiet" path="/xemChiTietBaiDang.jsp" redirect="true"/>
+			<forward name="login" path="/index.jsp" redirect="true"/>
 		</action>
 		<!-- end DonNA tao action -->
 		

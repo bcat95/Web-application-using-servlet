@@ -3,6 +3,7 @@
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic"%>
 <%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
+<%@taglib uri="http://displaytag.sf.net" prefix="display"%>
 <jsp:include page="header.do" flush="true"></jsp:include>
 	<!-- chi tiet tin-->
 	<%-- <html:form action="xembaidang" method="get" styleId="db-add-listing-form" enctype="multipart/form-data"> --%>
@@ -94,92 +95,53 @@
 				<!--end chi tiet tin tien nghi tin-->
 				<!-- chi tiet tin binh luan-->
 				<div id="comments" class="comments-area ">
-					<span class="db-comment-count">
-						<span class="db-comment-number">3</span>
-						Bình luận <i class="fa fa-angle-down" aria-hidden="true"></i>
-					</span>
 					<ul class="review-list">
-						<li class="comment byuser comment-author-jolydoe1 even thread-even depth-1" id="li-review-503">
-							<div id="review-503" class="review">
-								<div class="review-meta">
-									<div class="review-author vcard shadows">
-										<img src="img/avatar/0/1.png" width="54" height="54" alt="July Doe" class="avatar avatar-54 wp-user-avatar wp-user-avatar-54 alignnone photo">
-									</div> 
-								</div>
-								<div class="review-content">
-									<span class="db-review-title">Amazing place!</span>
-									<span class="db-listing-rating">
-										<span class="ratings" title="4.00">
-											<span class="star Full"></span>
-											<span class="star Full"></span>
-											<span class="star Full"></span>
-											<span class="star Full"></span>
-											<span class="star "></span>
+						<div class="bcbinhluan clearfix">
+							<display:table id="bcbinhluan" name="sessionScope.baiDangForm.listBinhLuan"
+								requestURI="/xembaidang.do" pagesize="3">
+								<display:setProperty name="paging.banner.placement" value="bottom" />
+								<display:column property="userName" class="bcblock username" />
+								<display:column property="diemDanhGia" sortable="true" class="bcblock diemdg"/>
+								<display:column property="ngayBinhLuan" class="bcblock ngaybl" />
+								<display:column property="tieuDe" class="bcblock tieude"/>
+								<display:column property="noiDung" class="bcblock noidung"/>
+							</display:table>
+						</div>
+						<logic:iterate id="binhluan" name="baiDangForm" property="listBinhLuan">
+							<li class="comment byuser comment-author-jolydoe1 even thread-even depth-1">
+								<div class="review">
+									<div class="review-meta">
+										<div class="review-author vcard shadows">
+											<img src="img/avatar/0/1.png" width="54" height="54" alt="July Doe" class="avatar avatar-54 wp-user-avatar wp-user-avatar-54 alignnone photo">
+										</div> 
+									</div>
+									<div class="review-content">
+										<span class="db-review-title"><bean:write name="binhluan" property="tieuDe"/></span>
+										<span class="db-listing-rating">
+											<span id="bl_<bean:write name="binhluan" property="maBinhLuan"/>" class="ratings" title="<bean:write name="binhluan" property="diemDanhGia"/>">
+												<span class="star"></span>
+												<span class="star"></span>
+												<span class="star"></span>
+												<span class="star"></span>
+												<span class="star"></span>
+											</span>
+											<script>
+												var ddg = $('#bl_<bean:write name="binhluan" property="maBinhLuan"/>').attr('title');
+												for (i = 1; i <= ddg; i++) { 
+													$('#bl_<bean:write name="binhluan" property="maBinhLuan"/> span:nth-child('+i+')').addClass(" Full");
+												}
+											</script>
 										</span>
-									</span>
-									<p>At mel deleniti epicurei splendide, illum dolor mei ex, in qui mentitum scriptorem.</p>
-									<div class="db-review-bottom">
-										<a href="author/jolydoe1/" class="db-review-author">July Doe</a> on November 9, 2016 at 2:15 pm
+										<p><bean:write name="binhluan" property="noiDung"/></p>
+										<div class="db-review-bottom">
+											<a href="author/jolydoe1/" class="db-review-author"><bean:write name="binhluan" property="userName"/></a> <bean:write name="binhluan" property="ngayBinhLuan"/>
+										</div>
+										<div class="clearfix"></div>
 									</div>
 									<div class="clearfix"></div>
-								</div>
-								<div class="clearfix"></div>
-							</div> 
-						</li> 
-						<li class="comment byuser comment-author-julydoe2 odd alt thread-odd thread-alt depth-1" id="li-review-504">
-							<div id="review-504" class="review">
-								<div class="review-meta">
-									<div class="review-author vcard shadows">
-										<img src="img/avatar/0/2.png" width="54" height="54" alt="July Doe" class="avatar avatar-54 wp-user-avatar wp-user-avatar-54 alignnone photo">
-									</div> 
-								</div>
-								<div class="review-content">
-									<span class="db-review-title">Happy to stay here!</span>
-									<span class="db-listing-rating">
-										<span class="ratings" title="3.00">
-											<span class="star Full"></span>
-											<span class="star Full"></span>
-											<span class="star Full"></span>
-											<span class="star "></span>
-											<span class="star "></span>
-										</span>
-									</span>
-									<p>At mel deleniti epicurei splendide, illum dolor mei ex, in qui mentitum scriptorem. Qui noluisse antiopam disputando te, no elit accumsan percipitur pri. Quo at iisque ponderum tractatos, ubique timeam sea et.</p>
-									<div class="db-review-bottom">
-										<a href="author/julydoe2/" class="db-review-author">July Doe</a> on November 9, 2016 at 2:15 pm
-									</div>
-									<div class="clearfix"></div>
-								</div>
-								<div class="clearfix"></div>
-							</div> 
-						</li> 
-						<li class="comment byuser comment-author-julydoe3 even thread-even depth-1" id="li-review-505">
-							<div id="review-505" class="review">
-								<div class="review-meta">
-									<div class="review-author vcard shadows">
-										<img src="img/avatar/0/3.png" width="54" height="54" alt="July Doe" class="avatar avatar-54 wp-user-avatar wp-user-avatar-54 alignnone photo">
-									</div> 
-								</div>
-								<div class="review-content">
-									<span class="db-review-title">Had a blast!</span>
-									<span class="db-listing-rating">
-										<span class="ratings" title="2.00">
-											<span class="star Full"></span>
-											<span class="star Full"></span>
-											<span class="star "></span>
-											<span class="star "></span>
-											<span class="star "></span>
-										</span>
-									</span>
-									<p>Mauris ultricies dictum felis, vitae ullamcorper erat. Nullam posuere elit nulla, ut suscipit arcu blandit congue. Morbi interdum vestibulum arcu, et elementum risus sodales suscipit.</p>
-									<div class="db-review-bottom">
-										<a href="author/julydoe3/" class="db-review-author">July Doe</a> on November 9, 2016 at 2:15 pm
-									</div>
-									<div class="clearfix"></div>
-								</div>
-								<div class="clearfix"></div>
-							</div> 
-						</li> 
+								</div> 
+							</li>
+						</logic:iterate>
 					</ul>
 					<!--end list binh luan-->
 					<!-- form binh luan-->
@@ -206,8 +168,12 @@
 								<span class="db-send-comment"></span>
 								<html:textarea property="bl_noiDung" styleId="comment" rows="5"></html:textarea>
 							</span>
+							<script type="text/javascript">
+							 $("#comment").val("");
+							 $("#review-title").val("");
+							</script>
 							<p class="form-submit">
-								<input name="submit" type="submit" id="submit" class="submit" value="binhLuan">
+								<button name="submit" type="submit" id="submit" class="submit" value="binhLuan">Bình luận</button>
 								<input type="hidden" name="maBaiDang" id="comment_post_ID" value="${maBaiDang}">
 							</p>
 						</html:form>

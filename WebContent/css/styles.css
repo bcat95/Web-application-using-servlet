@@ -1478,9 +1478,64 @@ h3 {
 }
 ul.review-list {
     margin-left: 0;
+    padding-left: 0;
 }
 .review-list {
     list-style: none;
+}
+.bcbinhluan {
+    margin: 20px 0;
+    font-size: 14px;
+}
+#bcbinhluan {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 30px;
+}
+#bcbinhluan thead {
+    display: none;
+}
+#bcbinhluan tr {
+    _background-color: #fff;
+    display: block;
+    border-bottom: 1px solid rgba(155,155,155,0.15);
+    margin-bottom: 20px;
+}
+#bcbinhluan td.bcblock {
+    display: block;
+    border: 0;
+    padding: 10px;
+}
+#bcbinhluan td.bcblock.username {
+	float: left;
+	font-weight: 700;
+}
+#bcbinhluan td.bcblock.diemdg {
+	float: right;
+    background-color: #03ae03;
+    border-radius: 100%;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    line-height: 10px;
+}
+#bcbinhluan td.bcblock.ngaybl {
+    font-size: 11px;
+    color: #666;
+}
+#bcbinhluan td.bcblock.ngaybl:before {
+    content: "\f017";
+    font-family: FontAwesome;
+    padding-right: 5px;
+}
+#bcbinhluan td.bcblock.tieude {
+    font-size: 14px;
+    font-weight: 700;
+    border-top: #f6f6f6 1px solid !important;
 }
 ul.review-list li.comment {
     border-bottom: 1px solid rgba(155,155,155,0.15);

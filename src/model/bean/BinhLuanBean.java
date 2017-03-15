@@ -1,12 +1,11 @@
 package model.bean;
 
 import java.util.Date;
-import java.text.SimpleDateFormat;
 
 /**
  * BinhLuanBean
  *
- * Version 1.1
+ * Version 1.2
  *
  * Date: 7-3-2017
  *
@@ -17,6 +16,7 @@ import java.text.SimpleDateFormat;
  * -----------------------------------------------------------------------
  * 7-3-2017         DonNA            Create
  * 14-3-2017        DonNA            Update tieuDe
+ * 15-3-2017        DonNA            Insert listBinhLuan
  */
 
 public class BinhLuanBean {
@@ -32,7 +32,6 @@ public class BinhLuanBean {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 	public BinhLuanBean(int maBinhLuan, int maBaiDang, String userName, String tieuDe, String noiDung,
 			Date ngayBinhLuan, int diemDanhGia) {
 		super();

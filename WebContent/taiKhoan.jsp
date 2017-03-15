@@ -19,7 +19,7 @@
 											<ul class="db-account-menu nav-pills clearfix">
 												<li class="active"><a data-toggle="pill" href="#taiKhoan_thongTin" class="active">Thông tin</a></li>
 												<li><a data-toggle="pill" href="#taiKhoan_capNhap" class="">Cập nhật thông tin</a></li>
-												<li><a href="dangTin.jsp">Đăng tin</a></li>
+												<li><a href="dangTin.do">Đăng tin</a></li>
 												<li><a data-toggle="pill" href="#taiKhoan_tinDang" class="">Danh sách bài đã đăng</a></li>
 												<li><a data-toggle="pill" href="#taiKhoan_uaThich" class="">Ưa thích</a></li>
 												<li><a href="wp-login.php?action=logout" class="db-logout dt-button dt-button-danger dt-button-middle">Đăng xuất</a></li>
@@ -136,10 +136,10 @@
 																<td class="db-align-center db-status"><bean:write name="bd" property="tenLoaiTin"/></td>
 																<td>
 																	<bean:define id="mbd" name="bd" property="maBaiDang"></bean:define>
-																	<html:link action="/xemTin?mbd=${mbd}"  styleClass="db-edit-listing db-account-listing-option edit" styleId="688">
+																	<html:link action="/xembaidang?maBaiDang=${mbd}"  styleClass="db-edit-listing db-account-listing-option edit" styleId="688">
 													                	<span class="db-account-listing-option-hover">Xem</span><i class="fa fa-eye" aria-hidden="true"></i>
 													                </html:link>
-																	<html:link action="/suaTin?mbd=${mbd}"  styleClass="db-edit-listing db-account-listing-option edit" styleId="688">
+																	<html:link action="/suabaidang.?maBaiDang=${mbd}"  styleClass="db-edit-listing db-account-listing-option edit" styleId="688">
 													                	<span class="db-account-listing-option-hover">Sửa</span><i class="fa fa-pencil" aria-hidden="true"></i>
 													                </html:link>
 																</td>

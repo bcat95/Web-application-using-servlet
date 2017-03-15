@@ -112,7 +112,7 @@
 								<div class="bc-featured-listings-image">
 									<!--Anh dai dien bai dang-->
 									<a href="xembaidang.do?maBaiDang=${maBaiDang}" class="bc-featured-item-image" 
-										style="background: url('bai/<bean:write name="bd" property="anhBia"/>')"></a>
+										style="background: url('<bean:write name="bd" property="anhBia"/>')"></a>
 									<div class="bc-featured-image-overlay"></div>
 									<!--gia tri mac dinh-->
 									<span class="bc-featured-listings-image-note">Featured</span>
@@ -138,22 +138,28 @@
 										<bean:write name="bd" property="tieuDe"/>
 									</a>
 									<!--to ta ngan bai dang-->
-									<p class="bc-featured-listings-description">
-										
-										<bean:write name="bd" property="noiDung"/>
-									</p>
+									<div class="bc-featured-listings-description">
+										<bean:write name="bd" property="noiDung" filter="fasle"/>
+									</div>
 									<div class="bc-featured-listings-meta clearfix">
 										<!--danh muc bai dang-->
-										<a href="xemChiTietBaiDang.jsp" class="bc-featured-listings-category hotel" style="color: #00a9e8">
+										<a href="timKiem.do?maDanhMuc=<bean:write name="bd" property="maDanhMuc"/>" class="bc-featured-listings-category hotel" style="color: #00a9e8">
 											<bean:write name="bd" property="tenDanhMuc"/>
 										</a>
 										<span class="bc-featured-listings-rating" data-original="5" data-id="91">
-											<bean:write name="bd" property="diemDanhGia"/>
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-empty.svg" alt="">
+											<span id="bl_<bean:write name="bd" property="maBaiDang"/>" class="ratings" title="<bean:write name="bd" property="diemDanhGia"/>">
+												<span class="star"></span>
+												<span class="star"></span>
+												<span class="star"></span>
+												<span class="star"></span>
+												<span class="star"></span>
+										</span>
+										<script>
+											var ddg = $('#bl_<bean:write name="bd" property="maBaiDang"/>').attr('title');
+											for (i = 1; i <= ddg; i++) { 
+												$('#bl_<bean:write name="bd" property="maBaiDang"/> span:nth-child('+i+')').addClass(" Full");
+											}
+										</script>
 										</span>
 									</div>
 								</div>

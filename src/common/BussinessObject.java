@@ -10,12 +10,41 @@ import java.util.Date;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.upload.FormFile;
 
+import model.bean.PageBean;
 
+/**
+ * BussinessObject
+ *
+ * Version 1.0
+ *
+ * Date: 7-3-2017
+ *
+ * Copyright 
+ *
+ * Modification Logs:
+ * DATE                 AUTHOR          DESCRIPTION
+ * -----------------------------------------------------------------------
+ * 7-3-2017         DonNA            Create
+ */
 public abstract class BussinessObject
 {
-	
-	
-
+	//phan trang
+	public ArrayList<PageBean> paginate(int size, int show, int index)
+	{
+		ArrayList<PageBean> pages = new ArrayList<PageBean>();
+		if(index > show + 1) pages.add(new PageBean("first", "«", false));
+		int i = index - show > 0 ? index - show : 1;
+		size = (index + show <= size ? index + show : size) + 1;
+		while(i < size)
+		{
+			pages.add(new PageBean(String.valueOf(i), String.valueOf(i), i == index));
+			i++;
+		}
+		if(index + show < size) pages.add(new PageBean("last", "»", false));
+		
+		return pages;
+	}
+	//luu file > tra ve duong dan
 	public static String saveFile(String path, FormFile file,String sttfile, ActionServlet action) throws IOException
 	{
 		String filePath = action.getServletContext().getRealPath(path);
@@ -38,7 +67,7 @@ public abstract class BussinessObject
         }
 	    return null;
 	}
-
+	//luu nhieu file > tra ve list duong dan
 	public static String[] saveMultiFile(String path, ArrayList<FormFile> fileHinhAnh, ActionServlet action) throws IOException
 	{
 		String[] lshinhanh=new String[ fileHinhAnh.size() ];

@@ -48,24 +48,25 @@ public class BaiDangAction extends Action{
 			}
 		}
 		if (StringProcess.equals(thisForm.getSubmit(), "binhLuan")){
-			ActionErrors errors = new ActionErrors();
-			errors = thisForm.validateBaiDang(mapping, request);
-			if (!errors.isEmpty()) {
-				/*saveErrors(request, errors);
-				thisForm.setListDanhMuc(DanhMucBO.getListDanhMuc());
-				thisForm.setListTinhThanh(TinhThanhBO.getListTinhThanh());
-				thisForm.setListDichVu(DichVuBO.getListDichVu());
-				return mapping.getInputForward();*/
-			}
-			else if(StringProcess.equals(thisForm.getSubmit(), "binhLuan")){
-				thisForm.setBl_userName((user.getUserName()));
-				BinhLuanBO.insertBinhLuan(thisForm.getBinhLuan());
-				thisForm.setBaiDang(BaiDangBO.infoBaiDang(thisForm.getMaBaiDang()));
-				return mapping.getInputForward();
+			if(user==null)
+				return mapping.findForward("login");
+			else{
+					ActionErrors errors = new ActionErrors();
+					errors = thisForm.validateBaiDang(mapping, request);
+					if (!errors.isEmpty()) {
+						/*saveErrors(request, errors);
+						return mapping.getInputForward();*/
+					}
+					else if(StringProcess.equals(thisForm.getSubmit(), "binhLuan")){
+						thisForm.setBl_userName((user.getUserName()));
+						BinhLuanBO.insertBinhLuan(thisForm.getBinhLuan());
+						thisForm.setXemBaiDang(BaiDangBO.infoBaiDang(thisForm.getMaBaiDang()));
+						return mapping.getInputForward();
+					}
 			}
 		}
 		
-		thisForm.setBaiDang(BaiDangBO.infoBaiDang(thisForm.getMaBaiDang()));
+		thisForm.setXemBaiDang(BaiDangBO.infoBaiDang(thisForm.getMaBaiDang()));
 		return mapping.getInputForward();
 	}
 

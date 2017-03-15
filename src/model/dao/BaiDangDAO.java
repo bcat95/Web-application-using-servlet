@@ -47,6 +47,7 @@ public class BaiDangDAO extends DataBaseConnect{
 				BaiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
 				BaiDang.setsDT(rs.getString("SDT"));
 				BaiDang.setAnhBia(rs.getString("AnhBia"));
+				BaiDang.setMaDanhMuc(rs.getInt("maDanhMuc"));
 				BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
 				list.add(BaiDang);
@@ -414,7 +415,7 @@ public class BaiDangDAO extends DataBaseConnect{
 			{
 				try {
 					prepSt=getConnect().prepareStatement("insert into HinhAnh values(?,?)");
-					prepSt.setString(1, "/upload/img/"+hinhAnhBean.getHinhAnh()[i]);
+					prepSt.setString(1, "upload/img/"+hinhAnhBean.getHinhAnh()[i]);
 					prepSt.setInt(2, baiDang.getMaBaiDang());
 					prepSt.executeUpdate();
 				} catch (SQLException e) {
@@ -472,6 +473,7 @@ public class BaiDangDAO extends DataBaseConnect{
 		}
 		baiDang.setListHinhAnh(HinhAnhDAO.infoHinhAnhByMa(maBaiDang));
 		baiDang.setListDichVu(DichVuDAO.infoDichVuByMa(maBaiDang));
+		baiDang.setListBinhLuan(BinhLuanDAO.infoBinhLuanByMa(maBaiDang));
 		return baiDang;
 	}
 	public ArrayList<BaiDangBean> danhSachBaiDang(User username){

@@ -27,29 +27,29 @@ public class HinhAnhDAO extends DataBaseConnect{
 	private static Statement st=null;
 	private static ResultSet rs=null;
 	//lay du lieu hinh anh
-		public static ArrayList<HinhAnhBean> infoHinhAnhByMa(int maBaiDang) {
-			ArrayList<HinhAnhBean> listHinhAnh = new ArrayList<HinhAnhBean>();
-			HinhAnhBean hinhAnh;
+	public static ArrayList<HinhAnhBean> infoHinhAnhByMa(int maBaiDang) {
+		ArrayList<HinhAnhBean> listHinhAnh = new ArrayList<HinhAnhBean>();
+		HinhAnhBean hinhAnh;
+		try {
+			st=getConnect().createStatement();
+			rs=st.executeQuery("select * FROM BaiDang "
+					+ "join HinhAnh on BaiDang.MaBaiDang = HinhAnh.MaBaiDang "
+					+ "where BaiDang.MaBaiDang = "+maBaiDang+"");
+			while(rs.next()){
+				hinhAnh = new HinhAnhBean();
+				hinhAnh.setMaHinh(rs.getInt("MaHinh"));
+				hinhAnh.setTenHinh(rs.getString("TenHinh"));
+				listHinhAnh.add(hinhAnh);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
 			try {
-				st=getConnect().createStatement();
-				rs=st.executeQuery("select * FROM BaiDang "
-						+ "join HinhAnh on BaiDang.MaBaiDang = HinhAnh.MaBaiDang "
-						+ "where BaiDang.MaBaiDang = "+maBaiDang+"");
-				while(rs.next()){
-					hinhAnh = new HinhAnhBean();
-					hinhAnh.setMaHinh(rs.getInt("MaHinh"));
-					hinhAnh.setTenHinh(rs.getString("TenHinh"));
-					listHinhAnh.add(hinhAnh);
-				}
+				getConnect().close();
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}finally{
-				try {
-					getConnect().close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
 			}
-			return listHinhAnh;
-		}	
+		}
+		return listHinhAnh;
+	}	
 }
