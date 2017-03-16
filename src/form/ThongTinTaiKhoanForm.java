@@ -1,7 +1,6 @@
 package form;
 
 import java.io.UnsupportedEncodingException;
-import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,9 +27,17 @@ public class ThongTinTaiKhoanForm  extends ActionForm{
 	private String passMoiXN;
 	
 	private ArrayList<BaiDangBean> listBaiDang;
+	private ArrayList<BaiDangBean> listYeuThich;
 	//name
 	private ArrayList<TaiKhoanBean> listTaiKhoan;
+	
 
+	public ArrayList<BaiDangBean> getListYeuThich() {
+		return listYeuThich;
+	}
+	public void setListYeuThich(ArrayList<BaiDangBean> listYeuThich) {
+		this.listYeuThich = listYeuThich;
+	}
 	public ArrayList<BaiDangBean> getListBaiDang() {
 		return listBaiDang;
 	}

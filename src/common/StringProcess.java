@@ -110,5 +110,26 @@ public class StringProcess {
 		}
 		return currentDate;
 	}
+	/**
+	 * Ham kiem tra xem xau co ky tu dac biet hay khong
+	 * @param s
+	 * @return boolean
+	 */
+	public boolean notDB(String s){
+		String r = "^[a-zA-Z0-9]*$";
+		if(s.matches(r)) return false;
+		return true;
+	}
+	/**
+	 * Ham kiem tra xem xau co phai mail hay ko
+	 * @param s
+	 * @return boolean
+	 */
+	public static boolean notEmail(String s){
+		String r = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+		if(s.matches(r)) return false;
+		return true;
+	}
+	
 }
 

@@ -476,35 +476,5 @@ public class BaiDangDAO extends DataBaseConnect{
 		baiDang.setListBinhLuan(BinhLuanDAO.infoBinhLuanByMa(maBaiDang));
 		return baiDang;
 	}
-	public ArrayList<BaiDangBean> danhSachBaiDang(User username){
-		Connection con= DataBaseConnect.getConnect();
-		//String sql=	"select baidang.tieude, loaitin.tenloaitin, danhmuc.tendanhmuc, baidang.ngayhethan from baidang inner join loaitin on baidang.maloaitin= loaitin.maloaitin inner join danhmuc on baidang.madanhmuc= danhmuc.madanhmuc where username='"+username.getUserName() +"'";
-		String sql=	"select * from baidang inner join loaitin on baidang.maloaitin= loaitin.maloaitin inner join danhmuc on baidang.madanhmuc= danhmuc.madanhmuc where username='"+username.getUserName() +"'";
-		System.out.println(sql);
-		ResultSet rs = null;
-		try {
-			Statement stmt = con.createStatement();
-			rs = stmt.executeQuery(sql);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		ArrayList<BaiDangBean> listBD = new ArrayList<BaiDangBean>();
-		BaiDangBean baiDangBean;
-		try {
-			while(rs.next()){
-				baiDangBean = new BaiDangBean();
-				baiDangBean.setMaBaiDang(rs.getInt("MaBaiDang"));
-				baiDangBean.setTieuDe(rs.getString("TieuDe"));
-				baiDangBean.setTenLoaiTin(rs.getString("TenLoaiTin"));
-				baiDangBean.setTenDanhMuc(rs.getString("TenDanhMuc"));
-				baiDangBean.setNgayHetHan(rs.getDate("NgayHetHan"));
-				listBD.add(baiDangBean);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return listBD;
-	}
 	
 }

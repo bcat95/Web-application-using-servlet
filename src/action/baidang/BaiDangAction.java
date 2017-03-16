@@ -58,6 +58,7 @@ public class BaiDangAction extends Action{
 						return mapping.getInputForward();*/
 					}
 					else if(StringProcess.equals(thisForm.getSubmit(), "binhLuan")){
+						thisForm.setSubmit("");
 						thisForm.setBl_userName((user.getUserName()));
 						BinhLuanBO.insertBinhLuan(thisForm.getBinhLuan());
 						thisForm.setXemBaiDang(BaiDangBO.infoBaiDang(thisForm.getMaBaiDang()));

@@ -23,7 +23,7 @@ public class HeaderAction extends Action{
 		if(user != null)
 			thisForm.setUser(user);
 		else
-			thisForm.setType("-1");
+			thisForm.setType(-1);
 		
 		return mapping.getInputForward();
 	}

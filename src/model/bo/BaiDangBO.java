@@ -74,9 +74,6 @@ public class BaiDangBO extends BussinessObject{
 	public static BaiDangBean infoBaiDang(int maBaiDang) throws SQLException, ClassNotFoundException{
 			return BaiDangDAO.infobaiDang(maBaiDang);
 	}
-	public ArrayList<BaiDangBean> danhSachBaiDang(User user){
-		return baiDangDAO.danhSachBaiDang(user);
-	}
 	
 /*	public static BaiDangBean editBaiDang(int maBaiDang) {
 		return BaiDangDAO.editBaiDang(maBaiDang);

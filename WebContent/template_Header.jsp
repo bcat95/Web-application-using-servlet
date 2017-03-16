@@ -41,8 +41,8 @@
 						<a href="dangTin.do" class="bc-create-listing bc-button bc-button-invert">Đăng tin mới</a>
 					</logic:notEqual>
 					<logic:equal name="headerForm" property="type" value="-1">
-						<a href="#" id ="bccrea_login" class="bc-create-listing bc-button bc-button-invert">Đăng tin mới</a>
-						<a href="#" class="bc-login-register" id="bcLogin">
+						<a href="Login.do" id ="bccrea_login" class="bc-create-listing bc-button bc-button-invert">Đăng tin mới</a>
+						<a href="Login.do" class="bc-login-register" id="bcLogin">
 							<i class="fa fa-sign-in" aria-hidden="true"></i>Đăng nhập / Đăng ký
 						</a>
 					</logic:equal>
@@ -96,10 +96,9 @@
 							</ul>
 						</li>
 						<logic:notEqual name="headerForm" property="type" value="-1">
-							<li class="dropdown"><a data-toggle="dropdown"> <bean:write name="headerForm" property="userName"/> <span class="caret"></span></a>
+							<li class="dropdown"><a data-toggle="dropdown"> <bean:write name="headerForm" property="hoTen"/> <span class="caret"></span></a>
 								<ul class="dropdown-menu">
                                     <li><a href="thong-tin.do">Thông tin cá nhân</a></li>
-									<li><a href="#">Đổi mật khẩu</a></li> 
 									<li><a href="Logout.do">Đăng xuất</a></li>
                             	</ul>
 							</li>

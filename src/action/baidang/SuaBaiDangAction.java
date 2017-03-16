@@ -18,7 +18,7 @@ import model.bo.DanhMucBO;
 import model.bo.TinhThanhBO;
 import model.bo.DichVuBO;
 
-public class ThemBaiDangAction extends Action{
+public class SuaBaiDangAction extends Action{
 
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
@@ -30,7 +30,7 @@ public class ThemBaiDangAction extends Action{
 		if(user == null || user.getMaQuyen() == -1)
 			return mapping.findForward("login");
 		thisForm.setUserName(user.getUserName());
-		if (StringProcess.equals(thisForm.getSubmit(), "dangTin")){
+		if (StringProcess.equals(thisForm.getSubmit(), "suaTin")){
 			ActionErrors errors = new ActionErrors();
 			errors = thisForm.validateBaiDang(mapping, request);
 			if (!errors.isEmpty()) {
@@ -40,15 +40,17 @@ public class ThemBaiDangAction extends Action{
 				thisForm.setListDichVu(DichVuBO.getListDichVu());
 				return mapping.getInputForward();
 			}
-			else if(StringProcess.equals(thisForm.getSubmit(), "dangTin")){
+			else if(StringProcess.equals(thisForm.getSubmit(), "suaTin")){
 				BaiDangBO.insertBaiDang(thisForm.getBaiDang(),thisForm.getFileAnhBia(),thisForm.getFileHinhAnh(),thisForm.getDichVu(),getServlet());
-				return mapping.findForward("dangTinxong");
+				return mapping.findForward("suaTinxong");
 			}
 		}
 		//them cac du lieu danh sach
 		thisForm.setListDanhMuc(DanhMucBO.getListDanhMuc());
 		thisForm.setListTinhThanh(TinhThanhBO.getListTinhThanh());
 		thisForm.setListDichVu(DichVuBO.getListDichVu());
+		thisForm.setSuaBaiDang(BaiDangBO.infoBaiDang(thisForm.getMaBaiDang()));
+		System.out.println("list dich vu "+thisForm.getListDichVu());
 		return mapping.getInputForward();
 	}
 	

@@ -88,6 +88,11 @@ a {
     border-radius: 4px;
     padding:15px;
 }
+ .bcpagewithbox{
+ 	margin: 20px auto;
+    display: block;
+    max-width: 600px;
+ }
 select {
     font-size: 15px;
     color: #141414;
@@ -824,8 +829,37 @@ body .bc-featured-listings-image-meta span {
     margin-top: 0;
 }
 /*footer*/
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 175px;
+}
+.footer {
+  position: absolute;
+  margin-top: 119px;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 175px;
+}
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
 .site-footer-wrapper {
-    margin-top: 119px;
 }
 .site-footer-wrapper.minimal .footer-bottom-container {
     background: #0F3652;
@@ -1378,7 +1412,6 @@ body .db-single-listing-share .db-share-item .fa:hover{
 /*chi tiet tin quang cao*/
 .db-single-additional-information, .db-single-amenities, .db-single-adv {
     margin-top: 30px;
-    margin-left: 30px;
     margin-bottom: 34px;
 }
 .db-single-adv-title {
@@ -1392,6 +1425,7 @@ body .db-single-listing-share .db-share-item .fa:hover{
     color: #53666D;
     padding-top: 0;
     padding-bottom: 27px;
+    margin-top: 10px;
 }
 .db-amenitie-item-wrapper {
     display: block;
@@ -1452,10 +1486,16 @@ h3 {
 
 /*binh luan*/
 .db-single-listing-left .comments-area {
-    background: #F1F5F8;
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.10);
+    color: #141414;
+    background: #fefefe;
+    border-width: 1px;
+    border-style: solid;
+    border-top-color: #e2e2e2;
+    border-right-color: #dadada;
+    border-bottom-color: #d0d0d0;
+    border-left-color: #dadada;
     border-radius: 4px;
-    padding: 0 31px;
+    padding: 30px;
 }
 .db-single-listing-left .db-comment-count {
     color: #53666D;
@@ -1493,49 +1533,47 @@ ul.review-list {
     box-shadow: none;
     padding: 0;
     margin: 0;
-    margin-top: 30px;
+    padding-top: 30px;
 }
-#bcbinhluan thead {
-    display: none;
+.bcbinhluans  .pagination>li>a, .bcbinhluans .pagination>li>span ,.bcbinhluans .pagination>li>strong{
+	 float: none;
+	margin-left: -7px;	
 }
-#bcbinhluan tr {
-    _background-color: #fff;
+ul.pagination {
     display: block;
-    border-bottom: 1px solid rgba(155,155,155,0.15);
-    margin-bottom: 20px;
+    margin: 0;
 }
-#bcbinhluan td.bcblock {
-    display: block;
-    border: 0;
-    padding: 10px;
+li.hidetext {
+    text-indent: -9999px;
 }
-#bcbinhluan td.bcblock.username {
-	float: left;
-	font-weight: 700;
+li.hidetext a,li.hidetext strong{
+    text-indent: initial;
 }
-#bcbinhluan td.bcblock.diemdg {
-	float: right;
-    background-color: #03ae03;
-    border-radius: 100%;
+.pagination>li>strong {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    text-decoration: none;
     color: #fff;
-    width: 30px;
-    height: 30px;
-    margin: 5px;
-    line-height: 10px;
+	cursor: default;
+	background-color: #337ab7;
+	border-color: #337ab7;
 }
-#bcbinhluan td.bcblock.ngaybl {
-    font-size: 11px;
-    color: #666;
+#bcbinhluan tr{
+	margin-bottom: 20px;
 }
-#bcbinhluan td.bcblock.ngaybl:before {
-    content: "\f017";
-    font-family: FontAwesome;
-    padding-right: 5px;
+.bcbinhluans td.bcbinhluan.item {
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
-#bcbinhluan td.bcblock.tieude {
-    font-size: 14px;
-    font-weight: 700;
-    border-top: #f6f6f6 1px solid !important;
+p.form-submit {
+    margin: 10px 0;
+}
+span.pagebanner {
+    float: right;
 }
 ul.review-list li.comment {
     border-bottom: 1px solid rgba(155,155,155,0.15);
@@ -1628,8 +1666,7 @@ body .review-list .review-content {
     background-position: 0px;
 }
 .db-rating-stars {
-    margin-left: 22px;
-    margin-bottom: 17px;
+    margin-bottom: 15px;
 }
 .db-rating-stars .db-rating-text {
     font-family: 'Open Sans';
@@ -1711,16 +1748,21 @@ body .review-list .review-content {
 }
 .db-single-listing-left #commentform span input {
     font-family: 'Open Sans';
-    font-size: 15px;
-    color: #909FA5;
     outline: none;
-    border: none;
-    border-radius: 4px;
-    background: #fff;
     padding: 0 22px;
     height: 45px;
     display: block;
     width: 100%;
+    font-size: 15px;
+    color: #141414;
+    background: #f7fbfe;
+    border-width: 1px;
+    border-style: solid;
+    border-top-color: #d0d0d0;
+    border-right-color: #e2e2e2;
+    border-bottom-color: #e2e2e2;
+    border-left-color: #d0d0d0;
+    border-radius: 4px;
 }
 .db-single-listing-left #commentform>span.comment-form-comment {
     padding-bottom: 0;
@@ -1745,13 +1787,22 @@ body .review-list .review-content {
 }
 #commentform textarea {
     min-height: 250px;
-    background: #fff;
-    border-radius: 4px;
     border: none;
-    outline: none;
     font-family: 'Open Sans';
+    outline: none;
+    height: 45px;
+    display: block;
+    width: 100%;
     font-size: 15px;
-    color: #909FA5;
+    color: #141414;
+    background: #f7fbfe;
+    border-width: 1px;
+    border-style: solid;
+    border-top-color: #d0d0d0;
+    border-right-color: #e2e2e2;
+    border-bottom-color: #e2e2e2;
+    border-left-color: #d0d0d0;
+    border-radius: 4px;
     padding: 12px 22px;
 }
 textarea {
@@ -1766,11 +1817,10 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
     border-radius: 3px;
     font-weight: 600;
     padding: 5px 21px 5px 20px;
-    color: #247BA0;
     border: none;
     background-image: none;
     cursor: pointer;
-    background: transparent;
+    background-color: #185886;
     -webkit-transition: color ease-in-out 0.2s,background ease-in-out 0.2s;
     -moz-transition: color ease-in-out 0.2s,background ease-in-out 0.2s;
     -o-transition: color ease-in-out 0.2s,background ease-in-out 0.2s;
@@ -2280,7 +2330,7 @@ body #db-add-listing-form .db-field-row {
     display: none;
 }
 #db-add-listing-form .db-field-row.listing_content textarea {
-    min-height: 250px;
+    min-height: 150px;
 }
 .db-autolocate-me {
     position: absolute;
@@ -2623,4 +2673,5 @@ li.popular label, li.popular .db-fee-description .db-fee-value, li.popular .db-f
 /*xem tin*/
 .bcnoidungtin {
     overflow: hidden;
+    padding: 20px 0;
 }

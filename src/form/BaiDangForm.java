@@ -378,6 +378,7 @@ public class BaiDangForm  extends ActionForm{
 	}
 	//ham set thuoc tinh bai dang khi xem bai dang
 	public void setXemBaiDang(BaiDangBean itemBD) {
+		//this.set
 		this.maBaiDang = itemBD.getMaBaiDang();
 		this.tieuDe = itemBD.getTieuDe();
 		this.noiDung = itemBD.getNoiDung();
@@ -414,6 +415,7 @@ public class BaiDangForm  extends ActionForm{
 		this.userName = item.getUserName();
 		this.maDanhMuc = item.getMaDanhMuc();
 		this.maTinhThanh = item.getMaTinhThanh();
+		this.listDichVu=item.getListDichVu();
 	}
 	//ham get thuoc tinh bai dang 
 	public BaiDangBean getBaiDang() {
@@ -434,6 +436,7 @@ public class BaiDangForm  extends ActionForm{
 	public BinhLuanBean getBinhLuan() {
 		return new BinhLuanBean(bl_maBinhLuan,maBaiDang,bl_userName,bl_tieuDe,bl_noiDung,bl_ngayBinhLuan,bl_diemDanhGia);
 	}
+	
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		try
@@ -458,5 +461,7 @@ public class BaiDangForm  extends ActionForm{
 		}
 		return errors;
 	}
+
+	
 	
 }

@@ -71,13 +71,13 @@
 					<!--end chi tiet tin footer tin -->
 				</div>
 				<!--chi tiet tin quang cao include tu qcao-->
-				<div class="db-single-adv">
+				<!-- <div class="db-single-adv">
 					<h3 class="db-single-adv-title">Quảng cáo</h3>
 					<img class="alignnone size-full wp-image-608" src="img/ads/ad-large.png" alt="" width="786" height="137">
-				</div>
+				</div> -->
 				<!--end chi tiet tin quang cao-->
 				<!--chi tiet tin tien nghi tin-->
-				<div class="db-single-amenities">
+				<div class="db-single-amenities content-area">
 					<h3 class="db-single-amenities-title">Tiện nghi</h3>
 					<div class="db-amenitie-item-wrapper row row_w">
 						<logic:iterate id="dichvu" name="baiDangForm" property="listDichVu">
@@ -96,60 +96,96 @@
 				<!-- chi tiet tin binh luan-->
 				<div id="comments" class="comments-area ">
 					<ul class="review-list">
-						<div class="bcbinhluan clearfix">
+						<div class="bcbinhluans clearfix">
 							<display:table id="bcbinhluan" name="sessionScope.baiDangForm.listBinhLuan"
-								requestURI="/xembaidang.do" pagesize="3">
+								requestURI="/xembaidang.do" pagesize="5">
+								<logic:notEmpty name="baiDangForm" property="listBinhLuan">
+										<bean:define id="diemDanhGia" name="bcbinhluan" property="diemDanhGia"/>
+										<bean:define id="maBinhLuan" name="bcbinhluan" property="maBinhLuan"/>
+										<bean:define id="userName" name="bcbinhluan" property="userName"/>
+										<bean:define id="ngayBinhLuan" name="bcbinhluan" property="ngayBinhLuan"/>
+										<bean:define id="tieuDe" name="bcbinhluan" property="tieuDe"/>
+										<bean:define id="noiDung" name="bcbinhluan" property="noiDung"/>
+								</logic:notEmpty>
+								<display:column class="bcbinhluan item">
+									
+									<li class="comment byuser comment-author-jolydoe1 even thread-even depth-1">
+										<div class="review">
+											<div class="review-meta">
+												<div class="review-author vcard shadows">
+													<img src="upload/avata/Bcat95.jpeg" width="54" height="54" alt="July Doe" class="avatar avatar-54 wp-user-avatar wp-user-avatar-54 alignnone photo">
+												</div> 
+											</div>
+											<div class="review-content">
+												<span class="db-review-title">${tieuDe}</span>
+												<span class="db-listing-rating">
+												<span id="bl_${maBinhLuan}" class="ratings" title="${diemDanhGia}">
+													<span class="star"></span>
+													<span class="star"></span>
+													<span class="star"></span>
+													<span class="star"></span>
+													<span class="star"></span>
+												</span>
+												<script>
+													var ddg = $('#bl_${maBinhLuan}').attr('title');
+													for (i = 1; i <= ddg; i++) { 
+														$('#bl_${maBinhLuan} span:nth-child('+i+')').addClass(" Full");
+													}
+												</script>
+												</span>
+												<p>${noiDung}</p>
+												<div class="db-review-bottom">
+													<a href="#" class="db-review-author">${userName}</a> ${ngayBinhLuan}
+												</div>
+												<div class="clearfix"></div>
+											</div>
+											<div class="clearfix"></div>
+										</div> 
+									</li>
+								</display:column>
+								
 								<display:setProperty name="paging.banner.placement" value="bottom" />
-								<display:column property="userName" class="bcblock username" />
-								<display:column property="diemDanhGia" sortable="true" class="bcblock diemdg"/>
-								<display:column property="ngayBinhLuan" class="bcblock ngaybl" />
-								<display:column property="tieuDe" class="bcblock tieude"/>
-								<display:column property="noiDung" class="bcblock noidung"/>
+								<display:setProperty name="basic.msg.empty_list">
+									<div class="alert alert-info">
+										<strong>Oh!</strong> Chưa có bình luận nào ! Hãy là người đầu tiên.
+									</div>
+								</display:setProperty>
+								<display:setProperty name="paging.banner.all_items_found"><span class="pagebanner"> {0} {1} được hiển thị, số số bình luận {2}. </span></display:setProperty>
+								<display:setProperty name="paging.banner.some_items_found">
+									<span class="pagebanner"> {0} {1} được hiển thị, số bình luận {2} đến {3}. </span>
+								</display:setProperty>
+								<display:setProperty name="paging.banner.full">
+									<ul class="pagination">
+									  	<li class="previous"><a href="{1}">Đầu tiên</a></li>
+									    <li class="previous"><a href="{2}">Trước</a></li>
+									    <li class="hidetext">{0}</li>
+									    <li class="next"><a href="{3}">Sau</a></li>
+									    <li class="next"><a href="{4}">Cuối cùng</a></li>
+									</ul>
+								</display:setProperty>
+								<display:setProperty name="paging.banner.first">
+									<ul class="pagination">
+									  	<li class="hidetext">{0}</li>	
+									    <li class="next"><a href="{3}">Sau</a></li>
+									    <li class="next"><a href="{4}">Cuối cùng</a></li>
+									</ul>
+								</display:setProperty>
+								<display:setProperty name="paging.banner.last">
+									<ul class="pagination">
+									  	<li class="previous"><a href="{1}">Đầu tiên</a></li>
+									    <li class="previous"><a href="{2}">Trước</a></li>
+									    <li class="hidetext">{0}</li>
+									</ul>
+								</display:setProperty>
 							</display:table>
 						</div>
-						<logic:iterate id="binhluan" name="baiDangForm" property="listBinhLuan">
-							<li class="comment byuser comment-author-jolydoe1 even thread-even depth-1">
-								<div class="review">
-									<div class="review-meta">
-										<div class="review-author vcard shadows">
-											<img src="img/avatar/0/1.png" width="54" height="54" alt="July Doe" class="avatar avatar-54 wp-user-avatar wp-user-avatar-54 alignnone photo">
-										</div> 
-									</div>
-									<div class="review-content">
-										<span class="db-review-title"><bean:write name="binhluan" property="tieuDe"/></span>
-										<span class="db-listing-rating">
-											<span id="bl_<bean:write name="binhluan" property="maBinhLuan"/>" class="ratings" title="<bean:write name="binhluan" property="diemDanhGia"/>">
-												<span class="star"></span>
-												<span class="star"></span>
-												<span class="star"></span>
-												<span class="star"></span>
-												<span class="star"></span>
-											</span>
-											<script>
-												var ddg = $('#bl_<bean:write name="binhluan" property="maBinhLuan"/>').attr('title');
-												for (i = 1; i <= ddg; i++) { 
-													$('#bl_<bean:write name="binhluan" property="maBinhLuan"/> span:nth-child('+i+')').addClass(" Full");
-												}
-											</script>
-										</span>
-										<p><bean:write name="binhluan" property="noiDung"/></p>
-										<div class="db-review-bottom">
-											<a href="author/jolydoe1/" class="db-review-author"><bean:write name="binhluan" property="userName"/></a> <bean:write name="binhluan" property="ngayBinhLuan"/>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									<div class="clearfix"></div>
-								</div> 
-							</li>
-						</logic:iterate>
 					</ul>
 					<!--end list binh luan-->
 					<!-- form binh luan-->
 					<div id="respond" class="comment-respond">
-						<h3 id="rating-title" class="comment-rating-title">Để lại bình luận của bạn</h3>
 						<html:form action="xembaidang" method="post" styleId="commentform" styleClass="comment-form">
 							<div class="db-rating-stars">
-								<span class="db-rating-text">Đánh giá của bạn</span>
+								<span class="db-rating-text">Để lại bình luận của bạn</span>
 									<div class="db-rating-container">
 										<span class="star-cb-group">
 										  <input type="radio" id="rating-5" name="bl_diemDanhGia" value="5" /><label for="rating-5">5</label>
@@ -166,7 +202,7 @@
 							</span>
 							<span class="comment-form-comment">
 								<span class="db-send-comment"></span>
-								<html:textarea property="bl_noiDung" styleId="comment" rows="5"></html:textarea>
+								<html:textarea property="bl_noiDung" styleId="comment" rows="3"></html:textarea>
 							</span>
 							<script type="text/javascript">
 							 $("#comment").val("");
@@ -246,6 +282,10 @@
 	    log.html(me.attr('value'));
 	  });
 	//# sourceURL=pen.js
+	</script>
+	<<script type="text/javascript">
+	$("#review-title").attr("placeholder", "Tiêu đề bình luận");
+	$("#comment").attr("placeholder", "Nội dung bình luận");
 	</script>
 	<%-- </html:form> --%>
 	<!-- end chi tiet tin-->

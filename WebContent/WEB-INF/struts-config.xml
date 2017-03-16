@@ -13,7 +13,8 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<!-- endAnNBH form beans -->
 		
 		<!-- Vang form beans -->
-		<form-bean name="accountForm" type="form.AccountForm"/>
+		<form-bean name="loginForm" type="form.LoginForm"/>
+		<form-bean name="registerForm" type="form.RegisterForm"/>
 		<form-bean name="headerForm" type="form.HeaderForm"/>
 		<!-- end form beans -->
 		
@@ -24,15 +25,21 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 	<action-mappings>
 		
 		<!-- Vang action -->
-		<action input="/login.jsp" name="accountForm" path="/Login" scope="request" type="action.AccountAction">
-            <forward name="home" path="/index.jsp" />
+        <action input="/login.jsp" name="loginForm" path="/Login" scope="request" type="action.LoginAction">
+			<forward name="login" path="/login.jsp" />
+            <forward name="home" path="/index.jsp" redirect="true"/>
         </action>
+        <action input="/register.jsp"  name="registerForm"
+			path="/Register" scope="request" type="action.RegisterAction">
+			<forward name="home" path="/index.jsp" redirect="true"/>
+			<forward name="register" path="/register.jsp"/>
+		</action>
 		<action path="/Logout" scope="request" type="action.LogoutAction">
-            <forward name="logout" path="/index.jsp" />
+            <forward name="logout" path="/index.jsp" redirect="true"/>
         </action>
         <action input="/template_Header.jsp"  name="headerForm"
 			path="/header" scope="request" type="action.HeaderAction">
-			<forward name="header" path="/header.jsp" />
+			<forward name="header" path="/template_Header.jsp" />
 		</action>			
 		<!-- end Vang action -->
 		
@@ -43,13 +50,18 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="dangTinxong" path="/tinDangThanhCong.jsp" redirect="true"/>
 			<forward name="dangTinerror" path="/dangTin.jsp"></forward>
 		</action>
+		<action input="/suaTin.jsp" name="baiDangForm"
+			path="/suaTin" scope="request" type="action.baidang.SuaBaiDangAction">
+			<forward name="login" path="/index.jsp" redirect="true"/>
+			<forward name="suaTinxong" path="/tinDangThanhCong.jsp" redirect="true"/>
+			<forward name="suaTinerror" path="/suaTin.jsp"></forward>
+		</action>
 		<action input="/xemChiTietBaiDang.jsp" name="baiDangForm"
 			path="/xembaidang" scope="session" type="action.baidang.BaiDangAction">
 			<forward name="binhLuanxong" path="/xemChiTietBaiDang.jsp" redirect="true"/>
 			<forward name="login" path="/index.jsp" redirect="true"/>
 		</action>
 		<!-- end DonNA tao action -->
-		
 		<!-- AnNBH action -->
 		<action input="/home.jsp" name="homeForm"
 			path="/home" scope="request" type="action.home.HomeAction" validate="true">
@@ -63,18 +75,12 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		
 		<!-- Vannasone action -->
 		<action input="/taiKhoan.jsp" name="thongTinTaiKhoanForm" path="/thong-tin"
-			scope="request" type="action.ThongTinTaiKhoanAction" validate="true">
+			scope="session" type="action.ThongTinTaiKhoanAction" validate="true">
 			<forward name="thongTinTaiKhoan" path="/taiKhoan.jsp" />
 		</action>
 		<action input="/taiKhoan.jsp" name="thongTinTaiKhoanForm" path="/cap-nhat-thong-tin"
-			scope="request" type="action.CapNhatThongTinAction">
+			scope="session" type="action.CapNhatThongTinAction">
 			<forward name="suaTKxong" path="/thong-tin.do" redirect="true" />
-		</action>
-		<action input="/suaBaiDang.jsp" name="baiDangForm" path="/suaTin"
-			scope="request" type="action.baidang.SuaBaiDangAction">
-			<forward name="suaTinxong" path="/suaTinThanhCong.jsp"
-				redirect="true" />
-			<forward name="dangTinerror" path="/suaBaiDang.jsp"></forward>
 		</action>
 		
 		<!-- end Vannasone tao action -->
