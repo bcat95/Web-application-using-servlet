@@ -1535,9 +1535,9 @@ ul.review-list {
     margin: 0;
     padding-top: 30px;
 }
-.bcbinhluans  .pagination>li>a, .bcbinhluans .pagination>li>span ,.bcbinhluans .pagination>li>strong{
-	 float: none;
-	margin-left: -7px;	
+.pagination>li>a, .pagination>li>span , .pagination>li>strong{
+	float: none !important;
+	margin-left: -8px !important;
 }
 ul.pagination {
     display: block;
@@ -2018,10 +2018,6 @@ body #entry-content-wrapper ul.db-account-menu li {
     display: inline-block;
     margin-right: 31px;
 }
-#entry-content-wrapper ul:not(.nav-tabs) li {
-    padding-left: 10px;
-}
-
 body #entry-content-wrapper ul.db-account-menu li a:not(.db-logout) {
     font-family: 'Poppins',tahoma;
     font-size: 14px;
@@ -2381,8 +2377,52 @@ body:not(.home) .bc-create-listing, body:not(.home) .bc-author-account, body.blo
     background: #fefefe;
     padding: 10px;
 }
+.old_gallery.col-sm-6.row_w > .lshinh{
+    overflow-y: overlay;
+    height: 225px;
+    padding-left: 15px;
+    width: 100%;
+}
+.old_gallery div,.thr_gallery img{
+    position: relative;
+    padding: 5px;
+    height: 120px;
+    width: 50%;
+    float: left;
+    border-left: 1px solid #e2e2e2;
+    border-top: 1px solid #e2e2e2;
+}
+.old_anhBia div{
+	position: relative;
+}
+.old_anhBia input[type="checkbox"] {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+.old_gallery a{
+    height: 120px;
+    width: 100%;
+    float: left;
+    background-size: cover!important;
+    background-position: center!important;
+    background-clip: content-box!important;
+}
+.old_gallery input[type="checkbox"] {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+.old_anhBia a{
+    width: 359px;
+    height: 224px;
+    display: inline-block;
+    background-size: cover!important;
+    background-position: center!important;
+    background-clip: content-box!important;
+}
 .anhBia {
-    max-height: 238px;
+    max-height: 220px;
     overflow: hidden;
 }
 .anhBia img {
@@ -2390,7 +2430,7 @@ body:not(.home) .bc-create-listing, body:not(.home) .bc-author-account, body.blo
     width: 100%;
     overflow: hidden;
 }
-.thr_gallery img {
+.thr_gallery img, {
     padding: 5px;
     height: 120px;
     width: 50%;

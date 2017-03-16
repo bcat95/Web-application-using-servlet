@@ -16,7 +16,8 @@
 							<div id="entry-content-wrapper" class="clearfix">
 								<div class="db-main-wrapper">
 								<!--form dang tin-->
-								<html:form action="/suaTin.do" method="post" styleId="db-add-listing-form" enctype="multipart/form-data">
+								<html:form action="/suatin.do" method="post" styleId="db-add-listing-form" enctype="multipart/form-data">
+									<bean:define id="maBaiDang" name="baiDangForm" property="maBaiDang"></bean:define>
 									<div class="db-field-row required">
 										<label for="listing_title">Tiêu đề tin</label>
 										<html:text property="tieuDe" styleId="listing_title" styleClass="input"></html:text>
@@ -104,7 +105,29 @@
 											<span class="db-file-upload-hint">JPG, GIF or PNG. Featured images are 1000x1000 pixels.</span>
 										</div>
 										<div class="thr_thumb col-md-8">
-											<div class="thr_thumb">
+											<div class="thr_thumb thr_old clearfix">
+													<div class="old_anhBia col-sm-6 row_w">
+														<h3>Chọn ảnh bìa cần xóa</h3>
+														<div>
+															<html:checkbox property="anhBiaXoa" value="true"/>
+															<a href="#" class="db-gallery-mos-item prettyphoto" style="background: url(<bean:write name="baiDangForm" property="anhBia"/>)"></a>
+														</div>
+													</div>
+													<div class="old_gallery col-sm-6 row_w">
+														<h3>Chọn ảnh bài đăng cần xóa</h3>
+														<div class="lshinh">
+															<logic:iterate id="hinhanh" name="baiDangForm" property="listHinhAnh">
+															<div>
+																<html:multibox property="hinhXoa">
+																	<bean:write name="hinhanh" property="maHinh"/>
+																</html:multibox>
+																<a href="#" class="db-gallery-mos-item prettyphoto" rel="prettyPhoto[whitelab_map]" style="background: url(<bean:write name="hinhanh" property="tenHinh"/>)"></a>
+															</div>
+															</logic:iterate>
+														</div>
+													</div>
+											</div>
+											<div class="thr_thumb clearfix">
 												<div class="anhBia col-sm-6 row_w"></div>
 												<div class="thr_gallery col-sm-6 row_w"></div>
 											</div>
@@ -143,11 +166,8 @@
 													<bean:write name="dichvu" property="tenDichVu"/>
 												</span>
 											</logic:iterate>
-												<logic:iterate id="dichvu" name="baiDangForm" property="listDichVu">
-													<bean:write name="dichvu" property="maDichVu"/>
-														<bean:write name="dichvu" property="tenDichVu"/>
-												</span>
-											</logic:iterate>
+											<script type="text/javascript"><logic:iterate id="dichvu" name="baiDangForm" property="listDichVuSua">$(".bcdichvu input[value='" + <bean:write name="dichvu" property="maDichVu"/> + "']").prop('checked', true);</logic:iterate></script>
+											
 										</div>
 									</div>
 									<div class="db-field-row">
@@ -171,7 +191,8 @@
 															<span class="db-package-extra">Bao gồm quảng cáo</span>
 														</div>
 														<%-- <html:submit styleClass="btn btn-primary" property="submit" value="Đăng tin">Thêm mới</html:submit> --%>
-														<button type="submit" name="submit" value="dangTin" class="btn btn-primary">Đăng Tin</button>
+														<input type="hidden" name="maBaiDang" value="${maBaiDang}">
+														<button type="submit" name="submit" value="suaTin" class="btn btn-primary">Sửa Tin</button>
 													</div>
 												</div>
 											</li>

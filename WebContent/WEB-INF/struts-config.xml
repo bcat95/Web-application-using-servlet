@@ -45,19 +45,19 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		
 		<!-- DonNA action -->
 		<action input="/dangTin.jsp" name="baiDangForm"
-			path="/dangTin" scope="request" type="action.baidang.ThemBaiDangAction">
+			path="/dangtin" scope="request" type="action.baidang.ThemBaiDangAction">
 			<forward name="login" path="/index.jsp" redirect="true"/>
 			<forward name="dangTinxong" path="/tinDangThanhCong.jsp" redirect="true"/>
 			<forward name="dangTinerror" path="/dangTin.jsp"></forward>
 		</action>
 		<action input="/suaTin.jsp" name="baiDangForm"
-			path="/suaTin" scope="request" type="action.baidang.SuaBaiDangAction">
+			path="/suatin" scope="request" type="action.baidang.SuaBaiDangAction">
 			<forward name="login" path="/index.jsp" redirect="true"/>
 			<forward name="suaTinxong" path="/tinDangThanhCong.jsp" redirect="true"/>
 			<forward name="suaTinerror" path="/suaTin.jsp"></forward>
 		</action>
 		<action input="/xemChiTietBaiDang.jsp" name="baiDangForm"
-			path="/xembaidang" scope="session" type="action.baidang.BaiDangAction">
+			path="/xemtin" scope="session" type="action.baidang.BaiDangAction">
 			<forward name="binhLuanxong" path="/xemChiTietBaiDang.jsp" redirect="true"/>
 			<forward name="login" path="/index.jsp" redirect="true"/>
 		</action>

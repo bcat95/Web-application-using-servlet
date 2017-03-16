@@ -51,5 +51,42 @@ public class HinhAnhDAO extends DataBaseConnect{
 			}
 		}
 		return listHinhAnh;
+	}
+	public static String getAnhByMa(String mahinhAnh) {
+		String hinhAnh="";
+		try {
+			st=getConnect().createStatement();
+			rs=st.executeQuery("select TenHinh from HinhAnh "
+					+ " where MaHinh ="+mahinhAnh+"");
+			while(rs.next()){
+				hinhAnh=rs.getString("TenHinh");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return hinhAnh;
+		
+	}
+	public static void deleteAnhByMa(String mahinhAnh) {
+		try {
+			st=getConnect().createStatement();
+			rs=st.executeQuery("delete from HinhAnh "
+					+ " where MaHinh ="+mahinhAnh+"");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}	
 }

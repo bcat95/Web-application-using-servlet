@@ -1,5 +1,6 @@
 package model.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,6 +24,7 @@ import model.bean.DichVuBean;
  * 14-3-2017         DonNA            Create
  */
 public class DichVuDAO extends DataBaseConnect{
+	private static PreparedStatement prepSt=null;
 	private static Statement st=null;
 	private static ResultSet rs=null;
 	
@@ -75,5 +77,76 @@ public class DichVuDAO extends DataBaseConnect{
 			}
 		};
 		return listDichVu;
+	}
+
+	public static void insertDichVu(BaiDangBean baiDang,String[] dichVu) {
+		if(baiDang.getMaBaiDang()!=0){
+			int dichvulen=dichVu.length;
+			for (int i=0;i<dichvulen;i++)
+			{
+				try {
+					prepSt=getConnect().prepareStatement("insert into DichVuBD values(?,?)");
+					prepSt.setInt(1, Integer.parseInt(dichVu[i]));
+					prepSt.setInt(2, baiDang.getMaBaiDang());
+					prepSt.executeUpdate();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}finally{
+					try {
+						getConnect().close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				
+			}
+		}
+		else {
+            try {
+				throw new SQLException("K co khoa chinh ma bai dang");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+        }
+		
+	}
+	public static void deleteDichVu(int maBaiDang) {
+		
+		try {
+			prepSt=getConnect().prepareStatement("delete from DichVuBD where MaBaiDang = "+maBaiDang+"");
+			prepSt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	public static void updateDichVu(BaiDangBean baiDang, String[] dichVu) {
+		deleteDichVu(baiDang.getMaBaiDang());
+		int dichvulen=dichVu.length;
+		for (int i=0;i<dichvulen;i++)
+		{
+			try {
+				prepSt=getConnect().prepareStatement("insert into DichVuBD values(?,?)");
+				prepSt.setInt(1, Integer.parseInt(dichVu[i]));
+				prepSt.setInt(2, baiDang.getMaBaiDang());
+				prepSt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally{
+				try {
+					getConnect().close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		}
+		
 	}
 }

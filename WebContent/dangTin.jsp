@@ -16,7 +16,7 @@
 							<div id="entry-content-wrapper" class="clearfix">
 								<div class="db-main-wrapper">
 								<!--form dang tin-->
-								<html:form action="/dangTin.do" method="post" styleId="db-add-listing-form" enctype="multipart/form-data">
+								<html:form action="/dangtin.do" method="post" styleId="db-add-listing-form" enctype="multipart/form-data">
 									<div class="db-field-row required">
 										<label for="listing_title">Tiêu đề tin</label>
 										<html:text property="tieuDe" styleId="listing_title" styleClass="input"></html:text>
@@ -222,13 +222,11 @@
 															<span class="db-package-extra">Tin ưu tiên</span>
 														</div>
 														<input type="hidden" name="userName" value="<bean:write name="headerForm" property="userName"/>">
-														<%-- <html:submit styleClass="btn btn-primary" property="submit" value="Đăng tin">Thêm mới</html:submit> --%>
 														<button type="submit" name="submit" value="dangTin" class="btn btn-primary">Đăng Tin</button>
 													</div>
 												</div>
 											</li>
 										</ul>
-										<input type="hidden" name="db-active-package" value="0">
 										<div class="clearfix"></div>
 									</div>
 								</html:form>

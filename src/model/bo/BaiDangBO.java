@@ -10,8 +10,8 @@ import org.apache.struts.upload.FormFile;
 import common.BussinessObject;
 import model.bean.BaiDangBean;
 import model.bean.HinhAnhBean;
-import model.bean.User;
 import model.dao.BaiDangDAO;
+import model.dao.DichVuDAO;
 
 public class BaiDangBO extends BussinessObject{
 	
@@ -45,8 +45,7 @@ public class BaiDangBO extends BussinessObject{
 	{
 		//them anh bia
 		try {
-			
-			if(file.getFileSize() > 0){
+			if(file != null){
 				baiDang.setAnhBia(
 					"upload/img/" + BussinessObject.saveFile("/upload/img", file,"", action));
 			}
@@ -57,7 +56,7 @@ public class BaiDangBO extends BussinessObject{
 		BaiDangDAO.insertBaiDang(baiDang);
 		//them dich vu
 		if (dichVu != null){
-			BaiDangDAO.insertDichVu(baiDang,dichVu);
+			DichVuDAO.insertDichVu(baiDang,dichVu);
 		}
 		//them anh bai viet
 		if (fileHinhAnh != null){
@@ -72,11 +71,44 @@ public class BaiDangBO extends BussinessObject{
 		
 	}
 	public static BaiDangBean infoBaiDang(int maBaiDang) throws SQLException, ClassNotFoundException{
-			return BaiDangDAO.infobaiDang(maBaiDang);
+		return BaiDangDAO.infobaiDang(maBaiDang);
 	}
-	
-/*	public static BaiDangBean editBaiDang(int maBaiDang) {
-		return BaiDangDAO.editBaiDang(maBaiDang);
-	}*/
-	
+
+	public static BaiDangBean infoSuaBaiDang(int maBaiDang) throws SQLException, ClassNotFoundException{
+		return BaiDangDAO.infoSuaBaiDang(maBaiDang);
+	}
+	public static void updateBaiDang(BaiDangBean baiDang, boolean anhbiaxoa, String[] hinhXoa, FormFile file, ArrayList<FormFile> fileHinhAnh,
+			String[] dichVu, ActionServlet action) {
+		//xoa neu xoa anh bia
+		if (anhbiaxoa)  BussinessObject.deleteFile(BaiDangDAO.getAnhBiaByMa(baiDang.getMaBaiDang()),action);
+		//xoa neu xoa hinh anh
+		if (hinhXoa != null) BussinessObject.deleteMultiFile(hinhXoa, action);
+		//update anh bia moi
+		try {
+			if(file.getFileSize()>0){
+				BaiDangDAO.setAnhBia(baiDang.getMaBaiDang(),
+					"upload/img/" + BussinessObject.saveFile("/upload/img", file,"", action));
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		//update thong tin bai viet
+		BaiDangDAO.updateBaiDang(baiDang);
+		
+		//them dich vu
+		if (dichVu != null){
+			DichVuDAO.updateDichVu(baiDang,dichVu);
+		}
+		
+		//them anh bai viet
+		if (fileHinhAnh != null){
+			try {
+				hinhAnhBean.setHinhAnh(BussinessObject.saveMultiFile("upload/img", fileHinhAnh, action));
+				BaiDangDAO.insertHinhAnh(baiDang,hinhAnhBean);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

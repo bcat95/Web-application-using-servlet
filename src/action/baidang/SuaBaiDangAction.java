@@ -41,7 +41,8 @@ public class SuaBaiDangAction extends Action{
 				return mapping.getInputForward();
 			}
 			else if(StringProcess.equals(thisForm.getSubmit(), "suaTin")){
-				BaiDangBO.insertBaiDang(thisForm.getBaiDang(),thisForm.getFileAnhBia(),thisForm.getFileHinhAnh(),thisForm.getDichVu(),getServlet());
+				//thong tin bai dang, anh bia xoa, hinh anh xoa..
+				BaiDangBO.updateBaiDang(thisForm.getBaiDang(),thisForm.isAnhBiaXoa(),thisForm.getHinhXoa(),thisForm.getFileAnhBia(),thisForm.getFileHinhAnh(),thisForm.getDichVu(),getServlet());
 				return mapping.findForward("suaTinxong");
 			}
 		}
@@ -49,8 +50,7 @@ public class SuaBaiDangAction extends Action{
 		thisForm.setListDanhMuc(DanhMucBO.getListDanhMuc());
 		thisForm.setListTinhThanh(TinhThanhBO.getListTinhThanh());
 		thisForm.setListDichVu(DichVuBO.getListDichVu());
-		thisForm.setSuaBaiDang(BaiDangBO.infoBaiDang(thisForm.getMaBaiDang()));
-		System.out.println("list dich vu "+thisForm.getListDichVu());
+		thisForm.setSuaBaiDang(BaiDangBO.infoSuaBaiDang(thisForm.getMaBaiDang()));
 		return mapping.getInputForward();
 	}
 	

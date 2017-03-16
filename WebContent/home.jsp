@@ -111,7 +111,7 @@
 							<div class="bc-featured-listings-item-inner">
 								<div class="bc-featured-listings-image">
 									<!--Anh dai dien bai dang-->
-									<a href="xembaidang.do?maBaiDang=${maBaiDang}" class="bc-featured-item-image" 
+									<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-item-image" 
 										style="background: url('<bean:write name="bd" property="anhBia"/>')"></a>
 									<div class="bc-featured-image-overlay"></div>
 									<!--gia tri mac dinh-->
@@ -134,7 +134,7 @@
 								</div>
 								<div class="bc-featured-listings-data" >
 									<!--tieu de bai dang-->
-									<a href="xembaidang.do?maBaiDang=${maBaiDang}" class="bc-featured-listings-title">
+									<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-listings-title">
 										<bean:write name="bd" property="tieuDe"/>
 									</a>
 									<!--to ta ngan bai dang-->

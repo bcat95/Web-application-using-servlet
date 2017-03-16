@@ -42,6 +42,7 @@ public class BaiDangForm  extends ActionForm{
 	private int maBaiDang;
 	private String tieuDe;
 	private String anhBia;
+	private boolean anhBiaXoa;
 	private String noiDung;
 	private String diaChi;
 	private String diaChiWeb;
@@ -70,9 +71,11 @@ public class BaiDangForm  extends ActionForm{
 	
 	private String[] dichVu;
 	private ArrayList<DichVuBean> listDichVu;
+	private ArrayList<DichVuBean> listDichVuSua;
 	
 	private ArrayList<FormFile> fileHinhAnh;
 	private ArrayList<HinhAnhBean> listHinhAnh;
+	private String[] hinhXoa;
 	//binh luan
 	private int bl_maBinhLuan;
 	private String bl_userName;
@@ -93,9 +96,38 @@ public class BaiDangForm  extends ActionForm{
 	}
 	//get set
 	
+	public boolean isAnhBiaXoa() {
+		return anhBiaXoa;
+	}
+
 	public ArrayList<FormFile> getFileHinhAnh() {
 		return fileHinhAnh;
 	}
+	public void setFileHinhAnh(ArrayList<FormFile> fileHinhAnh) {
+		this.fileHinhAnh = fileHinhAnh;
+	}
+
+	public void setAnhBiaXoa(boolean anhBiaXoa) {
+		this.anhBiaXoa = anhBiaXoa;
+	}
+
+	
+	public String[] getHinhXoa() {
+		return hinhXoa;
+	}
+
+	public void setHinhXoa(String[] hinhXoa) {
+		this.hinhXoa = hinhXoa;
+	}
+
+	public ArrayList<DichVuBean> getListDichVuSua() {
+		return listDichVuSua;
+	}
+
+	public void setListDichVuSua(ArrayList<DichVuBean> listDichVuSua) {
+		this.listDichVuSua = listDichVuSua;
+	}
+
 	public ArrayList<BinhLuanBean> getListBinhLuan() {
 		return listBinhLuan;
 	}
@@ -199,11 +231,6 @@ public class BaiDangForm  extends ActionForm{
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
-	public void setFileHinhAnh(ArrayList<FormFile> fileHinhAnh) {
-		this.fileHinhAnh = fileHinhAnh;
-	}
-	
 	public String[] getDichVu() {
 		return dichVu;
 	}
@@ -400,6 +427,23 @@ public class BaiDangForm  extends ActionForm{
 		this.listBinhLuan=itemBD.getListBinhLuan();
 	}
 	
+	//ham set thuoc tinh bai dang khi them bai dang
+	public void setBaiDang(BaiDangBean item)
+	{
+		this.maBaiDang = item.getMaBaiDang();
+		this.tieuDe = item.getTieuDe();
+		this.noiDung = item.getNoiDung();
+		this.diaChi = item.getDiaChi();
+		this.diaChiWeb = item.getDiaChiWeb();
+		this.viDO = item.getViDO();
+		this.kinhDo = item.getKinhDo();
+		this.sDT = item.getsDT();
+		this.giaCaoNhat = item.getGiaCaoNhat();
+		this.giaThapNhat = item.getGiaThapNhat();
+		this.userName = item.getUserName();
+		this.maDanhMuc = item.getMaDanhMuc();
+		this.maTinhThanh = item.getMaTinhThanh();
+	}
 	//ham set thuoc tinh bai dang khi sua bai dang
 	public void setSuaBaiDang(BaiDangBean item) {
 		this.maBaiDang = item.getMaBaiDang();
@@ -415,7 +459,10 @@ public class BaiDangForm  extends ActionForm{
 		this.userName = item.getUserName();
 		this.maDanhMuc = item.getMaDanhMuc();
 		this.maTinhThanh = item.getMaTinhThanh();
-		this.listDichVu=item.getListDichVu();
+		this.listDichVuSua=item.getListDichVu();
+		this.listHinhAnh=item.getListHinhAnh();
+		this.anhBia=item.getAnhBia();
+		this.listHinhAnh=item.getListHinhAnh();
 	}
 	//ham get thuoc tinh bai dang 
 	public BaiDangBean getBaiDang() {

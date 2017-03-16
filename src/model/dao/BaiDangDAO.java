@@ -376,37 +376,6 @@ public class BaiDangDAO extends DataBaseConnect{
 			}
 		}
 	
-	public static void insertDichVu(BaiDangBean baiDang,String[] dichVu) {
-		if(baiDang.getMaBaiDang()!=0){
-			int dichvulen=dichVu.length;
-			for (int i=0;i<dichvulen;i++)
-			{
-				try {
-					prepSt=getConnect().prepareStatement("insert into DichVuBD values(?,?)");
-					prepSt.setInt(1, Integer.parseInt(dichVu[i]));
-					prepSt.setInt(2, baiDang.getMaBaiDang());
-					prepSt.executeUpdate();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}finally{
-					try {
-						getConnect().close();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
-				
-			}
-		}
-		else {
-            try {
-				throw new SQLException("K co khoa chinh ma bai dang");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-        }
-		
-	}
 	//them hinh anh vao data
 	public static void insertHinhAnh(BaiDangBean baiDang, HinhAnhBean hinhAnhBean) {
 		if(baiDang.getMaBaiDang()!=0){
@@ -461,6 +430,8 @@ public class BaiDangDAO extends DataBaseConnect{
 				baiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
 				baiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 				baiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
+				baiDang.setGiaThapNhat(rs.getInt("GiaThapNhat"));
+				baiDang.setGiaCaoNhat(rs.getInt("GiaCaoNhat"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -476,5 +447,107 @@ public class BaiDangDAO extends DataBaseConnect{
 		baiDang.setListBinhLuan(BinhLuanDAO.infoBinhLuanByMa(maBaiDang));
 		return baiDang;
 	}
+	public static BaiDangBean infoSuaBaiDang(int maBaiDang) {
+		BaiDangBean baiDang= new BaiDangBean();
+		baiDang = new BaiDangBean();
+		try {
+			st=getConnect().createStatement();
+			rs=st.executeQuery("select * FROM BaiDang "
+					+ "where BaiDang.MaBaiDang = "+maBaiDang+"");
+			while(rs.next()){
+				baiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
+				baiDang.setUserName(rs.getString("Username"));
+				baiDang.setTieuDe(rs.getString("TieuDe"));
+				baiDang.setNoiDung(rs.getString("NoiDung"));
+				baiDang.setDiaChi(rs.getString("DiaChi"));
+				baiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
+				baiDang.setsDT(rs.getString("SDT"));
+				baiDang.setAnhBia(rs.getString("AnhBia"));
+				baiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+				baiDang.setGiaThapNhat(rs.getInt("GiaThapNhat"));
+				baiDang.setGiaCaoNhat(rs.getInt("GiaCaoNhat"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		baiDang.setListHinhAnh(HinhAnhDAO.infoHinhAnhByMa(maBaiDang));
+		baiDang.setListDichVu(DichVuDAO.infoDichVuByMa(maBaiDang));
+		return baiDang;
+	}
+	
+	public static String getAnhBiaByMa(int maBaiDang) {
+		String path = "";
+		try {
+			st=getConnect().createStatement();
+			rs=st.executeQuery("select AnhBia from BaiDang where MaBaiDang = "+maBaiDang+"");
+			while(rs.next()){
+				path=rs.getString("AnhBia");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println("path: "+path);
+		return path;
+	}
+	public static void updateBaiDang(BaiDangBean baiDang) {
+		try {
+			String updateTableSQL  = "update BaiDang set TieuDe=?,NoiDung=?,DiaChi=?,DiaChiWeb=?,ViDo=?,KinhDo=?,SDT=?,GiaCaoNhat=?,GiaThapNhat=?,NgayDang=?,MaDanhMuc=?,MaLoaiTin=?,MaTinhThanh=? where MaBaiDang="+baiDang.getMaBaiDang()+"";
+			PreparedStatement prepSt = getConnect().prepareStatement(updateTableSQL);
+			prepSt.setString(1, baiDang.getTieuDe());
+			prepSt.setString(2, baiDang.getNoiDung());
+			prepSt.setString(4, baiDang.getDiaChi());
+			prepSt.setString(5, baiDang.getDiaChiWeb());
+			prepSt.setString(6, baiDang.getViDO());
+			prepSt.setString(7, baiDang.getKinhDo());
+			prepSt.setString(8, baiDang.getsDT());
+			prepSt.setInt(9, baiDang.getGiaCaoNhat());
+			prepSt.setInt(10, baiDang.getGiaThapNhat());
+			prepSt.setDate(11, new Date(StringProcess.getNgayDangDate().getTime()));
+			prepSt.setInt(12, baiDang.getMaDanhMuc());
+			//prepSt.setInt(14, baiDang.getMaLoaiTin());
+			prepSt.setInt(13, 1);
+			prepSt.setInt(14, baiDang.getMaTinhThanh());
+			prepSt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	public static void setAnhBia(int maBaiDang, String anhBia) {
+		try {
+			String updateTableSQL  = "update BaiDang set AnhBia=? where MaBaiDang="+maBaiDang+"";
+			PreparedStatement prepSt = getConnect().prepareStatement(updateTableSQL);
+			prepSt.setString(1, anhBia);
+			prepSt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
 	
 }

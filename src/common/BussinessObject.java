@@ -3,6 +3,7 @@ package common;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,7 +11,9 @@ import java.util.Date;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.upload.FormFile;
 
+import model.bean.HinhAnhBean;
 import model.bean.PageBean;
+import model.dao.HinhAnhDAO;
 
 /**
  * BussinessObject
@@ -76,5 +79,26 @@ public abstract class BussinessObject
 			lshinhanh[i]=(saveFile(path, file,Integer.toString(i), action));
 		}
 		return lshinhanh;
+	}
+	public static void deleteFile(String path, ActionServlet action) {
+		try{
+			String filePath = action.getServletContext().getRealPath(path);
+		    File file = new File(filePath);
+		    if(file.delete()){
+				System.out.println(file.getName() + " is deleted!");
+			}else{
+				System.out.println("Delete operation is failed.");
+			}
+		 }catch(Exception e){
+			 e.printStackTrace();
+		 }
+		
+	}
+	public static void deleteMultiFile(String[] hinhXoa, ActionServlet action) {
+		int hinhXoalen=hinhXoa.length;
+		for (int i=0;i<hinhXoalen;i++){
+			deleteFile(HinhAnhDAO.getAnhByMa(hinhXoa[i]),action);
+			HinhAnhDAO.deleteAnhByMa(hinhXoa[i]);
+		}
 	}
 }

@@ -46,10 +46,10 @@
 						<div class="db-single-listing-like" data-favorite="Yêu thích " data-favorited="Đã Thích">
 							<bean:define id="yeuThich" name="baiDangForm" property="yeuThich"></bean:define>
 							<logic:equal name="baiDangForm" property="yeuThich" value="true">
-								<a class="favorited" href="xembaidang.do?maBaiDang=${maBaiDang}&yeuThich=false">Đã thích <i class="fa fa-heart" aria-hidden="true"></i></a>
+								<a class="favorited" href="xemtin.do?maBaiDang=${maBaiDang}&yeuThich=false">Đã thích <i class="fa fa-heart" aria-hidden="true"></i></a>
 							</logic:equal>
 							<logic:equal name="baiDangForm" property="yeuThich" value="false">
-								<a class="favorite" href="xembaidang.do?maBaiDang=${maBaiDang}&yeuThich=true">Thích <i class="fa fa-heart-o" aria-hidden="true"></i></a>
+								<a class="favorite" href="xemtin.do?maBaiDang=${maBaiDang}&yeuThich=true">Thích <i class="fa fa-heart-o" aria-hidden="true"></i></a>
 							</logic:equal>
 							
 						</div>
@@ -98,7 +98,7 @@
 					<ul class="review-list">
 						<div class="bcbinhluans clearfix">
 							<display:table id="bcbinhluan" name="sessionScope.baiDangForm.listBinhLuan"
-								requestURI="/xembaidang.do" pagesize="5">
+								requestURI="/xemtin.do" pagesize="5">
 								<logic:notEmpty name="baiDangForm" property="listBinhLuan">
 										<bean:define id="diemDanhGia" name="bcbinhluan" property="diemDanhGia"/>
 										<bean:define id="maBinhLuan" name="bcbinhluan" property="maBinhLuan"/>
@@ -183,7 +183,7 @@
 					<!--end list binh luan-->
 					<!-- form binh luan-->
 					<div id="respond" class="comment-respond">
-						<html:form action="xembaidang" method="post" styleId="commentform" styleClass="comment-form">
+						<html:form action="xemtin" method="post" styleId="commentform" styleClass="comment-form">
 							<div class="db-rating-stars">
 								<span class="db-rating-text">Để lại bình luận của bạn</span>
 									<div class="db-rating-container">

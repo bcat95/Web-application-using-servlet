@@ -117,18 +117,18 @@
 												<div class="db-account-profile">
 													<h2 class="db-account-title">Danh sách các bài đăng của bạn</h2>
 													<display:table id="bcbaidang" name="sessionScope.thongTinTaiKhoanForm.listBaiDang" class="db-account-listings table table-striped table-hover"
-															requestURI="/thong-tin.do" pagesize="4">
-															<display:column property="maBaiDang" title="ID bài đăng" sortable="true" class="bcblock mabaidang" href="xembaidang.do" paramId="maBaiDang"/>
+															requestURI="/thong-tin.do" pagesize="5">
+															<display:column property="maBaiDang" title="ID bài đăng" sortable="true" class="bcblock mabaidang" href="/xemtin.do" paramId="maBaiDang"/>
 															<display:column property="tieuDe" title="Tiêu đề" class="bcblock tieude" />
 															<display:column property="tenLoaiTin" title="Trạng thái" class="bcblock tenlt"/>
 															<display:column property="tenDanhMuc" title="Danh mục" class="bcblock tendm"/>
 															<display:column property="ngayHetHan" title="Hết hạn vào" class="bcblock ngayhh"></display:column>
 															<display:column property="tenLoaiTin" title="Dán lên cao"></display:column>
 															<display:column title="Hành động">
-																<html:link action="/xembaidang?maBaiDang=${bcbaidang.maBaiDang}"  styleClass="db-edit-listing db-account-listing-option edit">
+																<html:link action="/xemtin?maBaiDang=${bcbaidang.maBaiDang}"  styleClass="db-edit-listing db-account-listing-option edit">
 													                	<span class="db-account-listing-option-hover">Xem</span><i class="fa fa-eye" aria-hidden="true"></i>
 													            </html:link>
-													            <html:link action="/suabaidang.?maBaiDang=${bcbaidang.maBaiDang}"  styleClass="db-edit-listing db-account-listing-option edit">
+													            <html:link action="/suatin?maBaiDang=${bcbaidang.maBaiDang}"  styleClass="db-edit-listing db-account-listing-option edit">
 													                	<span class="db-account-listing-option-hover">Sửa</span><i class="fa fa-pencil" aria-hidden="true"></i>
 													                </html:link>
 															</display:column>
@@ -178,12 +178,12 @@
 													<div class="bcyeuthich clearfix">
 														<display:table id="bcyeuthich" name="sessionScope.thongTinTaiKhoanForm.listYeuThich" class="db-account-listings table table-striped table-hover"
 															requestURI="/thong-tin.do" pagesize="4">
-															<display:column property="maBaiDang" title="ID bài đăng" sortable="true" class="bcblock mabaidang" href="xembaidang.do" paramId="maBaiDang"/>
+															<display:column property="maBaiDang" title="ID bài đăng" sortable="true" class="bcblock mabaidang" href="xemtin.do" paramId="maBaiDang"/>
 															<display:column autolink="ss" property="tieuDe" title="Tiêu đề" class="bcblock tieude" />
 															<display:column property="tenDanhMuc" title="Danh mục" class="bcblock tendm"/>
 															<display:column property="diaChi" title="Địa chỉ" class="bcblock diachi"/>
 															<display:column title="Xem">
-																<html:link action="/xembaidang?maBaiDang=${bcyeuthich.maBaiDang}"  styleClass="db-edit-listing db-account-listing-option edit">
+																<html:link action="/xemtin?maBaiDang=${bcyeuthich.maBaiDang}"  styleClass="db-edit-listing db-account-listing-option edit">
 													                	<span class="db-account-listing-option-hover">Xem</span><i class="fa fa-eye" aria-hidden="true"></i>
 													            </html:link>
 															</display:column>
