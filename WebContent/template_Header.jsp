@@ -57,7 +57,7 @@
 								<li><a href="timKiem.do">Tìm kiếm</a></li>
 							</ul>
 						</li>
-						<logic:equal name="headerForm" property="type" value="admin">
+						<logic:equal name="headerForm" property="type" value="1">
 							<li class="dropdown"><a data-toggle="dropdown"> Thống kê <span class="caret"></span></a>
 								<ul class="dropdown-menu">
                                    <li><a href="#">Doanh số</a></li>

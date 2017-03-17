@@ -38,6 +38,12 @@
 						<h4 style="color:red;"> Mật khẩu không trùng khớp!!! </h4>
 					</logic:equal>
 					<logic:equal name="registerForm" property="thongBao" value="5">
+						<h4 style="color:red;"> Tên đăng nhập đã có người sử dụng!!! </h4>
+					</logic:equal>
+					<logic:equal name="registerForm" property="thongBao" value="6">
+						<h4 style="color:red;"> Vì lý do bảo mật 1 email chỉ được đăng ký 1 lần!!! </h4>
+					</logic:equal>
+					<logic:equal name="registerForm" property="thongBao" value="7">
 						<h4 style="color:green;"> Đăng ký thành công!!! </h4>
 					</logic:equal>
         			<html:submit property="submit" value="Register" styleClass="btn btn-primary"/><br/>

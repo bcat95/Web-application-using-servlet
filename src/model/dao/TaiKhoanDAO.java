@@ -1,7 +1,6 @@
 package model.dao;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,16 +8,52 @@ import java.util.ArrayList;
 
 import common.DataBaseConnect;
 import model.bean.BaiDangBean;
-import model.bean.BinhLuanBean;
 import model.bean.TaiKhoanBean;
 import model.bean.User;
 
 public class TaiKhoanDAO extends DataBaseConnect{
-	private static PreparedStatement prepSt=null;
 	private static Statement st=null;
 	private static ResultSet rs=null;
 	private ArrayList<TaiKhoanBean> arrTaiKhoan;
 
+	public boolean checkUsername(String username) {
+		Connection conn = common.DataBaseConnect.getConnect();
+		String sql=	"SELECT Username FROM TaiKhoan WHERE Username = '"+username+"'";
+		ResultSet rs = null;
+		try {
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			if(rs.next()){
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	public boolean checkEmail(String email) {
+		Connection conn = common.DataBaseConnect.getConnect();
+		String sql=	"SELECT Username FROM TaiKhoan WHERE Email = '"+email+"'";
+		ResultSet rs = null;
+		try {
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			if(rs.next()){
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 	public boolean checkLogin(String tenDangNhap, String matKhau) {
 		Connection conn = common.DataBaseConnect.getConnect();
 		String sql=	"SELECT Username FROM TaiKhoan WHERE Username = '"+tenDangNhap+"' AND Pass = '"+matKhau+"'";
