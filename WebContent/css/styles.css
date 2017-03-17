@@ -1184,7 +1184,8 @@ select.multiple {
 }
 /*danh sach tin tim kiem sap xep*/
 .thr_con .bc-featured-listings-item {
-    width: 100%;
+    width: 355px;
+    padding: 0;
 }
 .db-search-sort-container {
     position: relative;

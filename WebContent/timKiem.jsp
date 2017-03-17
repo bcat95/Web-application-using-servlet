@@ -4,6 +4,9 @@
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic"%>
 <%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
 <jsp:include page="header.do" flush="true"></jsp:include>
+<script>
+$(document.body).addClass('noheabac');
+</script>
 <div id="page">
 	<!-- Tim kiem jsp  -->
 		<div id="db-main-listing-search">
@@ -64,7 +67,8 @@
 							 var thr_${maBaiDang}_marker = new google.maps.Marker({
 							     position: thr_${maBaiDang}_LatLng,
 							     map: map,
-							     title: '${tieuDe}'
+							     title: '${tieuDe}',
+							     animation: google.maps.Animation.DROP,
 							 });
 							 thr_${maBaiDang}_marker.addListener('click', function() {
 								 infowindow.setContent("<div id='thr_${maBaiDang}_con' class='thr_con clearfix'></div>");
@@ -72,7 +76,13 @@
 								 $('#thr_${maBaiDang}').clone().appendTo($('#thr_${maBaiDang}_con'));
 						     });	
 						</logic:iterate>
-						
+						 function toggleBounce() {
+					        if (marker.getAnimation() !== null) {
+					          marker.setAnimation(null);
+					        } else {
+					          marker.setAnimation(google.maps.Animation.BOUNCE);
+					        }
+					      }
 					 }
 					</script>
 					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2dl2OOrUh7HFZwsJP8deel-3DTgfWZtk&callback=initMap"></script>
