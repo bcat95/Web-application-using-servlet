@@ -54,7 +54,7 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li><a href="#">Blog</a></li>
-								<li><a href="#">Bài viết</a></li>
+								<li><a href="timKiem.do">Tìm kiếm</a></li>
 							</ul>
 						</li>
 						<logic:equal name="headerForm" property="type" value="admin">

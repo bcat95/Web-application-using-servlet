@@ -127,20 +127,27 @@
 									<!--to ta ngan bai dang-->
 									<p class="bc-featured-listings-description">
 										
-										<bean:write name="bd" property="noiDung"/>
+										<bean:write name="bd" property="noiDung" filter="false"/>
 									</p>
 									<div class="bc-featured-listings-meta clearfix">
 										<!--danh muc bai dang-->
-										<a href="xemChiTietBaiDang.jsp" class="bc-featured-listings-category hotel" style="color: #00a9e8">
+										<a href="timKiem.do?maDanhMuc=<bean:write name="bd" property="maDanhMuc"/>" class="bc-featured-listings-category hotel" style="color: #00a9e8">
 											<bean:write name="bd" property="tenDanhMuc"/>
 										</a>
 										<span class="bc-featured-listings-rating" data-original="5" data-id="91">
-											<bean:write name="bd" property="diemDanhGia"/>
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-empty.svg" alt="">
+											<span id="bl_<bean:write name="bd" property="maBaiDang"/>" class="ratings" title="<bean:write name="bd" property="diemDanhGia"/>">
+												<span class="star"></span>
+												<span class="star"></span>
+												<span class="star"></span>
+												<span class="star"></span>
+												<span class="star"></span>
+											</span>
+										<script>
+											var ddg = $('#bl_<bean:write name="bd" property="maBaiDang"/>').attr('title');
+											for (i = 1; i <= ddg; i++) { 
+												$('#bl_<bean:write name="bd" property="maBaiDang"/> span:nth-child('+i+')').addClass(" Full");
+											}
+										</script>
 										</span>
 									</div>
 								</div>
@@ -148,206 +155,6 @@
 						</div>
 						</logic:iterate>
 						<!--end list item nổi bật -->
-						<!--begin list item nổi bật -->
-						<div class="bc-featured-listings-item db-main-search-item">
-							<div class="bc-featured-listings-item-inner">
-								<div class="bc-featured-listings-image">
-									<!--Anh dai dien bai dang-->
-									<a href="#" class="bc-featured-item-image" style="background: url(img/img_featured_item_1.jpg)"></a>
-									<div class="bc-featured-image-overlay"></div>
-									<!--gia tri mac dinh-->
-									<span class="bc-featured-listings-image-note">Featured</span>
-									<div class="bc-featured-listings-image-meta">
-										<span class="bc-featured-listings-custom-fields">
-											<span class="bc-featured">
-												<!--dia chi bai dang-->
-												<span class="db-listing-icon wl-location" title="Address"></span>9 Merritt St, Jersey City, NJ 07305, USA</span>
-											<span class="bc-featured">
-												<!--so dien thoai bai dang-->
-												<span class="db-listing-icon wl-phone" title="Phone number"></span>+371 123 456 789</span>
-										</span>
-									</div>
-								</div>
-								<div class="bc-featured-listings-data">
-									<!--tieu de bai dang-->
-									<a href="#" class="bc-featured-listings-title">The Morning Hotel</a>
-									<!--to ta ngan bai dang-->
-									<p class="bc-featured-listings-description">A commercial establishment providing lodging, meals, and other guest services. In general, to be called a hotel, an establishment must have at least one bedroom and maybe more.</p>
-									<div class="bc-featured-listings-meta clearfix">
-										<!--danh muc bai dang-->
-										<a href="#" class="bc-featured-listings-category hotel" style="color: #00a9e8">Hotel</a>
-										<span class="bc-featured-listings-rating" data-original="4" data-id="91">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-empty.svg" alt="">
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--end list item nổi bật -->
-						<!--begin list item nổi bật -->
-						<div class="bc-featured-listings-item db-main-search-item">
-							<div class="bc-featured-listings-item-inner">
-								<div class="bc-featured-listings-image">
-									<!--Anh dai dien bai dang-->
-									<a href="#" class="bc-featured-item-image" style="background: url(img/img_featured_item_1.jpg)"></a>
-									<div class="bc-featured-image-overlay"></div>
-									<!--gia tri mac dinh-->
-									<span class="bc-featured-listings-image-note">Featured</span>
-									<div class="bc-featured-listings-image-meta">
-										<span class="bc-featured-listings-custom-fields">
-											<span class="bc-featured">
-												<!--dia chi bai dang-->
-												<span class="db-listing-icon wl-location" title="Address"></span>9 Merritt St, Jersey City, NJ 07305, USA</span>
-											<span class="bc-featured">
-												<!--so dien thoai bai dang-->
-												<span class="db-listing-icon wl-phone" title="Phone number"></span>+371 123 456 789</span>
-										</span>
-									</div>
-								</div>
-								<div class="bc-featured-listings-data">
-									<!--tieu de bai dang-->
-									<a href="#" class="bc-featured-listings-title">The Morning Hotel</a>
-									<!--to ta ngan bai dang-->
-									<p class="bc-featured-listings-description">A commercial establishment providing lodging, meals, and other guest services. In general, to be called a hotel, an establishment must have at least one bedroom and maybe more.</p>
-									<div class="bc-featured-listings-meta clearfix">
-										<!--danh muc bai dang-->
-										<a href="#" class="bc-featured-listings-category hotel" style="color: #00a9e8">Hotel</a>
-										<span class="bc-featured-listings-rating" data-original="4" data-id="91">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-empty.svg" alt="">
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--end list item nổi bật-->
-						<!--begin list item nổi bật -->
-						<div class="bc-featured-listings-item db-main-search-item">
-							<div class="bc-featured-listings-item-inner">
-								<div class="bc-featured-listings-image">
-									<!--Anh dai dien bai dang-->
-									<a href="#" class="bc-featured-item-image" style="background: url(img/img_featured_item_1.jpg)"></a>
-									<div class="bc-featured-image-overlay"></div>
-									<!--gia tri mac dinh-->
-									<span class="bc-featured-listings-image-note">Featured</span>
-									<div class="bc-featured-listings-image-meta">
-										<span class="bc-featured-listings-custom-fields">
-											<span class="bc-featured">
-												<!--dia chi bai dang-->
-												<span class="db-listing-icon wl-location" title="Address"></span>9 Merritt St, Jersey City, NJ 07305, USA</span>
-											<span class="bc-featured">
-												<!--so dien thoai bai dang-->
-												<span class="db-listing-icon wl-phone" title="Phone number"></span>+371 123 456 789</span>
-										</span>
-									</div>
-								</div>
-								<div class="bc-featured-listings-data">
-									<!--tieu de bai dang-->
-									<a href="#" class="bc-featured-listings-title">The Morning Hotel</a>
-									<!--to ta ngan bai dang-->
-									<p class="bc-featured-listings-description">A commercial establishment providing lodging, meals, and other guest services. In general, to be called a hotel, an establishment must have at least one bedroom and maybe more.</p>
-									<div class="bc-featured-listings-meta clearfix">
-										<!--danh muc bai dang-->
-										<a href="#" class="bc-featured-listings-category hotel" style="color: #00a9e8">Hotel</a>
-										<span class="bc-featured-listings-rating" data-original="4" data-id="91">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-empty.svg" alt="">
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--end list item nổi bật -->
-						<!--begin list item nổi bật -->
-						<div class="bc-featured-listings-item db-main-search-item">
-							<div class="bc-featured-listings-item-inner">
-								<div class="bc-featured-listings-image">
-									<!--Anh dai dien bai dang-->
-									<a href="#" class="bc-featured-item-image" style="background: url(img/img_featured_item_1.jpg)"></a>
-									<div class="bc-featured-image-overlay"></div>
-									<!--gia tri mac dinh-->
-									<span class="bc-featured-listings-image-note">Featured</span>
-									<div class="bc-featured-listings-image-meta">
-										<span class="bc-featured-listings-custom-fields">
-											<span class="bc-featured">
-												<!--dia chi bai dang-->
-												<span class="db-listing-icon wl-location" title="Address"></span>9 Merritt St, Jersey City, NJ 07305, USA</span>
-											<span class="bc-featured">
-												<!--so dien thoai bai dang-->
-												<span class="db-listing-icon wl-phone" title="Phone number"></span>+371 123 456 789</span>
-										</span>
-									</div>
-								</div>
-								<div class="bc-featured-listings-data">
-									<!--tieu de bai dang-->
-									<a href="#" class="bc-featured-listings-title">The Morning Hotel</a>
-									<!--to ta ngan bai dang-->
-									<p class="bc-featured-listings-description">A commercial establishment providing lodging, meals, and other guest services. In general, to be called a hotel, an establishment must have at least one bedroom and maybe more.</p>
-									<div class="bc-featured-listings-meta clearfix">
-										<!--danh muc bai dang-->
-										<a href="#" class="bc-featured-listings-category hotel" style="color: #00a9e8">Hotel</a>
-										<span class="bc-featured-listings-rating" data-original="4" data-id="91">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-empty.svg" alt="">
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--end list item nổi bật -->
-						<!--begin list item nổi bật -->
-						<div class="bc-featured-listings-item db-main-search-item">
-							<div class="bc-featured-listings-item-inner">
-								<div class="bc-featured-listings-image">
-									<!--Anh dai dien bai dang-->
-									<a href="#" class="bc-featured-item-image" style="background: url(img/img_featured_item_1.jpg)"></a>
-									<div class="bc-featured-image-overlay"></div>
-									<!--gia tri mac dinh-->
-									<span class="bc-featured-listings-image-note">Featured</span>
-									<div class="bc-featured-listings-image-meta">
-										<span class="bc-featured-listings-custom-fields">
-											<span class="bc-featured">
-												<!--dia chi bai dang-->
-												<span class="db-listing-icon wl-location" title="Address"></span>9 Merritt St, Jersey City, NJ 07305, USA</span>
-											<span class="bc-featured">
-												<!--so dien thoai bai dang-->
-												<span class="db-listing-icon wl-phone" title="Phone number"></span>+371 123 456 789</span>
-										</span>
-									</div>
-								</div>
-								<div class="bc-featured-listings-data">
-									<!--tieu de bai dang-->
-									<a href="#" class="bc-featured-listings-title">The Morning Hotel</a>
-									<!--to ta ngan bai dang-->
-									<p class="bc-featured-listings-description">A commercial establishment providing lodging, meals, and other guest services. In general, to be called a hotel, an establishment must have at least one bedroom and maybe more.</p>
-									<div class="bc-featured-listings-meta clearfix">
-										<!--danh muc bai dang-->
-										<a href="#" class="bc-featured-listings-category hotel" style="color: #00a9e8">Hotel</a>
-										<span class="bc-featured-listings-rating" data-original="4" data-id="91">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-colored.svg" alt="">
-											<img src="img/icon_star-empty.svg" alt="">
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--end list item featured -->
 						<div class="clearfix"></div>
 					</div>
 					<!--end danh sach tin-->

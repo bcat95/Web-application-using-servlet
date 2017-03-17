@@ -156,7 +156,7 @@ $(document.body).addClass('noheabac');
 												<span class="star"></span>
 												<span class="star"></span>
 												<span class="star"></span>
-										</span>
+											</span>
 										<script>
 											var ddg = $('#bl_<bean:write name="bd" property="maBaiDang"/>').attr('title');
 											for (i = 1; i <= ddg; i++) { 
