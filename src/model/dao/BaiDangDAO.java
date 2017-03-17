@@ -400,7 +400,7 @@ public class BaiDangDAO extends DataBaseConnect{
 			{
 				try {
 					prepSt=getConnect().prepareStatement("insert into HinhAnh values(?,?)");
-					prepSt.setString(1, "upload/img/"+hinhAnhBean.getHinhAnh()[i]);
+					prepSt.setString(1, "upload/img/bai-dang/"+hinhAnhBean.getHinhAnh()[i]);
 					prepSt.setInt(2, baiDang.getMaBaiDang());
 					prepSt.executeUpdate();
 				} catch (SQLException e) {
