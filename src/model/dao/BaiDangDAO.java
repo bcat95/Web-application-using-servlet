@@ -50,6 +50,8 @@ public class BaiDangDAO extends DataBaseConnect{
 				BaiDang.setMaDanhMuc(rs.getInt("maDanhMuc"));
 				BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+				BaiDang.setViDO(rs.getString("ViDo"));
+				BaiDang.setKinhDo(rs.getString("KinhDO"));
 				list.add(BaiDang);
 			}
 		} catch (SQLException e) {
@@ -95,6 +97,8 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
 				} catch (SQLException e) {
@@ -133,6 +137,8 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
 				} catch (SQLException e) {
@@ -171,6 +177,8 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
 				} catch (SQLException e) {
@@ -210,6 +218,8 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
 				} catch (SQLException e) {
@@ -249,6 +259,8 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
 				} catch (SQLException e) {
@@ -288,6 +300,8 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
 				} catch (SQLException e) {
@@ -327,6 +341,8 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
 				} catch (SQLException e) {
@@ -344,7 +360,7 @@ public class BaiDangDAO extends DataBaseConnect{
 				prepSt.setString(3, baiDang.getAnhBia());
 				prepSt.setString(4, baiDang.getDiaChi());
 				prepSt.setString(5, baiDang.getDiaChiWeb());
-				prepSt.setString(6, baiDang.getViDO());
+				prepSt.setString(6, baiDang.getViDo());
 				prepSt.setString(7, baiDang.getKinhDo());
 				prepSt.setString(8, baiDang.getsDT());
 				prepSt.setInt(9, baiDang.getGiaCaoNhat());
@@ -509,7 +525,7 @@ public class BaiDangDAO extends DataBaseConnect{
 			prepSt.setString(2, baiDang.getNoiDung());
 			prepSt.setString(4, baiDang.getDiaChi());
 			prepSt.setString(5, baiDang.getDiaChiWeb());
-			prepSt.setString(6, baiDang.getViDO());
+			prepSt.setString(6, baiDang.getViDo());
 			prepSt.setString(7, baiDang.getKinhDo());
 			prepSt.setString(8, baiDang.getsDT());
 			prepSt.setInt(9, baiDang.getGiaCaoNhat());

@@ -412,7 +412,7 @@ public class BaiDangForm  extends ActionForm{
 		this.anhBia=itemBD.getAnhBia();
 		this.diaChi = itemBD.getDiaChi();
 		this.diaChiWeb = itemBD.getDiaChiWeb();
-		this.viDO = itemBD.getViDO();
+		this.viDO = itemBD.getViDo();
 		this.kinhDo = itemBD.getKinhDo();
 		this.sDT = itemBD.getsDT();
 		this.giaCaoNhat = itemBD.getGiaCaoNhat();
@@ -435,7 +435,7 @@ public class BaiDangForm  extends ActionForm{
 		this.noiDung = item.getNoiDung();
 		this.diaChi = item.getDiaChi();
 		this.diaChiWeb = item.getDiaChiWeb();
-		this.viDO = item.getViDO();
+		this.viDO = item.getViDo();
 		this.kinhDo = item.getKinhDo();
 		this.sDT = item.getsDT();
 		this.giaCaoNhat = item.getGiaCaoNhat();
@@ -451,7 +451,7 @@ public class BaiDangForm  extends ActionForm{
 		this.noiDung = item.getNoiDung();
 		this.diaChi = item.getDiaChi();
 		this.diaChiWeb = item.getDiaChiWeb();
-		this.viDO = item.getViDO();
+		this.viDO = item.getViDo();
 		this.kinhDo = item.getKinhDo();
 		this.sDT = item.getsDT();
 		this.giaCaoNhat = item.getGiaCaoNhat();

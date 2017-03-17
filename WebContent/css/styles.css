@@ -1183,6 +1183,9 @@ select.multiple {
     cursor: pointer;
 }
 /*danh sach tin tim kiem sap xep*/
+.thr_con .bc-featured-listings-item {
+    width: 100%;
+}
 .db-search-sort-container {
     position: relative;
     margin-top: 26px;

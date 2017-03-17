@@ -8,21 +8,75 @@
 	<!-- Tim kiem jsp  -->
 		<div id="db-main-listing-search">
 		<div class="db-main-wrapper">
-			<!-- Ban do tim kiem - se cap nhap sau tam thoi bo qua tinh nang nay 
-			
 			<div class="db-search-side-one bottom">
+				
 				<div id="db-main-search-map" style="width: 100%; height: 572px; position: relative; overflow: hidden;"></div>
 				<script>
-					function myMap() {
-					var mapCanvas = document.getElementById("db-main-search-map");
-					var mapOptions = {
-					center: new google.maps.LatLng(51.5, -0.2), zoom: 10
-					};
-					var map = new google.maps.Map(mapCanvas, mapOptions);
-					}
-				</script>
-				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyVj9OfaIf5rY7HUFfWKbz_9H2Lef5BBo&callback=myMap"></script>
-			</div> -->
+					function initMap() {
+						var myLatLng = {lat: 16.0474325, lng: 108.1712203};
+						var zoom=6;
+						<logic:equal name="timKiemForm" property="maTinhThanh" value="1">
+						var myLatLng = {lat: 16.0474325, lng: 108.1712203};
+						var zoom=10;
+						</logic:equal>
+						<logic:equal name="timKiemForm" property="maTinhThanh" value="2">
+						var myLatLng = {lat: 11.9038763, lng: 108.3106383};
+						var zoom=11;
+						</logic:equal>
+						<logic:equal name="timKiemForm" property="maTinhThanh" value="3">
+						var myLatLng = {lat: 16.4534748, lng: 107.5419039};
+						var zoom=13;
+						</logic:equal>
+						<logic:equal name="timKiemForm" property="maTinhThanh" value="4">
+						var myLatLng = {lat: 10.7680339, lng: 106.4141804};
+						var zoom=10;
+						</logic:equal>
+						<logic:equal name="timKiemForm" property="maTinhThanh" value="5">
+						var myLatLng = {lat: 21.0227003, lng: 105.8019443};
+						var zoom=13;
+						</logic:equal>
+						<logic:equal name="timKiemForm" property="maTinhThanh" value="6">
+						var myLatLng = {lat: 12.2595881, lng: 109.17073};
+						var zoom=12;
+						</logic:equal>
+						<logic:equal name="timKiemForm" property="maTinhThanh" value="7">
+						var myLatLng = {lat: 14.9779335, lng: 108.3790455};
+						var zoom=10;
+						</logic:equal>
+						<logic:equal name="timKiemForm" property="maTinhThanh" value="8">
+						var myLatLng = {lat: 17.5043687, lng: 105.7418899};
+						var zoom=9;
+						</logic:equal>
+						var map = new google.maps.Map(document.getElementById('db-main-search-map'), {
+					    zoom: zoom,
+					    center: myLatLng,
+					    mapTypeId: google.maps.MapTypeId.ROADMAP
+					  });
+						
+						var infowindow = new google.maps.InfoWindow();
+						<logic:iterate id="bd" name="timKiemForm" property="listBaiDang">
+							<bean:define id="maBaiDang" name="bd" property="maBaiDang"></bean:define>
+							<bean:define id="kinhDO" name="bd" property="kinhDo"></bean:define>
+							<bean:define id="viDO" name="bd" property="viDo"></bean:define>
+							<bean:define id="tieuDe" name="bd" property="tieuDe"></bean:define>
+							<bean:define id="noiDung" name="bd" property="noiDung"></bean:define>
+							 var thr_${maBaiDang}_LatLng = {lat: ${viDO}, lng: ${kinhDO}};
+							 var thr_${maBaiDang}_marker = new google.maps.Marker({
+							     position: thr_${maBaiDang}_LatLng,
+							     map: map,
+							     title: '${tieuDe}'
+							 });
+							 thr_${maBaiDang}_marker.addListener('click', function() {
+								 infowindow.setContent("<div id='thr_${maBaiDang}_con' class='thr_con clearfix'></div>");
+								 infowindow.open(map, thr_${maBaiDang}_marker);
+								 $('#thr_${maBaiDang}').clone().appendTo($('#thr_${maBaiDang}_con'));
+						     });	
+						</logic:iterate>
+						
+					 }
+					</script>
+					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2dl2OOrUh7HFZwsJP8deel-3DTgfWZtk&callback=initMap"></script>
+			</div>
 			<div class="db-search-side-two bottom">
 				<div class="db-search-controls">
 				<html:form action="/timKiem" method="get" styleId="db-main-search">
@@ -41,7 +95,7 @@
 								<!--tim kiem theo danh muc -->
 								
 								<div class="db-field-row db-search-categories custom-select">
-									<html:select property="maDanhMuc">
+									<html:select onchange="this.form.submit()"  property="maDanhMuc">
 										<option value="">-- Chọn danh mục --</option>
 										<html:optionsCollection name="timKiemForm" property="listDanhMuc" 
 										label="tenDanhMuc" value="maDanhMuc" />
@@ -50,9 +104,9 @@
 								<!--end tim kiem theo danh muc -->
 								<!--tim kiem theo khu vuc -->
 								<div class="db-field-row custom-select">
-									<html:select property="maTinhThanh">
+									<html:select onchange="this.form.submit()" property="maTinhThanh">
 										<option value="">-- Chọn khu vực --</option>
-										<html:optionsCollection name="timKiemForm" property="listTinhThanh" 
+										<html:optionsCollection name="timKiemForm" property="listTinhThanh"
 										label="tenTinhThanh" value="maTinhThanh" />
 									</html:select>		
 								</div>
@@ -93,12 +147,13 @@
 					<div class="db-main-search-listings">
 						<!--begin list item nổi bật -->
 						<logic:iterate id="bd" name="timKiemForm" property="listBaiDang">
-						<div class="bc-featured-listings-item db-main-search-item">
+						<bean:define id="maBaiDang" name="bd" property="maBaiDang"></bean:define>
+						<div class="bc-featured-listings-item" id="thr_${maBaiDang}">
 							<div class="bc-featured-listings-item-inner">
 								<div class="bc-featured-listings-image">
 									<!--Anh dai dien bai dang-->
-									<a href="xemChiTietBaiDang.jsp" class="bc-featured-item-image" 
-										style="background: url('bai/<bean:write name="bd" property="anhBia"/>')"></a>
+									<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-item-image" 
+										style="background: url('<bean:write name="bd" property="anhBia"/>')"></a>
 									<div class="bc-featured-image-overlay"></div>
 									<!--gia tri mac dinh-->
 									<span class="bc-featured-listings-image-note">Featured</span>
@@ -109,7 +164,6 @@
 												<span class="db-listing-icon wl-location" title="Address"></span>
 												<bean:write name="bd" property="diaChi"/>, 
 												<bean:write name="bd" property="tenTinhThanh"/>
-												
 											</span>
 											<span class="bc-featured">
 												<!--so dien thoai bai dang-->
@@ -121,14 +175,13 @@
 								</div>
 								<div class="bc-featured-listings-data" >
 									<!--tieu de bai dang-->
-									<a href="xemChiTietBaiDang.jsp" class="bc-featured-listings-title">
+									<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-listings-title">
 										<bean:write name="bd" property="tieuDe"/>
 									</a>
 									<!--to ta ngan bai dang-->
-									<p class="bc-featured-listings-description">
-										
-										<bean:write name="bd" property="noiDung" filter="false"/>
-									</p>
+									<div class="bc-featured-listings-description">
+										<bean:write name="bd" property="noiDung" filter="fasle"/>
+									</div>
 									<div class="bc-featured-listings-meta clearfix">
 										<!--danh muc bai dang-->
 										<a href="timKiem.do?maDanhMuc=<bean:write name="bd" property="maDanhMuc"/>" class="bc-featured-listings-category hotel" style="color: #00a9e8">
@@ -154,6 +207,14 @@
 							</div>
 						</div>
 						</logic:iterate>
+						<!-- <script type="text/javascript">
+								var thrLatLng = {lat: 14.0474325, lng: 108.1712203};
+								var thrmarker1 = new google.maps.Marker({
+							      position: thrLatLng,
+							      map: map,
+							      title: 'Hello World!'
+							    });
+						</script> -->
 						<!--end list item nổi bật -->
 						<div class="clearfix"></div>
 					</div>
