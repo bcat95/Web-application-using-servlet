@@ -171,7 +171,11 @@ input[type="file"] {
     padding: 10px;
 }
 /*header*/
-
+.noheabac header {
+    background: rgba(15, 54, 82, .5);
+    position: absolute;
+    top: 0;
+}
 header {
     background-color: #185886;
     width: 100%;
