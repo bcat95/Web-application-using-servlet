@@ -38,7 +38,7 @@
 				</div>
 				<div class="head_nav">
 					<logic:notEqual name="headerForm" property="type" value="-1">
-						<a href="dangTin.do" class="bc-create-listing bc-button bc-button-invert">Đăng tin mới</a>
+						<a href="dangtin.do" class="bc-create-listing bc-button bc-button-invert">Đăng tin mới</a>
 					</logic:notEqual>
 					<logic:equal name="headerForm" property="type" value="-1">
 						<a href="Login.do" id ="bccrea_login" class="bc-create-listing bc-button bc-button-invert">Đăng tin mới</a>
@@ -54,10 +54,10 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li><a href="#">Blog</a></li>
-								<li><a href="#">Bài viết</a></li>
+								<li><a href="timKiem.do">Tìm kiếm</a></li>
 							</ul>
 						</li>
-						<logic:equal name="headerForm" property="type" value="admin">
+						<logic:equal name="headerForm" property="type" value="1">
 							<li class="dropdown"><a data-toggle="dropdown"> Thống kê <span class="caret"></span></a>
 								<ul class="dropdown-menu">
                                    <li><a href="#">Doanh số</a></li>
