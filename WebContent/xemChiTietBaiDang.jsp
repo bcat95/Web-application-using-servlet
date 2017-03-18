@@ -5,6 +5,9 @@
 <%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
 <%@taglib uri="http://displaytag.sf.net" prefix="display"%>
 <jsp:include page="header.do" flush="true"></jsp:include>
+<script>
+$(document.body).addClass('noheabac');
+</script>
 	<!-- chi tiet tin-->
 	<%-- <html:form action="xembaidang" method="get" styleId="db-add-listing-form" enctype="multipart/form-data"> --%>
 	<div class="db-single-listing-wrapper">

@@ -38,9 +38,15 @@ public class RegisterAction extends Action{
 		}else if("Register".equals(registerForm.getSubmit()) && matKhau.equals(confirmMatKhau) == false ){
 			registerForm.setThongBao(4);
 			return mapping.findForward("register");
+		}else if("Register".equals(registerForm.getSubmit()) && taiKhoanBO.checkUsername(tenDangNhap)){
+			registerForm.setThongBao(5);
+			return mapping.findForward("register");
+		}else if("Register".equals(registerForm.getSubmit()) && taiKhoanBO.checkEmail(email)){
+			registerForm.setThongBao(6);
+			return mapping.findForward("register");
 		}else if("Register".equals(registerForm.getSubmit()) && matKhau.equals(confirmMatKhau)){
 			taiKhoanBO.themTaiKhoan(tenDangNhap, matKhau, email, "user.png", hoTen, 2, 1);
-			registerForm.setThongBao(5);
+			registerForm.setThongBao(7);
 			return mapping.findForward("register");
 		}else	return mapping.findForward("register");
 	}

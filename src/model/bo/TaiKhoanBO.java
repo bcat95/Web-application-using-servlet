@@ -11,7 +11,13 @@ import model.dao.TaiKhoanDAO;
 public class TaiKhoanBO {
 
 	TaiKhoanDAO taiKhoanDAO = new TaiKhoanDAO();
-	//vang dang nhap
+//vang dang nhap
+	public boolean checkUsername(String username) {
+		return taiKhoanDAO.checkUsername(username);
+	}
+	public boolean checkEmail(String email) {
+		return taiKhoanDAO.checkEmail(email);
+	}
 	public User getLogin(String username) throws ClassNotFoundException, SQLException
 	{
 		TaiKhoanBean taikhoan = taiKhoanDAO.selectOne(username);

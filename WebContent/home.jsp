@@ -4,6 +4,9 @@
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic"%>
 <%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
 <jsp:include page="header.do" flush="true"></jsp:include>
+<script>
+$(document.body).addClass('noheabac');
+</script>
 <div id="page" class="noheadbg">
 	<div class="bc-rs-container">
 		<div class="bc-header-slogan">
@@ -153,7 +156,7 @@
 												<span class="star"></span>
 												<span class="star"></span>
 												<span class="star"></span>
-										</span>
+											</span>
 										<script>
 											var ddg = $('#bl_<bean:write name="bd" property="maBaiDang"/>').attr('title');
 											for (i = 1; i <= ddg; i++) { 

@@ -24,7 +24,7 @@ public class BaiDangBean {
 	private String noiDung;
 	private String diaChi;
 	private String diaChiWeb;
-	private String viDO;
+	private String viDo;
 	private String kinhDo;
 	private String sDT;
 	private int giaCaoNhat;
@@ -89,7 +89,7 @@ public class BaiDangBean {
 		this.noiDung = noiDung;
 		this.diaChi = diaChi;
 		this.diaChiWeb = diaChiWeb;
-		this.viDO = viDO;
+		this.viDo = viDO;
 		this.kinhDo = kinhDo;
 		this.sDT = sDT;
 		this.giaCaoNhat = giaCaoNhat;
@@ -111,7 +111,7 @@ public class BaiDangBean {
 		this.noiDung = noiDung;
 		this.diaChi = diaChi;
 		this.diaChiWeb = diaChiWeb;
-		this.viDO = viDO;
+		this.viDo = viDO;
 		this.kinhDo = kinhDo;
 		this.sDT = sDT;
 		this.giaCaoNhat = giaCaoNhat;
@@ -225,12 +225,12 @@ public class BaiDangBean {
 		this.diaChiWeb = diaChiWeb;
 	}
 
-	public String getViDO() {
-		return viDO;
+	public String getViDo() {
+		return viDo;
 	}
 
-	public void setViDO(String viDO) {
-		this.viDO = viDO;
+	public void setViDO(String viDo) {
+		this.viDo = viDo;
 	}
 
 	public String getKinhDo() {

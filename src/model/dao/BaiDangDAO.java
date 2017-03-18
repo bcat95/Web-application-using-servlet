@@ -50,6 +50,8 @@ public class BaiDangDAO extends DataBaseConnect{
 				BaiDang.setMaDanhMuc(rs.getInt("maDanhMuc"));
 				BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+				BaiDang.setViDO(rs.getString("ViDo"));
+				BaiDang.setKinhDo(rs.getString("KinhDO"));
 				list.add(BaiDang);
 			}
 		} catch (SQLException e) {
@@ -95,6 +97,8 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
 				} catch (SQLException e) {
@@ -133,6 +137,8 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
 				} catch (SQLException e) {
@@ -171,6 +177,8 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
 				} catch (SQLException e) {
@@ -210,6 +218,8 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
 				} catch (SQLException e) {
@@ -249,6 +259,8 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
 				} catch (SQLException e) {
@@ -288,6 +300,8 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
 				} catch (SQLException e) {
@@ -327,6 +341,8 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
 				} catch (SQLException e) {
@@ -344,7 +360,7 @@ public class BaiDangDAO extends DataBaseConnect{
 				prepSt.setString(3, baiDang.getAnhBia());
 				prepSt.setString(4, baiDang.getDiaChi());
 				prepSt.setString(5, baiDang.getDiaChiWeb());
-				prepSt.setString(6, baiDang.getViDO());
+				prepSt.setString(6, baiDang.getViDo());
 				prepSt.setString(7, baiDang.getKinhDo());
 				prepSt.setString(8, baiDang.getsDT());
 				prepSt.setInt(9, baiDang.getGiaCaoNhat());
@@ -384,7 +400,7 @@ public class BaiDangDAO extends DataBaseConnect{
 			{
 				try {
 					prepSt=getConnect().prepareStatement("insert into HinhAnh values(?,?)");
-					prepSt.setString(1, "upload/img/"+hinhAnhBean.getHinhAnh()[i]);
+					prepSt.setString(1, "upload/img/bai-dang/"+hinhAnhBean.getHinhAnh()[i]);
 					prepSt.setInt(2, baiDang.getMaBaiDang());
 					prepSt.executeUpdate();
 				} catch (SQLException e) {
@@ -507,18 +523,18 @@ public class BaiDangDAO extends DataBaseConnect{
 			PreparedStatement prepSt = getConnect().prepareStatement(updateTableSQL);
 			prepSt.setString(1, baiDang.getTieuDe());
 			prepSt.setString(2, baiDang.getNoiDung());
-			prepSt.setString(4, baiDang.getDiaChi());
-			prepSt.setString(5, baiDang.getDiaChiWeb());
-			prepSt.setString(6, baiDang.getViDO());
-			prepSt.setString(7, baiDang.getKinhDo());
-			prepSt.setString(8, baiDang.getsDT());
-			prepSt.setInt(9, baiDang.getGiaCaoNhat());
-			prepSt.setInt(10, baiDang.getGiaThapNhat());
-			prepSt.setDate(11, new Date(StringProcess.getNgayDangDate().getTime()));
-			prepSt.setInt(12, baiDang.getMaDanhMuc());
-			//prepSt.setInt(14, baiDang.getMaLoaiTin());
-			prepSt.setInt(13, 1);
-			prepSt.setInt(14, baiDang.getMaTinhThanh());
+			prepSt.setString(3, baiDang.getDiaChi());
+			prepSt.setString(4, baiDang.getDiaChiWeb());
+			prepSt.setString(5, baiDang.getViDo());
+			prepSt.setString(6, baiDang.getKinhDo());
+			prepSt.setString(7, baiDang.getsDT());
+			prepSt.setInt(8, baiDang.getGiaCaoNhat());
+			prepSt.setInt(9, baiDang.getGiaThapNhat());
+			prepSt.setDate(10, new Date(StringProcess.getNgayDangDate().getTime()));
+			prepSt.setInt(11, baiDang.getMaDanhMuc());
+			//prepSt.setInt(12, baiDang.getMaLoaiTin());
+			prepSt.setInt(12, 1);
+			prepSt.setInt(13, baiDang.getMaTinhThanh());
 			prepSt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
