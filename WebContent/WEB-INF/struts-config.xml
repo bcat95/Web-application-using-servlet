@@ -68,7 +68,7 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="home" path="/home.jsp" />
 		</action>
 		<action input="/timKiem.jsp"  name="timKiemForm"
-			path="/timKiem" scope="request" type="action.TimKiemAction" validate="true">
+			path="/timKiem" scope="session" type="action.TimKiemAction" validate="true">
 			<forward name="timKiem" path="/timKiem.jsp" />
 		</action>
 		<!-- end AnNBH action -->

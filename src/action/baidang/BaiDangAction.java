@@ -48,6 +48,7 @@ public class BaiDangAction extends Action{
 			}
 		}
 		if (StringProcess.equals(thisForm.getSubmit(), "binhLuan")){
+			thisForm.setSubmit("");
 			if(user==null)
 				return mapping.findForward("login");
 			else{

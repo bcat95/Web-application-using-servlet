@@ -40,6 +40,23 @@ public class HomeAction extends Action{
 		BaiDangBO baiDangBO = new BaiDangBO();
 		ArrayList<BaiDangBean> listBaiDang = baiDangBO.getListBaiDang();
 		homeForm.setListBaiDang(listBaiDang);
+		
+		//Lay danh sach bai dang 1- Làm đẹp 2- Kinh doanh 3- Dich vụ ăn uống 4- Tài chánh 5- Sức khỏe 6-Khách sạn 7-Giải trí;
+		ArrayList<BaiDangBean> listBaiDang1 = baiDangBO.getListBaiDangByDM(1);
+		homeForm.setListBaiDang_1(listBaiDang1);
+		ArrayList<BaiDangBean> listBaiDang2 = baiDangBO.getListBaiDangByDM(2);
+		homeForm.setListBaiDang_2(listBaiDang2);
+		ArrayList<BaiDangBean> listBaiDang3 = baiDangBO.getListBaiDangByDM(3);
+		homeForm.setListBaiDang_3(listBaiDang3);
+		ArrayList<BaiDangBean> listBaiDang4 = baiDangBO.getListBaiDangByDM(4);
+		homeForm.setListBaiDang_4(listBaiDang4);
+		ArrayList<BaiDangBean> listBaiDang5 = baiDangBO.getListBaiDangByDM(5);
+		homeForm.setListBaiDang_5(listBaiDang5);
+		ArrayList<BaiDangBean> listBaiDang6 = baiDangBO.getListBaiDangByDM(6);
+		homeForm.setListBaiDang_6(listBaiDang6);
+		ArrayList<BaiDangBean> listBaiDang7 = baiDangBO.getListBaiDangByDM(7);
+		homeForm.setListBaiDang_7(listBaiDang7);
+				
 		String maDanhMuc = homeForm.getMaDanhMuc();
 		String maTinhThanh = homeForm.getMaTinhThanh();
 		

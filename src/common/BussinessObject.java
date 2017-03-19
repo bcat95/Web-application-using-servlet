@@ -51,8 +51,7 @@ public abstract class BussinessObject
 	public static String saveFile(String path, FormFile file,String sttfile, ActionServlet action) throws IOException
 	{
 		String filePath = action.getServletContext().getRealPath(path);
-	    //System.out.println(filePath);
-		File folder = new File(filePath);
+	    File folder = new File(filePath);
 	    //dat ten lai theo thoi gian hien tai
 	    SimpleDateFormat df=new SimpleDateFormat("yyyyMMdd_HH_mm_ss");
 		String currentSec=df.format(new Date());

@@ -277,7 +277,7 @@ $(document.body).addClass('noheabac');
 			<div class="clearfix"></div>
 		</div>
 	</div>
-	<script>var logID = 'log',
+	<script>var D = 'log',
 	  log = $('<div id="'+logID+'"></div>');
 	$('body').append(log);
 	  $('[type*="radio"]').change(function () {

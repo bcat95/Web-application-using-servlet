@@ -3,7 +3,7 @@ body, html {
     height: auto;
 }
 body {
-    background-color: #ECECEC;
+    background-color: #F4F4F4;
     font-family: "Poppins",Tahoma;
     font-weight: 400;
     font-size: 15px;
@@ -177,7 +177,9 @@ input[type="file"] {
     top: 0;
 }
 header {
-    background-color: #185886;
+    background-color: #fff;
+    height: 54px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.07);
     width: 100%;
     z-index: 100;
 }
@@ -186,7 +188,7 @@ header {
     background-color:transparent;
 }
 .header-content.page-with {
-    height: 100px;
+    
 }
 .header-main {
     position: relative;
@@ -215,7 +217,7 @@ header {
     border-color:  rgba(255,255,255,0.5);
 }
 .bc-create-listing, .bc-author-account {
-    margin-top: 30px;
+    margin-top: 10px;
 }
 .bc-button {
     font-family: 'Poppins',tahoma;
@@ -228,7 +230,7 @@ header {
     overflow: hidden;
 }
 .bc-login-register {
-    margin-top: 36px;
+    margin-top: 18px;
     margin-right: 31px;
 }
 .bc-login-register > .fa{
@@ -249,11 +251,11 @@ header {
     margin-right: 66px;
     text-align: right;
     position: relative;
-    margin-top: 21px;
+    margin-top: 4px;
     padding: 0;
 }
 .header-main a {
-    color: #bcdef5;
+    color: #424242;
     font-family: 'Poppins',tahoma;
     font-size: 14px;
     font-weight: 600;
@@ -303,6 +305,87 @@ header {
     left: -6px;
 }
 /*end header*/
+/*home*/
+.col-sm-12.cat_ites {
+    margin: 30px 0;
+}
+.cat_inf .cat_tit h1 {
+    font-size: 24px;
+    float: left;
+    margin-right: 15px;
+    line-height: 30px;
+    margin-top: 0;
+    text-transform: uppercase;
+}
+.cat_inf .cat_tit a.vie_all {
+    background-color: #4890e5;
+    line-height: 22px;
+    font-size: 14px;
+    font-weight: 700;
+    vertical-align: -webkit-baseline-middle;
+    color: #fff;
+    text-align: center;
+    width: 100px;
+    border-radius: 5px;
+    padding: 3px 5px;
+}
+.cat_inf {
+    margin-bottom: 10px;
+}
+.bc-featured-listings .owl-dots {
+    position: absolute;
+    top: 49%;
+    display: block;
+    width: 100%;
+    height: 0;
+}
+.bc-featured-listings .owl-dot {
+    background-color: #fff;
+    border-radius: 25px;
+    color: #9b9b9b;
+    font-size: 24px;
+    font-weight: 700;
+    height: 50px;
+    line-height: 50px;
+    opacity: 1;
+    text-align: center;
+    transition: opacity .5s ease-in-out;
+    user-select: none;
+    width: 50px;
+    z-index: 100;
+    box-shadow: 0 1px 5px 0 #9b9b9b;
+}
+.bc-featured-listings.owl-theme .owl-dots .owl-dot span{
+	width: inherit;
+    height: inherit;
+    margin: 0;
+    background-color: #fff;
+}
+.bc-featured-listings.owl-theme .owl-dots .owl-dot:hover span{
+    background-color: #fff;
+}
+.bc-featured-listings .owl-dot:nth-child(2) span:after {
+    content: "\f054";
+    font-family: FontAwesome;
+}
+.bc-featured-listings .owl-dot:nth-child(1) span:after {
+    content: "\f053";
+    font-family: FontAwesome;
+}
+.bc-featured-listings .owl-dots .owl-dot:nth-child(2) {
+    float: right;
+    position: relative;
+    right: -27px;
+}
+.bc-featured-listings .owl-dots .owl-dot:nth-child(1){
+	float: left;
+    position: relative;
+    left: -27px;
+}
+.bc-featured-listings .owl-dot.active{
+	display: none !important;
+}
+/*end home*/
 /*begin bc-rs-container*/
 .bc-rs-container {
     position: relative;
@@ -583,13 +666,9 @@ header {
 }
 /*begin list item featured css*/
 .bc-featured-listings {
-    margin: 0 -15px;
     display: block;
 }
 .bc-featured-listings-item {
-    padding: 0 15px 30px 15px;
-    width: 33.33%;
-    float: left;
     border-radius: 3px;
 }
 .bc-featured-listings-item-inner {
@@ -644,8 +723,8 @@ header {
 }
 .bc-featured-listings-image .bc-featured-listings-image-meta {
     position: absolute;
-    bottom: 8px;
-    left: 20px;
+    bottom: 5px;
+    left: 10px;
     z-index: 2;
     cursor: auto;
 }
@@ -653,7 +732,7 @@ header {
     margin: 0;
 }
 body .bc-featured-listings-image-meta span {
-    font-size: 15px;
+	font-size: 12px;
 }
 body .bc-featured-listings-image-meta .bc-featured-listings-custom-fields span.bc-featured {
     display: block;
@@ -661,14 +740,8 @@ body .bc-featured-listings-image-meta .bc-featured-listings-custom-fields span.b
 body .bc-featured-listings-image-meta .bc-featured-listings-custom-fields span {
     display: inline-block;
 }
-body .bc-featured-listings-image-meta span {
-    font-size: 15px;
-}
 .bc-featured-listings-image-meta span:last-child {
     margin: 0;
-}
-body .bc-featured-listings-image-meta span {
-    font-size: 15px;
 }
 .bc-featured-item-image {
     width: 100%;
@@ -687,32 +760,32 @@ body .bc-featured-listings-image-meta span {
     margin-right: 5px;
 }
 .bc-featured-listings-custom-fields .db-listing-icon:before, .db-search-listing-field-item .db-field-icon:before {
-    margin: 0 10px 0 0;
-    font-size: 16px;
+    margin: 0 5px 0 0;
+    font-size: 12px;
 }
 .bc-featured-listings-custom-fields .wl-location:before, .db-search-listing-field-item .wl-location:before {
-    margin-right: 13px;
+    margin-right: 5px;
     position: relative;
-    top: 4px;
-    left: 2px;
+    top: 3px;
+    left: 0px;
 }
 .bc-featured-listings-custom-fields .wl-location:before, .db-search-listing-field-item .wl-location:before {
     background: url(../img/icon_wl-location.png) no-repeat;
 }
 .wl-location:before {
-    width: 15px;
-    height: 18px;
+    width: 13px;
+    height: 13px;
 }
 .bc-featured-listings-custom-fields .wl-phone:before, .db-search-listing-field-item .wl-phone:before {
     background: url(../img/icon_wl-phone.png) no-repeat;
 }
 .wl-phone:before, .wl-link:before {
-    width: 18px;
-    height: 18px;
+    width: 13px;
+    height: 13px;
 }
 .bc-featured-listings-data {
     background-color: #fff;
-    padding: 14px 20px;
+    padding: 10px 12px 6px;
     border-radius: 0 0 4px 4px;
     position: relative;
     overflow: hidden;
@@ -721,7 +794,7 @@ body .bc-featured-listings-title {
     margin-top: -1px;
 }
 .bc-featured-listings-title {
-    font-size: 18px;
+    font-size: 13px;
     line-height: 30px;
     color: #000;
     text-overflow: ellipsis;
@@ -736,20 +809,20 @@ body .bc-featured-listings-description {
     font-size: 14px;
     line-height: 21px;
     height: 61px;
-    margin-top: 9px;
+    _margin-top: 9px;
     overflow: hidden;
 }
 .bc-featured-listings-meta {
     border-top: 1px solid #e6e9ea;
     padding-top: 12px;
-    margin-top: 31px;
+    margin-top: 12px;
 }
 
 body .bc-featured-listings-title,
 body .bc-featured-listings-meta .bc-featured-listings-category,
 body .bc-featured-listings-image-meta span {
     font-family: 'Poppins',tahoma;
-    font-weight: 400;
+    font-weight: 600;
 }
 body .bc-featured-listings-meta .bc-featured-listings-category,
 body .bc-featured-listings-image-meta span {
@@ -903,10 +976,10 @@ body {
 .site-footer-wrapper {
 }
 .site-footer-wrapper.minimal .footer-bottom-container {
-    background: #0F3652;
+    background: #EBEBEB;
 }
 .footer-bottom-inner a {
-    color: #edf6fd;
+    color: #6f6f6f;
 }
 .footer-bottom-container {
     background: #247BA0;
@@ -1053,7 +1126,7 @@ body .site-footer-wrapper.minimal footer .widget_socials {
     padding: 0;
     margin-left: 20px;
     line-height: 32px;
-    color: #edf6fd;
+    color: #6f6f6f;
 }
 .footer-menu-wrapper>div>ul li a {
     font-family: 'Poppins',tahoma;
@@ -1065,7 +1138,7 @@ body .site-footer-wrapper.minimal footer .widget_socials {
     display: inline-block;
 }
 .site-footer-wrapper.minimal .bc-footer-copyright {
-    color: #edf6fd;
+    color: #6f6f6f;
     margin-top: 0;
     padding-top: 12px;
 }
@@ -1220,16 +1293,23 @@ select.multiple {
     float: right;
     width: 146px;
 }
-/*danh sach bai*/
+/*tim kiem*/
+table#threads {
+    border: 0;
+    box-shadow: none;
+    background-color: transparent;
+}
+table#threads thead{
+    display: none;
+}
 .db-search-side-two.left .db-main-search-listings .bc-featured-listings-item {
     _width: calc(50% - 30px);
-    width: 50%;
+    width: 100%;
 }
 .db-main-search-listings .bc-featured-listings-item {
     _width: calc(50% - 18px);
-    width: 50%;
+    width: 100%;
     margin-bottom: 0;
-    padding: 15px 0;
     border: none;
 }
 .db-main-search-listings > .bc-featured-listings-item:nth-child(2n) {
@@ -1237,6 +1317,62 @@ select.multiple {
 }
 .db-main-search-listings > .bc-featured-listings-item:nth-child(2n+1) {
     padding-right: 10px;
+}
+.db-main-search-listings #threads tr{
+	float: left;
+	width: 25%;
+	padding: 10px;
+}
+.db-main-search-listings #threads  .bcthread.item{
+	max-width: 100%;
+    overflow: hidden;
+    padding: 0;
+    border: 0;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.1);
+    display: block;
+}
+.db-main-search-listings #threads tr:nth-child(5n){
+	clear:both;
+}
+.db-search-side-one.bottom {
+    width: 100%;
+    float: none;
+}
+.db-search-side-two.bottom {
+    max-width: 1170px;
+    margin: 0 auto;
+    float: none;
+    width: 100%;
+    padding: 11px 15px 0 15px;
+}
+.db-search-side-two.bottom .db-main-search-listings .bc-featured-listings-item:nth-child(n+1) {
+    
+}
+#db-main-listing-search .db-main-search-listings {
+    margin: 0 -10px;
+    margin-bottom: 40px;
+}
+.custom-select > select {
+    width: 100%;
+}
+.card {
+   
+    padding: 10px;
+    width: 250px;
+    color: #000;
+}
+.card .car_bac{
+	background-image: url(upload/img/bai-dang/20170317_14_50_44_.jpg);
+    background-position: center!important;
+    background-size: cover!important;
+    width: 100%;
+    height:150px;
+}
+.card .car_tit{
+	display: block;
+	margin: 5px 0;
+	font-size: 16px;
+	color: #000;
 }
 /*map*/
 .db-search-side-one.left #map{
@@ -1999,32 +2135,7 @@ p {
     color: #53666D;
     line-height: 25px;
 }
-/*tim kiem*/
-.db-search-side-one.bottom {
-    width: 100%;
-    float: none;
-}
-.db-search-side-two.bottom {
-    max-width: 1170px;
-    margin: 0 auto;
-    float: none;
-    width: 100%;
-    padding: 11px 15px 0 15px;
-}
-.db-search-side-two.bottom .db-main-search-listings .bc-featured-listings-item {
-    _width: calc(33.33% - 20px);
-    width: 33.33%;
-    padding: 15px 10px;
-}
-.db-search-side-two.bottom .db-main-search-listings .bc-featured-listings-item:nth-child(n+1) {
-    
-}
-#db-main-listing-search .db-main-search-listings {
-    margin: 0 -10px;
-}
-.custom-select > select {
-    width: 100%;
-}
+
 /*tai khoan*/
 body.page .site-main.container {
     min-height: calc(100vh - 428px);
@@ -2407,8 +2518,9 @@ body #db-add-listing-form .db-field-row {
     margin-bottom: 20px;
 }
 body:not(.home) .bc-create-listing, body:not(.home) .bc-author-account, body.blog .bc-create-listing, body .db-main-wrapper .db-set-address {
-    color: #ECECEC;
-    border-color: #ECECEC;
+    background-color: #ed3554;
+    color: #fff;
+    border-radius: 5px;
 }
 .bc-button.bc-button-invert {
     border: 2px solid rgba(255,255,255,0.5);

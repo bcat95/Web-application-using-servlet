@@ -67,8 +67,6 @@ public class BaiDangBO extends BussinessObject{
 				e.printStackTrace();
 			}
 		}
-		
-		
 	}
 	public static BaiDangBean infoBaiDang(int maBaiDang) throws SQLException, ClassNotFoundException{
 		return BaiDangDAO.infobaiDang(maBaiDang);
@@ -110,5 +108,8 @@ public class BaiDangBO extends BussinessObject{
 				e.printStackTrace();
 			}
 		}
+	}
+	public ArrayList<BaiDangBean> getListBaiDangByDM(int i) {
+		return baiDangDAO.getListBaiDangByDM(i);
 	}
 }

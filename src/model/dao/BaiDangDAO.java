@@ -65,6 +65,40 @@ public class BaiDangDAO extends DataBaseConnect{
 		}
 		return list;
 	}
+	public ArrayList<BaiDangBean> getListBaiDangByDM(int i) {
+		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
+		try {
+			st=getConnect().createStatement();
+			rs=st.executeQuery("select * FROM BaiDang,DanhMuc where BaiDang.MaDanhMuc=DanhMuc.MaDanhMuc and BaiDang.MaDanhMuc=  "+i+"");
+			BaiDangBean BaiDang;
+			while(rs.next()){
+				BaiDang = new BaiDangBean();
+				BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
+				BaiDang.setTieuDe(rs.getString("TieuDe"));
+				BaiDang.setNoiDung(rs.getString("NoiDung"));
+				BaiDang.setDiaChi(rs.getString("DiaChi"));
+				BaiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
+				BaiDang.setsDT(rs.getString("SDT"));
+				BaiDang.setAnhBia(rs.getString("AnhBia"));
+				BaiDang.setMaDanhMuc(rs.getInt("maDanhMuc"));
+				BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
+				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+				BaiDang.setViDO(rs.getString("ViDo"));
+				BaiDang.setKinhDo(rs.getString("KinhDO"));
+				BaiDang.setSoLuotThich(rs.getInt("SoLuotThich"));
+				list.add(BaiDang);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
 	//---------------TÌM KIẾM---------------//
 			public ArrayList<BaiDangBean> getListBaiDangDanhMuc(String maDanhMuc) {
 				Connection connection = common.DataBaseConnect.getConnect();
@@ -564,6 +598,7 @@ public class BaiDangDAO extends DataBaseConnect{
 		}
 		
 	}
+	
 	
 	
 }

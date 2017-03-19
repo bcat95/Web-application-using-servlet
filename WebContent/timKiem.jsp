@@ -3,6 +3,7 @@
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic"%>
 <%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
+<%@taglib uri="http://displaytag.sf.net" prefix="display"%>
 <jsp:include page="header.do" flush="true"></jsp:include>
 <script>
 $(document.body).addClass('noheabac');
@@ -55,14 +56,14 @@ $(document.body).addClass('noheabac');
 					    center: myLatLng,
 					    mapTypeId: google.maps.MapTypeId.ROADMAP
 					  });
-						
 						var infowindow = new google.maps.InfoWindow();
 						<logic:iterate id="bd" name="timKiemForm" property="listBaiDang">
 							<bean:define id="maBaiDang" name="bd" property="maBaiDang"></bean:define>
 							<bean:define id="kinhDO" name="bd" property="kinhDo"></bean:define>
 							<bean:define id="viDO" name="bd" property="viDo"></bean:define>
 							<bean:define id="tieuDe" name="bd" property="tieuDe"></bean:define>
-							<bean:define id="noiDung" name="bd" property="noiDung"></bean:define>
+							<bean:define id="anhBia" name="bd" property="anhBia"></bean:define>
+							<bean:define id="tenDanhMuc" name="bd" property="tenDanhMuc"/>
 							 var thr_${maBaiDang}_LatLng = {lat: ${viDO}, lng: ${kinhDO}};
 							 var thr_${maBaiDang}_marker = new google.maps.Marker({
 							     position: thr_${maBaiDang}_LatLng,
@@ -70,10 +71,10 @@ $(document.body).addClass('noheabac');
 							     title: '${tieuDe}',
 							     animation: google.maps.Animation.DROP,
 							 });
+							 var cont_${maBaiDang}="<div class='card'><div class='car_bac' style='background-image: url(${anhBia})'></div><a class='car_tit' href='xemtin.do?maBaiDang=${maBaiDang}'>${tieuDe}</a><span>${tenDanhMuc}</span></div>";
 							 thr_${maBaiDang}_marker.addListener('click', function() {
-								 infowindow.setContent("<div id='thr_${maBaiDang}_con' class='thr_con clearfix'></div>");
+								 infowindow.setContent("<div id='thr_${maBaiDang}_con' class='thr_con clearfix'>"+cont_${maBaiDang}+"</div>");
 								 infowindow.open(map, thr_${maBaiDang}_marker);
-								 $('#thr_${maBaiDang}').clone().appendTo($('#thr_${maBaiDang}_con'));
 						     });	
 						</logic:iterate>
 						 function toggleBounce() {
@@ -141,14 +142,15 @@ $(document.body).addClass('noheabac');
 						</html:form>
 						<!--tim kiem sort -->
 						<div class="db-search-sort-container">
-							<span class="db-found-count total-hidden" data-found="8" data-total-found="8 of 8"> results</span>
+							<span class="db-found-count total-hidden">8 results</span>
 							<div class="dt-sort-row single-select">
-									<select>
-											<option>Sắp xếp</option>
-											<option value="1">Tiều đề</option>
-											<option value="2">Ngày</option>
-											<option value="3">Đánh giá</option>
-										</select>
+								<div class="dropdown">
+									  <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Sắp xếp
+									  <span class="caret"></span></button>
+									  <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+									    <li role="presentation"><a id="sor_ddg" role="menuitem" tabindex="-1" href="timKiem.do?&d-1343431-s=1">Đánh giá</a></li>
+									  </ul>
+								</div>
 							</div>
 							<div class="clearfix"></div>
 						</div>
@@ -156,91 +158,111 @@ $(document.body).addClass('noheabac');
 					<!--Danh sach tin-->
 					<div class="db-main-search-listings">
 						<!--begin list item nổi bật -->
-						<logic:iterate id="bd" name="timKiemForm" property="listBaiDang">
-						<bean:define id="maBaiDang" name="bd" property="maBaiDang"></bean:define>
-						<div class="bc-featured-listings-item" id="thr_${maBaiDang}">
-							<div class="bc-featured-listings-item-inner">
-								<div class="bc-featured-listings-image">
-									<!--Anh dai dien bai dang-->
-									<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-item-image" 
-										style="background: url('<bean:write name="bd" property="anhBia"/>')"></a>
-									<div class="bc-featured-image-overlay"></div>
-									<!--gia tri mac dinh-->
-									<span class="bc-featured-listings-image-note">Featured</span>
-									<div class="bc-featured-listings-image-meta">
-										<span class="bc-featured-listings-custom-fields">
-											<span class="bc-featured">
-												<!--dia chi bai dang-->
-												<span class="db-listing-icon wl-location" title="Address"></span>
-												<bean:write name="bd" property="diaChi"/>, 
-												<bean:write name="bd" property="tenTinhThanh"/>
-											</span>
-											<span class="bc-featured">
-												<!--so dien thoai bai dang-->
-												<span class="db-listing-icon wl-phone" title="Phone number"></span>
-												<bean:write name="bd" property="sDT"/>
-											</span>
-										</span>
+						<display:table id="threads" name="sessionScope.timKiemForm.listBaiDang"
+								requestURI="/timKiem.do" pagesize="8">
+								<logic:notEmpty name="timKiemForm" property="listBaiDang">
+										<bean:define id="maBaiDang" name="threads" property="maBaiDang"/>
+										<bean:define id="anhBia" name="threads" property="anhBia"/>
+										<bean:define id="diaChi" name="threads" property="diaChi"/>
+										<bean:define id="tenDanhMuc" name="threads" property="tenDanhMuc"/>
+										<bean:define id="sDT" name="threads" property="sDT"/>
+										<bean:define id="tieuDe" name="threads" property="tieuDe"/>
+										<bean:define id="noiDung" name="threads" property="noiDung"/>
+										<bean:define id="diemDanhGia" name="threads" property="diemDanhGia"/>
+								</logic:notEmpty>
+								<display:column sortable="true" title="diemDanhGia" headerClass="sor_ddg"/>
+								<display:column class="bcthread item">
+									<div class="bc-featured-listings-item" id="thr_${maBaiDang}">
+										<div class="bc-featured-listings-item-inner">
+											<div class="bc-featured-listings-image">
+												<!--Anh dai dien bai dang-->
+												<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-item-image" style="background: url('${anhBia}')"></a>
+												<div class="bc-featured-image-overlay"></div>
+												<!--gia tri mac dinh-->
+												<span class="bc-featured-listings-image-note">Featured</span>
+												<div class="bc-featured-listings-image-meta">
+												<span class="bc-featured-listings-custom-fields">
+													<span class="bc-featured">
+														<!--dia chi bai dang-->
+														<span class="db-listing-icon wl-location" title="Address"></span>
+														${diaChi}
+													</span>
+													<span class="bc-featured">
+														<!--so dien thoai bai dang-->
+														<span class="db-listing-icon wl-phone" title="Phone number"></span>
+															${sDT}
+														</span>
+													</span>
+												</div>
+											</div>
+											<div class="bc-featured-listings-data" >
+												<!--tieu de bai dang-->
+												<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-listings-title">
+													${tieuDe}
+												</a>
+												<!--to ta ngan bai dang-->
+												<div class="bc-featured-listings-description">
+													${noiDung}
+												</div>
+												<div class="bc-featured-listings-meta clearfix">
+													<!--danh muc bai dang-->
+													<a href="timKiem.do?maDanhMuc=<bean:write name="bd" property="maDanhMuc"/>" class="bc-featured-listings-category hotel" style="color: #00a9e8">
+														${tenDanhMuc}
+													</a>
+													<span class="bc-featured-listings-rating" data-original="${diemDanhGia}" data-id="${maBaiDang}">
+														<span id="bl_${maBaiDang}" class="ratings" title="${diemDanhGia}">${diemDanhGia}</span>
+													
+													</span>
+												</div>
+											</div>
+										</div>
 									</div>
-								</div>
-								<div class="bc-featured-listings-data" >
-									<!--tieu de bai dang-->
-									<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-listings-title">
-										<bean:write name="bd" property="tieuDe"/>
-									</a>
-									<!--to ta ngan bai dang-->
-									<div class="bc-featured-listings-description">
-										<bean:write name="bd" property="noiDung" filter="fasle"/>
+								</display:column>
+								<display:setProperty name="paging.banner.placement" value="bottom" />
+								<display:setProperty name="basic.msg.empty_list">
+									<div class="alert alert-info">
+										<strong>Oh!</strong> Chưa có bài viết nào ! Hãy là người đầu tiên.
 									</div>
-									<div class="bc-featured-listings-meta clearfix">
-										<!--danh muc bai dang-->
-										<a href="timKiem.do?maDanhMuc=<bean:write name="bd" property="maDanhMuc"/>" class="bc-featured-listings-category hotel" style="color: #00a9e8">
-											<bean:write name="bd" property="tenDanhMuc"/>
-										</a>
-										<span class="bc-featured-listings-rating" data-original="5" data-id="91">
-											<span id="bl_<bean:write name="bd" property="maBaiDang"/>" class="ratings" title="<bean:write name="bd" property="diemDanhGia"/>">
-												<span class="star"></span>
-												<span class="star"></span>
-												<span class="star"></span>
-												<span class="star"></span>
-												<span class="star"></span>
-											</span>
-										<script>
-											var ddg = $('#bl_<bean:write name="bd" property="maBaiDang"/>').attr('title');
-											for (i = 1; i <= ddg; i++) { 
-												$('#bl_<bean:write name="bd" property="maBaiDang"/> span:nth-child('+i+')').addClass(" Full");
-											}
-										</script>
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						</logic:iterate>
-						<!-- <script type="text/javascript">
-								var thrLatLng = {lat: 14.0474325, lng: 108.1712203};
-								var thrmarker1 = new google.maps.Marker({
-							      position: thrLatLng,
-							      map: map,
-							      title: 'Hello World!'
-							    });
-						</script> -->
+								</display:setProperty>
+								<display:setProperty name="paging.banner.all_items_found"><span class="pagebanner"> {0} {1} được hiển thị, số bài viết {2}. </span></display:setProperty>
+								<display:setProperty name="paging.banner.some_items_found">
+									<span class="pagebanner"> {0} {1} được hiển thị, số bài viết {2} đến {3}. </span>
+								</display:setProperty>
+								<display:setProperty name="paging.banner.full">
+									<ul class="pagination">
+									  	<li class="previous"><a href="{1}">Đầu tiên</a></li>
+									    <li class="previous"><a href="{2}">Trước</a></li>
+									    <li class="hidetext">{0}</li>
+									    <li class="next"><a href="{3}">Sau</a></li>
+									    <li class="next"><a href="{4}">Cuối cùng</a></li>
+									</ul>
+								</display:setProperty>
+								<display:setProperty name="paging.banner.first">
+									<ul class="pagination">
+									  	<li class="hidetext">{0}</li>	
+									    <li class="next"><a href="{3}">Sau</a></li>
+									    <li class="next"><a href="{4}">Cuối cùng</a></li>
+									</ul>
+								</display:setProperty>
+								<display:setProperty name="paging.banner.last">
+									<ul class="pagination">
+									  	<li class="previous"><a href="{1}">Đầu tiên</a></li>
+									    <li class="previous"><a href="{2}">Trước</a></li>
+									    <li class="hidetext">{0}</li>
+									</ul>
+								</display:setProperty>
+							</display:table>
 						<!--end list item nổi bật -->
 						<div class="clearfix"></div>
 					</div>
 					<!--end danh sach tin-->
-					<ul class="pagination">
-						<li><a href="#">1</a></li>
-						<li class="active"><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-					</ul>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 		</div>
 	</div>
 	<!-- end Tim kiem jsp  -->
-</div>
+	<script>
+		$("#sor_ddg").attr("href", $('.sor_ddg a').attr('href'));
+	</script>
 <jsp:include page="template_Footer.jsp"></jsp:include>
