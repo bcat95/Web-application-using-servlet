@@ -34,7 +34,7 @@ public class LoginAction extends Action{
 			loginForm.setThongBao(2);
 			return mapping.findForward("login");
 		}else if ("Login".equals(loginForm.getSubmit()) && taiKhoanBO.checkLogin(username, password)) {
-        	acc = taiKhoanBO.getLogin(loginForm.getUsername());
+			acc = taiKhoanBO.getLogin(loginForm.getUsername());
 			session.setAttribute("userActivity", acc);
             return mapping.findForward("home");
         } else if(acc != null){
