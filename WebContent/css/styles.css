@@ -254,6 +254,12 @@ header {
     margin-top: 4px;
     padding: 0;
 }
+.noheabac .header-main a {
+    color: #fff;
+}
+.noheabac .dropdown-menu a{
+	color: #424242;
+}
 .header-main a {
     color: #424242;
     font-family: 'Poppins',tahoma;

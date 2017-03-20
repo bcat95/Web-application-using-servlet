@@ -48,7 +48,6 @@ public class BaiDangAction extends Action{
 			}
 		}
 		if (StringProcess.equals(thisForm.getSubmit(), "binhLuan")){
-			thisForm.setSubmit("");
 			if(user==null)
 				return mapping.findForward("login");
 			else{
@@ -58,6 +57,7 @@ public class BaiDangAction extends Action{
 						/*saveErrors(request, errors);
 						return mapping.getInputForward();*/
 					}
+
 					else if(StringProcess.equals(thisForm.getSubmit(), "binhLuan")){
 						thisForm.setSubmit("");
 						thisForm.setBl_userName((user.getUserName()));

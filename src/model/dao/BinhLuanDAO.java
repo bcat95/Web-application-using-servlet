@@ -78,6 +78,7 @@ public class BinhLuanDAO extends DataBaseConnect{
 				e.printStackTrace();
 			}
 		}
+		System.out.println("ls "+listBinhLuan);
 		return listBinhLuan;
 	}
 }

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.bag.SynchronizedSortedBag;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -27,6 +28,7 @@ public class ThemBaiDangAction extends Action{
 		BaiDangForm thisForm = (BaiDangForm) form;
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("userActivity");
+		System.out.println("ss of "+user.getUserName()+" la"+ session.getAttribute("userActivity"));
 		if(user == null || user.getMaQuyen() == -1)
 			return mapping.findForward("login");
 		thisForm.setUserName(user.getUserName());
