@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Khóa Học Lập Trình Laravel Framework 5.x Tại Khoa Phạm">
+    <meta name="author" content="Vu Quoc Tuan">
+    <title>Admin</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- DataTables CSS -->
+    <link href="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Admin Area</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Thống kê<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">Bảng tin</a>
+                                </li>
+                                <li>
+                                    <a href="#">Lượt truy cập</a>
+                                </li>
+                                <li>
+                                    <a href="#">Doanh thu</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Danh mục<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">Danh sách danh mục</a>
+                                </li>
+                                <li>
+                                    <a href="#">Thêm danh mục</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-cube fa-fw"></i> Bảng tin<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">Danh sách bảng tin</a>
+                                </li>
+                                <li>
+                                    <a href="#">Thêm bảng tin</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> Tài khoản<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="user_list.html">Danh sách tài khoản</a>
+                                </li>
+                                <li>
+                                    <a href="user_add.html">Thêm tài khoản</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Danh sách tài khoản
+                        </h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr align="center">
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Level</th>
+                                <th>Họ Tên</th>
+                                <th>Giới tính</th>
+                                <th>Ngày Sinh</th>
+                                <th>SĐT</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd gradeX" align="center">
+                                <td>1</td>
+                                <td>hoangan</td>
+                                <td>Admin</td>
+                                <td>Nguyễn Ân</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>2</td>
+                                <td>trananh</td>
+                                <td>Admin</td>
+                                <td>Trần Anh</td>
+                                <td>Nam</td>
+                                <td>02/08/1992</td>
+                                <td>0905456554</td>
+                                <td>trananh@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>3</td>
+                                <td>long</td>
+                                <td>Member</td>
+                                <td>Nguyễn Long</td>
+                                <td>Nam</td>
+                                <td>21/11/1995</td>
+                                <td>0218963487</td>
+                                <td>long@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>4</td>
+                                <td>caolinh</td>
+                                <td>Member</td>
+                                <td>Cao Thị Linh</td>
+                                <td>Nữ</td>
+                                <td>18/10/1995</td>
+                                <td>0934875423</td>
+                                <td>caolinh@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>5</td>
+                                <td>lehung</td>
+                                <td>Member</td>
+                                <td>Lê Hùng</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>lehung@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>6</td>
+                                <td>vanoy</td>
+                                <td>Member</td>
+                                <td>Vanaso Thanas</td>
+                                <td>Nữ</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>vanoy@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>7</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nữ</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>8</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>9</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nữ</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr><tr class="odd gradeX" align="center">
+                                <td>10</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>11</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>12</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>13</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>14</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>15</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>16</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>17</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>18</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>19</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>20</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>21</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>22</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>23</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>24</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>25</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>26</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr><tr class="odd gradeX" align="center">
+                                <td>27</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>28</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX" align="center">
+                                <td>29</td>
+                                <td>hoangan</td>
+                                <td>Member</td>
+                                <td>Nguy</td>
+                                <td>Nam</td>
+                                <td>11/03/1995</td>
+                                <td>0905306908</td>
+                                <td>nguyengan@gmail.com</td>
+                                <td class="center">
+                                    <i class="glyphicon glyphicon-pencil"></i> 
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </td>
+                            </tr>
+
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="dist/js/sb-admin-2.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="bower_components/DataTables/media/js/jquery.dataTables.min.js"></script>
+    <script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+                responsive: true
+        });
+    });
+    </script>
+</body>
+
+</html>
