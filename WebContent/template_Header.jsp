@@ -27,6 +27,19 @@
     		$("#pw").attr("placeholder", "Enter password");
 		});
 	</script>
+	<script>
+	$(document).ready(function() {
+		if ('<bean:write name="headerForm" property="tacVu"/>' == "success") {
+			$('.content.baseHtml').html("Tác vụ thành công");
+			$('.timedMessage').animate({'opacity': 'show', 'top': 0}, 800);
+			setTimeout(function() {$('.timedMessage').animate({'opacity': 'hide', 'top': -100}, 800);}, 1500);
+		}else if ('<bean:write name="headerForm" property="tacVu"/>' == "that bai") {
+			$('.content.baseHtml').html("Tác vụ thất bại");
+			$('.timedMessage').animate({'opacity': 'show', 'top': 0}, 800);
+			setTimeout(function() {$('.timedMessage').animate({'opacity': 'hide', 'top': -100}, 800);}, 1500);
+		}
+	});
+	</script>
 </head>
 <body id="page" class="<logic:equal name="headerForm" property="type" value="-1">LoggedOut</logic:equal><logic:notEqual name="headerForm" property="type" value="-1">LoggedInt</logic:notEqual>">
 <!--Begin header-->
@@ -111,4 +124,7 @@
 			</div>
 		</div>
 	</header>
+	<div class="bcOverlay timedMessage" style="top: -100px;left: 0px;position: fixed;">
+		<div class="content baseHtml"></div>
+	</div>
 	<!--End header-->

@@ -20,8 +20,11 @@ public class HeaderAction extends Action{
 		
 		User user = (User) session.getAttribute("userActivity");
 		
-		if(user != null)
+		if(user != null){
+			thisForm.setTacVu("success");
 			thisForm.setUser(user);
+			
+		}
 		else
 			thisForm.setType(-1);
 		

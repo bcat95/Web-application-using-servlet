@@ -254,6 +254,12 @@ header {
     margin-top: 4px;
     padding: 0;
 }
+.noheabac .header-main a {
+    color: #fff;
+}
+.noheabac .dropdown-menu a{
+	color: #424242;
+}
 .header-main a {
     color: #424242;
     font-family: 'Poppins',tahoma;
@@ -303,6 +309,19 @@ header {
     left: 10px;
     top: 11px;
     left: -6px;
+}
+.bcOverlay.timedMessage {
+    color: black;
+    background: rgba(200, 200, 200, 0.6);
+    border-bottom: 1px solid black;
+    max-width: none;
+    width: 100%;
+    display:none;
+}
+.bcOverlay.timedMessage .content {
+    font-size: 18pt;
+    padding: 30px;
+    text-align: center;
 }
 /*end header*/
 /*home*/

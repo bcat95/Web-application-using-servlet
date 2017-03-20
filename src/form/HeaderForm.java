@@ -4,11 +4,23 @@ import org.apache.struts.action.ActionForm;
 import model.bean.User;
 
 public class HeaderForm extends ActionForm{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String userName;
 	private String pass;
 	private String hoTen;
+	private String tacVu;
 	private int type;
 	
+	
+	public String getTacVu() {
+		return tacVu;
+	}
+	public void setTacVu(String tacVu) {
+		this.tacVu = tacVu;
+	}
 	public String getUserName() {
 		return userName;
 	}
