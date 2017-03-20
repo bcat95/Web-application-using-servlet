@@ -32,59 +32,121 @@
 											<html:errors property="noiDUngError"/>
 										</div>
 									</div>
-									<div class="db-field-custom-row clearfix" style="margin: 0 -15px;">
-										<div class="db-field-row">
-											<label class="db-field-row-label" for="listing_address">Địa chỉ</label>
-											<html:text property="diaChi" styleId="listing_address" ></html:text>
-											<span class="db-autolocate-me"><i class="fa fa-crosshairs" aria-hidden="true"></i></span>
-											<div class="alert alert-warning">
-												<html:errors property="diaChiError"/>
-											</div>
+									<div class="db-field-row">
+										<label class="db-field-row-label" for="listing_address">Địa chỉ</label>
+										<html:text property="diaChi" styleId="listing_address"></html:text>
+										<span class="db-autolocate-me"><i class="fa fa-crosshairs" aria-hidden="true"></i></span>
+										<div class="alert alert-warning">
+											<html:errors property="diaChiError"/>
 										</div>
+									</div>
+									<div id="db-listing-map" style="width: calc(66.66% - 10px); position: relative;">
+										<div id="db-single-listing-map" style="width: 100%; height: 278px; position: relative; overflow: hidden;"></div>
+										<script>
+										function initAutocomplete() {
+										  var map = new google.maps.Map(document.getElementById('db-single-listing-map'), {
+										    center: {lat: -33.8688, lng: 151.2195},
+										    zoom: 13,
+										    mapTypeId: 'roadmap'
+										  });
+										  // Create the search box and link it to the UI element.
+										  //var input = document.getElementById('listing_address');
+										  var input = document.getElementById('listing_address');
+										  var searchBox = new google.maps.places.SearchBox(input);
+										 //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+										
+										  // Bias the SearchBox results towards current map's viewport.
+										  map.addListener('bounds_changed', function() {
+										    searchBox.setBounds(map.getBounds());
+										  });
+										
+										  var markers = [];
+										  // Listen for the event fired when the user selects a prediction and retrieve
+										  // more details for that place.
+										  searchBox.addListener('places_changed', function() {
+										    var places = searchBox.getPlaces();
+										    if (places.length == 0) {
+										      return;
+										    }
+										
+										    // Clear out the old markers.
+										    markers.forEach(function(marker) {
+										      marker.setMap(null);
+										    });
+										    markers = [];
+										
+										    // For each place, get the icon, name and location.
+										    var bounds = new google.maps.LatLngBounds();
+										    places.forEach(function(place) {
+										      if (!place.geometry) {
+										        console.log("Returned place contains no geometry");
+										        return;
+										      }
+										      var icon = {
+										        url: place.icon,
+										        size: new google.maps.Size(71, 71),
+										        origin: new google.maps.Point(0, 0),
+										        anchor: new google.maps.Point(17, 34),
+										        scaledSize: new google.maps.Size(25, 25)
+										      };
+										
+										      // Create a marker for each place.
+										     /*markers.push(new google.maps.Marker({
+										        map: map,
+										        //icon: icon,
+										        title: place.name,
+										        draggable: true,
+										        position: place.geometry.location
+										      })); */
+												var myMarker = new google.maps.Marker({
+												    position: place.geometry.location,
+												    map: map,
+												    draggable: true
+												});
+												var latitude = place.geometry.location.lat().toFixed(7);
+												var longitude = place.geometry.location.lng().toFixed(7);
+												$("#listing_address_lat").val(latitude);
+												$("#listing_address_lng").val(longitude);
+												google.maps.event.addListener(myMarker, 'dragend', function(evt){
+												    $("#listing_address_lat").val(evt.latLng.lat().toFixed(7));
+												    $("#listing_address_lng").val(evt.latLng.lng().toFixed(7));
+												});
+												google.maps.event.addListener(myMarker, 'dragstart', function(evt){
+												    $("#listing_address_lat").val("Loading...");
+												    $("#listing_address_lng").val("Loading...");
+												});
+												if (place.geometry.viewport) {
+												  // Only geocodes have viewport.
+												  bounds.union(place.geometry.viewport);
+												} else {
+												  bounds.extend(place.geometry.location);
+												}
+										    });
+										    map.fitBounds(bounds);
+										  });
+										}
+										
+										</script>
+										<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyVj9OfaIf5rY7HUFfWKbz_9H2Lef5BBo&libraries=places&callback=initAutocomplete"></script>
+									</div>
+									<div class="db-map-row">
 										<div class="db-field-row">
 											<html:select property="maDanhMuc">
 												<html:optionsCollection name="baiDangForm" property="listDanhMuc" label="tenDanhMuc" value="maDanhMuc" />
 											</html:select>
 										</div>
 										<div class="db-field-row custom-select">
-											<html:select property="maTinhThanh">
+											<html:select property="maTinhThanh" styleId="tinhThanh">
 												<html:optionsCollection name="baiDangForm" property="listTinhThanh" label="tenTinhThanh" value="maTinhThanh" />
 											</html:select>
 										</div>
-									</div>
-									<div id="db-listing-map" style="width: calc(66.66% - 10px); position: relative;">
-										<a href="https://www.google.com/maps/" target="_blank" class="db-set-address bc-button bc-button-invert btn btn-primary">Set address on map</a>
-										<div id="db-single-listing-map" style="width: 100%; height: 111px; position: relative; overflow: hidden;"></div>
-										<script>
-										function myMap() {
-										var mapCanvas = document.getElementById("db-single-listing-map");
-										var mapOptions = {
-										center: new google.maps.LatLng(51.5, -0.2), zoom: 10
-										};
-										var map = new google.maps.Map(mapCanvas, mapOptions);
-										}
-										</script>
-										<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyVj9OfaIf5rY7HUFfWKbz_9H2Lef5BBo&callback=myMap"></script>
-										<script type="text/javascript">
-										$(document).ready(function(){
-											var url = 'https://www.google.co.in/maps/search/wipro+Technologies/@12.974267,80.2238546,13z/data=!3m1!4b1?hl=en';
-											var splitUrl = url.split('@');
-											var coords = splitUrl[1].split(',');
-											var longitude = coords[0]; // 12.974267
-											var latitude = coords[1]; // 80.2238546
-											$("#listing_address_lng").val(longitude);
-											$("#listing_address_lat").val(latitude);
-										});
-										</script>
-									</div>
-									<div class="db-map-row">
 										<div class="db-field-row text-added">
 											<label class="db-field-row-label" for="listing_address_lat">Vĩ độ</label>
-											<html:text property="viDO" styleId="listing_address_lat" ></html:text>
+											<html:text property="viDO" styleId="listing_address_lat"></html:text>
 										</div>
 										<div class="db-field-row text-added">
 											<label class="db-field-row-label" for="listing_address_lng">Kinh độ</label>
-											<html:text property="kinhDo" styleId="listing_address_lng" ></html:text>
+											<html:text property="kinhDo" styleId="listing_address_lng"></html:text>
 										</div>
 										
 									</div>

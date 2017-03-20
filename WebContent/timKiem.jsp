@@ -55,7 +55,7 @@ $(document.body).addClass('noheabac');
 					    zoom: zoom,
 					    center: myLatLng,
 					    mapTypeId: google.maps.MapTypeId.ROADMAP
-					  });
+					  	});
 						var infowindow = new google.maps.InfoWindow();
 						<logic:iterate id="bd" name="timKiemForm" property="listBaiDang">
 							<bean:define id="maBaiDang" name="bd" property="maBaiDang"></bean:define>

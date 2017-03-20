@@ -505,6 +505,9 @@ public class BaiDangForm  extends ActionForm{
 			if (StringProcess.checkRong(diaChi)){
 				errors.add("diaChiError",new ActionMessage("err.diachi.trong"));
 			}
+			if (StringProcess.checkRong(noiDung)){
+				errors.add("noiDungError",new ActionMessage("err.noidung.trong"));
+			}
 		}
 		return errors;
 	}

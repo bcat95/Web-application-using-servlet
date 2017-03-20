@@ -8,6 +8,15 @@
 <script>
 $(document.body).addClass('noheabac');
 </script>
+<script>
+	$(document).ready(function(){
+		$("#review-title").attr("placeholder", "Tiêu đề bình luận");
+		$("#comment").attr("placeholder", "Nội dung bình luận");
+		$("#review-title").prop('maxlength',50);
+		$("#review-title").prop('required',true);
+		$("#comment").prop('required',true);
+	});
+	</script>
 	<!-- chi tiet tin-->
 	<%-- <html:form action="xembaidang" method="get" styleId="db-add-listing-form" enctype="multipart/form-data"> --%>
 	<div class="db-single-listing-wrapper">
@@ -285,10 +294,6 @@ $(document.body).addClass('noheabac');
 	    log.html(me.attr('value'));
 	  });
 	//# sourceURL=pen.js
-	</script>
-	<<script type="text/javascript">
-	$("#review-title").attr("placeholder", "Tiêu đề bình luận");
-	$("#comment").attr("placeholder", "Nội dung bình luận");
 	</script>
 	<%-- </html:form> --%>
 	<!-- end chi tiet tin-->

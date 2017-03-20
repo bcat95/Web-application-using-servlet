@@ -61,5 +61,8 @@
 			</div>
 		</div>
 	</footer>
+	<div class="bcOverlay timedMessage" style="top: -100px;left: 0px;position: fixed;">
+		<div class="content baseHtml"></div>
+	</div>
 </body>
 </html>

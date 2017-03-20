@@ -33,6 +33,7 @@ public class BinhLuanDAO extends DataBaseConnect{
 	public static void insertBinhLuan(BinhLuanBean binhLuan) {
 		try {
 			String insertTableSQL = "insert into BinhLuan values(?,?,?,?,?,?)";
+			System.out.println(insertTableSQL);
 			prepSt = getConnect().prepareStatement(insertTableSQL);
 			prepSt.setString(1, binhLuan.getTieuDe());
 			prepSt.setString(2, binhLuan.getNoiDung());
@@ -78,7 +79,6 @@ public class BinhLuanDAO extends DataBaseConnect{
 				e.printStackTrace();
 			}
 		}
-		System.out.println("ls "+listBinhLuan);
 		return listBinhLuan;
 	}
 }
