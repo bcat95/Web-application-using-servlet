@@ -6,6 +6,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="header.do" flush="true"></jsp:include>
 <script>
+$(document.body).addClass('noheabac');
+</script>
+<script>
 jQuery(document).ready(function($) {
   $('.owl-carousel').owlCarousel({
 	    items: 5,
@@ -129,7 +132,7 @@ jQuery(document).ready(function($) {
 											style="background: url('<bean:write name="bd" property="anhBia"/>')"></a>
 										<div class="bc-featured-image-overlay"></div>
 										<!--gia tri mac dinh-->
-										<span class="bc-featured-listings-image-note">Featured</span>
+										<!-- <span class="bc-featured-listings-image-note">Featured</span> -->
 										<div class="bc-featured-listings-image-meta">
 											<span class="bc-featured-listings-custom-fields">
 												<span class="bc-featured">
