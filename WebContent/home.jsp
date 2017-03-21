@@ -164,18 +164,8 @@ jQuery(document).ready(function($) {
 												<bean:write name="bd" property="soLuotThich"/>
 											<span class="bc-featured-listings-rating" data-original="5" data-id="91">
 												<span id="bl_<bean:write name="bd" property="maBaiDang"/>" class="ratings" title="<bean:write name="bd" property="diemDanhGia"/>">
-													<span class="star"></span>
-													<span class="star"></span>
-													<span class="star"></span>
-													<span class="star"></span>
-													<span class="star"></span>
+													<bean:write name="bd" property="diemDanhGia"/>
 												</span>
-											<script>
-												var ddg = $('#bl_<bean:write name="bd" property="maBaiDang"/>').attr('title');
-												for (i = 1; i <= ddg; i++) { 
-													$('#bl_<bean:write name="bd" property="maBaiDang"/> span:nth-child('+i+')').addClass(" Full");
-												}
-											</script>
 											</span>
 										</div>
 									</div>

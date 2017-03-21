@@ -60,6 +60,7 @@ public class BaiDangForm  extends ActionForm{
 	
 	private String userName;
 	private boolean yeuThich;
+	private boolean setThich;
 	
 	private int maDanhMuc;
 	private String tenDanhMuc;
@@ -512,6 +513,11 @@ public class BaiDangForm  extends ActionForm{
 		return errors;
 	}
 
-	
-	
+	public boolean isSetThich() {
+		return setThich;
+	}
+
+	public void setSetThich(boolean setThich) {
+		this.setThich = setThich;
+	}
 }

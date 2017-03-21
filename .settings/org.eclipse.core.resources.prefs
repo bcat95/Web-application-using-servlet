@@ -4,4 +4,5 @@ encoding//WebContent/index.jsp=UTF-8
 encoding//WebContent/template_Header.jsp=UTF-8
 encoding//WebContent/template_Tag.jsp=UTF-8
 encoding//WebContent/tinDangThanhCong.jsp=UTF-8
+encoding//src/model/bo/BaiDangBO.java=UTF-8
 encoding//src/model/dao/BaiDangDAO.java=UTF-8

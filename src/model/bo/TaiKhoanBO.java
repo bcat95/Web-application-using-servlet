@@ -21,7 +21,7 @@ public class TaiKhoanBO {
 	public User getLogin(String username) throws ClassNotFoundException, SQLException
 	{
 		TaiKhoanBean taikhoan = taiKhoanDAO.selectOne(username);
-		return new User(username, taikhoan.getPass(), taikhoan.getHoTen(), taikhoan.getMaQuyen());
+		return new User(username, taikhoan.getPassWord(), taikhoan.getHoTen(), taikhoan.getMaQuyen());
 	}
 	public TaiKhoanBean selectOne(String username) {
 		return taiKhoanDAO.selectOne(username);
@@ -49,6 +49,20 @@ public class TaiKhoanBO {
 	//danh sach bai dang
 	public static ArrayList<BaiDangBean> danhSachBaiDang(User user) {
 		return TaiKhoanDAO.danhSachBaiDang(user);
+	}
+	//admin
+	public ArrayList<TaiKhoanBean> getListTaiKhoan() {
+		return taiKhoanDAO.getListTaiKhoan();
+	}
+	public void xoaTaiKhoan(String user) {
+		taiKhoanDAO.xoaTaiKhoan(user);
+	}
+	public void themTaiKhoan(TaiKhoanBean taiKhoan){
+		/*taiKhoanDAO.themTaiKhoan(userName, pass, email, hoTen, gioiTinh, ngaySinh, sDT, ngayDangKy, maQuyen, maLoaiTaiKhoan);*/
+		taiKhoanDAO.themTaiKhoan(taiKhoan);
+	}
+	public void suaTaiKhoan(TaiKhoanBean taiKhoan){
+		taiKhoanDAO.suaTaiKhoan(taiKhoan);
 	}
 	
 }

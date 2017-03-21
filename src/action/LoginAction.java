@@ -26,7 +26,6 @@ public class LoginAction extends Action{
 		
 		String username = loginForm.getUsername();
 		String password = loginForm.getPassword();
-		
 		if("Login".equals(loginForm.getSubmit()) && (check.notVaild(username) || check.notVaild(password))){
 			loginForm.setThongBao(1);
 			return mapping.findForward("login");

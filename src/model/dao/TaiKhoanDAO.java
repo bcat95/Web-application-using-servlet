@@ -1,12 +1,15 @@
 package model.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 import common.DataBaseConnect;
+import common.StringProcess;
 import model.bean.BaiDangBean;
 import model.bean.TaiKhoanBean;
 import model.bean.User;
@@ -250,6 +253,104 @@ public class TaiKhoanDAO extends DataBaseConnect{
 		}
 		return listBD;
 	}
+	/**
+	 * @return
+	 */
+	public ArrayList<TaiKhoanBean> getListTaiKhoan() {
+		ArrayList<TaiKhoanBean> list = new ArrayList<>();
+		try {
+			st=getConnect().createStatement();
+			String sql= "select taikhoan.*, quyen.tenquyen, loaitaikhoan.TenLoaiTK FROM taikhoan inner join quyen on taikhoan.maquyen= quyen.maquyen inner join loaitaikhoan on taikhoan.maloaitk= loaitaikhoan.maloaitk";
+			rs=st.executeQuery(sql);
+			System.out.println("sql=" + sql);
+			TaiKhoanBean taiKhoanBean;
+			int i=0;
+			while(rs.next()){
+				taiKhoanBean = new TaiKhoanBean();
+				i++;
+				taiKhoanBean.setsTT(i);
+				taiKhoanBean.setUserName(rs.getString("Username"));
+				taiKhoanBean.setTenQuyen(rs.getString("TenQuyen"));
+				taiKhoanBean.setTenLoaiTaiKhoan(rs.getString("TenLoaiTK"));
+				taiKhoanBean.setHoTen(rs.getString("HoTen"));
+				taiKhoanBean.setGioiTinh(StringProcess.gioiTinh(rs.getString("GioiTinh")));
+				taiKhoanBean.setNgaySinh(rs.getString("NgaySinh"));
+				taiKhoanBean.setsDT(rs.getString("SDT"));
+				taiKhoanBean.seteMail(rs.getString("Email"));
+				list.add(taiKhoanBean);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+
+	public void xoaTaiKhoan(String user) {
+		String sql=	String.format("DELETE FROM taikhoan WHERE username = '%s'", user);
+		System.out.println("sql= "+sql);
+		try {
+			st=getConnect().createStatement();
+			st.executeUpdate(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//(Username, Pass, Email, Avatar, HoTen, GioiTinh, NgaySinh, SDT, NgayDangKy, MaQuyen,MaLoaiTK)
+		public void themTaiKhoan(TaiKhoanBean taiKhoan) {
+			String sql= "insert into taikhoan values('"+taiKhoan.getUserName()+"', '"+taiKhoan.getPassWord()+"',"
+					+ "'"+taiKhoan.geteMail()+"','"+taiKhoan.getAvatar()+"','"+taiKhoan.getHoTen()+"',"
+							+ "'"+taiKhoan.getGioiTinh()+"','"+taiKhoan.getNgaySinh()+"','"+taiKhoan.getsDT()+"',"
+									+ "'"+taiKhoan.getNgayDangKy()+"','"+taiKhoan.getMaQuyen()+"','"+taiKhoan.getMaLoaiTaiKhoan()+"')";
+			try {
+				PreparedStatement prepSt = getConnect().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+				System.out.println("sql themtaikhoan= "+sql);
+				prepSt.executeUpdate();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			System.out.println("sql themtaikhoan= "+sql);
+			try {
+				st=getConnect().createStatement();
+				st.executeUpdate(sql);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		}
+		
+		// taiKhoan.getNgaySinh(), taiKhoan.getNgayDangKy()
+		public void suaTaiKhoan(TaiKhoanBean taiKhoan){
+			String sql="update taikhoan set pass='"+taiKhoan.getPassWord()+"', email='"+taiKhoan.geteMail()+"',"
+					+ " avatar='Avatar', hoten='"+taiKhoan.getHoTen()+"', gioitinh='"+taiKhoan.getGioiTinh()+"', "
+							+ "ngaysinh='"+new Date(taiKhoan.getNgayDangDate().getTime())+"', "
+									+ "sdt='"+taiKhoan.getsDT()+"', "
+											+ "ngaydangky='"+new Date(taiKhoan.getNgayDangDate().getTime())+"',"
+									+ " maquyen='"+taiKhoan.getMaQuyen()+"', maloaitk='"+taiKhoan.getMaLoaiTaiKhoan()+"' "
+											+ "where username='"+taiKhoan.getUserName()+"'";
+			PreparedStatement prepSt;
+			try {
+				prepSt = getConnect().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+				prepSt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
 	
 
 }

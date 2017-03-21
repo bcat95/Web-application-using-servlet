@@ -105,9 +105,9 @@
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Thanh toán</a></li>
+								<li><a href="themlh.do">Liên hệ</a></li>
 								<li><a href="#">Về chúng tôi</a></li>
-								<li><a href="#">FAQ</a></li>
+								<li><a href="#">Thanh toán</a></li>
 							</ul>
 						</li>
 						<logic:notEqual name="headerForm" property="type" value="-1">

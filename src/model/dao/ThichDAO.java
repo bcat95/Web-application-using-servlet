@@ -42,12 +42,12 @@ public class ThichDAO extends DataBaseConnect{
 		return false;
 	}
 	//set thich
-	public static void setThich(boolean checkThich, int maBaiDang, String userName, boolean yeuThich) {
+	public static void setThich(boolean checkThich, int maBaiDang, String userName) {
 		String sql="";
-		if (checkThich && yeuThich == false){
+		if (checkThich == true){
 			sql=String.format("delete from Thich where MaBaiDang = '%s' and  userName = '%s'",maBaiDang, userName);
 		}
-		if (checkThich == false && yeuThich == true){
+		if (checkThich == false){
 			sql=String.format("INSERT INTO Thich(MaBaiDang, userName) "+
 					" VALUES ( '%s','%s' )", maBaiDang, userName);
 		}

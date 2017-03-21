@@ -112,4 +112,30 @@ public class BaiDangBO extends BussinessObject{
 	public ArrayList<BaiDangBean> getListBaiDangByDM(int i) {
 		return baiDangDAO.getListBaiDangByDM(i);
 	}
+	//danh sạh bai dang da duyet
+	public ArrayList<BaiDangBean> getListBaiDangDaDuyet() {
+		return baiDangDAO.getListBaiDangDaDuyet();
+	}
+	
+	public BaiDangBean getListChiTietBaiDangDaDuyet(int maBaiDang) {
+		return baiDangDAO.getListChiTietBaiDangDaDuyet(maBaiDang);
+	}
+	
+	
+	//xem chi tiet danh sạh bai dang da duyet
+	public BaiDangBean getListBaiDangDaDuyet(int maBaiDang) {
+		return baiDangDAO.getListBaiDangDaDuyet(maBaiDang);
+	}
+	//danh sạh bai dang chua duyet
+	public ArrayList<BaiDangBean> getListBaiDangChuaDuyet() {
+		return baiDangDAO.getListBaiDangChuaDuyet();
+	}
+	
+	public void goBoBaiDang(int maBaiDang){
+		baiDangDAO.goBoBaiDang(maBaiDang);
+	}
+	
+	public BaiDangBean getListChiTietBaiDangChuaDuyet(int maBaiDang) {
+		return baiDangDAO.getListChiTietBaiDangChuaDuyet(maBaiDang);
+	}
 }

@@ -1,39 +1,44 @@
 package model.bean;
 
 public class LoaiTaiKhoanBean {
-	private String maLoaiTK;
-	private String tenLoaiTK;
+	private int maLoaiTaiKhoan;
+	private String tenLoaiTaiKhoan;
 	
 	
 	public LoaiTaiKhoanBean() {
 		super();
 	}
 
+	
 
-	public LoaiTaiKhoanBean(String maLoaiTK, String tenLoaiTK) {
+	public LoaiTaiKhoanBean(int maLoaiTaiKhoan, String tenLoaiTaiKhoan) {
 		super();
-		this.maLoaiTK = maLoaiTK;
-		this.tenLoaiTK = tenLoaiTK;
+		this.maLoaiTaiKhoan = maLoaiTaiKhoan;
+		this.tenLoaiTaiKhoan = tenLoaiTaiKhoan;
 	}
 
 
-	public String getMaLoaiTK() {
-		return maLoaiTK;
+
+	public int getMaLoaiTaiKhoan() {
+		return maLoaiTaiKhoan;
 	}
 
 
-	public void setMaLoaiTK(String maLoaiTK) {
-		this.maLoaiTK = maLoaiTK;
+
+	public void setMaLoaiTaiKhoan(int maLoaiTaiKhoan) {
+		this.maLoaiTaiKhoan = maLoaiTaiKhoan;
 	}
 
 
-	public String getTenLoaiTK() {
-		return tenLoaiTK;
+
+	public String getTenLoaiTaiKhoan() {
+		return tenLoaiTaiKhoan;
 	}
 
 
-	public void setTenLoaiTK(String tenLoaiTK) {
-		this.tenLoaiTK = tenLoaiTK;
+
+	public void setTenLoaiTaiKhoan(String tenLoaiTaiKhoan) {
+		this.tenLoaiTaiKhoan = tenLoaiTaiKhoan;
 	}
 	
 	

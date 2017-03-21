@@ -27,9 +27,9 @@ public class ThongTinTaiKhoanAction extends Action{
 		User user = (User) session.getAttribute("userActivity");
 		System.err.println("uss "+user.getUserName());
 		TaiKhoanBean taiKhoan= taiKhoanBO.getThongTinTaiKhoan(user.getUserName());
-		thisForm.setUserName(taiKhoan.getUsername());
-		thisForm.setPassCu(taiKhoan.getPass());
-		thisForm.seteMail(taiKhoan.getEmail());
+		thisForm.setUserName(taiKhoan.getUserName());
+		thisForm.setPassCu(taiKhoan.getPassWord());
+		thisForm.seteMail(taiKhoan.geteMail());
 		//danh sach bai dang
 		thisForm.setListBaiDang(TaiKhoanBO.danhSachBaiDang(user));
 		//danh sach yeu thich

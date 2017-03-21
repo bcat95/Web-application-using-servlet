@@ -34,7 +34,7 @@ public class CapNhatThongTinAction extends Action{
 			System.out.println("noy1");
 			if (!errors.isEmpty()) {
 				saveErrors(request, errors);
-				thongTinTaiKhoanForm.setPassMoiXN(taiKhoanBean.getPass());
+				thongTinTaiKhoanForm.setPassMoiXN(taiKhoanBean.getPassWord());
 				System.out.println("noy2");
 				return mapping.getInputForward();
 			}

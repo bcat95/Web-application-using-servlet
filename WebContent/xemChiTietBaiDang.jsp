@@ -58,10 +58,10 @@ $(document.body).addClass('noheabac');
 						<div class="db-single-listing-like" data-favorite="Yêu thích " data-favorited="Đã Thích">
 							<bean:define id="yeuThich" name="baiDangForm" property="yeuThich"></bean:define>
 							<logic:equal name="baiDangForm" property="yeuThich" value="true">
-								<a class="favorited" href="xemtin.do?maBaiDang=${maBaiDang}&yeuThich=false">Đã thích <i class="fa fa-heart" aria-hidden="true"></i></a>
+								<a class="favorited" href="xemtin.do?maBaiDang=${maBaiDang}&setThich=true">Đã thích <i class="fa fa-heart" aria-hidden="true"></i></a>
 							</logic:equal>
 							<logic:equal name="baiDangForm" property="yeuThich" value="false">
-								<a class="favorite" href="xemtin.do?maBaiDang=${maBaiDang}&yeuThich=true">Thích <i class="fa fa-heart-o" aria-hidden="true"></i></a>
+								<a class="favorite" href="xemtin.do?maBaiDang=${maBaiDang}&setThich=true">Thích <i class="fa fa-heart-o" aria-hidden="true"></i></a>
 							</logic:equal>
 							
 						</div>

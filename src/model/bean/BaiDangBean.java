@@ -19,6 +19,7 @@ import java.util.Date;
  */
 
 public class BaiDangBean {
+	private int sTT;
 	private int maBaiDang;
 	private String tieuDe;
 	private String noiDung;
@@ -136,6 +137,22 @@ public class BaiDangBean {
 	
 	public String getTenLoaiTin() {
 		return tenLoaiTin;
+	}
+
+	public int getsTT() {
+		return sTT;
+	}
+
+	public void setsTT(int sTT) {
+		this.sTT = sTT;
+	}
+
+	public void setViDo(String viDo) {
+		this.viDo = viDo;
+	}
+
+	public void setSdf(SimpleDateFormat sdf) {
+		this.sdf = sdf;
 	}
 
 	public ArrayList<BinhLuanBean> getListBinhLuan() {
