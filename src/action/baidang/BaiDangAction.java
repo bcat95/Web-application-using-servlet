@@ -37,17 +37,6 @@ public class BaiDangAction extends Action{
 		BaiDangForm thisForm = (BaiDangForm) form;
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("userActivity");
-		//thich > set and get yeuThich
-		/*if(user!=null){
-			boolean like=ThichBO.checkThich(thisForm.getMaBaiDang(),user.getUserName());
-			if (like) {
-				ThichBO.setThich(like,thisForm.getMaBaiDang(),user.getUserName(),thisForm.isYeuThich());
-				thisForm.setYeuThich(like);
-				
-			}else{
-				ThichBO.setThich(like,thisForm.getMaBaiDang(),user.getUserName(),thisForm.isYeuThich());
-			}
-		}*/
 		if (StringProcess.equals(thisForm.getSubmit(), "binhLuan")){
 			if(user==null)
 				return mapping.findForward("login");
@@ -69,6 +58,7 @@ public class BaiDangAction extends Action{
 			}
 		}
 		thisForm.setXemBaiDang(BaiDangBO.infoBaiDang(thisForm.getMaBaiDang()));
+		//thich > set and get yeuThich
 		if(user!=null){
 			boolean like=ThichBO.checkThich(thisForm.getMaBaiDang(),user.getUserName());
 			thisForm.setYeuThich(like);

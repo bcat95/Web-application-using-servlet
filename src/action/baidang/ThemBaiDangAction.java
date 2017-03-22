@@ -28,7 +28,6 @@ public class ThemBaiDangAction extends Action{
 		BaiDangForm thisForm = (BaiDangForm) form;
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("userActivity");
-		System.out.println("ss of "+user.getUserName()+" la"+ session.getAttribute("userActivity"));
 		if(user == null || user.getMaQuyen() == -1)
 			return mapping.findForward("login");
 		thisForm.setUserName(user.getUserName());

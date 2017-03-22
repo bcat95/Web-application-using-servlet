@@ -160,7 +160,7 @@
 											<div class="db-field-upload-container dropzone-upload dropzone-gallery dz-clickable">
 												<h3>Thư viện ảnh</h3>
 												<div class="db-upload-placeholder">
-													<input type="file" name="fileHinhAnh" multiple="multiple" id="gallery-photo-add" accept="image/*"/>
+													<input type="file" name="fileHinhAnh" multiple="multiple" id="gallery-photo-add" accept="image/*" value="file"/>
 												</div>
 											</div>
 											<span class="db-file-upload-hint">JPG, GIF or PNG. Featured images are 1000x1000 pixels.</span>

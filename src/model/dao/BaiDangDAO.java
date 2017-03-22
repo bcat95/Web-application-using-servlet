@@ -428,6 +428,7 @@ public class BaiDangDAO extends DataBaseConnect{
 	
 	//them hinh anh vao data
 	public static void insertHinhAnh(BaiDangBean baiDang, HinhAnhBean hinhAnhBean) {
+		System.out.println("loi anh"+hinhAnhBean.getHinhAnh().length);
 		if(baiDang.getMaBaiDang()!=0){
 			int lshinhanhlen=hinhAnhBean.getHinhAnh().length;
 			for (int i=0;i<lshinhanhlen;i++)
@@ -485,6 +486,7 @@ public class BaiDangDAO extends DataBaseConnect{
 				baiDang.setViDo(rs.getString("viDo"));
 				baiDang.setGiaThapNhat(rs.getInt("GiaThapNhat"));
 				baiDang.setGiaCaoNhat(rs.getInt("GiaCaoNhat"));
+				baiDang.setNgayDang(rs.getDate("NgayDang"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

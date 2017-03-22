@@ -51,7 +51,7 @@ public class BaiDangForm  extends ActionForm{
 	private String sDT;
 	private int giaCaoNhat;
 	private int giaThapNhat;
-	private String ngayDang;
+	private Date ngayDang;
 	private String ngayHetHan;
 	private FormFile fileAnhBia;
 	//khuyen mai
@@ -333,14 +333,14 @@ public class BaiDangForm  extends ActionForm{
 		}
 		return currentDate;
 	}
-	public String getNgayDang() {
+	public Date getNgayDang() {
 		return ngayDang;
 	}
 
-	public void setNgayDang(String ngayDang) {
+	public void setNgayDang(Date ngayDang) {
 		this.ngayDang = ngayDang;
 	}
-
+	
 	public String getNgayHetHan() {
 		return ngayHetHan;
 	}
@@ -418,6 +418,7 @@ public class BaiDangForm  extends ActionForm{
 		this.sDT = itemBD.getsDT();
 		this.giaCaoNhat = itemBD.getGiaCaoNhat();
 		this.giaThapNhat = itemBD.getGiaThapNhat();
+		this.ngayDang=itemBD.getNgayDang();
 		this.userName = itemBD.getUserName();
 		this.maDanhMuc = itemBD.getMaDanhMuc();
 		this.tenDanhMuc=itemBD.getTenDanhMuc();
@@ -444,6 +445,7 @@ public class BaiDangForm  extends ActionForm{
 		this.userName = item.getUserName();
 		this.maDanhMuc = item.getMaDanhMuc();
 		this.maTinhThanh = item.getMaTinhThanh();
+		this.ngayDang=item.getNgayDang();
 	}
 	//ham set thuoc tinh bai dang khi sua bai dang
 	public void setSuaBaiDang(BaiDangBean item) {

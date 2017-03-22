@@ -24,61 +24,65 @@ body {
 	</script>
 	<!-- chi tiet tin-->
 	<%-- <html:form action="xembaidang" method="get" styleId="db-add-listing-form" enctype="multipart/form-data"> --%>
-	<div class="db-listing-featured-img">
-		<div class="db-single-overlay"></div>
-	</div>
 	<div class="db-single-listing-wrapper">
 		<bean:define id="maBaiDang" name="baiDangForm" property="maBaiDang"></bean:define>
-		<%-- <bean:define id="userName" name="baiDangForm" property="userName"></bean:define> --%>
 		<style>
 			/*Ảnh nền của bài đăng*/
-			.db-listing-featured-img {
+			<logic:notEmpty name="baiDangForm" property="anhBia">
+			.db-single-overlay {
 				background: url(<bean:write name="baiDangForm" property="anhBia"/>);
 			}
+			</logic:notEmpty>
 		</style>
-		<div class="db-single-listing-container">
+		
 			<!--tieu de tin-->
-			<div class="db-single-listing-head">
-				<div class="thr_hea_lef col-md-4" style="background: url(<bean:write name="baiDangForm" property="anhBia"/>)"></div>
-				<div class="thr_hea_rig col-md-8">
-					<span class="db-single-listing-category"><bean:write name="baiDangForm" property="tenDanhMuc"/> - <a href='timKiem.do?maTinhThanh=<bean:write name="baiDangForm" property="maTinhThanh"/>'><bean:write name="baiDangForm" property="tenTinhThanh"/></a></span>
-					<h1 class="single-listing-title"><bean:write name="baiDangForm" property="tieuDe"/></h1>
-					<!--thong tin bai-->
-					<div class="thr_inf">
-						<h3 class="db-listing-side-title">Khuyến mãi</h3>
-						<div class="db-single-listing-side-container thr_km">
-							<span class="db-single-contact-item clearfix">
-								<span><i class="fa fa-calendar-check-o" aria-hidden="true"></i>8/3/2017 -></span>
-								<span><i class="fa fa-calendar-times-o" aria-hidden="true"></i>10/3/2017</span>
+			<div class="db-listing-featured-img">
+				<div class="db-single-overlay"></div>
+				<div class="db-single-listing-head page-with">
+					<div class="thr_hea_lef" style="background: url(<bean:write name="baiDangForm" property="anhBia"/>)"></div>
+					<div class="thr_hea_rig">
+						<span class="db-single-listing-category"><bean:write name="baiDangForm" property="tenDanhMuc"/> - <a href='timKiem.do?maTinhThanh=<bean:write name="baiDangForm" property="maTinhThanh"/>'><bean:write name="baiDangForm" property="tenTinhThanh"/></a></span>
+						<h1 class="single-listing-title"><bean:write name="baiDangForm" property="tieuDe"/></h1>
+						<!--thong tin bai-->
+						<div class="thr_inf">
+							<!-- <h3 class="db-listing-side-title">Chi tiết liên hệ</h3> -->
+							<span class="db-single-contact-item thr_add">
+								<i class="fa fa-map-marker" aria-hidden="true"></i><bean:write name="baiDangForm" property="diaChi" />
 							</span>
-							NETHOST khuyến mại chúc mừng ngày Quốc tế phụ nữ<br>
-							Chào mừng ngày Quốc tế phụ nữ, NETHOST tung ra chương trình khuyến mại mua Hosting được tặng Website, Mua VPS giảm ngay 20%.
+							<span class="db-single-contact-item ">
+								<i class="fa fa-money" aria-hidden="true"></i>
+								<bean:write name="baiDangForm" property="giaThapNhat" format="#,##0"/> - <bean:write name="baiDangForm" property="giaCaoNhat" format="#,##0"/> vnđ
+							</span>
+							<span class="db-single-contact-item">
+								<i class="fa fa-clock-o" aria-hidden="true"></i>10:00 - 23:00 <b class="bc_gre">Đang mở cửa</b>
+							</span>
+							<span class="db-single-contact-item pull-left">
+								<i class="fa fa-phone" aria-hidden="true"></i><bean:write name="baiDangForm" property="sDT"/>
+							</span>
+							<span class="db-single-contact-item pull-left" style="margin-left: 5px;">
+								 - <i class="fa fa-internet-explorer" aria-hidden="true"></i>
+								<a href="http://example.com"><bean:write name="baiDangForm" property="diaChiWeb"/></a>
+							</span>
 						</div>
+						<div class="thr_inf_bot">
+							<div class="thr_km_hea">
+								<i class="fa fa-gift fa-2 alway-active wolf-surprise bc_gre" aria-hidden="true"></i> Khuyến mãi:
+								<span class="">
+									<span><i class="fa fa-calendar-check-o bc_gre" aria-hidden="true"></i>22/3/2017 -></span>
+									<span><i class="fa fa-calendar-times-o bc_gre" aria-hidden="true"></i>10/4/2017</span>
+								</span>
+								<span id="bc_gif_end"></span>
+							</div>
+							<div class="db-single-listing-side-container thr_km">
+								NETHOST khuyến mại chúc mừng ngày Quốc tế phụ nữ<br>
+								Chào mừng ngày Quốc tế phụ nữ, NETHOST tung ra chương trình khuyến mại mua Hosting được tặng Website, Mua VPS giảm ngay 20%.
+							</div>
+						</div>
+						<!--end thong tin bai-->
 					</div>
-					<!--chi tiet mo cua-->
-					
-					<!--end chi tiet mo cua-->
-					<!--end thong tin bai-->
 				</div>
-				<div class="thr_inf_bot">
-					<!-- <h3 class="db-listing-side-title">Chi tiết liên hệ</h3> -->
-					<span class="db-single-contact-item thr_add col-md-4">
-						<i class="fa fa-map-marker" aria-hidden="true"></i><bean:write name="baiDangForm" property="diaChi" />
-					</span>
-					<span class="db-single-contact-item col-md-2">
-						<i class="fa fa-phone" aria-hidden="true"></i><bean:write name="baiDangForm" property="sDT"/>
-					</span>
-					<span class="db-single-contact-item col-md-3">
-						<i class="fa fa-internet-explorer" aria-hidden="true"></i>
-						<a href="http://example.com"><bean:write name="baiDangForm" property="diaChiWeb"/></a>
-					</span>
-					<span class="db-single-contact-item col-md-3">
-						<i class="fa fa-money" aria-hidden="true"></i>
-						<bean:write name="baiDangForm" property="giaThapNhat" format="#,##0"/> - <bean:write name="baiDangForm" property="giaCaoNhat" format="#,##0"/> vnđ
-					</span>
-				</div>
-				
 			</div>
+		<div class="db-single-listing-container">
 			<!--end tieu de tin-->
 			<div class="db-single-listing-left">
 				<div class="db-single-listing-main clearfix">
@@ -130,10 +134,10 @@ body {
 						<div class="db-single-listing-like" data-favorite="Yêu thích " data-favorited="Đã Thích">
 							<bean:define id="yeuThich" name="baiDangForm" property="yeuThich"></bean:define>
 							<logic:equal name="baiDangForm" property="yeuThich" value="true">
-								<a class="favorited" href="xemtin.do?maBaiDang=${maBaiDang}&setThich=true">Đã thích <i class="fa fa-heart" aria-hidden="true"></i></a>
+								<a class="favorited" href="xemtin.do?maBaiDang=${maBaiDang}&setThich=true">Đã thích <i class="fa fa-heart wolf-zoom alway-active" aria-hidden="true"></i></a>
 							</logic:equal>
 							<logic:equal name="baiDangForm" property="yeuThich" value="false">
-								<a class="favorite" href="xemtin.do?maBaiDang=${maBaiDang}&setThich=true">Thích <i class="fa fa-heart-o" aria-hidden="true"></i></a>
+								<a class="favorite" href="xemtin.do?maBaiDang=${maBaiDang}&setThich=true">Thích <i class="fa fa-heart-o wolf-zoom alway-active" aria-hidden="true"></i></a>
 							</logic:equal>
 							
 						</div>
@@ -203,19 +207,7 @@ body {
 											<div class="review-content">
 												<span class="db-review-title">${tieuDe}</span>
 												<span class="db-listing-rating">
-												<span id="bl_${maBinhLuan}" class="ratings" title="${diemDanhGia}">
-													<span class="star"></span>
-													<span class="star"></span>
-													<span class="star"></span>
-													<span class="star"></span>
-													<span class="star"></span>
-												</span>
-												<script>
-													var ddg = $('#bl_${maBinhLuan}').attr('title');
-													for (i = 1; i <= ddg; i++) { 
-														$('#bl_${maBinhLuan} span:nth-child('+i+')').addClass(" Full");
-													}
-												</script>
+													<span id="bl_${maBinhLuan}" class="ratings" title="${diemDanhGia}"><b>${diemDanhGia}</b>/5</span>
 												</span>
 												<p>${noiDung}</p>
 												<div class="db-review-bottom">
@@ -293,7 +285,7 @@ body {
 							 $("#review-title").val("");
 							</script>
 							<p class="form-submit">
-								<button name="submit" type="submit" id="submit" class="submit" value="binhLuan">Bình luận</button>
+								<button name="submit" type="submit" id="submit" class="submit btn-danger" value="binhLuan">Bình luận</button>
 								<input type="hidden" name="maBaiDang" id="comment_post_ID" value="${maBaiDang}">
 							</p>
 						</html:form>

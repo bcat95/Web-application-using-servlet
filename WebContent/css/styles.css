@@ -123,6 +123,9 @@ select {
     padding-top: 0px;
     padding-bottom: 0px;
 }
+.bc_gre{
+	color: #14c729;
+}
 /*input*/
 
 #db-add-listing-form .db-field-row.text-added label, .bc-modal-right-side .bc-form-row.text-added .bc-form-row-label {
@@ -1424,68 +1427,88 @@ table#threads thead{
 .db-single-listing-wrapper {
     position: relative;
     display: block;
-    top: 100px;
+    top: 54px;
 }
 .db-listing-featured-img {
-    height: 100%;
-    position: absolute;
-    background-position: center!important;
-    background-size: cover!important;
-    width: 100%;
-    z-index: -999;
-    -webkit-filter: blur(10px);
-    -moz-filter: blur(10px);
-    -o-filter: blur(10px);
-    -ms-filter: blur(10px);
-    filter: blur(10px);
+    background-color: #9b9b9b;
+    position: relative;
+    overflow: hidden;
+    min-height: 285px;
 }
 .db-single-overlay {
-    height: 436px;
-    width: 100%;
-    bottom: 0;
     position: absolute;
-    z-index: 1;
-    background: -moz-linear-gradient(bottom,rgba(0,0,0,0.48) 0%,rgba(0,0,0,0) 100%);
-    background: -webkit-linear-gradient(bottom,rgba(0,0,0,0.48) 0%,rgba(0,0,0,0) 100%);
-    background: linear-gradient(to top,rgba(0,0,0,0.48) 0%,rgba(0,0,0,0) 100%);
+    background-color: #295b84;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    -webkit-filter: blur(30px);
+    filter: blur(30px);
+    width: 100%;
+    height: 100%;
 }
 .db-single-listing-container {
     max-width: 1170px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    margin-top: -32px;
 }
 .db-single-listing-head {
     display: block;
-    position: relative;
-    background-color: #fff;
-    color: #ccc;
     padding: 10px 15px;
-    margin: 0 15px;
-    height: 250px;
     overflow: hidden;
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.10);
     border-radius: 4px;
+    margin-top: 50px;
+    position: relative;
+    color: #fff;
+    font-size: 13px;
+    padding-bottom: 15px;
 }
-.thr_hea_rig.col-md-8 {
-    height: 100%;
+.thr_hea_rig{
+    margin-left: 190px;
+    color: #fff;
+    font-size: 13px;
+    padding-bottom: 15px;
 }
 .thr_inf_bot {
     position: absolute;
-    bottom: 0;
-    width: 100%;
+    top: 0;
     padding-top: 3px;
-    border-top: 1px solid #ccc;
+    border: 1px solid #ccc;
+    width: 400px;
+    right: 0;
+    color: #fff;
+    padding:15px;
 }
-.thr_hea_lef.col-md-4{
+.thr_km_hea {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+.thr_km_hea > span{
+	margin-right: 10px;
+}
+.thr_km_hea .fa{
+	padding-right: 5px;
+}
+.thr_inf_bot h3{
+	color:#fff;
+	padding: 10px 0;
+}
+.thr_hea_lef{
 	background-position: center!important;
     background-size: cover!important;
     display: block;
-    height: calc(100% - 30px);
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #fff;
+    position: absolute;
+    top: calc(100% - 187px);
 }
 .thr_inf {
     height: 100px;
-    overflow: hidden;
 }
 .thr_inf .db-listing-side-title {
     margin: 0;
@@ -1494,12 +1517,15 @@ table#threads thead{
     font-family: 'Poppins',tahoma;
     font-size: 12px;
     letter-spacing: 1px;
-    color: #2698d7;
+    color: #14c729;
     text-transform: uppercase;
+}
+.db-single-listing-category a{
+    color: #14c729;
 }
 .db-single-listing-category:before {
     content: '';
-    border: 2px solid #2698d7;
+    border: 2px solid #14c729;
     width: 11px;
     height: 11px;
     display: inline-block;
@@ -1510,16 +1536,17 @@ table#threads thead{
 }
 .db-single-listing-head h1 {
     font-family: 'Poppins',tahoma;
-    font-size: 25px;
-    color: #0c0c0a;
     padding: 0;
+    margin: 0;
+    font-size: 30px;
+    margin-bottom: 10px;
+    line-height: 1.3;
 }
 .db-single-listing-left {
-    width: calc(100% - 300px);
+    width: calc(100% - 345px);
     _width: 75%;
     float: left;
     padding: 0 15px;
-    margin-top: 15px;
 }
 .db-single-listing-main {
     background: #fff;
@@ -1857,6 +1884,12 @@ body .review-list .review-content {
     position: relative;
     top: -5px;
     margin-left: 13px;
+    float: right;
+    background-color: #9DD81F;
+    padding: 0px 3px;
+    color: #fff;
+    border-radius: 3px;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 .review-content>p {
     font-family: 'Open Sans';
@@ -2006,7 +2039,7 @@ body .review-list .review-content {
     width: 100%;
     font-size: 15px;
     color: #141414;
-    background: #f7fbfe;
+    background: #f4f4f4;
     border-width: 1px;
     border-style: solid;
     border-top-color: #d0d0d0;
@@ -2046,7 +2079,7 @@ body .review-list .review-content {
     width: 100%;
     font-size: 15px;
     color: #141414;
-    background: #f7fbfe;
+    background: #f4f4f4;
     border-width: 1px;
     border-style: solid;
     border-top-color: #d0d0d0;
@@ -2087,10 +2120,9 @@ button:hover, button:focus, .btn-link:hover, input[type="button"]:hover, input[t
 }
 /*cot phai*/
 .db-single-listing-right {
-    width: 300px;
+    width: 345px;
     float: left;
     padding: 0 15px;
-    margin-top: 15px;
 }
 .db-single-listing-map-wrapper {
     position: relative;
@@ -2115,19 +2147,18 @@ button:hover, button:focus, .btn-link:hover, input[type="button"]:hover, input[t
 }
 .db-single-listing-side-container.thr_km{
 	text-align:justify;
-	color: #53666D;
     font-size: 13px;
 }
 .db-single-contact-item {
     font-family: 'Open Sans';
     font-size: 14px;
-    color: #53666D;
     line-height: 20px;
-    display: block;
-    margin-bottom: 10px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.db-single-contact-item a{
+	color: #fff;
 }
 .db-single-contact-item > span{
 	float: left;

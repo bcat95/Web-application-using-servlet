@@ -221,7 +221,7 @@ $(document.body).addClass('noheabac');
 								<display:setProperty name="paging.banner.placement" value="bottom" />
 								<display:setProperty name="basic.msg.empty_list">
 									<div class="alert alert-info">
-										<strong>Oh!</strong> Chưa có bài viết nào ! Hãy là người đầu tiên.
+										<strong>Oh!</strong> Chưa có bài viết theo nội dung tìm kiếm của bạn! Hãy thử từ khác
 									</div>
 								</display:setProperty>
 								<display:setProperty name="paging.banner.all_items_found"><span class="pagebanner"> {0} {1} được hiển thị, số bài viết {2}. </span></display:setProperty>

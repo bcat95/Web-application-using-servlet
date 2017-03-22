@@ -45,10 +45,11 @@ public class BaiDangBO extends BussinessObject{
 	{
 		//them anh bia
 		try {
-			if(file != null){
+			if(file.getFileSize() != 0){
 				baiDang.setAnhBia(
 					"upload/img/bai-dang/" + BussinessObject.saveFile("/upload/img/bai-dang", file,"", action));
 			}
+			else baiDang.setAnhBia(null);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -58,8 +59,7 @@ public class BaiDangBO extends BussinessObject{
 		if (dichVu != null){
 			DichVuDAO.insertDichVu(baiDang,dichVu);
 		}
-		//them anh bai viet
-		if (fileHinhAnh != null){
+		if (fileHinhAnh.get(0).getFileSize() != 0){
 			try {
 				hinhAnhBean.setHinhAnh(BussinessObject.saveMultiFile("upload/img/bai-dang", fileHinhAnh, action));
 				BaiDangDAO.insertHinhAnh(baiDang,hinhAnhBean);
@@ -87,6 +87,7 @@ public class BaiDangBO extends BussinessObject{
 				BaiDangDAO.setAnhBia(baiDang.getMaBaiDang(),
 					"upload/img/bai-dang/" + BussinessObject.saveFile("/upload/img/bai-dang", file,"", action));
 			}
+			else BaiDangDAO.setAnhBia(baiDang.getMaBaiDang(), null);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -100,7 +101,7 @@ public class BaiDangBO extends BussinessObject{
 		}
 		
 		//them anh bai viet
-		if (fileHinhAnh != null){
+		if (fileHinhAnh.get(0).getFileSize() != 0){
 			try {
 				hinhAnhBean.setHinhAnh(BussinessObject.saveMultiFile("upload/img/bai-dang", fileHinhAnh, action));
 				BaiDangDAO.insertHinhAnh(baiDang,hinhAnhBean);
