@@ -5,11 +5,12 @@ import java.util.ArrayList;
 import org.apache.struts.action.ActionForm;
 
 import model.bean.BaiDangBean;
-import model.bean.DanhMucBean;
-import model.bean.LoaiTinBean;
-import model.bean.TinhThanhBean;
 
 public class DanhSachBaiDangDaDuyetForm extends ActionForm{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int sTT;
 	private int maBaiDang; 
 	private String tieuDe;
@@ -196,7 +197,7 @@ public class DanhSachBaiDangDaDuyetForm extends ActionForm{
 		this.diaChiWeb = item.getDiaChiWeb();
 		this.sDT = item.getsDT();
 		this.ngayDang= item.getNgayDang().toString();
-		this.ngayHetHan= item.getNgayHetHan().toString();
+		//this.ngayHetHan= item.getNgayHetHan().toString();
 		this.giaCaoNhat = item.getGiaCaoNhat();
 		this.giaThapNhat = item.getGiaThapNhat();
 		this.userName = item.getUserName();
@@ -222,7 +223,4 @@ public class DanhSachBaiDangDaDuyetForm extends ActionForm{
 	public void setTenLoaiTin(String tenLoaiTin) {
 		this.tenLoaiTin = tenLoaiTin;
 	}
-	
-	
-
 }

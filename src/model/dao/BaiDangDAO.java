@@ -69,7 +69,7 @@ public class BaiDangDAO extends DataBaseConnect{
 		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
 		try {
 			st=getConnect().createStatement();
-			rs=st.executeQuery("select * FROM BaiDang,DanhMuc where BaiDang.MaDanhMuc=DanhMuc.MaDanhMuc and BaiDang.MaDanhMuc=  "+i+"");
+			rs=st.executeQuery("select Top 8 * FROM BaiDang,DanhMuc where BaiDang.MaDanhMuc=DanhMuc.MaDanhMuc and BaiDang.MaDanhMuc=  "+i+" order by NgayDang desc");
 			BaiDangBean BaiDang;
 			while(rs.next()){
 				BaiDang = new BaiDangBean();
@@ -650,7 +650,7 @@ public class BaiDangDAO extends DataBaseConnect{
 		try {
 			st=getConnect().createStatement();
 			String sql= String.format("select baidang.tieude, noidung, anhbia, diachi, diachiweb, vido, kinhdo, sdt ,"
-					+ " giacaonhat, giathapnhat,  baidang.ngaydang, ngayhethan, soluottruycap, soluotthich,"
+					+ " giacaonhat, giathapnhat,  baidang.ngaydang, NgayHetHan, soluottruycap, soluotthich,"
 					+ " username, danhmuc.tendanhmuc, loaitin.tenloaitin, tinhthanh.tentinhthanh , diemdanhgia "
 					+ "from baidang inner join danhmuc on baidang.madanhmuc= danhmuc.madanhmuc inner join loaitin "
 					+ "on baidang.maloaitin= loaitin.maloaitin inner join tinhthanh on baidang.matinhthanh= tinhthanh.matinhthanh "
@@ -767,7 +767,7 @@ public class BaiDangDAO extends DataBaseConnect{
 		try {
 			st=getConnect().createStatement();
 			String sql= String.format("select baidang.tieude, noidung, anhbia, diachi, diachiweb, vido, kinhdo, sdt ,"
-					+ " giacaonhat, giathapnhat,  baidang.ngaydang, ngayhethan, soluottruycap, soluotthich,"
+					+ " giacaonhat, giathapnhat,  baidang.ngaydang, NgayHetHan, soluottruycap, soluotthich,"
 					+ " username, danhmuc.tendanhmuc, loaitin.tenloaitin, tinhthanh.tentinhthanh , diemdanhgia "
 					+ "from baidang inner join danhmuc on baidang.madanhmuc= danhmuc.madanhmuc inner join loaitin "
 					+ "on baidang.maloaitin= loaitin.maloaitin inner join tinhthanh on baidang.matinhthanh= tinhthanh.matinhthanh "

@@ -187,6 +187,11 @@ jQuery(document).ready(function($) {
 							</div>
 							</logic:iterate>
 							</logic:notEmpty>
+							<div class="bc-featured-listings-item">
+								<div class="bc-featured-listings-item-inner bc_vie_mor">
+									Click để khám phá thêm nhiều điều thú vị nữa nhé!
+								</div>
+							</div>
 							<!--end list item nổi bật -->
 						</div>
 					</div>

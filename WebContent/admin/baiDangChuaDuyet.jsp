@@ -49,6 +49,7 @@
                                 <th>Danh mục</th>
                                 <th>Ngày đăng</th>
                                 <th>Xem</th>
+                                <th>Gỡ bỏ</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,6 +63,11 @@
                                	<td class="center">
 										<html:link action="/xemTinChuaDuyet?maBaiDang=${mbd}">
 											<i class="fa fa-pencil fa-fw"></i><span class="db-account-listing-option-hover"> Xem</span>
+										</html:link>
+								</td>
+								<td class="center">
+										<html:link action="/goBoTinDaDuyet?maBaiDang=${mbd}">
+											<i class="glyphicon glyphicon-trash"></i><span class="db-account-listing-option-hover"> Gỡ bỏ</span>
 										</html:link>
 								</td>
                             </tr>

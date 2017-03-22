@@ -18,13 +18,10 @@ public class XemTinChuaDuyetAction extends Action{
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		
 		request.setCharacterEncoding("UTF-8");
 		DanhSachBaiDangDaDuyetForm danhSachBaiDangDaDuyetForm= (DanhSachBaiDangDaDuyetForm)form;
 		BaiDangBO baiDangBO= new BaiDangBO();
-		System.out.println("NOy");
 		int mbd= danhSachBaiDangDaDuyetForm.getMaBaiDang();
-		System.out.println("mbd action"+mbd);
 		BaiDangBean baiDang= baiDangBO.getListChiTietBaiDangChuaDuyet(mbd);
 		danhSachBaiDangDaDuyetForm.setBaiDangDaDuyet(baiDang);
 		System.out.println("NOy1");

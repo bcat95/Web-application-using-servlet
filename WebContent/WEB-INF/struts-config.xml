@@ -128,7 +128,7 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="baiDangChuaDuyet" path="/admin/baiDangChuaDuyet.jsp"/>
 		</action>
 		
-		<action  name="danhSachBaiDangDaDuyetForm" path="/xemTinChuaDuyet"
+		<action name="danhSachBaiDangDaDuyetForm" path="/xemTinChuaDuyet"
 			scope="request" type="action.baidang.XemTinChuaDuyetAction" >
 			<forward name="xemTinChuaDuyet" path="/admin/xemChiTietTinChuaDuyet.jsp"/>
 		</action>
