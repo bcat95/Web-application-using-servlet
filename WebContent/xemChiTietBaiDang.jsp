@@ -8,6 +8,11 @@
 <script>
 $(document.body).addClass('noheabac');
 </script>
+<style>
+body {
+    margin-bottom: calc(175px + 130px);
+}
+</style>
 <script>
 	$(document).ready(function(){
 		$("#review-title").attr("placeholder", "Tiêu đề bình luận");
@@ -19,6 +24,9 @@ $(document.body).addClass('noheabac');
 	</script>
 	<!-- chi tiet tin-->
 	<%-- <html:form action="xembaidang" method="get" styleId="db-add-listing-form" enctype="multipart/form-data"> --%>
+	<div class="db-listing-featured-img">
+		<div class="db-single-overlay"></div>
+	</div>
 	<div class="db-single-listing-wrapper">
 		<bean:define id="maBaiDang" name="baiDangForm" property="maBaiDang"></bean:define>
 		<%-- <bean:define id="userName" name="baiDangForm" property="userName"></bean:define> --%>
@@ -28,14 +36,48 @@ $(document.body).addClass('noheabac');
 				background: url(<bean:write name="baiDangForm" property="anhBia"/>);
 			}
 		</style>
-		<div class="db-listing-featured-img">
-			<div class="db-single-overlay"></div>
-		</div>
 		<div class="db-single-listing-container">
 			<!--tieu de tin-->
 			<div class="db-single-listing-head">
-				<span class="db-single-listing-category"><bean:write name="baiDangForm" property="tenDanhMuc"/>  </span>
-				<h1 class="single-listing-title"><bean:write name="baiDangForm" property="tieuDe"/> </h1>
+				<div class="thr_hea_lef col-md-4" style="background: url(<bean:write name="baiDangForm" property="anhBia"/>)"></div>
+				<div class="thr_hea_rig col-md-8">
+					<span class="db-single-listing-category"><bean:write name="baiDangForm" property="tenDanhMuc"/> - <a href='timKiem.do?maTinhThanh=<bean:write name="baiDangForm" property="maTinhThanh"/>'><bean:write name="baiDangForm" property="tenTinhThanh"/></a></span>
+					<h1 class="single-listing-title"><bean:write name="baiDangForm" property="tieuDe"/></h1>
+					<!--thong tin bai-->
+					<div class="thr_inf">
+						<h3 class="db-listing-side-title">Khuyến mãi</h3>
+						<div class="db-single-listing-side-container thr_km">
+							<span class="db-single-contact-item clearfix">
+								<span><i class="fa fa-calendar-check-o" aria-hidden="true"></i>8/3/2017 -></span>
+								<span><i class="fa fa-calendar-times-o" aria-hidden="true"></i>10/3/2017</span>
+							</span>
+							NETHOST khuyến mại chúc mừng ngày Quốc tế phụ nữ<br>
+							Chào mừng ngày Quốc tế phụ nữ, NETHOST tung ra chương trình khuyến mại mua Hosting được tặng Website, Mua VPS giảm ngay 20%.
+						</div>
+					</div>
+					<!--chi tiet mo cua-->
+					
+					<!--end chi tiet mo cua-->
+					<!--end thong tin bai-->
+				</div>
+				<div class="thr_inf_bot">
+					<!-- <h3 class="db-listing-side-title">Chi tiết liên hệ</h3> -->
+					<span class="db-single-contact-item thr_add col-md-4">
+						<i class="fa fa-map-marker" aria-hidden="true"></i><bean:write name="baiDangForm" property="diaChi" />
+					</span>
+					<span class="db-single-contact-item col-md-2">
+						<i class="fa fa-phone" aria-hidden="true"></i><bean:write name="baiDangForm" property="sDT"/>
+					</span>
+					<span class="db-single-contact-item col-md-3">
+						<i class="fa fa-internet-explorer" aria-hidden="true"></i>
+						<a href="http://example.com"><bean:write name="baiDangForm" property="diaChiWeb"/></a>
+					</span>
+					<span class="db-single-contact-item col-md-3">
+						<i class="fa fa-money" aria-hidden="true"></i>
+						<bean:write name="baiDangForm" property="giaThapNhat" format="#,##0"/> - <bean:write name="baiDangForm" property="giaCaoNhat" format="#,##0"/> vnđ
+					</span>
+				</div>
+				
 			</div>
 			<!--end tieu de tin-->
 			<div class="db-single-listing-left">
@@ -47,10 +89,40 @@ $(document.body).addClass('noheabac');
 					<!--end chi tiet tin noi dung tin-->
 					<!--Chi tiet tin hinh anh tin-->
 					<h3>Triển lãm ảnh</h3>
+						<script>
+						$(document).ready(function () {
+						    var contentGallery1a=[
+						    	<logic:iterate id="hinhanh" name="baiDangForm" property="listHinhAnh">
+						    	{
+									src: '<bean:write name="hinhanh" property="tenHinh"/>'
+								},
+								</logic:iterate>
+								];
+							
+							jQuery("#nanoGallery1a").nanoGallery({thumbnailWidth:260,thumbnailHeight:170,
+								items:contentGallery1a,
+								theme:'light',
+								thumbnailHoverEffect:{'name':'imageFlipHorizontal','duration':500},
+								useTags:false,
+						      viewerDisplayLogo:true,
+						      theme:'clean',
+						      i18n:{'thumbnailImageDescription':'Xem ảnh', 'thumbnailAlbumDescription':'Open Album'},
+								thumbnailLabel:{display:true,position:'overImageOnMiddle', align:'center'},
+						      colorSchemeViewer:'default'
+							});
+						    // ##################################################################################################################
+							// ##### DEMO PANEL #####
+						    // ##################################################################################################################
+								jQuery("#nanoGalleryAnimation1").nanoGalleryDemo({thumbnailWidth:260, thumbnailHeight:170, itemsBaseURL:'demonstration',
+						      viewerDisplayLogo:true
+							});
+						});
+						</script>
 					<div class="db-gallery-mos-container clearfix">
-						<logic:iterate id="hinhanh" name="baiDangForm" property="listHinhAnh">
+						<div id="nanoGallery1a"></div>
+						<%-- <logic:iterate id="hinhanh" name="baiDangForm" property="listHinhAnh">
 							<a href="#" class="db-gallery-mos-item prettyphoto" rel="prettyPhoto[whitelab_map]" style="background: url(<bean:write name="hinhanh" property="tenHinh"/>)"></a>
-						</logic:iterate>
+						</logic:iterate> --%>
 					</div>
 					<!--end Chi tiet tin hinh anh tin-->
 					<!--chi tiet tin footer tin -->
@@ -244,37 +316,8 @@ $(document.body).addClass('noheabac');
 					</script>
 					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyVj9OfaIf5rY7HUFfWKbz_9H2Lef5BBo&callback=myMap"></script>
 				</div>
-				<!--thong tin bai-->
-				<div class="db-single-listing-side-wrapper">
-					<h3 class="db-listing-side-title">Chi tiết liên hệ</h3>
-					<div class="db-single-listing-side-container">
-						<span class="db-single-contact-item">
-							<i class="fa fa-map-marker" aria-hidden="true"></i><bean:write name="baiDangForm" property="tenTinhThanh"/>
-						</span>
-					<span class="db-single-contact-item">
-						<i class="fa fa-phone" aria-hidden="true"></i><bean:write name="baiDangForm" property="sDT"/>
-					</span>
-					<span class="db-single-contact-item">
-						<i class="fa fa-internet-explorer" aria-hidden="true"></i>
-						<a href="http://example.com"><bean:write name="baiDangForm" property="diaChiWeb"/></a>
-						</span>
-					</div>
-				</div>
-				<!--end thong tin bai-->
-				<!--chi tiet mo cua-->
-				<div class="db-single-listing-side-wrapper">
-					
-					<h3 class="db-listing-side-title">Khuyến mãi</h3>
-					<div class="db-single-listing-side-container thr_km">
-						<span class="db-single-contact-item clearfix">
-							<span><i class="fa fa-calendar-check-o" aria-hidden="true"></i>8/3/2017</span>
-							<span><i class="fa fa-calendar-times-o" aria-hidden="true"></i>10/3/2017</span>
-						</span>
-						NETHOST khuyến mại chúc mừng ngày Quốc tế phụ nữ<br>
-						Chào mừng ngày Quốc tế phụ nữ, NETHOST tung ra chương trình khuyến mại mua Hosting được tặng Website, Mua VPS giảm ngay 20%.
-					</div>
-				</div>
-				<!--end chi tiet mo cua-->
+				
+				
 				<!--quang cao cot phai-->
 				<div class="db-single-listing-side-wrapper">
 					<h3 class="db-listing-side-title">Advertisement</h3>
@@ -296,5 +339,21 @@ $(document.body).addClass('noheabac');
 	//# sourceURL=pen.js
 	</script>
 	<%-- </html:form> --%>
+	<!-- nanoGALLERY - default theme css file -->
+	<link href="css/nanogallery.min.css" rel="stylesheet" type="text/css">
+	<!-- nanoGALLERY - css file for the theme 'clean'-->
+	<link href="css/themes/clean/nanogallery_clean.min.css" rel="stylesheet" type="text/css">
+	<!-- nanoGALLERY - css file for the theme 'light'-->
+	<link href="css/themes/light/nanogallery_light.min.css" rel="stylesheet" type="text/css">
+	<!-- nanoGALLERY javascript-->
+	<script type="text/javascript" src="js/jquery.nanogallery.min.js"></script>
+  	<style>
+  		.nanogallery_theme_clean .nanoGalleryContainer .nanoGalleryThumbnailContainer img {
+		    width: 100%;
+		    height: auto;
+		    max-height: none !important;
+		    max-width: none !important;
+		}
+  	</style>
 	<!-- end chi tiet tin-->
 <jsp:include page="template_Footer.jsp"></jsp:include>

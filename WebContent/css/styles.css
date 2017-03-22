@@ -827,9 +827,20 @@ body .bc-featured-listings-description {
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
-    height: 61px;
+    height: 72px;
     _margin-top: 9px;
     overflow: hidden;
+}
+.bc-featured-listings-description *{
+	padding: 0 !important;
+	margin: 0 !important;
+	color: rgb(29, 33, 41) !important;
+	font-size: 13px !important;
+	background-color: transparent !important;
+	font-weight: 400 !important;
+    font-family: arial !important;
+	font-style: normal !important;
+	text-transform: lowercase;
 }
 .bc-featured-listings-meta {
     border-top: 1px solid #e6e9ea;
@@ -1407,12 +1418,23 @@ table#threads thead{
 /* .db-listing-featured-img {
     background: url(https://demo.cohhe.com/whitelab/wp-content/uploads/2016/10/san-francisco-1630372_1280.jpg);
 } */
-.db-listing-featured-img {
-    height: 383px;
+.db-single-listing-wrapper {
     position: relative;
+    display: block;
+    top: 100px;
+}
+.db-listing-featured-img {
+    height: 100%;
+    position: absolute;
     background-position: center!important;
     background-size: cover!important;
-    z-index: 1;
+    width: 100%;
+    z-index: -999;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
 }
 .db-single-overlay {
     height: 436px;
@@ -1431,44 +1453,70 @@ table#threads thead{
     z-index: 2;
 }
 .db-single-listing-head {
+    display: block;
+    position: relative;
+    background-color: #fff;
+    color: #ccc;
+    padding: 10px 15px;
+    margin: 0 15px;
+    height: 250px;
+    overflow: hidden;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.10);
+    border-radius: 4px;
+}
+.thr_hea_rig.col-md-8 {
+    height: 100%;
+}
+.thr_inf_bot {
     position: absolute;
-    top: -207px;
-    left: 15px;
+    bottom: 0;
     width: 100%;
+    padding-top: 3px;
+    border-top: 1px solid #ccc;
+}
+.thr_hea_lef.col-md-4{
+	background-position: center!important;
+    background-size: cover!important;
+    display: block;
+    height: calc(100% - 30px);
+}
+.thr_inf {
+    height: 100px;
+    overflow: hidden;
+}
+.thr_inf .db-listing-side-title {
+    margin: 0;
 }
 .db-single-listing-category {
     font-family: 'Poppins',tahoma;
     font-size: 12px;
     letter-spacing: 1px;
-    color: #FFE066;
+    color: #2698d7;
     text-transform: uppercase;
 }
 .db-single-listing-category:before {
     content: '';
-    border: 2px solid #ffe066;
+    border: 2px solid #2698d7;
     width: 11px;
     height: 11px;
     display: inline-block;
     border-radius: 50%;
     position: relative;
-    top: 3px;
+    top: 1px;
     margin-right: 5px;
 }
 .db-single-listing-head h1 {
     font-family: 'Poppins',tahoma;
-    font-size: 28px;
-    line-height: 46px;
-    color: #FFFFFF;
+    font-size: 25px;
+    color: #0c0c0a;
     padding: 0;
-    font-weight: 600;
-    max-width: 50%;
-    height: 92px;
 }
 .db-single-listing-left {
-    width: 75%;
+    width: calc(100% - 300px);
+    _width: 75%;
     float: left;
     padding: 0 15px;
-    margin-top: -99px;
+    margin-top: 15px;
 }
 .db-single-listing-main {
     background: #fff;
@@ -2036,10 +2084,10 @@ button:hover, button:focus, .btn-link:hover, input[type="button"]:hover, input[t
 }
 /*cot phai*/
 .db-single-listing-right {
-    width: 25%;
+    width: 300px;
     float: left;
     padding: 0 15px;
-    margin-top: -99px;
+    margin-top: 15px;
 }
 .db-single-listing-map-wrapper {
     position: relative;
@@ -2059,15 +2107,13 @@ button:hover, button:focus, .btn-link:hover, input[type="button"]:hover, input[t
 }
 .db-single-listing-side-wrapper .db-single-listing-side-container {
     background: #FFFFFF;
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.10);
-    border-radius: 4px;
-    overflow: hidden;
-    padding: 20px 22px;
     position: relative;
     overflow: hidden;
 }
 .db-single-listing-side-container.thr_km{
-	text-align:justify; 
+	text-align:justify;
+	color: #53666D;
+    font-size: 13px;
 }
 .db-single-contact-item {
     font-family: 'Open Sans';
@@ -2076,10 +2122,13 @@ button:hover, button:focus, .btn-link:hover, input[type="button"]:hover, input[t
     line-height: 20px;
     display: block;
     margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .db-single-contact-item > span{
-	width: 50%;
 	float: left;
+    margin-right: 15px;
 }
 .db-single-contact-item {
     display: block;
@@ -2096,15 +2145,6 @@ button:hover, button:focus, .btn-link:hover, input[type="button"]:hover, input[t
 
 .db-single-listing-side-wrapper .db-single-listing-side-container.hoo {
     padding: 15px 20px;
-}
-.db-single-listing-side-wrapper .db-single-listing-side-container {
-    background: #FFFFFF;
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.10);
-    border-radius: 4px;
-    overflow: hidden;
-    padding: 20px 22px;
-    position: relative;
-    overflow: hidden;
 }
 .db-single-listing-side-container.hoo table {
     box-shadow: none;
