@@ -141,7 +141,7 @@
 										</div>
 										<div class="db-field-row text-added">
 											<label class="db-field-row-label" for="listing_address_lat">Vĩ độ</label>
-											<html:text property="viDO" styleId="listing_address_lat" value="0"></html:text>
+											<html:text property="viDo" styleId="listing_address_lat" value="0"></html:text>
 										</div>
 										<div class="db-field-row text-added">
 											<label class="db-field-row-label" for="listing_address_lng">Kinh độ</label>

@@ -307,14 +307,26 @@ body {
 					<div id="db-single-listing-map" style="width: 100%; height: 300px; position: relative; overflow: hidden;"></div>
 					<script>
 					function myMap() {
-					var mapCanvas = document.getElementById("db-single-listing-map");
-					var mapOptions = {
-					center: new google.maps.LatLng(51.5, -0.2), zoom: 10
-					};
-					var map = new google.maps.Map(mapCanvas, mapOptions);
+					var myLatLng = {lat: <bean:write name="baiDangForm" property="viDo"/>, lng: <bean:write name="baiDangForm" property="kinhDo"/>};
+					var zoom=13;
+					var map = new google.maps.Map(document.getElementById('db-single-listing-map'), {
+					    zoom: zoom,
+					    center: myLatLng,
+					    mapTypeId: google.maps.MapTypeId.ROADMAP
+					});
+					var infowindow = new google.maps.InfoWindow();
+					var thr_marker = new google.maps.Marker({
+					     position: myLatLng,
+					     map: map,
+					     animation: google.maps.Animation.DROP,
+					 });
+					thr_marker.addListener('click', function() {
+						 infowindow.setContent("<a target='_blank' href='https://www.google.com/maps?q=loc:<bean:write name='baiDangForm' property='viDo'/>,<bean:write name='baiDangForm' property='kinhDo'/>'>Xem Trên Google map</a>");
+						 infowindow.open(map, thr_marker);
+				     });
 					}
 					</script>
-					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyVj9OfaIf5rY7HUFfWKbz_9H2Lef5BBo&callback=myMap"></script>
+					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2dl2OOrUh7HFZwsJP8deel-3DTgfWZtk&callback=myMap"></script>
 				</div>
 				
 				

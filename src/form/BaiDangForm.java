@@ -46,7 +46,7 @@ public class BaiDangForm  extends ActionForm{
 	private String noiDung;
 	private String diaChi;
 	private String diaChiWeb;
-	private String viDO;
+	private String viDo;
 	private String kinhDo;
 	private String sDT;
 	private int giaCaoNhat;
@@ -279,13 +279,13 @@ public class BaiDangForm  extends ActionForm{
 	public void setDiaChiWeb(String diaChiWeb) {
 		this.diaChiWeb = diaChiWeb;
 	}
-
-	public String getViDO() {
-		return viDO;
+	
+	public String getViDo() {
+		return viDo;
 	}
 
-	public void setViDO(String viDO) {
-		this.viDO = viDO;
+	public void setViDo(String viDo) {
+		this.viDo = viDo;
 	}
 
 	public String getKinhDo() {
@@ -413,7 +413,7 @@ public class BaiDangForm  extends ActionForm{
 		this.anhBia=itemBD.getAnhBia();
 		this.diaChi = itemBD.getDiaChi();
 		this.diaChiWeb = itemBD.getDiaChiWeb();
-		this.viDO = itemBD.getViDo();
+		this.viDo = itemBD.getViDo();
 		this.kinhDo = itemBD.getKinhDo();
 		this.sDT = itemBD.getsDT();
 		this.giaCaoNhat = itemBD.getGiaCaoNhat();
@@ -436,7 +436,7 @@ public class BaiDangForm  extends ActionForm{
 		this.noiDung = item.getNoiDung();
 		this.diaChi = item.getDiaChi();
 		this.diaChiWeb = item.getDiaChiWeb();
-		this.viDO = item.getViDo();
+		this.viDo = item.getViDo();
 		this.kinhDo = item.getKinhDo();
 		this.sDT = item.getsDT();
 		this.giaCaoNhat = item.getGiaCaoNhat();
@@ -452,7 +452,7 @@ public class BaiDangForm  extends ActionForm{
 		this.noiDung = item.getNoiDung();
 		this.diaChi = item.getDiaChi();
 		this.diaChiWeb = item.getDiaChiWeb();
-		this.viDO = item.getViDo();
+		this.viDo = item.getViDo();
 		this.kinhDo = item.getKinhDo();
 		this.sDT = item.getsDT();
 		this.giaCaoNhat = item.getGiaCaoNhat();
@@ -467,7 +467,7 @@ public class BaiDangForm  extends ActionForm{
 	}
 	//ham get thuoc tinh bai dang 
 	public BaiDangBean getBaiDang() {
-		return new BaiDangBean(maBaiDang,tieuDe,noiDung,diaChi,diaChiWeb,viDO,kinhDo,sDT,giaCaoNhat,giaThapNhat,getNgayDangDate(),userName,maDanhMuc,maTinhThanh);
+		return new BaiDangBean(maBaiDang,tieuDe,noiDung,diaChi,diaChiWeb,viDo,kinhDo,sDT,giaCaoNhat,giaThapNhat,getNgayDangDate(),userName,maDanhMuc,maTinhThanh);
 	}
 	//ham set thuoc tinh binh luan
 	public void setBinhLuan(BinhLuanBean item)

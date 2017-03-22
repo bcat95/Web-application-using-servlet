@@ -81,7 +81,7 @@ public class BaiDangBean {
 	}
 
 	//dung cho form dang bai len
-	public BaiDangBean(int maBaiDang, String tieuDe, String noiDung, String diaChi, String diaChiWeb, String viDO,
+	public BaiDangBean(int maBaiDang, String tieuDe, String noiDung, String diaChi, String diaChiWeb, String viDo,
 			String kinhDo, String sDT, int giaCaoNhat, int giaThapNhat, Date ngayDang, String userName, int maDanhMuc,
 			int maTinhThanh) {
 		super();
@@ -90,7 +90,7 @@ public class BaiDangBean {
 		this.noiDung = noiDung;
 		this.diaChi = diaChi;
 		this.diaChiWeb = diaChiWeb;
-		this.viDo = viDO;
+		this.viDo = viDo;
 		this.kinhDo = kinhDo;
 		this.sDT = sDT;
 		this.giaCaoNhat = giaCaoNhat;
@@ -102,7 +102,7 @@ public class BaiDangBean {
 	}
 	//tat ca cac truong
 	
-	public BaiDangBean(int maBaiDang, String tieuDe, String noiDung, String diaChi, String diaChiWeb, String viDO,
+	public BaiDangBean(int maBaiDang, String tieuDe, String noiDung, String diaChi, String diaChiWeb, String viDo,
 			String kinhDo, String sDT, int giaCaoNhat, int giaThapNhat, Date ngayDang, Date ngayHetHan,
 			int soLuongTruyCap, int soLuotThich, int diemDanhGia, String userName, int maDanhMuc, String tenDanhMuc,
 			int maLoaiTin, int maTinhThanh, String tenTinhThanh, String anhBia, ArrayList<HinhAnhBean> listHinhAnh,ArrayList<DichVuBean> listDichVu) {
@@ -112,7 +112,7 @@ public class BaiDangBean {
 		this.noiDung = noiDung;
 		this.diaChi = diaChi;
 		this.diaChiWeb = diaChiWeb;
-		this.viDo = viDO;
+		this.viDo = viDo;
 		this.kinhDo = kinhDo;
 		this.sDT = sDT;
 		this.giaCaoNhat = giaCaoNhat;
@@ -147,10 +147,7 @@ public class BaiDangBean {
 		this.sTT = sTT;
 	}
 
-	public void setViDo(String viDo) {
-		this.viDo = viDo;
-	}
-
+	
 	public void setSdf(SimpleDateFormat sdf) {
 		this.sdf = sdf;
 	}
@@ -246,7 +243,7 @@ public class BaiDangBean {
 		return viDo;
 	}
 
-	public void setViDO(String viDo) {
+	public void setViDo(String viDo) {
 		this.viDo = viDo;
 	}
 

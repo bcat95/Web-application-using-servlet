@@ -5,6 +5,10 @@
 <%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="header.do" flush="true"></jsp:include>
+<!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
+<link rel="stylesheet" type="text/css" href="engine0/style.css" />
+<script type="text/javascript" src="engine0/jquery.js"></script>
+<!-- End WOWSlider.com HEAD section -->
 <script>
 $(document.body).addClass('noheabac');
 </script>
@@ -64,25 +68,35 @@ jQuery(document).ready(function($) {
 			</div>
 		</div>
 		<div class="bc-header-categories">
-			<div class="bc-header-category-item" data-id="14">
+			<div class="bc-header-category-item" data-id="1">
+				<html:link href="timKiem.do?&maDanhMuc=1">
 				<span class="bc-header-category-icon wl-beauty"></span>
-				<span class="bc-header-category-name">Sắc đẹp</span>
+				<span class="bc-header-category-name">Làm đẹp</span>
+				</html:link>
 			</div>
-			<div class="bc-header-category-item" data-id="13">
+			<div class="bc-header-category-item" data-id="3">
+				<html:link href="timKiem.do?&maDanhMuc=3">
 				<span class="bc-header-category-icon wl-catering"></span>
 				<span class="bc-header-category-name">Ăn uống</span>
+				</html:link>
 			</div>
-			<div class="bc-header-category-item" data-id="16">
+			<div class="bc-header-category-item" data-id="4">
+				<html:link href="timKiem.do?&maDanhMuc=4">
 				<span class="bc-header-category-icon wl-finances"></span>
 				<span class="bc-header-category-name">Tài chánh</span>
+				</html:link>
 			</div>
-			<div class="bc-header-category-item" data-id="15">
+			<div class="bc-header-category-item" data-id="5">
+				<html:link href="timKiem.do?&maDanhMuc=5">
 				<span class="bc-header-category-icon wl-health"></span>
 				<span class="bc-header-category-name">Sức khỏe</span>
+				</html:link>
 			</div>
-			<div class="bc-header-category-item" data-id="17">
+			<div class="bc-header-category-item" data-id="7">
+				<html:link href="timKiem.do?&maDanhMuc=7">
 				<span class="bc-header-category-icon wl-plants"></span>
-				<span class="bc-header-category-name">Cây cảnh</span>
+				<span class="bc-header-category-name">Giải trí</span>
+				</html:link>
 			</div>
 		</div>
 		<div class="slotholder">

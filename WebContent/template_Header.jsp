@@ -17,7 +17,6 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery-te-1.4.0.min.js"></script>
 	<link rel="stylesheet" href="css/styles.css">
-	<link rel="stylesheet" href="engine0/style.css">
 	<link rel="stylesheet" href="css/jquery-te-1.4.0.css">
 	<link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
 	<link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">

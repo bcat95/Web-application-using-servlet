@@ -59,12 +59,12 @@ $(document.body).addClass('noheabac');
 						var infowindow = new google.maps.InfoWindow();
 						<logic:iterate id="bd" name="timKiemForm" property="listBaiDang">
 							<bean:define id="maBaiDang" name="bd" property="maBaiDang"></bean:define>
-							<bean:define id="kinhDO" name="bd" property="kinhDo"></bean:define>
-							<bean:define id="viDO" name="bd" property="viDo"></bean:define>
+							<bean:define id="kinhDo" name="bd" property="kinhDo"></bean:define>
+							<bean:define id="viDo" name="bd" property="viDo"></bean:define>
 							<bean:define id="tieuDe" name="bd" property="tieuDe"></bean:define>
 							<bean:define id="anhBia" name="bd" property="anhBia"></bean:define>
 							<bean:define id="tenDanhMuc" name="bd" property="tenDanhMuc"/>
-							 var thr_${maBaiDang}_LatLng = {lat: ${viDO}, lng: ${kinhDO}};
+							 var thr_${maBaiDang}_LatLng = {lat: ${viDo}, lng: ${kinhDo}};
 							 var thr_${maBaiDang}_marker = new google.maps.Marker({
 							     position: thr_${maBaiDang}_LatLng,
 							     map: map,

@@ -606,6 +606,9 @@ header {
     margin-top: 30px;
     color: #fff;
 }
+.bc-header-categories .bc-header-category-item a{
+	color: #fff;
+}
 .bc-header-category-item .bc-header-category-icon {
     display: block;
     font-size: 50px;

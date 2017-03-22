@@ -20,7 +20,7 @@
 											<ul class="db-account-menu nav-pills clearfix">
 												<li class="active"><a data-toggle="pill" href="#taiKhoan_thongTin" class="active">Thông tin</a></li>
 												<li><a data-toggle="pill" href="#taiKhoan_capNhap" class="">Cập nhật thông tin</a></li>
-												<li><a href="dangTin.do">Đăng tin</a></li>
+												<li><a href="dangtin.do">Đăng tin</a></li>
 												<li><a data-toggle="pill" href="#taiKhoan_tinDang" class="">Danh sách bài đã đăng</a></li>
 												<li><a data-toggle="pill" href="#taiKhoan_yeuThich" class="">Ưa thích</a></li>
 												<li><a href="Logout.do" class="db-logout dt-button dt-button-danger dt-button-middle">Đăng xuất</a></li>
@@ -118,7 +118,7 @@
 													<h2 class="db-account-title">Danh sách các bài đăng của bạn</h2>
 													<display:table id="bcbaidang" name="sessionScope.thongTinTaiKhoanForm.listBaiDang" class="db-account-listings table table-striped table-hover"
 															requestURI="/thong-tin.do" pagesize="5">
-															<display:column property="maBaiDang" title="ID bài đăng" sortable="true" class="bcblock mabaidang" href="/xemtin.do" paramId="maBaiDang"/>
+															<display:column property="maBaiDang" title="ID" sortable="true" class="bcblock mabaidang" href="/xemtin.do" paramId="maBaiDang"/>
 															<display:column property="tieuDe" title="Tiêu đề" class="bcblock tieude" />
 															<display:column property="tenLoaiTin" title="Trạng thái" class="bcblock tenlt"/>
 															<display:column property="tenDanhMuc" title="Danh mục" class="bcblock tendm"/>

@@ -50,7 +50,7 @@ public class BaiDangDAO extends DataBaseConnect{
 				BaiDang.setMaDanhMuc(rs.getInt("maDanhMuc"));
 				BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
-				BaiDang.setViDO(rs.getString("ViDo"));
+				BaiDang.setViDo(rs.getString("ViDo"));
 				BaiDang.setKinhDo(rs.getString("KinhDO"));
 				list.add(BaiDang);
 			}
@@ -83,7 +83,7 @@ public class BaiDangDAO extends DataBaseConnect{
 				BaiDang.setMaDanhMuc(rs.getInt("maDanhMuc"));
 				BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
-				BaiDang.setViDO(rs.getString("ViDo"));
+				BaiDang.setViDo(rs.getString("ViDo"));
 				BaiDang.setKinhDo(rs.getString("KinhDO"));
 				BaiDang.setSoLuotThich(rs.getInt("SoLuotThich"));
 				list.add(BaiDang);
@@ -131,7 +131,7 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
-						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setViDo(rs.getString("ViDo"));
 						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
@@ -171,7 +171,7 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
-						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setViDo(rs.getString("ViDo"));
 						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
@@ -211,7 +211,7 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
-						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setViDo(rs.getString("ViDo"));
 						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
@@ -252,7 +252,7 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
-						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setViDo(rs.getString("ViDo"));
 						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
@@ -293,7 +293,7 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
-						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setViDo(rs.getString("ViDo"));
 						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
@@ -334,7 +334,7 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
-						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setViDo(rs.getString("ViDo"));
 						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
@@ -375,7 +375,7 @@ public class BaiDangDAO extends DataBaseConnect{
 						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
-						BaiDang.setViDO(rs.getString("ViDo"));
+						BaiDang.setViDo(rs.getString("ViDo"));
 						BaiDang.setKinhDo(rs.getString("KinhDO"));
 						list.add(BaiDang);
 					}
@@ -481,6 +481,8 @@ public class BaiDangDAO extends DataBaseConnect{
 				baiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 				baiDang.setMaTinhThanh(rs.getInt("maTinhThanh"));
 				baiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
+				baiDang.setKinhDo(rs.getString("kinhDo"));
+				baiDang.setViDo(rs.getString("viDo"));
 				baiDang.setGiaThapNhat(rs.getInt("GiaThapNhat"));
 				baiDang.setGiaCaoNhat(rs.getInt("GiaCaoNhat"));
 			}
@@ -513,7 +515,7 @@ public class BaiDangDAO extends DataBaseConnect{
 				baiDang.setDiaChi(rs.getString("DiaChi"));
 				baiDang.setMaDanhMuc(rs.getInt("MaDanhMuc"));
 				baiDang.setMaTinhThanh(rs.getInt("MaTinhThanh"));
-				baiDang.setViDO(rs.getString("ViDo"));
+				baiDang.setViDo(rs.getString("ViDo"));
 				baiDang.setKinhDo(rs.getString("KinhDo"));
 				baiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
 				baiDang.setsDT(rs.getString("SDT"));
@@ -662,7 +664,7 @@ public class BaiDangDAO extends DataBaseConnect{
 				baiDang.setAnhBia(rs.getString("AnhBia"));
 				baiDang.setDiaChi(rs.getString("DiaChi"));
 				baiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
-				baiDang.setViDO(rs.getString("ViDo"));
+				baiDang.setViDo(rs.getString("ViDo"));
 				baiDang.setKinhDo(rs.getString("KinhDo"));
 				baiDang.setsDT(rs.getString("SDT"));
 				baiDang.setGiaCaoNhat(rs.getInt("GiaCaoNhat"));
@@ -778,7 +780,7 @@ public class BaiDangDAO extends DataBaseConnect{
 				baiDang.setAnhBia(rs.getString("AnhBia"));
 				baiDang.setDiaChi(rs.getString("DiaChi"));
 				baiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
-				baiDang.setViDO(rs.getString("ViDo"));
+				baiDang.setViDo(rs.getString("ViDo"));
 				baiDang.setKinhDo(rs.getString("KinhDo"));
 				baiDang.setsDT(rs.getString("SDT"));
 				baiDang.setGiaCaoNhat(rs.getInt("GiaCaoNhat"));
