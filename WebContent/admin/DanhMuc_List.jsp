@@ -37,9 +37,10 @@
                                 	<i class="glyphicon glyphicon-edit"></i><a href="#"> Sửa</a>
                                 </td>
                                 <td class="center">
+                                <i class="glyphicon glyphicon-trash"></i>
                                 <bean:define id="maDanhMuc" name="dm" property="maDanhMuc"></bean:define>
                 				<html:link action="/xoa-danh-muc?maDanhMuc=${maDanhMuc}">
-                					<span class="glyphicon glyphicon-edit"></span>
+                					Xóa
                 				</html:link>
                                 </td>
                             </html:form>

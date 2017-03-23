@@ -719,6 +719,29 @@ public class BaiDangDAO extends DataBaseConnect{
 		return BaiDang;
 	}
 	
+	public BaiDangBean getListBaiDangChuaDuyet(int maBaiDang) {
+		BaiDangBean BaiDang=null;
+		try {
+			st=getConnect().createStatement();
+			String sql= String.format("select baidang.mabaidang, baidang.tieude, danhmuc.tendanhmuc, baidang.ngaydang from baidang inner join danhmuc on baidang.madanhmuc= danhmuc.madanhmuc inner join loaitin on baidang.maloaitin= loaitin.maloaitin where loaitin.TenLoaiTin=N'Chưa duyệt' and baidang.mabaidang= %d", maBaiDang);
+			rs=st.executeQuery(sql);
+			
+			while(rs.next()){
+				BaiDang = new BaiDangBean();
+				BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
+				BaiDang.setTieuDe(rs.getString("TieuDe"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return BaiDang;
+	}
 	
 	public ArrayList<BaiDangBean> getListBaiDangChuaDuyet() {
 		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();

@@ -122,7 +122,9 @@ public class BaiDangBO extends BussinessObject{
 		return baiDangDAO.getListChiTietBaiDangDaDuyet(maBaiDang);
 	}
 	
-	
+	public BaiDangBean getListBaiDangChuaDuyet(int maBaiDang) {
+		return baiDangDAO.getListBaiDangChuaDuyet(maBaiDang);
+	}
 	//xem chi tiet danh sạh bai dang da duyet
 	public BaiDangBean getListBaiDangDaDuyet(int maBaiDang) {
 		return baiDangDAO.getListBaiDangDaDuyet(maBaiDang);

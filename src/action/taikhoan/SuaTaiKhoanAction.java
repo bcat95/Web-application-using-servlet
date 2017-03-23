@@ -13,8 +13,10 @@ import org.apache.struts.action.ActionMapping;
 
 import common.StringProcess;
 import form.DanhSachTaiKhoanForm;
+import model.bean.BaiDangBean;
 import model.bean.LoaiTaiKhoanBean;
 import model.bean.QuyenBean;
+import model.bean.TaiKhoanBean;
 import model.bo.LoaiTaiKhoanBO;
 import model.bo.QuyenBO;
 import model.bo.TaiKhoanBO;
@@ -50,13 +52,20 @@ public class SuaTaiKhoanAction extends Action{
 				return mapping.findForward("suaTK");
 			} 
 			else if(StringProcess.equals(danhSachTaiKhoanForm.getSubmit(), "suaTK")){
-				System.out.println("noy day");
+				
 				taiKhoanBO.suaTaiKhoan(danhSachTaiKhoanForm.getTaiKhoan());
-				System.out.println("noy day2");
 				return mapping.findForward("suaTKxong");
 			}
 		}
 		//them cac du lieu danh sach
+		TaiKhoanBean taiKhoanBean= taiKhoanBO.getListTaiKhoan(username);
+		danhSachTaiKhoanForm.setPassWord(taiKhoanBean.getPassWord());
+		danhSachTaiKhoanForm.setHoTen(taiKhoanBean.getHoTen());
+		danhSachTaiKhoanForm.setGioiTinh(taiKhoanBean.getGioiTinh());
+		danhSachTaiKhoanForm.setNgaySinh(taiKhoanBean.getNgaySinh());
+		danhSachTaiKhoanForm.setsDT(taiKhoanBean.getsDT());
+		danhSachTaiKhoanForm.seteMail(taiKhoanBean.geteMail());
+		danhSachTaiKhoanForm.setNgayDangKy(taiKhoanBean.getNgayDangKy());
 		danhSachTaiKhoanForm.setListQuyen(listQuyen);
 		danhSachTaiKhoanForm.setListLoaiTaiKhoan(listLoaiTaiKhoan);
 		return mapping.findForward("suaTK");

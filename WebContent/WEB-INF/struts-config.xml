@@ -127,7 +127,11 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			scope="request" type="action.baidang.BaiDangChuaDuyetAction" validate="true">
 			<forward name="baiDangChuaDuyet" path="/admin/baiDangChuaDuyet.jsp"/>
 		</action>
-		
+		<action input="/admin/baiDangChuaDuyet.jsp" name="danhSachBaiDangDaDuyetForm" path="/goBoTinChuaDuyet"
+			scope="request" type="action.baidang.XacNhanGoBoBaiDangChuaDuyetAction">
+			<forward name="goBoTinCD" path="/admin/xacNhanGoBoBaiDangChuaDuyet.jsp" />
+			<forward name="goBoTinCDxong" path="/danhSachBaiDangChuaDuyet.do" redirect="true" />
+		</action>
 		<action name="danhSachBaiDangDaDuyetForm" path="/xemTinChuaDuyet"
 			scope="request" type="action.baidang.XemTinChuaDuyetAction" >
 			<forward name="xemTinChuaDuyet" path="/admin/xemChiTietTinChuaDuyet.jsp"/>

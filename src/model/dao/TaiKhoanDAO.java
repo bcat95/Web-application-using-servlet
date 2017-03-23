@@ -331,6 +331,36 @@ public class TaiKhoanDAO extends DataBaseConnect{
 		}
 		}
 		
+		public TaiKhoanBean getListTaiKhoan(String username){
+			String sql= String.format("select * from taikhoan where username= '%s'", username);
+			try {
+				st=getConnect().createStatement();
+				rs= st.executeQuery(sql);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			TaiKhoanBean taiKhoanBean=null;
+			try {
+				while(rs.next()){
+					taiKhoanBean= new TaiKhoanBean();
+					taiKhoanBean.setUserName(rs.getString("Username"));
+					taiKhoanBean.setPassWord(rs.getString("Pass"));
+					taiKhoanBean.setHoTen(rs.getString("HoTen"));
+					taiKhoanBean.setGioiTinh(StringProcess.gioiTinh(rs.getString("GioiTinh")));
+					taiKhoanBean.setNgaySinh(rs.getString("NgaySinh"));
+					taiKhoanBean.setsDT(rs.getString("SDT"));
+					taiKhoanBean.seteMail(rs.getString("Email"));
+					taiKhoanBean.setNgayDangKy(rs.getString("NgayDangKy"));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return taiKhoanBean;
+		}
+		
 		// taiKhoan.getNgaySinh(), taiKhoan.getNgayDangKy()
 		public void suaTaiKhoan(TaiKhoanBean taiKhoan){
 			String sql="update taikhoan set pass='"+taiKhoan.getPassWord()+"', email='"+taiKhoan.geteMail()+"',"

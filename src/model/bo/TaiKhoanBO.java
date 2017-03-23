@@ -64,5 +64,7 @@ public class TaiKhoanBO {
 	public void suaTaiKhoan(TaiKhoanBean taiKhoan){
 		taiKhoanDAO.suaTaiKhoan(taiKhoan);
 	}
-	
+	public TaiKhoanBean getListTaiKhoan(String username){
+		return taiKhoanDAO.getListTaiKhoan(username);
+	}
 }

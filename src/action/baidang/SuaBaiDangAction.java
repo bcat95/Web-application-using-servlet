@@ -42,6 +42,7 @@ public class SuaBaiDangAction extends Action{
 			}
 			else if(StringProcess.equals(thisForm.getSubmit(), "suaTin")){
 				//thong tin bai dang, anh bia xoa, hinh anh xoa..
+				
 				BaiDangBO.updateBaiDang(thisForm.getBaiDang(),thisForm.isAnhBiaXoa(),thisForm.getHinhXoa(),thisForm.getFileAnhBia(),thisForm.getFileHinhAnh(),thisForm.getDichVu(),getServlet());
 				return mapping.findForward("suaTinxong");
 			}
