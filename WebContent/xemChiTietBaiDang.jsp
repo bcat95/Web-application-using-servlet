@@ -103,14 +103,19 @@ body {
 								</logic:iterate>
 								];
 							
-							jQuery("#nanoGallery1a").nanoGallery({thumbnailWidth:260,thumbnailHeight:170,
+							jQuery("#nanoGallery1a").nanoGallery({
+								//thumbnailWidth:155,
+								thumbnailWidth: 'auto',
+								thumbnailHeight:155,
 								items:contentGallery1a,
 								theme:'light',
-								thumbnailHoverEffect:{'name':'imageFlipHorizontal','duration':500},
+								colorScheme: 'none',
+								thumbnailHoverEffect:{'name':'labelAppear75','duration':300},
 								useTags:false,
-						      viewerDisplayLogo:true,
-						      theme:'clean',
-						      i18n:{'thumbnailImageDescription':'Xem ảnh', 'thumbnailAlbumDescription':'Open Album'},
+								thumbnailGutterWidth : 0,
+							    thumbnailGutterHeight : 0,
+						      	viewerDisplayLogo:true,
+						      	i18n:{'thumbnailImageDescription':'Xem ảnh', 'thumbnailAlbumDescription':'Open Album'},
 								thumbnailLabel:{display:true,position:'overImageOnMiddle', align:'center'},
 						      colorSchemeViewer:'default'
 							});
@@ -122,12 +127,7 @@ body {
 							});
 						});
 						</script>
-					<div class="db-gallery-mos-container clearfix">
-						<div id="nanoGallery1a"></div>
-						<%-- <logic:iterate id="hinhanh" name="baiDangForm" property="listHinhAnh">
-							<a href="#" class="db-gallery-mos-item prettyphoto" rel="prettyPhoto[whitelab_map]" style="background: url(<bean:write name="hinhanh" property="tenHinh"/>)"></a>
-						</logic:iterate> --%>
-					</div>
+					
 					<!--end Chi tiet tin hinh anh tin-->
 					<!--chi tiet tin footer tin -->
 					<div class="db-single-listing-meta">
@@ -295,6 +295,32 @@ body {
 			</div>
 			<!-- chi tiet tin cot phai-->
 			<div class="db-single-listing-right">
+				<div class="rig_hea">
+					<div class="sta_img">
+						<div class="numb" id="cou_img">0</div>
+						<div class="text">Hình ảnh</div>
+					</div>
+					<div class="sta_cmt">
+						<a href="#bcbinhluan" style="color: #ed3554;">
+							<div class="numb" id="cou_cmt">0</div>
+							<div class="text">Đánh giá</div>
+						</a>
+					</div>
+					<script>
+					window.onload = function(){ 
+						$('#cou_img').html($('.nanoGalleryThumbnailContainer .image').length -1);
+					}
+					$('#cou_cmt').html($('.bcbinhluan.item').length);
+					</script>
+				</div>
+				<div class="db-single-listing-side-wrapper">
+					<div class="db-gallery-mos-container clearfix">
+							<div id="nanoGallery1a"></div>
+							<%-- <logic:iterate id="hinhanh" name="baiDangForm" property="listHinhAnh">
+								<a href="#" class="db-gallery-mos-item prettyphoto" rel="prettyPhoto[whitelab_map]" style="background: url(<bean:write name="hinhanh" property="tenHinh"/>)"></a>
+							</logic:iterate> --%>
+					</div>
+				</div>
 				<div class="db-single-listing-map-wrapper">
 					<div id="db-single-listing-map" style="width: 100%; height: 300px; position: relative; overflow: hidden;"></div>
 					<script>
@@ -320,8 +346,6 @@ body {
 					</script>
 					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2dl2OOrUh7HFZwsJP8deel-3DTgfWZtk&callback=myMap"></script>
 				</div>
-				
-				
 				<!--quang cao cot phai-->
 				<div class="db-single-listing-side-wrapper">
 					<h3 class="db-listing-side-title">Advertisement</h3>
