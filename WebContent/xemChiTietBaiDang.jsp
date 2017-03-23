@@ -86,13 +86,18 @@ body {
 			<!--end tieu de tin-->
 			<div class="db-single-listing-left">
 				<div class="db-single-listing-main clearfix">
+					<!-- head noi dung tin -->
+						<div class="rating rating-lv<bean:write name="baiDangForm" property="diemDanhGia" format="#,0"/>">
+							<meta itemprop="reviewCount" content="26">
+							<span itemprop="ratingValue"><bean:write name="baiDangForm" property="diemDanhGia"/></span>
+						</div>
+					<!-- end  head noi dung tin-->
 					<!--chi tiet tin noi dung tin-->
 					<div class="bcnoidungtin">
 						<bean:write name="baiDangForm" property="noiDung" filter="false"/>
 					</div>
 					<!--end chi tiet tin noi dung tin-->
 					<!--Chi tiet tin hinh anh tin-->
-					<h3>Triển lãm ảnh</h3>
 						<script>
 						$(document).ready(function () {
 						    var contentGallery1a=[
@@ -127,7 +132,6 @@ body {
 							});
 						});
 						</script>
-					
 					<!--end Chi tiet tin hinh anh tin-->
 					<!--chi tiet tin footer tin -->
 					<div class="db-single-listing-meta">
@@ -157,111 +161,90 @@ body {
 						</div>
 					</div>
 					<!--end chi tiet tin footer tin -->
-				</div>
-				<!--chi tiet tin quang cao include tu qcao-->
-				<!-- <div class="db-single-adv">
-					<h3 class="db-single-adv-title">Quảng cáo</h3>
-					<img class="alignnone size-full wp-image-608" src="img/ads/ad-large.png" alt="" width="786" height="137">
-				</div> -->
-				<!--end chi tiet tin quang cao-->
-				<!--chi tiet tin tien nghi tin-->
-				<div class="db-single-amenities content-area">
-					<h3 class="db-single-amenities-title">Tiện nghi</h3>
-					<div class="db-amenitie-item-wrapper row row_w">
-						<logic:iterate id="dichvu" name="baiDangForm" property="listDichVu">
-							<span class="db-amenitie-item col-md-2 dv<bean:write name="dichvu" property="maDichVu"/>">
-								<a href="timKiem.do?maDichVu=<bean:write name="dichvu" property="maDichVu"/>">
-									<i class="fa fa-bcicon" aria-hidden="true"></i>
-									<div class="db-amenities-inner">
-										<span class="db-amenities-text"><bean:write name="dichvu" property="tenDichVu"/></span>
-									</div>
-								</a>
-							</span>
-						</logic:iterate>
-					</div>
-				</div>
-				<!--end chi tiet tin tien nghi tin-->
-				<!-- chi tiet tin binh luan-->
-				<div id="comments" class="comments-area ">
-					<ul class="review-list">
-						<div class="bcbinhluans clearfix">
-							<display:table id="bcbinhluan" name="sessionScope.baiDangForm.listBinhLuan"
-								requestURI="/xemtin.do" pagesize="5">
-								<logic:notEmpty name="baiDangForm" property="listBinhLuan">
-										<bean:define id="diemDanhGia" name="bcbinhluan" property="diemDanhGia"/>
-										<bean:define id="maBinhLuan" name="bcbinhluan" property="maBinhLuan"/>
-										<bean:define id="userName" name="bcbinhluan" property="userName"/>
-										<bean:define id="ngayBinhLuan" name="bcbinhluan" property="ngayBinhLuan"/>
-										<bean:define id="tieuDe" name="bcbinhluan" property="tieuDe"/>
-										<bean:define id="noiDung" name="bcbinhluan" property="noiDung"/>
-								</logic:notEmpty>
-								<display:column class="bcbinhluan item">
-									
-									<li class="comment byuser comment-author-jolydoe1 even thread-even depth-1">
-										<div class="review">
-											<div class="review-meta">
-												<div class="review-author vcard shadows">
-													<img src="upload/avata/Bcat95.jpeg" width="54" height="54" alt="July Doe" class="avatar avatar-54 wp-user-avatar wp-user-avatar-54 alignnone photo">
-												</div> 
-											</div>
-											<div class="review-content">
-												<span class="db-review-title">${tieuDe}</span>
-												<span class="db-listing-rating">
-													<span id="bl_${maBinhLuan}" class="ratings" title="${diemDanhGia}"><b>${diemDanhGia}</b>/5</span>
-												</span>
-												<p>${noiDung}</p>
-												<div class="db-review-bottom">
-													<a href="#" class="db-review-author">${userName}</a> ${ngayBinhLuan}
+					<!--end chi tiet tin tien nghi tin-->
+					<!-- chi tiet tin binh luan-->
+					<div id="comments" class="comments-area ">
+						<ul class="review-list">
+							<div class="bcbinhluans clearfix">
+								<display:table id="bcbinhluan" name="sessionScope.baiDangForm.listBinhLuan"
+									requestURI="/xemtin.do" pagesize="5">
+									<logic:notEmpty name="baiDangForm" property="listBinhLuan">
+											<bean:define id="diemDanhGia" name="bcbinhluan" property="diemDanhGia"/>
+											<bean:define id="maBinhLuan" name="bcbinhluan" property="maBinhLuan"/>
+											<bean:define id="userName" name="bcbinhluan" property="userName"/>
+											<bean:define id="ngayBinhLuan" name="bcbinhluan" property="ngayBinhLuan"/>
+											<bean:define id="tieuDe" name="bcbinhluan" property="tieuDe"/>
+											<bean:define id="noiDung" name="bcbinhluan" property="noiDung"/>
+									</logic:notEmpty>
+									<display:column class="bcbinhluan item">
+										
+										<li class="comment byuser comment-author-jolydoe1 even thread-even depth-1">
+											<div class="review">
+												<div class="review-meta">
+													<div class="review-author vcard shadows">
+														<img src="upload/avata/Bcat95.jpeg" width="54" height="54" alt="July Doe" class="avatar avatar-54 wp-user-avatar wp-user-avatar-54 alignnone photo">
+													</div> 
+												</div>
+												<div class="review-content">
+													<span class="db-review-title">${tieuDe}</span>
+													<span class="db-listing-rating">
+														<span id="bl_${maBinhLuan}" class="ratings" title="${diemDanhGia}"><b>${diemDanhGia}</b>/5</span>
+													</span>
+													<p>${noiDung}</p>
+													<div class="db-review-bottom">
+														<a href="#" class="db-review-author">${userName}</a> ${ngayBinhLuan}
+													</div>
+													<div class="clearfix"></div>
 												</div>
 												<div class="clearfix"></div>
-											</div>
-											<div class="clearfix"></div>
-										</div> 
-									</li>
-								</display:column>
-								
-								<display:setProperty name="paging.banner.placement" value="bottom" />
-								<display:setProperty name="basic.msg.empty_list">
-									<div class="alert alert-info">
-										<strong>Oh!</strong> Chưa có bình luận nào ! Hãy là người đầu tiên.
-									</div>
-								</display:setProperty>
-								<display:setProperty name="paging.banner.all_items_found"><span class="pagebanner"> {0} {1} được hiển thị, số số bình luận {2}. </span></display:setProperty>
-								<display:setProperty name="paging.banner.some_items_found">
-									<span class="pagebanner"> {0} {1} được hiển thị, số bình luận {2} đến {3}. </span>
-								</display:setProperty>
-								<display:setProperty name="paging.banner.full">
-									<ul class="pagination">
-									  	<li class="previous"><a href="{1}">Đầu tiên</a></li>
-									    <li class="previous"><a href="{2}">Trước</a></li>
-									    <li class="hidetext">{0}</li>
-									    <li class="next"><a href="{3}">Sau</a></li>
-									    <li class="next"><a href="{4}">Cuối cùng</a></li>
-									</ul>
-								</display:setProperty>
-								<display:setProperty name="paging.banner.first">
-									<ul class="pagination">
-									  	<li class="hidetext">{0}</li>	
-									    <li class="next"><a href="{3}">Sau</a></li>
-									    <li class="next"><a href="{4}">Cuối cùng</a></li>
-									</ul>
-								</display:setProperty>
-								<display:setProperty name="paging.banner.last">
-									<ul class="pagination">
-									  	<li class="previous"><a href="{1}">Đầu tiên</a></li>
-									    <li class="previous"><a href="{2}">Trước</a></li>
-									    <li class="hidetext">{0}</li>
-									</ul>
-								</display:setProperty>
-							</display:table>
-						</div>
-					</ul>
-					<!--end list binh luan-->
-					<!-- form binh luan-->
+											</div> 
+										</li>
+									</display:column>
+									
+									<display:setProperty name="paging.banner.placement" value="bottom" />
+									<display:setProperty name="basic.msg.empty_list">
+										<div class="alert alert-info">
+											<strong>Oh!</strong> Chưa có bình luận nào ! Hãy là người đầu tiên.
+										</div>
+									</display:setProperty>
+									<display:setProperty name="paging.banner.all_items_found"><span class="pagebanner"> {0} {1} được hiển thị, số số bình luận {2}. </span></display:setProperty>
+									<display:setProperty name="paging.banner.some_items_found">
+										<span class="pagebanner"> {0} {1} được hiển thị, số bình luận {2} đến {3}. </span>
+									</display:setProperty>
+									<display:setProperty name="paging.banner.full">
+										<ul class="pagination">
+										  	<li class="previous"><a href="{1}">Đầu tiên</a></li>
+										    <li class="previous"><a href="{2}">Trước</a></li>
+										    <li class="hidetext">{0}</li>
+										    <li class="next"><a href="{3}">Sau</a></li>
+										    <li class="next"><a href="{4}">Cuối cùng</a></li>
+										</ul>
+									</display:setProperty>
+									<display:setProperty name="paging.banner.first">
+										<ul class="pagination">
+										  	<li class="hidetext">{0}</li>	
+										    <li class="next"><a href="{3}">Sau</a></li>
+										    <li class="next"><a href="{4}">Cuối cùng</a></li>
+										</ul>
+									</display:setProperty>
+									<display:setProperty name="paging.banner.last">
+										<ul class="pagination">
+										  	<li class="previous"><a href="{1}">Đầu tiên</a></li>
+										    <li class="previous"><a href="{2}">Trước</a></li>
+										    <li class="hidetext">{0}</li>
+										</ul>
+									</display:setProperty>
+								</display:table>
+								<div class="fb-comments" data-href="xemtin.do?maBaiDang=${maBaiDang}" data-numposts="5" data-width="100%"></div>
+							</div>
+						</ul>
+						<!--end list binh luan-->
+						<!-- form binh luan-->
+					</div>
 					<div id="respond" class="comment-respond">
 						<html:form action="xemtin" method="post" styleId="commentform" styleClass="comment-form">
 							<div class="db-rating-stars">
-								<span class="db-rating-text">Để lại bình luận của bạn</span>
+								<span class="db-rating-text">Để lại nhận xét của bạn</span>
 									<div class="db-rating-container">
 										<span class="star-cb-group">
 										  <input type="radio" id="rating-5" name="bl_diemDanhGia" value="5" /><label for="rating-5">5</label>
@@ -289,9 +272,9 @@ body {
 								<input type="hidden" name="maBaiDang" id="comment_post_ID" value="${maBaiDang}">
 							</p>
 						</html:form>
-					</div> 
+					</div>
+					<!-- end chi tiet tin binh luan-->
 				</div>
-				<!-- end chi tiet tin binh luan-->
 			</div>
 			<!-- chi tiet tin cot phai-->
 			<div class="db-single-listing-right">
@@ -346,11 +329,26 @@ body {
 					</script>
 					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2dl2OOrUh7HFZwsJP8deel-3DTgfWZtk&callback=myMap"></script>
 				</div>
+				<!--chi tiet tin tien nghi tin-->
+				<div class="db-single-listing-side-wrapper clearfix">
+					<h3 class="db-single-amenities-title">Tiện nghi</h3>
+					<logic:iterate id="dichvu" name="baiDangForm" property="listDichVu">
+						<span class="db-amenitie-item col-md-6 dv<bean:write name="dichvu" property="maDichVu"/>">
+							<a href="timKiem.do?maDichVu=<bean:write name="dichvu" property="maDichVu"/>">
+								<i class="fa fa-bcicon" aria-hidden="true"></i>
+								<div class="db-amenities-inner">
+									<span class="db-amenities-text"><bean:write name="dichvu" property="tenDichVu"/></span>
+								</div>
+							</a>
+						</span>
+					</logic:iterate>
+				</div>
+				<!--end chi tiet tin tien nghi tin-->
 				<!--quang cao cot phai-->
-				<div class="db-single-listing-side-wrapper">
+				<!-- <div class="db-single-listing-side-wrapper">
 					<h3 class="db-listing-side-title">Advertisement</h3>
 					<p><img class="alignnone size-full wp-image-609" src="img/ads/ad-small.png" alt="" width="263" height="240"></p>
-				</div>
+				</div> -->
 				<!--end quang cao cot phai-->
 			</div>
 			<!-- end chi tiet tin cot phai-->
@@ -383,5 +381,14 @@ body {
 		    max-width: none !important;
 		}
   	</style>
+  	<div id="fb-root"></div>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=254476368342790";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 	<!-- end chi tiet tin-->
 <jsp:include page="template_Footer.jsp"></jsp:include>

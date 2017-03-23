@@ -70,6 +70,8 @@ public class BaiDangForm  extends ActionForm{
 	private String tenTinhThanh;
 	private ArrayList<TinhThanhBean> listTinhThanh;
 	
+	private float diemDanhGia;
+	
 	private String[] dichVu;
 	private ArrayList<DichVuBean> listDichVu;
 	private ArrayList<DichVuBean> listDichVuSua;
@@ -99,6 +101,14 @@ public class BaiDangForm  extends ActionForm{
 	
 	public boolean isAnhBiaXoa() {
 		return anhBiaXoa;
+	}
+
+	public float getDiemDanhGia() {
+		return diemDanhGia;
+	}
+
+	public void setDiemDanhGia(float diemDanhGia) {
+		this.diemDanhGia = diemDanhGia;
 	}
 
 	public ArrayList<FormFile> getFileHinhAnh() {
@@ -424,6 +434,7 @@ public class BaiDangForm  extends ActionForm{
 		this.tenDanhMuc=itemBD.getTenDanhMuc();
 		this.maTinhThanh = itemBD.getMaTinhThanh();
 		this.tenTinhThanh=itemBD.getTenTinhThanh();
+		this.diemDanhGia=itemBD.getDiemDanhGia();
 		this.listHinhAnh=itemBD.getListHinhAnh();
 		this.listDichVu=itemBD.getListDichVu();
 		this.listBinhLuan=itemBD.getListBinhLuan();

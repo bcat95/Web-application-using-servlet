@@ -33,12 +33,11 @@ public class BinhLuanDAO extends DataBaseConnect{
 	public static void insertBinhLuan(BinhLuanBean binhLuan) {
 		try {
 			String insertTableSQL = "insert into BinhLuan values(?,?,?,?,?,?)";
-			System.out.println(insertTableSQL);
 			prepSt = getConnect().prepareStatement(insertTableSQL);
 			prepSt.setString(1, binhLuan.getTieuDe());
 			prepSt.setString(2, binhLuan.getNoiDung());
-			prepSt.setDate(3, new Date(StringProcess.getNgayDangDate().getTime()));
-			prepSt.setInt(4, binhLuan.getDiemDanhGia());
+			prepSt.setInt(3,binhLuan.getDiemDanhGia());
+			prepSt.setDate(4, new Date(StringProcess.getNgayDangDate().getTime()));
 			prepSt.setInt(5, binhLuan.getMaBaiDang());
 			prepSt.setString(6, binhLuan.getUserName());
 			prepSt.executeUpdate();

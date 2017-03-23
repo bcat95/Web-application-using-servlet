@@ -61,6 +61,14 @@
 			</div>
 		</div>
 	</footer>
+	<!-- <img src="attachments/{$news.attach.attachment_id}/" alt="" class="entry-thumb" onerror="imgError(this);"/> -->
+	<script>
+	function imgError(image) {
+	    image.onerror = "";
+	    image.src = "img/noimage.png";
+	    return true;
+	}
+	</script>
 	<div class="bcOverlay timedMessage" style="top: -100px;left: 0px;position: fixed;">
 		<div class="content baseHtml"></div>
 	</div>

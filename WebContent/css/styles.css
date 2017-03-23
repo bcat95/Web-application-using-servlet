@@ -1520,7 +1520,8 @@ table#threads thead{
     overflow: hidden;
     border: 2px solid #fff;
     position: absolute;
-    top: calc(100% - 240px);
+    _top: calc(100% - 240px);
+    top:30px;
 }
 .thr_inf {
     height: 100px;
@@ -1568,7 +1569,7 @@ table#threads thead{
     background: #fff;
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.10);
     border-radius: 4px;
-    padding: 0 31px;
+    padding: 20px 30px;
 }
 .db-single-listing-main p:first-child {
     font-family: 'Open Sans';
@@ -1609,10 +1610,7 @@ h3 {
     font-weight: 400;
 }
 body .db-gallery-mos-container {
-    margin-bottom: 48px;
-}
-.db-gallery-mos-container {
-    margin: 0 -2px;
+    _margin-bottom: 48px;
 }
 .db-gallery-mos-container .db-gallery-mos-item:nth-child(1), .db-gallery-mos-container .db-gallery-mos-item:nth-child(2) {
     width: 50%;
@@ -1780,16 +1778,8 @@ h3 {
 
 /*binh luan*/
 .db-single-listing-left .comments-area {
-    color: #141414;
-    background: #fefefe;
-    border-width: 1px;
-    border-style: solid;
-    border-top-color: #e2e2e2;
-    border-right-color: #dadada;
-    border-bottom-color: #d0d0d0;
-    border-left-color: #dadada;
-    border-radius: 4px;
-    padding: 30px;
+   	color: #141414;
+    margin: 20px 0;
 }
 .db-single-listing-left .db-comment-count {
     color: #53666D;
@@ -1813,6 +1803,7 @@ h3 {
 ul.review-list {
     margin-left: 0;
     padding-left: 0;
+    padding: 20px 0;
 }
 .review-list {
     list-style: none;
@@ -1891,10 +1882,9 @@ body .review-list .review-content {
     display: inline-block;
 }
 .db-review-title {
-    font-family: 'Poppins',tahoma;
-    font-size: 18px;
     font-weight: 600;
-    color: #53666D;
+    font-size: 14px;
+    color: #424242;
 }
 .db-listing-rating {
     position: relative;
@@ -2086,7 +2076,7 @@ body .review-list .review-content {
     transition: background ease-in-out 0.2s;
 }
 #commentform textarea {
-    min-height: 250px;
+    min-height: 125px;
     border: none;
     font-family: 'Open Sans';
     outline: none;
@@ -2153,7 +2143,7 @@ button:hover, button:focus, .btn-link:hover, input[type="button"]:hover, input[t
     min-height: 299px;
 }
 .db-single-listing-side-wrapper {
-    margin-bottom: 32px;
+    margin-bottom: 15px;
     position: relative;
 }
 .db-single-listing-side-wrapper .db-listing-side-title {
@@ -2827,6 +2817,9 @@ body #db-add-listing-form .db-field-row.db-hop-times-row {
     position: relative;
     top: 0;
 }
+.db-single-listing-like a {
+    color: #ed3554;
+}
 .db-package-inner {
     background-image: linear-gradient(-135deg,#ffffff 0%,#f8f8f8 90%);
     border-radius: 4px;
@@ -3000,4 +2993,12 @@ li.popular label, li.popular .db-fee-description .db-fee-value, li.popular .db-f
 }
 .rig_hea > div .text{
 	font-weight: 300;
+}
+.comment-respond:before,
+.db-single-listing-left .comments-area:before {
+    border-top: 1px solid hsla(197,5%,70%,.4);
+    display: block;
+    content: "";
+    height: 1px;
+    margin: 0 -30px;
 }

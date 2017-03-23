@@ -34,7 +34,7 @@ public class BaiDangBean {
 	private Date ngayHetHan;
 	private int soLuongTruyCap;
 	private int soLuotThich;
-	private int diemDanhGia;
+	private float diemDanhGia;
 	
 	private String userName;
 	private int maDanhMuc;
@@ -187,12 +187,11 @@ public class BaiDangBean {
 	public void setListHinhAnh(ArrayList<HinhAnhBean> listHinhAnh) {
 		this.listHinhAnh = listHinhAnh;
 	}
-
-	public int getDiemDanhGia() {
+	public float getDiemDanhGia() {
 		return diemDanhGia;
 	}
 
-	public void setDiemDanhGia(int diemDanhGia) {
+	public void setDiemDanhGia(float diemDanhGia) {
 		this.diemDanhGia = diemDanhGia;
 	}
 

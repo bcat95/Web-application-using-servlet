@@ -478,7 +478,7 @@ public class BaiDangDAO extends DataBaseConnect{
 				baiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
 				baiDang.setsDT(rs.getString("SDT"));
 				baiDang.setAnhBia(rs.getString("AnhBia"));
-				baiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+				baiDang.setDiemDanhGia(rs.getFloat("DiemDanhGia"));
 				baiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
 				baiDang.setMaTinhThanh(rs.getInt("maTinhThanh"));
 				baiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
