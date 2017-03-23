@@ -52,6 +52,7 @@ public class BaiDangBO extends BussinessObject{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		//them thong tin bai viet
 		BaiDangDAO.insertBaiDang(baiDang);
 		//them dich vu

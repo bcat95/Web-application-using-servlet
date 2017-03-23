@@ -591,18 +591,20 @@ public class BaiDangDAO extends DataBaseConnect{
 		
 	}
 	public static void setAnhBia(int maBaiDang, String anhBia) {
-		try {
-			String updateTableSQL  = "update BaiDang set AnhBia=? where MaBaiDang="+maBaiDang+"";
-			PreparedStatement prepSt = getConnect().prepareStatement(updateTableSQL);
-			prepSt.setString(1, anhBia);
-			prepSt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally{
+		if (anhBia != null){
 			try {
-				getConnect().close();
+				String updateTableSQL  = "update BaiDang set AnhBia=? where MaBaiDang="+maBaiDang+"";
+				PreparedStatement prepSt = getConnect().prepareStatement(updateTableSQL);
+				prepSt.setString(1, anhBia);
+				prepSt.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
+			}finally{
+				try {
+					getConnect().close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		
