@@ -80,16 +80,16 @@
                             	</ul>
 							</li>
 						</logic:equal>
-						<logic:notEqual name="headerForm" property="type" value="-1">
+						<logic:equal name="headerForm" property="type" value="1">
 							<li class="dropdown"><a data-toggle="dropdown"> Quản lý <span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<logic:equal name="headerForm" property="type" value="admin">
-	                                    <li><a href="#">Quản lý thành viên</a></li>
-										<li><a href="#">Quản lý bài đăng</a></li>
+	                                    <li><a href="danhSachBaiDangChuaDuyet.do">Duyệt bài đăng</a></li>
+										<li><a href="danhSachBaiDangDaDuyet.do">Quản lý bài đăng</a></li>
 									</logic:equal>
                             	</ul>
 							</li>
-						</logic:notEqual>
+						</logic:equal>
 						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Danh mục
 								<span class="caret"></span>

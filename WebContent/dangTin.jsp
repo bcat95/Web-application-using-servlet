@@ -44,8 +44,8 @@
 										<script>
 										function initAutocomplete() {
 										  var map = new google.maps.Map(document.getElementById('db-single-listing-map'), {
-										    center: {lat: -33.8688, lng: 151.2195},
-										    zoom: 13,
+										    center: {lat: 16.0474325, lng: 108.1712203},
+										    zoom: 5,
 										    mapTypeId: 'roadmap'
 										  });
 										  // Create the search box and link it to the UI element.

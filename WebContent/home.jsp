@@ -176,8 +176,8 @@ jQuery(document).ready(function($) {
 											<!--so luot thich bai dang-->
 												<i class="fa fa-heart-o" aria-hidden="true"></i> 
 												<bean:write name="bd" property="soLuotThich"/>
-											<span class="bc-featured-listings-rating" data-original="5" data-id="91">
-												<span id="bl_<bean:write name="bd" property="maBaiDang"/>" class="ratings" title="<bean:write name="bd" property="diemDanhGia"/>">
+											<span class="bc-featured-listings-rating">
+												<span id="bl_<bean:write name="bd" property="maBaiDang"/>" class="ratings rating-lv<bean:write name="bd" property="diemDanhGia" format="#,0"/>" title="<bean:write name="bd" property="diemDanhGia"/>">
 													<bean:write name="bd" property="diemDanhGia"/>
 												</span>
 											</span>

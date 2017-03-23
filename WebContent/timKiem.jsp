@@ -64,6 +64,7 @@ $(document.body).addClass('noheabac');
 							<bean:define id="tieuDe" name="bd" property="tieuDe"></bean:define>
 							<bean:define id="anhBia" name="bd" property="anhBia"></bean:define>
 							<bean:define id="tenDanhMuc" name="bd" property="tenDanhMuc"/>
+							<bean:define id="diemDanhGia" name="bd" property="diemDanhGia"/>
 							 var thr_${maBaiDang}_LatLng = {lat: ${viDo}, lng: ${kinhDo}};
 							 var thr_${maBaiDang}_marker = new google.maps.Marker({
 							     position: thr_${maBaiDang}_LatLng,
@@ -71,7 +72,7 @@ $(document.body).addClass('noheabac');
 							     title: '${tieuDe}',
 							     animation: google.maps.Animation.DROP,
 							 });
-							 var cont_${maBaiDang}="<div class='card'><div class='car_bac' style='background-image: url(${anhBia})'></div><a class='car_tit' href='xemtin.do?maBaiDang=${maBaiDang}'>${tieuDe}</a><span>${tenDanhMuc}</span></div>";
+							 var cont_${maBaiDang}="<div class='card'><div class='car_bac' style='background-image: url(${anhBia})'></div><a class='car_tit' href='xemtin.do?maBaiDang=${maBaiDang}'>${tieuDe}</a><span><span class='label label-success'>${tenDanhMuc}</span><span class='label label-info'>${diemDanhGia}</span></span></div>";
 							 thr_${maBaiDang}_marker.addListener('click', function() {
 								 infowindow.setContent("<div id='thr_${maBaiDang}_con' class='thr_con clearfix'>"+cont_${maBaiDang}+"</div>");
 								 infowindow.open(map, thr_${maBaiDang}_marker);
@@ -206,12 +207,13 @@ $(document.body).addClass('noheabac');
 												</div>
 												<div class="bc-featured-listings-meta clearfix">
 													<!--danh muc bai dang-->
-													<a href="timKiem.do?maDanhMuc=<bean:write name="bd" property="maDanhMuc"/>" class="bc-featured-listings-category hotel" style="color: #00a9e8">
+													<a href="timKiem.do?maDanhMuc=<bean:write name="timKiemForm" property="maDanhMuc"/>" class="bc-featured-listings-category hotel" style="color: #00a9e8">
 														${tenDanhMuc}
 													</a>
-													<span class="bc-featured-listings-rating" data-original="${diemDanhGia}" data-id="${maBaiDang}">
-														<span id="bl_${maBaiDang}" class="ratings" title="${diemDanhGia}">${diemDanhGia}</span>
-													
+													<span class="bc-featured-listings-rating">
+														<span id="bl_${diemDanhGia}" class="ratings rating-lv<bean:write name="threads" property="diemDanhGia" format="#,0"/>" title="${diemDanhGia}">
+															${diemDanhGia}
+														</span>
 													</span>
 												</div>
 											</div>

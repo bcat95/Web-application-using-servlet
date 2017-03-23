@@ -4,7 +4,7 @@ body, html {
 }
 body {
     background-color: #F4F4F4;
-    font-family: "Poppins",Tahoma;
+    font-family: Helvetica,Arial,Tahoma,sans-serif;
     font-weight: 400;
     font-size: 15px;
     line-height: 1.5;
@@ -1933,7 +1933,16 @@ body .review-list .review-content {
 .db-rating-stars {
     position: relative;
 }
-
+.ratings {
+    padding: 3px 0;
+    width: 29px;
+    height: 20px;
+    border-radius: 5px;
+    display: block;
+    color: #fff;
+    line-height: 15px;
+    text-align: center;
+}
 .ratings > button,.ratings .star{
     width: 25px;
     height: 22px;
@@ -3002,3 +3011,21 @@ li.popular label, li.popular .db-fee-description .db-fee-value, li.popular .db-f
     height: 1px;
     margin: 0 -30px;
 }
+.rating {
+    position: relative;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    height: 40px;
+    text-align: center;
+    width: 40px;
+    float: left;
+    _background-color: #14c729;
+    line-height: 42px;
+}
+.rating-lv1{background-color:#dc1212}
+.rating-lv2{background-color:#ff9829}
+.rating-lv3{background-color:#fad727}
+.rating-lv4{background-color:#9dd81f}
+.rating-lv5{background-color:#14c729}

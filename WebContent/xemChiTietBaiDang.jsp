@@ -87,9 +87,11 @@ body {
 			<div class="db-single-listing-left">
 				<div class="db-single-listing-main clearfix">
 					<!-- head noi dung tin -->
-						<div class="rating rating-lv<bean:write name="baiDangForm" property="diemDanhGia" format="#,0"/>">
-							<meta itemprop="reviewCount" content="26">
-							<span itemprop="ratingValue"><bean:write name="baiDangForm" property="diemDanhGia"/></span>
+						<div class="hea_inf_thr clearfix">
+							<div class="rating rating-lv<bean:write name="baiDangForm" property="diemDanhGia" format="#,0"/>">
+								<meta itemprop="reviewCount" content="26">
+								<span itemprop="ratingValue"><bean:write name="baiDangForm" property="diemDanhGia"/></span>
+							</div>
 						</div>
 					<!-- end  head noi dung tin-->
 					<!--chi tiet tin noi dung tin-->
