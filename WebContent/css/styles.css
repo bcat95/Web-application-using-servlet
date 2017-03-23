@@ -2137,7 +2137,11 @@ button:hover, button:focus, .btn-link:hover, input[type="button"]:hover, input[t
 .db-single-listing-right {
     width: 345px;
     float: left;
-    padding: 0 15px;
+    padding: 20px 15px;
+    background-color: #fff;
+    background: #fff;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.10);
+    border-radius: 4px;
 }
 .db-single-listing-map-wrapper {
     position: relative;

@@ -49,7 +49,6 @@ public class BaiDangBO extends BussinessObject{
 				baiDang.setAnhBia(
 					"upload/img/bai-dang/" + BussinessObject.saveFile("/upload/img/bai-dang", file,"", action));
 			}
-			else baiDang.setAnhBia(null);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
