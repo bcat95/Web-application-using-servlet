@@ -47,6 +47,7 @@ public class BaiDangBean {
 	private ArrayList<HinhAnhBean> listHinhAnh;
 	private ArrayList<DichVuBean> listDichVu;
 	private ArrayList<BinhLuanBean> listBinhLuan;
+	private ArrayList<KhuyenMaiBean> listKhuyenMai;
 	private SimpleDateFormat sdf;
 	//ngay dinh dang
 	public SimpleDateFormat getSdf()
@@ -137,6 +138,14 @@ public class BaiDangBean {
 	
 	public String getTenLoaiTin() {
 		return tenLoaiTin;
+	}
+
+	public ArrayList<KhuyenMaiBean> getListKhuyenMai() {
+		return listKhuyenMai;
+	}
+
+	public void setListKhuyenMai(ArrayList<KhuyenMaiBean> listKhuyenMai) {
+		this.listKhuyenMai = listKhuyenMai;
 	}
 
 	public int getsTT() {

@@ -141,4 +141,8 @@ public class BaiDangBO extends BussinessObject{
 	public BaiDangBean getListChiTietBaiDangChuaDuyet(int maBaiDang) {
 		return baiDangDAO.getListChiTietBaiDangChuaDuyet(maBaiDang);
 	}
+	public ArrayList<BaiDangBean> getListBaiDangKM() {
+		return baiDangDAO.getListBaiDangKM();
+	}
+	
 }

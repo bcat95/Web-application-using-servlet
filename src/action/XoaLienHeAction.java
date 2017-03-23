@@ -15,7 +15,7 @@ import model.bean.VanDe;
 import model.bo.LienHeBO;
 import model.bo.VanDeBO;
 
-public class XoaLienHeAction.java extends Action{
+public class XoaLienHeAction extends Action{
 
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,

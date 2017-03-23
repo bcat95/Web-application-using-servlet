@@ -25,7 +25,8 @@ public class ThongTinTaiKhoanAction extends Action{
 		TaiKhoanBO taiKhoanBO= new TaiKhoanBO();
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("userActivity");
-		System.err.println("uss "+user.getUserName());
+		if(user == null || user.getMaQuyen() == -1)
+			return mapping.findForward("login");
 		TaiKhoanBean taiKhoan= taiKhoanBO.getThongTinTaiKhoan(user.getUserName());
 		thisForm.setUserName(taiKhoan.getUserName());
 		thisForm.setPassCu(taiKhoan.getPassWord());

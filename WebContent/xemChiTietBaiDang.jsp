@@ -7,6 +7,7 @@
 <jsp:include page="header.do" flush="true"></jsp:include>
 <script>
 $(document.body).addClass('noheabac');
+$('.thr_inf_bot:not(:has(*))').remove();
 </script>
 <style>
 body {
@@ -65,18 +66,17 @@ body {
 							</span>
 						</div>
 						<div class="thr_inf_bot">
-							<div class="thr_km_hea">
-								<i class="fa fa-gift fa-2 alway-active wolf-surprise bc_gre" aria-hidden="true"></i> Khuyến mãi:
-								<span class="">
-									<span><i class="fa fa-calendar-check-o bc_gre" aria-hidden="true"></i>22/3/2017 -></span>
-									<span><i class="fa fa-calendar-times-o bc_gre" aria-hidden="true"></i>10/4/2017</span>
-								</span>
-								<span id="bc_gif_end"></span>
-							</div>
-							<div class="db-single-listing-side-container thr_km">
-								NETHOST khuyến mại chúc mừng ngày Quốc tế phụ nữ<br>
-								Chào mừng ngày Quốc tế phụ nữ, NETHOST tung ra chương trình khuyến mại mua Hosting được tặng Website, Mua VPS giảm ngay 20%.
-							</div>
+							<logic:iterate id="khuyenmai" name="baiDangForm" property="listKhuyenMai" offset="1">
+									<div class="thr_km_hea">
+										<i class="fa fa-gift fa-2 alway-active wolf-surprise bc_gre" aria-hidden="true"></i> <bean:write name="khuyenmai" property="tieuDe"/>
+										<span>
+											<span><i class="fa fa-calendar-check-o bc_gre" aria-hidden="true"></i><bean:write name="khuyenmai" property="ngayBatDau"/> -></span>
+											<span><i class="fa fa-calendar-times-o bc_gre" aria-hidden="true"></i><bean:write name="khuyenmai" property="ngayKetThuc"/></span>
+										</span>
+										<span id="bc_gif_end"></span>
+									</div>
+									<div class="db-single-listing-side-container thr_km"> <bean:write name="khuyenmai" property="noiDung"/></div>
+							</logic:iterate>
 						</div>
 						<!--end thong tin bai-->
 					</div>
@@ -346,6 +346,24 @@ body {
 					</logic:iterate>
 				</div>
 				<!--end chi tiet tin tien nghi tin-->
+				<!--chi tiet tin khuyen mai-->
+				<div class="db-single-listing-side-wrapper clearfix">
+					<h3 class="db-single-amenities-title">Khuyến mãi</h3>
+					<logic:iterate id="khuyenmai" name="baiDangForm" property="listKhuyenMai">
+						<div class="thr_km_ite">
+							<div class="thr_km_hea">
+								<i class="fa fa-gift fa-2 alway-active wolf-surprise bc_gre" aria-hidden="true"></i> <bean:write name="khuyenmai" property="tieuDe"/>
+								<span style="display: block;">
+									<span><i class="fa fa-calendar-check-o bc_gre" aria-hidden="true"></i><bean:write name="khuyenmai" property="ngayBatDau"/> -></span>
+									<span><i class="fa fa-calendar-times-o bc_gre" aria-hidden="true"></i><bean:write name="khuyenmai" property="ngayKetThuc"/></span>
+								</span>
+								<span id="bc_gif_end"></span>
+							</div>
+							<div class="db-single-listing-side-container thr_km"> <bean:write name="khuyenmai" property="noiDung"/></div>
+						</div>
+					</logic:iterate>
+				</div>
+				<!-- end chi tiet tin khuyen mai-->
 				<!--quang cao cot phai-->
 				<!-- <div class="db-single-listing-side-wrapper">
 					<h3 class="db-listing-side-title">Advertisement</h3>

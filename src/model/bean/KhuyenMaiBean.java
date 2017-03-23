@@ -1,17 +1,20 @@
 package model.bean;
 
-import java.util.Date;
 
 public class KhuyenMaiBean {
-	private String maKhuyenMai;
+	private int maKhuyenMai;
 	private String tieuDe;
 	private String noiDung; 
-	private Date ngayBatDau;
-	private Date ngayKetThuc;
-	private String maBaiDang;
+	private String ngayBatDau;
+	private String ngayKetThuc;
+	private int maBaiDang;
 	
-	public KhuyenMaiBean(String maKhuyenMai, String tieuDe, String noiDung, Date ngayBatDau, Date ngayKetThuc,
-			String maBaiDang) {
+	public KhuyenMaiBean() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public KhuyenMaiBean(int maKhuyenMai, String tieuDe, String noiDung, String ngayBatDau, String ngayKetThuc,
+			int maBaiDang) {
 		super();
 		this.maKhuyenMai = maKhuyenMai;
 		this.tieuDe = tieuDe;
@@ -20,10 +23,11 @@ public class KhuyenMaiBean {
 		this.ngayKetThuc = ngayKetThuc;
 		this.maBaiDang = maBaiDang;
 	}
-	public String getMaKhuyenMai() {
+	
+	public int getMaKhuyenMai() {
 		return maKhuyenMai;
 	}
-	public void setMaKhuyenMai(String maKhuyenMai) {
+	public void setMaKhuyenMai(int maKhuyenMai) {
 		this.maKhuyenMai = maKhuyenMai;
 	}
 	public String getTieuDe() {
@@ -38,22 +42,22 @@ public class KhuyenMaiBean {
 	public void setNoiDung(String noiDung) {
 		this.noiDung = noiDung;
 	}
-	public Date getNgayBatDau() {
+	public String getNgayBatDau() {
 		return ngayBatDau;
 	}
-	public void setNgayBatDau(Date ngayBatDau) {
-		this.ngayBatDau = ngayBatDau;
-	}
-	public Date getNgayKetThuc() {
+	public String getNgayKetThuc() {
 		return ngayKetThuc;
 	}
-	public void setNgayKetThuc(Date ngayKetThuc) {
+	public void setNgayKetThuc(String ngayKetThuc) {
 		this.ngayKetThuc = ngayKetThuc;
 	}
-	public String getMaBaiDang() {
+	public void setNgayBatDau(String ngayBatDau) {
+		this.ngayBatDau = ngayBatDau;
+	}
+	public int getMaBaiDang() {
 		return maBaiDang;
 	}
-	public void setMaBaiDang(String maBaiDang) {
+	public void setMaBaiDang(int maBaiDang) {
 		this.maBaiDang = maBaiDang;
 	}
 	

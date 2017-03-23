@@ -125,7 +125,10 @@
 															<display:column property="ngayHetHan" title="Hết hạn vào" class="bcblock ngayhh"></display:column>
 															<display:column property="tenLoaiTin" title="Dán lên cao"></display:column>
 															<display:column title="Hành động">
-																<html:link action="/xemtin?maBaiDang=${bcbaidang.maBaiDang}"  styleClass="db-edit-listing db-account-listing-option edit">
+																<html:link action="/khuyenmai?maBaiDang=${bcbaidang.maBaiDang}" styleClass="db-edit-listing db-account-listing-option gift">
+													                	<span class="db-account-listing-option-hover">Khuyến Mãi</span><i class="fa fa-gift fa-2 alway-active wolf-surprise bc_gre" aria-hidden="true"></i>
+													            </html:link>
+																<html:link action="/xemtin?maBaiDang=${bcbaidang.maBaiDang}"  styleClass="db-edit-listing db-account-listing-option view">
 													                	<span class="db-account-listing-option-hover">Xem</span><i class="fa fa-eye" aria-hidden="true"></i>
 													            </html:link>
 													            <html:link action="/suatin?maBaiDang=${bcbaidang.maBaiDang}"  styleClass="db-edit-listing db-account-listing-option edit">

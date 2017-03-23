@@ -41,6 +41,8 @@ public class HomeAction extends Action{
 		ArrayList<BaiDangBean> listBaiDang = baiDangBO.getListBaiDang();
 		homeForm.setListBaiDang(listBaiDang);
 		
+		homeForm.setListBaiDangKM(baiDangBO.getListBaiDangKM());
+		
 		//Lay danh sach bai dang 1- Làm đẹp 2- Kinh doanh 3- Dich vụ ăn uống 4- Tài chánh 5- Sức khỏe 6-Khách sạn 7-Giải trí;
 		ArrayList<BaiDangBean> listBaiDang1 = baiDangBO.getListBaiDangByDM(1);
 		homeForm.setListBaiDang_1(listBaiDang1);

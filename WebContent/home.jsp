@@ -5,31 +5,36 @@
 <%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="header.do" flush="true"></jsp:include>
-<!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
-<link rel="stylesheet" type="text/css" href="engine0/style.css" />
-<script type="text/javascript" src="engine0/jquery.js"></script>
-<!-- End WOWSlider.com HEAD section -->
-<script>
-$(document.body).addClass('noheabac');
-</script>
 <script>
 jQuery(document).ready(function($) {
-  $('.owl-carousel').owlCarousel({
+	 $('.bc-featured-listings').owlCarousel({
 	    items: 5,
 	    lazyLoad: true,
 	    margin: 10
 	});
+	 $('.thr_kma_sli').owlCarousel({
+		items:3,
+		animateOut: 'slideOutDown',
+		margin:0,
+	    loop:true,
+	    autoplay:true,
+	    autoplayTimeout:2000,
+	    smartSpeed:450,
+	    dots:false
+	})
   $( ".cat_des_3" ).html('😳 Mắt đẫn đờ, dạ dày rỗng, con tim rối bời chỉ vì không biết ăn gì ở đâu? Đừng lo, vào đây có hết! 🧀🍰🍦🍼 🍒🍭🍣');
 });
 </script>
 <div id="page" class="noheadbg">
 	<div class="bc-rs-container">
-		<div class="bc-header-slogan">
-			<span class="hea-slo-big">Chào mừng bạn đến với <b>Hoàn hảo</b> của danh bạ thương mại </span>
-			<span class="hea-slo-sma">
-				<p>Đây là là <b>điểm đến</b> cao cấp cho các nhà sản xuất quyết định.</p>
-				<p>Tìm một sản phẩm, dịch vụ, hoặc công ty mà bạn đang tìm kiếm.</p>
-			</span>
+		<div class="slotholder">
+			<div class="owl-carousel owl-theme thr_kma_sli">
+				<logic:iterate id="km" name="homeForm" property="listBaiDangKM">
+					<div class="item ite<bean:write name="km" property="maBaiDang"/>" style="background-image: url(<bean:write name="km" property="anhBia"/>)">
+						<h4><bean:write name="km" property="tieuDe"/></h4>
+					</div>
+				</logic:iterate>
+			</div>
 		</div>
 		<div class="bc-header-search">
 			<div class="bc-header-search-inner">
@@ -99,26 +104,7 @@ jQuery(document).ready(function($) {
 				</html:link>
 			</div>
 		</div>
-		<div class="slotholder">
-			<!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
-			<div id="wowslider-container0">
-			<div class="ws_images"><ul>
-			<li><img src="data0/images/dalat.jpg" alt="Đà Lạt" title="Đà Lạt" id="wows0_0"/>Đà Lạt mộng mơ và nên thơ nhờ cái lạnh cao nguyên ban đêm,  sương mù buổi sớm và những dải rừng thông bao quanh thành phố.</li>
-			<li><img src="data0/images/hanoi1.jpg" alt="Hà Nội" title="Hà Nội" id="wows0_1"/>Hà Nội thủ đô ngàn năm văn hiến luôn cuốn hút du khách bởi nét cổ kính, yên bình lạ kỳ. Với 36 khu phố nghề cổ kính của Hà Nội.</li>
-			<li><img src="data0/images/hue.jpg" alt="Huế" title="Huế" id="wows0_2"/>Huế là thành phố có bề dày văn hóa lâu đời, cảnh quan thiên nhiên đẹp và hữu tình cùng quần thể di tích lịch sử được thế giới công nhận</li>
-			<li><img src="data0/images/nhatrang.jpg" alt="Nha Trang" title="Nha Trang" id="wows0_3"/>Được tôn vinh là một trong những vịnh đẹp nhất thế giới, Vịnh Nha Trang  trở thành một điểm đến khi muốn tìm đến với biển.</li>
-			<li><img src="data0/images/quangninh.jpg" alt="Quảng Ninh" title="Quảng Ninh" id="wows0_4"/>Quảng Ninh được biết đến với những danh lam thắng cảnh được xếp vào loại  bậc đẹp nhất nước ta. Di sản thế giới vịnh Hạ Long.</li>
-			<li><a href="http://wowslider.net"><img src="data0/images/hcm.jpg" alt="http://wowslider.net/" title="Hồ Chí Minh" id="wows0_5"/></a>Hồ Chí Minh là thành phố lớn nhất Việt Nam đồng thời cũng là đầu tàu kinh tế và là trung tâm văn hóa, giáo dục quan trọng nhất của nước.</li>
-			<li><img src="data0/images/danang.jpg" alt="Đà Nẵng" title="Đà Nẵng" id="wows0_6"/>Thành phố Đà Nẵng nằm ở miền Trung Việt Nam với khoảng cách gần như chia đều giữa thủ đô Hà Nội và thành phố Hồ Chí Minh.</li>
-			</ul></div>
-			<div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.com/vi">bootstrap slider</a> by WOWSlider.com v8.7</div>
-			<div class="ws_shadow"></div>
-			</div>	
-			<script type="text/javascript" src="engine0/wowslider.js"></script>
-			<script type="text/javascript" src="engine0/script.js"></script>
-			<!-- End WOWSlider.com BODY section -->
-			<!--Off slide <div class="bc-bgimg"></div>-->
-		</div>
+		
 	</div>
 	<div class="clearfix"></div>
 	<div id="main" class="site-main container">

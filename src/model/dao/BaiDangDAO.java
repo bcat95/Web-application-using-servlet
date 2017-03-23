@@ -99,6 +99,33 @@ public class BaiDangDAO extends DataBaseConnect{
 		}
 		return list;
 	}
+	public ArrayList<BaiDangBean> getListBaiDangKM() {
+		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
+		try {
+			st=getConnect().createStatement();
+			rs=st.executeQuery("select top 10 BaiDang.MaBaiDang,BaiDang.TieuDe,BaiDang.AnhBia "
+					+ "from BaiDang "
+					+ "where BaiDang.MaBaiDang in (select MaBaiDang from KhuyenMai ) "
+					+ "order by NgayDang");
+			BaiDangBean BaiDang;
+			while(rs.next()){
+				BaiDang = new BaiDangBean();
+				BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
+				BaiDang.setTieuDe(rs.getString("TieuDe"));
+				BaiDang.setAnhBia(rs.getString("AnhBia"));
+				list.add(BaiDang);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
 	//---------------TÌM KIẾM---------------//
 			public ArrayList<BaiDangBean> getListBaiDangDanhMuc(String maDanhMuc) {
 				Connection connection = common.DataBaseConnect.getConnect();
@@ -462,6 +489,7 @@ public class BaiDangDAO extends DataBaseConnect{
 	//get thong tin xem chi tiet bai dang 
 	public static BaiDangBean infobaiDang(int maBaiDang) {
 		BaiDangBean baiDang= new BaiDangBean();
+		KhuyenMaiDAO khuyenMaiDAO=new KhuyenMaiDAO();
 		baiDang = new BaiDangBean();
 		try {
 			st=getConnect().createStatement();
@@ -497,6 +525,7 @@ public class BaiDangDAO extends DataBaseConnect{
 				e.printStackTrace();
 			}
 		}
+		baiDang.setListKhuyenMai(khuyenMaiDAO.getListKhuyenMai(maBaiDang));
 		baiDang.setListHinhAnh(HinhAnhDAO.infoHinhAnhByMa(maBaiDang));
 		baiDang.setListDichVu(DichVuDAO.infoDichVuByMa(maBaiDang));
 		baiDang.setListBinhLuan(BinhLuanDAO.infoBinhLuanByMa(maBaiDang));

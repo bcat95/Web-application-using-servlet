@@ -24,6 +24,7 @@ public class HomeForm extends ActionForm{
 	private String tenTinhThanh;
 	private String soLuotThich;
 	private ArrayList<TinhThanhBean> listTinhThanh;
+	private ArrayList<BaiDangBean>  listBaiDangKM;
 	private ArrayList<BaiDangBean> listBaiDang;
 	//Làm đẹp
 	private ArrayList<BaiDangBean> listBaiDang_1;
@@ -45,6 +46,14 @@ public class HomeForm extends ActionForm{
 	public HomeForm() {
 	}
 	
+	public ArrayList<BaiDangBean> getListBaiDangKM() {
+		return listBaiDangKM;
+	}
+
+	public void setListBaiDangKM(ArrayList<BaiDangBean> listBaiDangKM) {
+		this.listBaiDangKM = listBaiDangKM;
+	}
+
 	public String getSoLuotThich() {
 		return soLuotThich;
 	}
@@ -209,5 +218,4 @@ public class HomeForm extends ActionForm{
 		}
 		super.reset(mapping, request);
 	}
-
 }

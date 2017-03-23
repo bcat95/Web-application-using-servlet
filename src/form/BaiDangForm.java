@@ -11,6 +11,7 @@ import model.bean.BinhLuanBean;
 import model.bean.DanhMucBean;
 import model.bean.DichVuBean;
 import model.bean.HinhAnhBean;
+import model.bean.KhuyenMaiBean;
 import model.bean.TinhThanhBean;
 
 import org.apache.struts.action.ActionErrors;
@@ -54,9 +55,8 @@ public class BaiDangForm  extends ActionForm{
 	private Date ngayDang;
 	private String ngayHetHan;
 	private FormFile fileAnhBia;
-	//khuyen mai
-	//private String maKhuyenMai;
-	//private ArrayList<KhuyenMaiBean> listKhuyenMai;
+	
+	private ArrayList<KhuyenMaiBean> listKhuyenMai;
 	
 	private String userName;
 	private boolean yeuThich;
@@ -101,6 +101,14 @@ public class BaiDangForm  extends ActionForm{
 	
 	public boolean isAnhBiaXoa() {
 		return anhBiaXoa;
+	}
+
+	public ArrayList<KhuyenMaiBean> getListKhuyenMai() {
+		return listKhuyenMai;
+	}
+
+	public void setListKhuyenMai(ArrayList<KhuyenMaiBean> listKhuyenMai) {
+		this.listKhuyenMai = listKhuyenMai;
 	}
 
 	public float getDiemDanhGia() {
@@ -438,6 +446,7 @@ public class BaiDangForm  extends ActionForm{
 		this.listHinhAnh=itemBD.getListHinhAnh();
 		this.listDichVu=itemBD.getListDichVu();
 		this.listBinhLuan=itemBD.getListBinhLuan();
+		this.listKhuyenMai=itemBD.getListKhuyenMai();
 	}
 	
 	//ham set thuoc tinh bai dang khi them bai dang
