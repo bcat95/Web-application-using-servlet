@@ -17,10 +17,7 @@ jQuery(document).ready(function($) {
 		animateOut: 'slideOutDown',
 		margin:0,
 	    loop:true,
-	    autoplay:true,
-	    autoplayTimeout:2000,
-	    smartSpeed:450,
-	    dots:false
+	    smartSpeed:450
 	})
   $( ".cat_des_3" ).html('😳 Mắt đẫn đờ, dạ dày rỗng, con tim rối bời chỉ vì không biết ăn gì ở đâu? Đừng lo, vào đây có hết! 🧀🍰🍦🍼 🍒🍭🍣');
 });
@@ -30,8 +27,11 @@ jQuery(document).ready(function($) {
 		<div class="slotholder">
 			<div class="owl-carousel owl-theme thr_kma_sli">
 				<logic:iterate id="km" name="homeForm" property="listBaiDangKM">
-					<div class="item ite<bean:write name="km" property="maBaiDang"/>" style="background-image: url(<bean:write name="km" property="anhBia"/>)">
-						<h4><bean:write name="km" property="tieuDe"/></h4>
+					<div class="item ite<bean:write name="km" property="maBaiDang"/>" style="background-image:url(<bean:write name="km" property="anhBia"/>)">
+						<div class="km_inf">
+							<h4><bean:write name="km" property="tieuDe"/></h4>
+							<span><bean:write name="km" property="noiDung"/></span>
+						</div>
 					</div>
 				</logic:iterate>
 			</div>
