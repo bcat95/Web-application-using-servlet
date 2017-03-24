@@ -77,7 +77,8 @@ public class TimKiemAction extends Action{
 		
 		timKiemForm.setListBaiDang(listBaiDang);
 		
-		return mapping.findForward("timKiem");
+		//return mapping.findForward("timKiem");
+		return mapping.getInputForward();
 	}
 	
 }

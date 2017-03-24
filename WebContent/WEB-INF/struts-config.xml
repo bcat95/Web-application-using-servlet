@@ -92,7 +92,7 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		</action>
 		<action input="/banDo.jsp"  name="timKiemForm"
 			path="/banDo" scope="session" type="action.TimKiemAction" validate="true">
-			<forward name="timKiem" path="/timKiem.jsp" />
+			<forward name="/banDo" path="/banDo.jsp" />
 		</action>
 		<!-- end DonNA tao action -->
 		<!-- AnNBH action -->

@@ -10,6 +10,7 @@ import org.apache.struts.action.ActionMapping;
 
 import model.bean.BaiDangBean;
 import model.bean.DanhMucBean;
+import model.bean.KhuyenMaisBean;
 import model.bean.TinhThanhBean;
 
 public class HomeForm extends ActionForm{
@@ -24,21 +25,21 @@ public class HomeForm extends ActionForm{
 	private String tenTinhThanh;
 	private String soLuotThich;
 	private ArrayList<TinhThanhBean> listTinhThanh;
-	private ArrayList<BaiDangBean>  listBaiDangKM;
+	private ArrayList<KhuyenMaisBean>  listBaiDangKM;
 	private ArrayList<BaiDangBean> listBaiDang;
-	//Làm đẹp
+	//LÃ m Ä‘áº¹p
 	private ArrayList<BaiDangBean> listBaiDang_1;
 	//Kinh doanh
 	private ArrayList<BaiDangBean> listBaiDang_2;
-	//Dich vụ ăn uống
+	//Dich vá»¥ Äƒn uá»‘ng
 	private ArrayList<BaiDangBean> listBaiDang_3;
-	//Tài chánh
+	//TÃ i chÃ¡nh
 	private ArrayList<BaiDangBean> listBaiDang_4;
-	//Sức khỏe
+	//Sá»©c khá»�e
 	private ArrayList<BaiDangBean> listBaiDang_5;
-	//Khách sạn
+	//KhÃ¡ch sáº¡n
 	private ArrayList<BaiDangBean> listBaiDang_6;
-	//Giải trí
+	//Giáº£i trÃ­
 	private ArrayList<BaiDangBean> listBaiDang_7;
 	
 	private String[] sao;
@@ -46,13 +47,15 @@ public class HomeForm extends ActionForm{
 	public HomeForm() {
 	}
 	
-	public ArrayList<BaiDangBean> getListBaiDangKM() {
+	public ArrayList<KhuyenMaisBean> getListBaiDangKM() {
 		return listBaiDangKM;
 	}
 
-	public void setListBaiDangKM(ArrayList<BaiDangBean> listBaiDangKM) {
+
+	public void setListBaiDangKM(ArrayList<KhuyenMaisBean> listBaiDangKM) {
 		this.listBaiDangKM = listBaiDangKM;
 	}
+
 
 	public String getSoLuotThich() {
 		return soLuotThich;

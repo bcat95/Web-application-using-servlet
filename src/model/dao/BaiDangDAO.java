@@ -99,33 +99,6 @@ public class BaiDangDAO extends DataBaseConnect{
 		}
 		return list;
 	}
-	public ArrayList<BaiDangBean> getListBaiDangKM() {
-		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
-		try {
-			st=getConnect().createStatement();
-			rs=st.executeQuery("select top 10 BaiDang.MaBaiDang,BaiDang.TieuDe,BaiDang.AnhBia "
-					+ "from BaiDang "
-					+ "where BaiDang.MaBaiDang in (select MaBaiDang from KhuyenMai ) "
-					+ "order by NgayDang");
-			BaiDangBean BaiDang;
-			while(rs.next()){
-				BaiDang = new BaiDangBean();
-				BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
-				BaiDang.setTieuDe(rs.getString("TieuDe"));
-				BaiDang.setAnhBia(rs.getString("AnhBia"));
-				list.add(BaiDang);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally{
-			try {
-				getConnect().close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return list;
-	}
 	//---------------TÌM KIẾM---------------//
 			public ArrayList<BaiDangBean> getListBaiDangDanhMuc(String maDanhMuc) {
 				Connection connection = common.DataBaseConnect.getConnect();

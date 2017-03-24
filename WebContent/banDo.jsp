@@ -5,14 +5,22 @@
 <%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
 <%@taglib uri="http://displaytag.sf.net" prefix="display"%>
 <jsp:include page="header.do" flush="true"></jsp:include>
-<script>
-$(document.body).addClass('noheabac');
-</script>
-<div id="page">
+<div id="page"class="bcbanDo">
 	<!-- Tim kiem jsp  -->
 		<div id="db-main-listing-search">
 		<div class="db-main-wrapper">
-			<div class="db-search-side-one bottom">
+			<div class="bc_map_lef pull-left">
+				<div class="db-search-input">
+					<div id="inp_tenTinhThanh"></div>
+					<div id="inp_tenDanhMuc"></div>
+					<script>
+					$( document ).ready(function() {	
+						$('#inp_tenTinhThanh').html($('#tenTinhThanh option:selected').text());
+						$('#inp_tenDanhMuc').html($('#tenDanhMuc option:selected').text());
+					});
+					</script>
+				</div>
+				<a class="bac_tim" href="timKiem.do"><button type="button" class="btn btn-default">Trở lại danh sach</button></a>
 				<div class="db-search-controls">
 				<html:form action="/banDo" method="get" styleId="db-main-search">
 					<!--  <div class="db-main-search">-->
@@ -20,39 +28,39 @@ $(document.body).addClass('noheabac');
 						<div class="db-search-custom-fields clearfix">
 							<!-- tim kiem 1 -->
 							<div class="db-search-row clearfix">
-								<!--tim kiem theo ten -->
-								<div class="db-field-row">
-									<label class="db-field-row-label" for="listing_address">Listing name</label>
-									<!-- <input type="text" class="db-search-listing_name" placeholder="Listing name" value=""> -->
-									<html:text property="noiDung" styleClass="db-search-listing_name" ></html:text>
-								</div>
-								<!--end tim kiem theo ten -->
-								<!--tim kiem theo danh muc -->
-								
-								<div class="db-field-row db-search-categories custom-select">
-									<html:select onchange="this.form.submit()"  property="maDanhMuc">
-										<option value="">-- Chọn danh mục --</option>
-										<html:optionsCollection name="timKiemForm" property="listDanhMuc" 
-										label="tenDanhMuc" value="maDanhMuc" />
-									</html:select>
-								</div>
-								<!--end tim kiem theo danh muc -->
 								<!--tim kiem theo khu vuc -->
-								<div class="db-field-row custom-select">
-									<html:select onchange="this.form.submit()" property="maTinhThanh">
+								<div class="form-group custom-select">
+									<html:select onchange="this.form.submit()" property="maTinhThanh" styleId="tenTinhThanh">
 										<option value="">-- Chọn khu vực --</option>
 										<html:optionsCollection name="timKiemForm" property="listTinhThanh"
 										label="tenTinhThanh" value="maTinhThanh" />
 									</html:select>		
 								</div>
 								<!--end tim kiem theo khu vuc -->
+								<!--tim kiem theo danh muc -->
+								
+								<div class="form-group db-search-categories custom-select">
+									<html:select onchange="this.form.submit()"  property="maDanhMuc" styleId="tenDanhMuc">
+										<option value="">-- Chọn danh mục --</option>
+										<html:optionsCollection name="timKiemForm" property="listDanhMuc" 
+										label="tenDanhMuc" value="maDanhMuc" />
+									</html:select>
+								</div>
+								<!--end tim kiem theo danh muc -->
+								<!--tim kiem theo ten -->
+								<div class="form-group">
+									<label class="form-group-label" for="listing_address">Tìm theo tên</label>
+									<!-- <input type="text" class="db-search-listing_name" placeholder="Listing name" value=""> -->
+									<html:text property="noiDung" styleClass="db-search-listing_name" ></html:text>
+								</div>
+								<!--end tim kiem theo ten -->
 							</div>
 							<!-- end tim kiem 1 -->
 								<!-- tim kiem 2 -->
 								<div class="db-search-row clearfix">
 									<html:submit styleClass="bc-create-listing bc-button bc-button-invert" >Xem</html:submit>
-									<div class="db-field-row db-slider-field-wrapper">
-										<label class="db-field-row-label" for="listing_search_radius">Search radius (Kilometers)</label>
+									<div class="form-group db-slider-field-wrapper">
+										<label class="form-group-label" for="listing_search_radius">Search radius (Kilometers)</label>
 										<div class="db-slider-field ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all text-added" data-value=" km">
 											<span class="db-slider-left" style="width: 50%;"></span>
 											<input type="text" id="listing_search_radius" class="db-search-listing_search_radius" data-default="150" value="150">
@@ -65,24 +73,11 @@ $(document.body).addClass('noheabac');
 						<!-- </div> -->
 						</html:form>
 						<!--tim kiem sort -->
-						<div class="db-search-sort-container">
-							<span class="db-found-count total-hidden">8 results</span>
-							<div class="dt-sort-row single-select">
-								<div class="dropdown">
-									  <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Sắp xếp
-									  <span class="caret"></span></button>
-									  <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-									    <li role="presentation"><a id="sor_ddg" role="menuitem" tabindex="-1" href="timKiem.do?&d-1343431-s=1">Đánh giá</a></li>
-									  </ul>
-								</div>
-							</div>
-							<div class="clearfix"></div>
-						</div>
 					</div>
 					<!--Danh sach tin-->
 					<!--end danh sach tin--></div>
-			<div class="db-search-side-two bottom">
-				<div id="db-main-search-map" style="width: 100%; height: 572px; position: relative; overflow: hidden;"></div>
+			<div class="bc_map_rig">
+				<div id="db-main-search-map" style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 				<script>
 					function initMap() {
 						var myLatLng = {lat: 16.0474325, lng: 108.1712203};
@@ -122,7 +117,7 @@ $(document.body).addClass('noheabac');
 						var map = new google.maps.Map(document.getElementById('db-main-search-map'), {
 					    zoom: zoom,
 					    center: myLatLng,
-					    mapTypeId: google.maps.MapTypeId.ROADMAP
+					    mapTypeId: 'roadmap'
 					  	});
 						var infowindow = new google.maps.InfoWindow();
 						<logic:iterate id="bd" name="timKiemForm" property="listBaiDang">
@@ -165,4 +160,5 @@ $(document.body).addClass('noheabac');
 	<script>
 		$("#sor_ddg").attr("href", $('.sor_ddg a').attr('href'));
 	</script>
-<jsp:include page="template_Footer.jsp"></jsp:include>
+</body>
+</html>

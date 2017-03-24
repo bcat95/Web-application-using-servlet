@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import common.DataBaseConnect;
 import model.bean.KhuyenMaiBean;
+import model.bean.KhuyenMaisBean;
 
 
 public class KhuyenMaiDAO  extends DataBaseConnect{
@@ -97,7 +98,36 @@ public class KhuyenMaiDAO  extends DataBaseConnect{
 		}
 		
 	}
+	public ArrayList<KhuyenMaisBean> getListBaiDangKM() {
+		ArrayList<KhuyenMaisBean> list = new ArrayList<KhuyenMaisBean>();
+		try {
+			st=getConnect().createStatement();
+			rs=st.executeQuery("select * from ( "
+					+ "select  top 10  BaiDang.MaBaiDang,BaiDang.TieuDe,BaiDang.AnhBia ,KhuyenMai.NoiDung,KhuyenMai.MaKhuyenMai "
+					+ "from BaiDang inner join KhuyenMai on BaiDang.MaBaiDang=KhuyenMai.MaBaiDang ) as tblOut "
+					+ "where tblOut.MaKhuyenMai=(select MaKhuyenMai from func_maxMaKM(MaBaiDang))");
 
+			KhuyenMaisBean khuyenMais;
+			while(rs.next()){
+				khuyenMais = new KhuyenMaisBean();
+				khuyenMais.setMaBaiDang(rs.getInt("MaBaiDang"));
+				khuyenMais.setTieuDe(rs.getString("TieuDe"));
+				khuyenMais.setAnhBia(rs.getString("AnhBia"));
+				khuyenMais.setNoiDung(rs.getString("NoiDung"));
+				khuyenMais.setMaKhuyenMai(rs.getInt("maKhuyenMai"));
+				list.add(khuyenMais);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
 
 
 }

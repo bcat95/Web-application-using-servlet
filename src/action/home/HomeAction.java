@@ -10,6 +10,7 @@ import model.bean.DanhMucBean;
 import model.bean.TinhThanhBean;
 import model.bo.BaiDangBO;
 import model.bo.DanhMucBO;
+import model.bo.KhuyenMaiBO;
 import model.bo.TinhThanhBO;
 
 import org.apache.struts.action.Action;
@@ -41,9 +42,10 @@ public class HomeAction extends Action{
 		ArrayList<BaiDangBean> listBaiDang = baiDangBO.getListBaiDang();
 		homeForm.setListBaiDang(listBaiDang);
 		
-		homeForm.setListBaiDangKM(baiDangBO.getListBaiDangKM());
+		KhuyenMaiBO khuyenMaiBO=new KhuyenMaiBO();
+		homeForm.setListBaiDangKM(khuyenMaiBO.getListBaiDangKM());
 		
-		//Lay danh sach bai dang 1- Làm đẹp 2- Kinh doanh 3- Dich vụ ăn uống 4- Tài chánh 5- Sức khỏe 6-Khách sạn 7-Giải trí;
+		//Lay danh sach bai dang 1- LÃ m Ä‘áº¹p 2- Kinh doanh 3- Dich vá»¥ Äƒn uá»‘ng 4- TÃ i chÃ¡nh 5- Sá»©c khá»�e 6-KhÃ¡ch sáº¡n 7-Giáº£i trÃ­;
 		ArrayList<BaiDangBean> listBaiDang1 = baiDangBO.getListBaiDangByDM(1);
 		homeForm.setListBaiDang_1(listBaiDang1);
 		ArrayList<BaiDangBean> listBaiDang2 = baiDangBO.getListBaiDangByDM(2);

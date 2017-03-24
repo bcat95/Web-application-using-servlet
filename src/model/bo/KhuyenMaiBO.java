@@ -3,6 +3,7 @@ package model.bo;
 import java.util.ArrayList;
 
 import model.bean.KhuyenMaiBean;
+import model.bean.KhuyenMaisBean;
 import model.dao.KhuyenMaiDAO;
 
 
@@ -26,5 +27,9 @@ public class KhuyenMaiBO {
 
 	public void editKhuyenMai(KhuyenMaiBean khuyenMai) {
 		khuyenMaiDAO.editKhuyenMai(khuyenMai);
+	}
+
+	public ArrayList<KhuyenMaisBean> getListBaiDangKM() {
+		return khuyenMaiDAO.getListBaiDangKM();
 	}
 }
