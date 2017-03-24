@@ -3046,3 +3046,6 @@ li.popular label, li.popular .db-fee-description .db-fee-value, li.popular .db-f
 td.bcblock.noidung {
     max-width: 400px;
 }
+.bcblock.tieude{
+	max-width: 300px;
+}

@@ -66,7 +66,7 @@ body {
 							</span>
 						</div>
 						<div class="thr_inf_bot">
-							<logic:iterate id="khuyenmai" name="baiDangForm" property="listKhuyenMai" offset="1">
+							<logic:iterate id="khuyenmai" name="baiDangForm" property="listKhuyenMai">
 									<div class="thr_km_hea">
 										<i class="fa fa-gift fa-2 alway-active wolf-surprise bc_gre" aria-hidden="true"></i> <bean:write name="khuyenmai" property="tieuDe"/>
 										<span>

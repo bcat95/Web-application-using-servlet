@@ -11,7 +11,6 @@ import model.bean.KhuyenMaiBean;
 
 
 public class KhuyenMaiDAO  extends DataBaseConnect{
-	private static PreparedStatement prepSt=null;
 	private static Statement st=null;
 	private static ResultSet rs=null;
 
@@ -62,7 +61,6 @@ public class KhuyenMaiDAO  extends DataBaseConnect{
 			prepSt.setDate(3, java.sql.Date.valueOf(khuyenMai.getNgayBatDau()));
 			prepSt.setDate(4, java.sql.Date.valueOf(khuyenMai.getNgayKetThuc()));
 			prepSt.setInt(5, khuyenMai.getMaBaiDang());
-			System.out.println("sql "+insertTableSQL);
 			prepSt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

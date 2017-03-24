@@ -90,6 +90,10 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="danhSachKhuyenMai" path="/khuyenmai.do" redirect="true"/>
 			<forward name="khuyenMaierror" path="/thong-tin.do"></forward>
 		</action>
+		<action input="/banDo.jsp"  name="timKiemForm"
+			path="/banDo" scope="session" type="action.TimKiemAction" validate="true">
+			<forward name="timKiem" path="/timKiem.jsp" />
+		</action>
 		<!-- end DonNA tao action -->
 		<!-- AnNBH action -->
 		<action input="/home.jsp" name="homeForm"

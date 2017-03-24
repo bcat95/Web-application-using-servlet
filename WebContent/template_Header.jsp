@@ -70,6 +70,7 @@
 							<ul class="dropdown-menu">
 								<li><a href="#">Blog</a></li>
 								<li><a href="timKiem.do">Tìm kiếm</a></li>
+								<li><a href="banDo.do">Bản đồ</a></li>
 							</ul>
 						</li>
 						<logic:equal name="headerForm" property="type" value="1">
