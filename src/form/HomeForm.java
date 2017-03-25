@@ -17,14 +17,16 @@ public class HomeForm extends ActionForm{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private int maBaiDang;
+	
 	private String maDanhMuc;
 	private String tenDanhMuc;
 	private ArrayList<DanhMucBean> listDanhMuc;
 	private String maTinhThanh;
 	private String tenTinhThanh;
-	private String soLuotThich;
 	private ArrayList<TinhThanhBean> listTinhThanh;
+	
+	private int maBaiDang;
+	private String soLuotThich;
 	private ArrayList<KhuyenMaisBean>  listBaiDangKM;
 	private ArrayList<BaiDangBean> listBaiDang;
 	//LÃ m Ä‘áº¹p
@@ -47,6 +49,54 @@ public class HomeForm extends ActionForm{
 	public HomeForm() {
 	}
 	
+	public String getMaDanhMuc() {
+		return maDanhMuc;
+	}
+
+	public void setMaDanhMuc(String maDanhMuc) {
+		this.maDanhMuc = maDanhMuc;
+	}
+
+	public String getTenDanhMuc() {
+		return tenDanhMuc;
+	}
+
+	public void setTenDanhMuc(String tenDanhMuc) {
+		this.tenDanhMuc = tenDanhMuc;
+	}
+
+	public ArrayList<DanhMucBean> getListDanhMuc() {
+		return listDanhMuc;
+	}
+
+	public void setListDanhMuc(ArrayList<DanhMucBean> listDanhMuc) {
+		this.listDanhMuc = listDanhMuc;
+	}
+
+	public String getMaTinhThanh() {
+		return maTinhThanh;
+	}
+
+	public void setMaTinhThanh(String maTinhThanh) {
+		this.maTinhThanh = maTinhThanh;
+	}
+
+	public String getTenTinhThanh() {
+		return tenTinhThanh;
+	}
+
+	public void setTenTinhThanh(String tenTinhThanh) {
+		this.tenTinhThanh = tenTinhThanh;
+	}
+
+	public ArrayList<TinhThanhBean> getListTinhThanh() {
+		return listTinhThanh;
+	}
+
+	public void setListTinhThanh(ArrayList<TinhThanhBean> listTinhThanh) {
+		this.listTinhThanh = listTinhThanh;
+	}
+
 	public ArrayList<KhuyenMaisBean> getListBaiDangKM() {
 		return listBaiDangKM;
 	}
@@ -148,51 +198,6 @@ public class HomeForm extends ActionForm{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-
-	public String getMaDanhMuc() {
-		return maDanhMuc;
-	}
-	public String getTenDanhMuc() {
-		return tenDanhMuc;
-	}
-	public void setTenDanhMuc(String tenDanhMuc) {
-		this.tenDanhMuc = tenDanhMuc;
-	}
-	public void setMaDanhMuc(String maDanhMuc) {
-		this.maDanhMuc = maDanhMuc;
-	}
-	public ArrayList<DanhMucBean> getListDanhMuc() {
-		return listDanhMuc;
-	}
-	public void setListDanhMuc(ArrayList<DanhMucBean> listDanhMuc) {
-		this.listDanhMuc = listDanhMuc;
-	}
-
-	public String getMaTinhThanh() {
-		return maTinhThanh;
-	}
-
-	public void setMaTinhThanh(String maTinhThanh) {
-		this.maTinhThanh = maTinhThanh;
-	}
-
-	public String getTenTinhThanh() {
-		return tenTinhThanh;
-	}
-
-	public void setTenTinhThanh(String tenTinhThanh) {
-		this.tenTinhThanh = tenTinhThanh;
-	}
-
-	public ArrayList<TinhThanhBean> getListTinhThanh() {
-		return listTinhThanh;
-	}
-
-	public void setListTinhThanh(ArrayList<TinhThanhBean> listTinhThanh) {
-		this.listTinhThanh = listTinhThanh;
-	}
-
 	public ArrayList<BaiDangBean> getListBaiDang() {
 		return listBaiDang;
 	}

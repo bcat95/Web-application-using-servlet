@@ -142,6 +142,7 @@
                     <html:form action="/xemTinChuaDuyet">
                     <div class="col-lg-12">
                         <h1 class="page-header">Thông tin chi tiết</h1>
+                        <a href="xemTinChuaDuyet.do?maBaiDang=<bean:write name="danhSachBaiDangDaDuyetForm" property="maBaiDang"/>&duyetTin=true" type="button" class="btn btn-success">Duyệt Tin</a>
                     </div>
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                        

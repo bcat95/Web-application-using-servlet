@@ -22,6 +22,8 @@
 	<link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
 	<link href="css/wolf-animation.css?v=1.0" rel="stylesheet">
 	<link rel="stylesheet" href="css/bcat.css">
+	<script src="js/nprogress.js"></script>
+	<link rel="stylesheet" href="css/nprogress.css"/>
 	<script>
 		$(function() {
     		$("#username").attr("placeholder", "Enter username");
@@ -42,7 +44,7 @@
 	});
 	</script>
 </head>
-<body id="page" class="<logic:equal name="headerForm" property="type" value="-1">LoggedOut</logic:equal><logic:notEqual name="headerForm" property="type" value="-1">LoggedInt</logic:notEqual>">
+<body style='display: none' id="page" class="<logic:equal name="headerForm" property="type" value="-1">LoggedOut</logic:equal><logic:notEqual name="headerForm" property="type" value="-1">LoggedInt</logic:notEqual>">
 <!--Begin header-->
 	<header>
 		<div class="header-content page-with">
@@ -58,22 +60,13 @@
 					</logic:notEqual>
 					<logic:equal name="headerForm" property="type" value="-1">
 						<a href="Login.do" id ="bccrea_login" class="bc-create-listing bc-button bc-button-invert">Đăng tin mới</a>
-						<a href="Login.do" class="bc-login-register" id="bcLogin">
+						<a href="#modalLogin" data-toggle="modal" data-target="#modalLogin" class="bc-login-register" id="bcLogin">
 							<i class="fa fa-sign-in" aria-hidden="true"></i>Đăng nhập / Đăng ký
 						</a>
 					</logic:equal>
-					
 					<ul class="nav navbar-nav main-header-right-side">
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Trang
-								<span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Blog</a></li>
-								<li><a href="timKiem.do">Tìm kiếm</a></li>
-								<li><a href="banDo.do">Bản đồ</a></li>
-							</ul>
-						</li>
+						<li><a href="timKiem.do">Tìm kiếm</a></li>
+						<li><a href="banDo.do">Bản đồ</a></li>
 						<logic:equal name="headerForm" property="type" value="1">
 							<li class="dropdown"><a data-toggle="dropdown"> Thống kê <span class="caret"></span></a>
 								<ul class="dropdown-menu">
@@ -83,25 +76,13 @@
 							</li>
 						</logic:equal>
 						<logic:equal name="headerForm" property="type" value="1">
-							<li class="dropdown"><a data-toggle="dropdown"> Quản lý <span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<logic:equal name="headerForm" property="type" value="admin">
-	                                    <li><a href="danhSachBaiDangChuaDuyet.do">Duyệt bài đăng</a></li>
-										<li><a href="danhSachBaiDangDaDuyet.do">Quản lý bài đăng</a></li>
-									</logic:equal>
-                            	</ul>
-							</li>
-						</logic:equal>
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Danh mục
-								<span class="caret"></span>
-							</a>
+						<li class="dropdown"><a data-toggle="dropdown"> Quản lý <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Danh mục 1</a></li>
-								<li><a href="#">Danh mục 2</a></li>
-								<li><a href="#">Danh mục 3</a></li>
-							</ul>
+                                <li><a href="danhSachBaiDangChuaDuyet.do">Duyệt bài đăng</a></li>
+								<li><a href="danhSachBaiDangDaDuyet.do">Quản lý bài đăng</a></li>
+                           	</ul>
 						</li>
+						</logic:equal>
 						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Trợ giúp
 								<span class="caret"></span>

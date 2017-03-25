@@ -41,6 +41,7 @@ public class BaiDangForm  extends ActionForm{
 	 */
 	private static final long serialVersionUID = 1L;
 	private int maBaiDang;
+	private int maLoaiTin;
 	private String tieuDe;
 	private String anhBia;
 	private boolean anhBiaXoa;
@@ -101,6 +102,22 @@ public class BaiDangForm  extends ActionForm{
 	
 	public boolean isAnhBiaXoa() {
 		return anhBiaXoa;
+	}
+
+	public int getMaLoaiTin() {
+		return maLoaiTin;
+	}
+
+	public void setMaLoaiTin(int maLoaiTin) {
+		this.maLoaiTin = maLoaiTin;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public void setSdf(SimpleDateFormat sdf) {
+		this.sdf = sdf;
 	}
 
 	public ArrayList<KhuyenMaiBean> getListKhuyenMai() {
@@ -426,6 +443,7 @@ public class BaiDangForm  extends ActionForm{
 	public void setXemBaiDang(BaiDangBean itemBD) {
 		//this.set
 		this.maBaiDang = itemBD.getMaBaiDang();
+		this.maLoaiTin=itemBD.getMaLoaiTin();
 		this.tieuDe = itemBD.getTieuDe();
 		this.noiDung = itemBD.getNoiDung();
 		this.anhBia=itemBD.getAnhBia();
@@ -470,6 +488,7 @@ public class BaiDangForm  extends ActionForm{
 	//ham set thuoc tinh bai dang khi sua bai dang
 	public void setSuaBaiDang(BaiDangBean item) {
 		this.maBaiDang = item.getMaBaiDang();
+		this.maLoaiTin=item.getMaLoaiTin();
 		this.tieuDe = item.getTieuDe();
 		this.noiDung = item.getNoiDung();
 		this.diaChi = item.getDiaChi();

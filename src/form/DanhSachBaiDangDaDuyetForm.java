@@ -40,12 +40,31 @@ public class DanhSachBaiDangDaDuyetForm extends ActionForm{
 	private String tenTinhThanh;
 	private String tenLoaiTin;
 	private String submit;
+	private boolean duyetTin;
+	private boolean goDuyetTin;
 	
 	public String getSubmit() {
 		return submit;
 	}
 	public void setSubmit(String submit) {
 		this.submit = submit;
+	}
+
+
+	public boolean isGoDuyetTin() {
+		return goDuyetTin;
+	}
+	public void setGoDuyetTin(boolean goDuyetTin) {
+		this.goDuyetTin = goDuyetTin;
+	}
+	public boolean isDuyetTin() {
+		return duyetTin;
+	}
+	public void setDuyetTin(boolean duyetTin) {
+		this.duyetTin = duyetTin;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 

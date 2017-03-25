@@ -1,6 +1,87 @@
 /*css dung chung*/
+button, html, input, select, textarea {
+    color: #37454d;
+}
+a{
+	cursor: pointer;
+}
+.fade {
+    transition: all 300ms linear 700ms;
+    transform: translate3d(0,0,0);
+    opacity: 1;
+}
+.fade.out {
+    opacity: 0;
+}
 .pos-relative {
     position: relative;
+}
+.content-area{
+	padding: 15px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(41,51,57,.5);
+    color: #37454d;
+}
+.center{
+	text-align: center;
+}
+.btn-primary {
+    background-color: #007fad;
+    border: 1px solid #007fad;
+    border-bottom: 1px solid #005f81;
+}
+.btn .button_label {
+    display: inline-block;
+    transform: translateX(0);
+    transition: display .5s linear .5s,-webkit-transform .5s linear 0s;
+    transition: transform .5s linear 0s,display .5s linear .5s;
+    transition: transform .5s linear 0s,display .5s linear .5s,-webkit-transform .5s linear 0s;
+}
+*, :after, :before, html {
+    box-sizing: border-box;
+}
+.btn {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    margin: 4px 0;
+    padding: 13px 13px 11px;
+    vertical-align: middle;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 2px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 1;
+    text-align: center;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+input, textarea {
+    padding: 0 12px;
+}
+input, select, textarea {
+    background-color: #fff;
+    border: 1px solid #9ba2a6;
+    border-radius: 2px;
+    color: #37454d;
+    font-size: 16px;
+    height: 44px;
+    width: 100%;
+}
+/*head*/
+.head_nav {
+    display: flex;
+    flex-direction: row-reverse;
 }
 /*danh sach bai viet*/
 .db-main-search-listings #threads tr{
@@ -135,4 +216,69 @@
     align-items: center;
     flex-wrap: nowrap;
     justify-content: flex-end;
+}
+/*trang chu*/
+.bc-header-search-inner > form{
+    display: flex;
+    margin: 0px auto;
+    max-width: 800px;
+    height: 55px;
+}
+.bc-header-search-inner .bc-search-row {
+    transition: background ease-in-out 0.2s;
+    flex:2;
+}
+.bc-search-row.bc-button {
+    flex: 1;
+    text-align: center;
+}
+
+.bc-search-row.btn.btn-primary {
+    background-color: #007fad;
+    border: 1px solid #007fad;
+    border-bottom: 1px solid #005f81;
+    text-align: center;
+    flex: 1;
+    height: calc( 100% - 2px );
+    margin: 0;
+    margin-top: 1px;
+    border-radius: 0 2px 2px 0;
+}
+input.bc-search-listing_name {
+    top: -15px;
+    position: relative;
+    font-size: 13px;
+}
+.owl-carousel .owl-stage {
+    margin-left: 2px;
+}
+
+.col-sm-12.cat_ites {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+.bc-featured-listings-item-inner {
+    border-radius: 2px;
+    transition: box-shadow ease-in-out 0.2s;
+    box-shadow: 0 1px 2px rgba(41,51,57,.5);
+}
+
+.bc-featured-listings-image {
+    height: 203px;
+    position: relative;
+    background-color: #ccc;
+    border-radius: 2px 2px 0 0;
+    cursor: pointer;
+    display: block;
+    margin: 0 -1px;
+}
+a.link_out {
+    position: absolute;
+    height: 100%;
+    display: block;
+    z-index: 99;
+    width: 100%;
 }

@@ -19,12 +19,18 @@ public class XemTinChuaDuyetAction extends Action{
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("UTF-8");
-		DanhSachBaiDangDaDuyetForm danhSachBaiDangDaDuyetForm= (DanhSachBaiDangDaDuyetForm)form;
+		DanhSachBaiDangDaDuyetForm thisForm= (DanhSachBaiDangDaDuyetForm)form;
 		BaiDangBO baiDangBO= new BaiDangBO();
-		int mbd= danhSachBaiDangDaDuyetForm.getMaBaiDang();
+		int mbd= thisForm.getMaBaiDang();
 		BaiDangBean baiDang= baiDangBO.getListChiTietBaiDangChuaDuyet(mbd);
-		danhSachBaiDangDaDuyetForm.setBaiDangDaDuyet(baiDang);
-		System.out.println("NOy1");
+		if(thisForm.isDuyetTin()){
+			thisForm.setDuyetTin(false);
+			baiDangBO.setDuyetTin(thisForm.getMaBaiDang());
+			return mapping.findForward("baiDangChuaDuyet");
+		}
+		System.out.println("ma duyet "+thisForm.getMaBaiDang());
+		thisForm.setBaiDangDaDuyet(baiDang);
 		return mapping.findForward("xemTinChuaDuyet");
+		
 	}
 }

@@ -25,9 +25,10 @@ jQuery(document).ready(function($) {
 <div id="page" class="noheadbg">
 	<div class="bc-rs-container">
 		<div class="slotholder">
-			<div class="owl-carousel owl-theme thr_kma_sli">
+			<div class="owl-carousel owl-theme thr_kma_sli fade out">
 				<logic:iterate id="km" name="homeForm" property="listBaiDangKM">
 					<div class="item ite<bean:write name="km" property="maBaiDang"/>" style="background-image:url(<bean:write name="km" property="anhBia"/>)">
+						<a class='link_out' href='xemtin.do?maBaiDang=<bean:write name="km" property="maBaiDang"/>'></a>
 						<div class="km_inf">
 							<h4><bean:write name="km" property="tieuDe"/></h4>
 							<span><bean:write name="km" property="noiDung"/></span>
@@ -66,45 +67,10 @@ jQuery(document).ready(function($) {
 						</html:select>
 					</div>
 				</div>
-            	<html:submit styleClass="bc-header-search-submit bc-button bc-button-danger" >
-            	Tìm
-            	</html:submit>
+            	<html:submit styleClass="bc-search-row btn btn-primary center" >Tìm</html:submit>
         	</html:form>
 			</div>
 		</div>
-		<div class="bc-header-categories">
-			<div class="bc-header-category-item" data-id="1">
-				<html:link href="timKiem.do?&maDanhMuc=1">
-				<span class="bc-header-category-icon wl-beauty"></span>
-				<span class="bc-header-category-name">Làm đẹp</span>
-				</html:link>
-			</div>
-			<div class="bc-header-category-item" data-id="3">
-				<html:link href="timKiem.do?&maDanhMuc=3">
-				<span class="bc-header-category-icon wl-catering"></span>
-				<span class="bc-header-category-name">Ăn uống</span>
-				</html:link>
-			</div>
-			<div class="bc-header-category-item" data-id="4">
-				<html:link href="timKiem.do?&maDanhMuc=4">
-				<span class="bc-header-category-icon wl-finances"></span>
-				<span class="bc-header-category-name">Tài chánh</span>
-				</html:link>
-			</div>
-			<div class="bc-header-category-item" data-id="5">
-				<html:link href="timKiem.do?&maDanhMuc=5">
-				<span class="bc-header-category-icon wl-health"></span>
-				<span class="bc-header-category-name">Sức khỏe</span>
-				</html:link>
-			</div>
-			<div class="bc-header-category-item" data-id="7">
-				<html:link href="timKiem.do?&maDanhMuc=7">
-				<span class="bc-header-category-icon wl-plants"></span>
-				<span class="bc-header-category-name">Giải trí</span>
-				</html:link>
-			</div>
-		</div>
-		
 	</div>
 	<div class="clearfix"></div>
 	<div id="main" class="site-main container">
@@ -113,7 +79,7 @@ jQuery(document).ready(function($) {
 			<logic:iterate id="danhmuc" name="homeForm" property="listDanhMuc">
 			<bean:define id="maDanhMuc" name="danhmuc" property="maDanhMuc"></bean:define>
 			
-			<div class="col-sm-12 cat_ites">
+			<div class="col-sm-12 cat_ites fade out ">
 					<div class="column-inner cat_ite">
 						<div class="cat_inf">
 							<div class="cat_tit clearfix"><h1><bean:write name="danhmuc" property="tenDanhMuc"/></h1><html:link styleClass="vie_all" href="timKiem.do?maDanhMuc=${maDanhMuc}">xem toàn bộ</html:link></div>
@@ -156,7 +122,6 @@ jQuery(document).ready(function($) {
 										</a>
 										<!--to ta ngan bai dang-->
 										<div class="bc-featured-listings-description">
-											<bean:write name="bd" property="noiDung" filter="fasle"/>
 										</div>
 										<div class="bc-featured-listings-meta clearfix">
 											<!--so luot thich bai dang-->

@@ -160,5 +160,11 @@
 	<script>
 		$("#sor_ddg").attr("href", $('.sor_ddg a').attr('href'));
 	</script>
+	<script>
+	$('body').show();
+	$('.version').text(NProgress.version);
+	NProgress.start();
+	setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
+	</script>
 </body>
 </html>

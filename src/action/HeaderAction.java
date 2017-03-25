@@ -1,5 +1,7 @@
 package action;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -9,7 +11,11 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import form.HeaderForm;
+import model.bean.DanhMucBean;
+import model.bean.TinhThanhBean;
 import model.bean.User;
+import model.bo.DanhMucBO;
+import model.bo.TinhThanhBO;
 
 public class HeaderAction extends Action{
 	@Override
@@ -26,7 +32,6 @@ public class HeaderAction extends Action{
 		}
 		else
 			thisForm.setType(-1);
-		
 		return mapping.getInputForward();
 	}
 }

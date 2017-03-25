@@ -66,11 +66,13 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="login" path="/Login.do" redirect="true"/>
 			<forward name="suaTinxong" path="/tinDangThanhCong.jsp" redirect="true"/>
 			<forward name="suaTinerror" path="/suaTin.jsp"></forward>
+			<forward name="err404" path="/error404.jsp" redirect="true"/>
 		</action>
 		<action input="/xemChiTietBaiDang.jsp" name="baiDangForm"
 			path="/xemtin" scope="session" type="action.baidang.BaiDangAction">
 			<forward name="binhLuanxong" path="/xemChiTietBaiDang.jsp" redirect="true"/>
 			<forward name="login" path="/Login.do" redirect="true"/>
+			<forward name="err404" path="/error404.jsp" redirect="true"/>
 		</action>
 		<action input="/khuyenMai.jsp" name="khuyenMaiForm"
 			path="/khuyenmai" scope="session" type="action.baidang.KhuyenMaiAction">
@@ -141,6 +143,7 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<action name="danhSachBaiDangDaDuyetForm" path="/xemTinDaDuyet"
 			scope="request" type="action.baidang.XemTinDaDuyetAction" >
 			<forward name="xemTinDaDuyet" path="/admin/xemChiTietTinDaDuyet.jsp"/>
+			<forward name="baiDangDaDuyet" path="/danhSachBaiDangDaDuyet.do" redirect="true"/>
 		</action>
 		<action input="/admin/baiDangDaDuyet.jsp" name="danhSachBaiDangDaDuyetForm" path="/goBoTinDaDuyet"
 			scope="request" type="action.baidang.XacNhanGoBoBaiDangAction">
@@ -159,6 +162,7 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<action name="danhSachBaiDangDaDuyetForm" path="/xemTinChuaDuyet"
 			scope="request" type="action.baidang.XemTinChuaDuyetAction" >
 			<forward name="xemTinChuaDuyet" path="/admin/xemChiTietTinChuaDuyet.jsp"/>
+			<forward name="baiDangChuaDuyet" path="/danhSachBaiDangChuaDuyet.do"  redirect="true"/>
 		</action>
 		
 		<action input="/admin/danhSachTaiKhoan.jsp" name="danhSachTaiKhoanForm" path="/danhSachTaiKhoan"

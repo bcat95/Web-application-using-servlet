@@ -62,6 +62,35 @@
 		</div>
 	</footer>
 	<!-- <img src="attachments/{$news.attach.attachment_id}/" alt="" class="entry-thumb" onerror="imgError(this);"/> -->
+	<!-- Modal login-->
+	  <div class="modal fade" id="modalLogin" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Đăng nhập</h4>
+	        </div>
+	        <div class="modal-body">
+	          <form name="loginForm" method="post" action="Login.do">
+	    			<div class="form-group">
+	        			<input type="text" name="username" value="" id="username" class="form-control" placeholder="Enter username"> <br>
+	        		</div>
+	        		<div class="form-group">
+	        			<input type="password" name="password" value="" id="pw" class="form-control" placeholder="Enter password"> <br>
+	        		</div>
+	       			<input type="submit" name="submit" value="Login" class="btn btn-pramery"><br>
+	       			<a href="Register.do"><ins>Bạn chưa có tài khoản</ins> Đăng ký</a>
+		        </form>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
 	<script>
 	function imgError(image) {
 	    image.onerror = "";
@@ -72,5 +101,11 @@
 	<div class="bcOverlay timedMessage" style="top: -100px;left: 0px;position: fixed;">
 		<div class="content baseHtml"></div>
 	</div>
+	<script>
+    $('body').show();
+    $('.version').text(NProgress.version);
+    NProgress.start();
+    setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
+  </script>
 </body>
 </html>

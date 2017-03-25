@@ -9,7 +9,7 @@
 	<!-- Tim kiem jsp  -->
 		<div id="db-main-listing-search">
 		<div class="db-main-wrapper">
-			<div class="db-search-side-one bottom">
+			<div class="db-search-side-one bottom fade out">
 				<div class="db-search-controls">
 				<html:form action="/timKiem" method="get" styleId="db-main-search">
 					<!--  <div class="db-main-search">-->
@@ -53,7 +53,7 @@
 					<div class="db-search-side-lef">
 						<div class="map-access sidebox-container ta-center" >
 							<div class="map-access--bg">
-								<button class="btn btn--tertiary ">Đến bản đồ</button>
+								<a href="banDo.do"><button class="btn btn-default">Đến bản đồ</button></a>
 							</div>
 						</div>
 						<div class="sidebox-container ta-center" >
@@ -75,7 +75,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="db-search-side-rig">
+					<div class="db-search-side-rig fade out">
 						<div class="db-search-sort-container">
 							<span class="db-found-count total-hidden">8 results</span>
 							<div class="dt-sort-row single-select">
@@ -113,6 +113,7 @@
 										<div class="discussionListItem flexbox" id="thr_${maBaiDang}">
 											<div class="listBlock posterAvatar item__image-area pos-relative">
 												<!--Anh dai dien bai dang-->
+												<a class='link_out' href='xemtin.do?mabaiDang=${maBaiDang}'></a>
 												<div class="item__image" style="background: url('${anhBia}')"></div>
 												<!--gia tri mac dinh-->
 												<span class="bc-featured-listings-image-note"><i class="fa fa-heart-o wolf-zoom alway-active" aria-hidden="true"></i></span>

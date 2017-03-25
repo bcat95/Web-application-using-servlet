@@ -155,14 +155,10 @@ public class TaiKhoanDAO extends DataBaseConnect{
 			Statement stmt = conn.createStatement();
 			ResultSet rs= stmt.executeQuery(sql);
 			while(rs.next()){
-				String user= rs.getString("Username");
-				String pass= rs.getString("Pass");
-				String mail= rs.getString("Email");
-				/*taiKhoanBean.setUserName(rs.getString("Username"));
+				taiKhoanBean=new TaiKhoanBean();
+				taiKhoanBean.setUserName(rs.getString("Username"));
 				taiKhoanBean.setPassWord(rs.getString("Pass"));
 				taiKhoanBean.seteMail(rs.getString("Email"));
-				taiKhoan.add(taiKhoanBean);*/
-				taiKhoanBean= new TaiKhoanBean(user, pass, mail, 0);
 			}
 			
 			
@@ -226,7 +222,6 @@ public class TaiKhoanDAO extends DataBaseConnect{
 	//danh sach bai dang by user
 	public static ArrayList<BaiDangBean> danhSachBaiDang(User username){
 		Connection con= DataBaseConnect.getConnect();
-		//String sql=	"select baidang.tieude, loaitin.tenloaitin, danhmuc.tendanhmuc, baidang.ngayhethan from baidang inner join loaitin on baidang.maloaitin= loaitin.maloaitin inner join danhmuc on baidang.madanhmuc= danhmuc.madanhmuc where username='"+username.getUserName() +"'";
 		String sql=	"select * from baidang inner join loaitin on baidang.maloaitin= loaitin.maloaitin inner join danhmuc on baidang.madanhmuc= danhmuc.madanhmuc where username='"+username.getUserName() +"'";
 		ResultSet rs = null;
 		try {
@@ -243,6 +238,7 @@ public class TaiKhoanDAO extends DataBaseConnect{
 				baiDangBean = new BaiDangBean();
 				baiDangBean.setMaBaiDang(rs.getInt("MaBaiDang"));
 				baiDangBean.setTieuDe(rs.getString("TieuDe"));
+				baiDangBean.setMaLoaiTin(rs.getInt("MaLoaiTin"));
 				baiDangBean.setTenLoaiTin(rs.getString("TenLoaiTin"));
 				baiDangBean.setTenDanhMuc(rs.getString("TenDanhMuc"));
 				baiDangBean.setNgayHetHan(rs.getDate("NgayHetHan"));

@@ -26,16 +26,18 @@ public class XemTinDaDuyetAction extends Action{
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		
 		request.setCharacterEncoding("UTF-8");
-		DanhSachBaiDangDaDuyetForm danhSachBaiDangDaDuyetForm= (DanhSachBaiDangDaDuyetForm)form;
 		BaiDangBO baiDangBO= new BaiDangBO();
-		System.out.println("NOy");
-		int mbd= danhSachBaiDangDaDuyetForm.getMaBaiDang();
-		System.out.println("mbd action"+mbd);
+		DanhSachBaiDangDaDuyetForm thisForm= (DanhSachBaiDangDaDuyetForm)form;
+		if(thisForm.isGoDuyetTin()){
+			thisForm.setGoDuyetTin(false);
+			System.out.println("ma la "+thisForm.getMaBaiDang());
+			baiDangBO.goDuyetTin(thisForm.getMaBaiDang());
+			return mapping.findForward("baiDangDaDuyet");
+		}
+		int mbd= thisForm.getMaBaiDang();
 		BaiDangBean baiDang= baiDangBO.getListChiTietBaiDangDaDuyet(mbd);
-		danhSachBaiDangDaDuyetForm.setBaiDangDaDuyet(baiDang);
-		System.out.println("NOy1");
+		thisForm.setBaiDangDaDuyet(baiDang);
 		return mapping.findForward("xemTinDaDuyet");
 	}
 }

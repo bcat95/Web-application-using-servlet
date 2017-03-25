@@ -37,7 +37,8 @@ public class BaiDangDAO extends DataBaseConnect{
 		try {
 			st=getConnect().createStatement();
 			rs=st.executeQuery("select * FROM BaiDang,DanhMuc,TinhThanh where "
-					+ "BaiDang.MaDanhMuc=DanhMuc.MaDanhMuc and BaiDang.MaTinhThanh=TinhThanh.MaTinhThanh");
+					+ "BaiDang.MaDanhMuc=DanhMuc.MaDanhMuc and BaiDang.MaTinhThanh=TinhThanh.MaTinhThanh "
+					+ "and MaLoaiTin=2");
 			BaiDangBean BaiDang;
 			while(rs.next()){
 				BaiDang = new BaiDangBean();
@@ -74,7 +75,9 @@ public class BaiDangDAO extends DataBaseConnect{
 		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
 		try {
 			st=getConnect().createStatement();
-			rs=st.executeQuery("select Top 8 * FROM BaiDang,DanhMuc where BaiDang.MaDanhMuc=DanhMuc.MaDanhMuc and BaiDang.MaDanhMuc=  "+i+" order by NgayDang desc");
+			rs=st.executeQuery("select Top 8 * FROM BaiDang,DanhMuc where "
+					+ " BaiDang.MaDanhMuc=DanhMuc.MaDanhMuc and BaiDang.MaDanhMuc= "+i+"  "
+							+ "and MaLoaiTin=2 order by NgayDang desc");
 			BaiDangBean BaiDang;
 			while(rs.next()){
 				BaiDang = new BaiDangBean();
@@ -111,7 +114,7 @@ public class BaiDangDAO extends DataBaseConnect{
 					+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
 					+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
 					+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
-					+"WHERE bd.MaDanhMuc='"+maDanhMuc+"'";
+					+"WHERE bd.MaLoaiTin=2 and bd.MaDanhMuc='"+maDanhMuc+"'";
 		
 		ResultSet rs = null;
 		try {
@@ -151,7 +154,7 @@ public class BaiDangDAO extends DataBaseConnect{
 					+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
 					+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
 					+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
-					+"WHERE bd.MaTinhThanh='"+maTinhThanh+"'";
+					+"WHERE bd.MaLoaiTin=2 and bd.MaTinhThanh='"+maTinhThanh+"'";
 		
 		ResultSet rs = null;
 		try {
@@ -191,7 +194,7 @@ public class BaiDangDAO extends DataBaseConnect{
 					+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
 					+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
 					+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
-					+"WHERE bd.MaDanhMuc='"+maDanhMuc+"' AND bd.MaTinhThanh='"+maTinhThanh+"'";
+					+"WHERE bd.MaLoaiTin=2 and bd.MaDanhMuc='"+maDanhMuc+"' AND bd.MaTinhThanh='"+maTinhThanh+"'";
 		
 		ResultSet rs = null;
 		try {
@@ -232,7 +235,7 @@ public class BaiDangDAO extends DataBaseConnect{
 					+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
 					+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
 					+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
-					+"WHERE (bd.TieuDe LIKE N'%"+noiDung+"%' OR bd.NoiDung LIKE N'%"+noiDung+"%')";
+					+"WHERE bd.MaLoaiTin=2 and  (bd.TieuDe LIKE N'%"+noiDung+"%' OR bd.NoiDung LIKE N'%"+noiDung+"%')";
 		
 		ResultSet rs = null;
 		try {
@@ -273,7 +276,7 @@ public class BaiDangDAO extends DataBaseConnect{
 					+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
 					+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
 					+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
-					+"WHERE (bd.TieuDe LIKE N'%"+noiDung+"%' OR bd.NoiDung LIKE N'%"+noiDung+"%') AND bd.MaDanhMuc='"+maDanhMuc+"'";
+					+"WHERE bd.MaLoaiTin=2 and (bd.TieuDe LIKE N'%"+noiDung+"%' OR bd.NoiDung LIKE N'%"+noiDung+"%') AND bd.MaDanhMuc='"+maDanhMuc+"'";
 		
 		ResultSet rs = null;
 		try {
@@ -314,7 +317,7 @@ public class BaiDangDAO extends DataBaseConnect{
 					+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
 					+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
 					+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
-					+"WHERE (bd.TieuDe LIKE N'%"+noiDung+"%' OR bd.NoiDung LIKE N'%"+noiDung+"%' AND bd.MaTinhThanh='"+maTinhThanh+"')";
+					+"WHERE bd.MaLoaiTin=2 and (bd.TieuDe LIKE N'%"+noiDung+"%' OR bd.NoiDung LIKE N'%"+noiDung+"%' AND bd.MaTinhThanh='"+maTinhThanh+"')";
 		
 		ResultSet rs = null;
 		try {
@@ -355,7 +358,7 @@ public class BaiDangDAO extends DataBaseConnect{
 					+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
 					+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
 					+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
-					+"WHERE (bd.TieuDe LIKE N'%"+noiDung+"%' OR bd.NoiDung LIKE N'%"+noiDung+"%') AND bd.MaDanhMuc='"+maDanhMuc+"' AND bd.MaTinhThanh='"+maTinhThanh+"'";
+					+"WHERE bd.MaLoaiTin=2 and (bd.TieuDe LIKE N'%"+noiDung+"%' OR bd.NoiDung LIKE N'%"+noiDung+"%') AND bd.MaDanhMuc='"+maDanhMuc+"' AND bd.MaTinhThanh='"+maTinhThanh+"'";
 		
 		ResultSet rs = null;
 		try {
@@ -477,6 +480,7 @@ public class BaiDangDAO extends DataBaseConnect{
 					+ "where BaiDang.MaBaiDang = "+maBaiDang+"");
 			while(rs.next()){
 				baiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
+				baiDang.setMaLoaiTin(rs.getInt("MaLoaiTin"));
 				baiDang.setUserName(rs.getString("Username"));
 				baiDang.setTieuDe(rs.getString("TieuDe"));
 				baiDang.setNoiDung(rs.getString("NoiDung"));
@@ -518,6 +522,7 @@ public class BaiDangDAO extends DataBaseConnect{
 					+ "where BaiDang.MaBaiDang = "+maBaiDang+"");
 			while(rs.next()){
 				baiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
+				baiDang.setMaLoaiTin(rs.getInt("MaLoaiTin"));
 				baiDang.setUserName(rs.getString("Username"));
 				baiDang.setTieuDe(rs.getString("TieuDe"));
 				baiDang.setNoiDung(rs.getString("NoiDung"));
@@ -658,7 +663,7 @@ public class BaiDangDAO extends DataBaseConnect{
 		BaiDangBean baiDang=null;
 		try {
 			st=getConnect().createStatement();
-			String sql= String.format("select baidang.tieude, noidung, anhbia, diachi, diachiweb, vido, kinhdo, sdt ,"
+			String sql= String.format("select baidang.maBaiDang,baidang.tieude, noidung, anhbia, diachi, diachiweb, vido, kinhdo, sdt ,"
 					+ " giacaonhat, giathapnhat,  baidang.ngaydang, NgayHetHan, soluottruycap, soluotthich,"
 					+ " username, danhmuc.tendanhmuc, loaitin.tenloaitin, tinhthanh.tentinhthanh , diemdanhgia "
 					+ "from baidang inner join danhmuc on baidang.madanhmuc= danhmuc.madanhmuc inner join loaitin "
@@ -669,8 +674,8 @@ public class BaiDangDAO extends DataBaseConnect{
 			
 			while(rs.next()){
 				baiDang= new BaiDangBean();
+				baiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
 				baiDang.setTieuDe(rs.getString("TieuDe"));
-				
 				baiDang.setNoiDung(rs.getString("NoiDung"));
 				baiDang.setAnhBia(rs.getString("AnhBia"));
 				baiDang.setDiaChi(rs.getString("DiaChi"));
@@ -798,7 +803,7 @@ public class BaiDangDAO extends DataBaseConnect{
 		BaiDangBean baiDang=null;
 		try {
 			st=getConnect().createStatement();
-			String sql= String.format("select baidang.tieude, noidung, anhbia, diachi, diachiweb, vido, kinhdo, sdt ,"
+			String sql= String.format("select baidang.maBaiDang, baidang.tieude, noidung, anhbia, diachi, diachiweb, vido, kinhdo, sdt ,"
 					+ " giacaonhat, giathapnhat,  baidang.ngaydang, NgayHetHan, soluottruycap, soluotthich,"
 					+ " username, danhmuc.tendanhmuc, loaitin.tenloaitin, tinhthanh.tentinhthanh , diemdanhgia "
 					+ "from baidang inner join danhmuc on baidang.madanhmuc= danhmuc.madanhmuc inner join loaitin "
@@ -809,6 +814,7 @@ public class BaiDangDAO extends DataBaseConnect{
 			
 			while(rs.next()){
 				baiDang= new BaiDangBean();
+				baiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
 				baiDang.setTieuDe(rs.getString("TieuDe"));
 				baiDang.setNoiDung(rs.getString("NoiDung"));
 				baiDang.setAnhBia(rs.getString("AnhBia"));
@@ -839,6 +845,36 @@ public class BaiDangDAO extends DataBaseConnect{
 			}
 		}
 		return baiDang;
+	}
+	public void setDuyetTin(int maBaiDang) {
+		try {
+			String updateTableSQL  = "update BaiDang set MaLoaiTin=2 where MaBaiDang="+maBaiDang+"";
+			PreparedStatement prepSt = getConnect().prepareStatement(updateTableSQL);
+			prepSt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	public void goDuyetTin(int maBaiDang) {
+		try {
+			String updateTableSQL  = "update BaiDang set MaLoaiTin=1 where MaBaiDang="+maBaiDang+"";
+			PreparedStatement prepSt = getConnect().prepareStatement(updateTableSQL);
+			prepSt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	

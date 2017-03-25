@@ -1,6 +1,8 @@
 package form;
 
+
 import org.apache.struts.action.ActionForm;
+
 import model.bean.User;
 
 public class HeaderForm extends ActionForm{
@@ -13,7 +15,6 @@ public class HeaderForm extends ActionForm{
 	private String hoTen;
 	private String tacVu;
 	private int type;
-	
 	
 	public String getTacVu() {
 		return tacVu;
