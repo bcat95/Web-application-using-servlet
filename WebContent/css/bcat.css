@@ -1,0 +1,138 @@
+/*css dung chung*/
+.pos-relative {
+    position: relative;
+}
+/*danh sach bai viet*/
+.db-main-search-listings #threads tr{
+	box-shadow: 0 1px 4px rgba(41,51,57,.5);
+    margin-bottom: 10px;
+    background-color: #fff;
+    display: block;
+    border-radius: 2px;
+}
+.db-main-search-listings #threads tr >td {
+    display: none;
+}
+.db-main-search-listings #threads td.threadItem{
+	display: block;
+	width: 100%;
+	border: 0;
+    border-radius: 2px;
+    padding: 0;
+}
+.db-main-search-listings #threads td.discussionListItem {
+    box-shadow: 0 1px 4px rgba(41,51,57,.5);
+    background-color: #fff;
+    position: relative;
+    margin-bottom: 8px;
+    color: #37454d;
+}
+.discussionListItem {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    margin-bottom: 8px;
+    color: #37454d;
+}
+.flexbox .item__image-area {
+    -webkit-flex: 1 0 8%;
+    -ms-flex: 1 0 8%;
+    flex: 1 0 8%;
+}
+.item__image-area {
+	float: left;
+    margin: 8px 6px 8px 8px;
+    width: 22.25%;
+}
+.flexbox .item__flex-column {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.item__flex-column {
+    width: 77.75%;
+}
+.item__image {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    background-position: center!important;
+    background-size: cover!important;
+}
+.item__details {
+    width: 65%;
+    margin: 8px 0;
+    position: relative;
+    clear: both;
+    padding: 8px 8px 8px 4px;
+    float: none;
+}
+
+.item__details > div {
+    margin-bottom: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.25;
+}
+.item__name .name__copytext {
+    font-size: 20px;
+    width: 100%;
+    color: #37454d;
+    font-weight: bold;
+}
+.icon-rating{
+	height:24px;
+}
+.item__info {
+    font-size: 14px;
+    color: #37454d;
+    
+}
+.item__contact {
+	width: 32.75%;
+	float: left;
+	margin: 8px 0;
+    padding: 0 8px 0 4px;
+    border-left: 1px solid #cdd0d2;
+	text-align: center;
+	display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.item__contact .item__info {
+    color: #66a400;
+    font-weight: 600;
+}
+.item__info.price > span{
+	display: block;
+	font-size: 18px;
+	line-height: 1;
+    font-weight: 700;
+}
+.item__info .website{
+	font-size: 12px;
+}
+}
+.item__info.price .min-price{
+	color: #66a400;
+}
+.item__info.price .max-price{
+	color: #c94a30;
+}
+.db-search-sort-container {
+    position: relative;
+    display: flex;
+    margin: 10px 0;
+}
+.dt-sort-row.single-select {
+    display: flex;
+    flex: 2 1 auto;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+}

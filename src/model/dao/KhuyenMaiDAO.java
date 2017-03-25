@@ -106,7 +106,6 @@ public class KhuyenMaiDAO  extends DataBaseConnect{
 					+ "select  top 10  BaiDang.MaBaiDang,BaiDang.TieuDe,BaiDang.AnhBia ,KhuyenMai.NoiDung,KhuyenMai.MaKhuyenMai "
 					+ "from BaiDang inner join KhuyenMai on BaiDang.MaBaiDang=KhuyenMai.MaBaiDang ) as tblOut "
 					+ "where tblOut.MaKhuyenMai=(select dbo.func_maxMaKM(MaBaiDang))");
-
 			KhuyenMaisBean khuyenMais;
 			while(rs.next()){
 				khuyenMais = new KhuyenMaisBean();

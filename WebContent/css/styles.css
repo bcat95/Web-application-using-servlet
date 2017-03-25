@@ -2360,18 +2360,6 @@ button:hover, button:focus, .btn-link:hover, input[type="button"]:hover, input[t
     box-shadow: none;
     margin: 0;
 }
-table {
-    border-collapse: separate;
-    border-spacing: 0;
-    border-width: 1px 0 0 1px;
-    margin-bottom: 24px;
-    width: 100%;
-    background: #FFFFFF;
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.10);
-    border-radius: 4px;
-    border: none;
-    overflow: hidden;
-}
 .db-single-opening-hours {
     font-family: 'Open Sans';
     font-size: 14px;
@@ -2386,16 +2374,6 @@ table {
     font-weight: 600;
     min-width: 100px;
     display: inline-block;
-}
-td {
-    font-family: 'Open Sans';
-    font-size: 14px;
-    color: #53666D;
-    line-height: 21px;
-    border: none;
-    border-bottom: 1px solid #EAEEF0;
-    padding: 15px 20px;
-    text-align: left;
 }
 p {
     padding-bottom: 26px;

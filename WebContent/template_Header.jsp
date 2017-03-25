@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
 	<link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
 	<link href="css/wolf-animation.css?v=1.0" rel="stylesheet">
+	<link rel="stylesheet" href="css/bcat.css">
 	<script>
 		$(function() {
     		$("#username").attr("placeholder", "Enter username");

@@ -92,60 +92,67 @@
 						<div class="db-main-search-listings lis_ful">
 							<!--begin list item nổi bật -->
 							<display:table id="threads" name="sessionScope.timKiemForm.listBaiDang"
-									requestURI="/timKiem.do" pagesize="8">
+									requestURI="/timKiem.do" pagesize="8" class="discussionListItems">
 									<logic:notEmpty name="timKiemForm" property="listBaiDang">
 											<bean:define id="maBaiDang" name="threads" property="maBaiDang"/>
 											<bean:define id="anhBia" name="threads" property="anhBia"/>
 											<bean:define id="diaChi" name="threads" property="diaChi"/>
 											<bean:define id="tenDanhMuc" name="threads" property="tenDanhMuc"/>
+											<bean:define id="maTinhThanh" name="threads" property="maTinhThanh"/>
+											<bean:define id="tenTinhThanh" name="threads" property="tenTinhThanh"/>
 											<bean:define id="sDT" name="threads" property="sDT"/>
+											<bean:define id="giaThapNhat" name="threads" property="giaThapNhat"/>
 											<bean:define id="tieuDe" name="threads" property="tieuDe"/>
-											<bean:define id="noiDung" name="threads" property="noiDung"/>
 											<bean:define id="diemDanhGia" name="threads" property="diemDanhGia"/>
+											<bean:define id="diaChiWeb" name="threads" property="diaChiWeb"/>
+											<bean:define id="viDo" name="threads" property="viDo"/>
+											<bean:define id="kinhDo" name="threads" property="kinhDo"/>
 									</logic:notEmpty>
 									<display:column sortable="true" title="diemDanhGia" headerClass="sor_ddg"/>
-									<display:column class="bcthread item">
-										<div class="thread-list-item" id="thr_${maBaiDang}">
-											<div class="thread-list-item-inner">
-												<div class="thread-list-item-image col-md-4 row_w">
-													<!--Anh dai dien bai dang-->
-													<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-item-image" style="background: url('${anhBia}')"></a>
-													<!--gia tri mac dinh-->
-													<span class="bc-featured-listings-image-note"><i class="fa fa-heart-o wolf-zoom alway-active" aria-hidden="true"></i></span>
-													<div class="bc-featured-listings-image-meta">
-													<span class="bc-featured-listings-custom-fields">
-														<span class="bc-featured">
-															<!--dia chi bai dang-->
-															<span class="db-listing-icon wl-location" title="Address"></span>
-															${diaChi}
-														</span>
-														<span class="bc-featured">
-															<!--so dien thoai bai dang-->
-															<span class="db-listing-icon wl-phone" title="Phone number"></span>
-																${sDT}
-															</span>
+									<display:column class="threadItem">
+										<div class="discussionListItem flexbox" id="thr_${maBaiDang}">
+											<div class="listBlock posterAvatar item__image-area pos-relative">
+												<!--Anh dai dien bai dang-->
+												<div class="item__image" style="background: url('${anhBia}')"></div>
+												<!--gia tri mac dinh-->
+												<span class="bc-featured-listings-image-note"><i class="fa fa-heart-o wolf-zoom alway-active" aria-hidden="true"></i></span>
+											</div>
+											<div class="listBlock main item__flex-column" >
+												<div class="item__details">
+													<div class="item__name"><!--tieu de bai dang-->
+														<a href="xemtin.do?maBaiDang=${maBaiDang}" class="name__copytext">${tieuDe}</a>
+													</div>
+													<div class="item__info"><!--so dien thoai bai dang-->
+														<span class="db-listing-icon" title="Phone number">${tenTinhThanh}, <span id="khoangcach_${maBaiDang}"></span> km tới Trung tâm thành phố</span>
+													<script type="text/javascript">
+														$(document).ready(function () {
+															$('#khoangcach_${maBaiDang}').html(getDistanceFromLatLonInKm(${viDo},${kinhDo},${maTinhThanh}));
+														});
+													</script>
+													</div>
+													
+													<div class="item__info"><!--so dien thoai bai dang-->
+														<span class="db-listing-icon" title="Phone number">${sDT}</span>
+													</div>
+													<div class="item__info">
+														<logic:equal name="threads" property="diemDanhGia" value="0">
+															<img class="icon-rating" src="img/icon/norating.png"/><span style="color: #9ba2a6;">Hiện tại chưa có đánh giá</span>
+														</logic:equal>
+														<span id="bl_${diemDanhGia}" class="ratings rating-lv<bean:write name="threads" property="diemDanhGia" format="#,0"/>" title="${diemDanhGia}">
+															${diemDanhGia}
 														</span>
 													</div>
 												</div>
-												<div class="bc-featured-listings-data" >
-													<!--tieu de bai dang-->
-													<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-listings-title">
-														${tieuDe}
-													</a>
-													<!--to ta ngan bai dang-->
-													<div class="bc-featured-listings-description">
-														${noiDung}
+												<div class="item__contact">
+													<div class="item__info price"><!--gia ca bai dang-->
+														<span class="db-listing-icon min-price" title="Giá thấp nhất"><bean:write name="threads" property="giaThapNhat" format="#,##0"/> đ</span>
+														<span class="db-listing-icon max-price" title="Giá cao nhất"><bean:write name="threads" property="giaCaoNhat" format="#,##0"/> đ</span>
 													</div>
-													<div class="bc-featured-listings-meta clearfix">
-														<!--danh muc bai dang-->
-														<a href="timKiem.do?maDanhMuc=<bean:write name="timKiemForm" property="maDanhMuc"/>" class="bc-featured-listings-category hotel" style="color: #00a9e8">
-															${tenDanhMuc}
-														</a>
-														<span class="bc-featured-listings-rating">
-															<span id="bl_${diemDanhGia}" class="ratings rating-lv<bean:write name="threads" property="diemDanhGia" format="#,0"/>" title="${diemDanhGia}">
-																${diemDanhGia}
-															</span>
-														</span>
+													<div class="item__info"><!--dia chi web bai dang-->
+														<span class="db-listing-icon website" title="Địa chỉ web">${diaChiWeb}</span>
+													</div>
+													<div class="item__info"><!--so dien thoai bai dang-->
+														<span class="db-listing-icon" title="Phone number">${sDT}</span>
 													</div>
 												</div>
 											</div>
@@ -197,6 +204,65 @@
 	</div>
 	<!-- end Tim kiem jsp  -->
 	<script>
+	$(document).ready(function () {	
 		$("#sor_ddg").attr("href", $('.sor_ddg a').attr('href'));
+	});
+	</script>
+	<script type="text/javascript">
+	  function getDistanceFromLatLonInKm(lat1,lon1,maTinhThanh) {
+		var R = 6371; // Radius of the earth in km
+		var lat2=16.0474325;
+		var lon2=108.1712201;
+		if (maTinhThanh ==1){
+		lat2=16.0474325;
+		lon2=108.1712203;
+		}
+		
+		if (maTinhThanh ==2){
+		var lat2=11.9039022;
+		var lon2=108.3806817;
+		};
+		if (maTinhThanh ==3){
+		lat2=6.4534748;
+		lon2=107.5419039;
+		};
+		if (maTinhThanh ==4){
+		lat2=21.0227003;
+		lon2=105.8019443;
+		};
+		if (maTinhThanh ==5){
+		var lat2=21.0227003;
+		var lon2=105.801944;
+		};
+		if (maTinhThanh ==6){
+		lat2=12.2595881;
+		lon2=109.17073;
+		107.5419039
+		};
+		if (maTinhThanh ==7){
+		lat2=14.9779335;
+		lon2=108.3790455;
+		};
+		if (maTinhThanh ==8){
+		lat2=17.5043687;
+		lon2=105.7418899;
+		};
+		var dLat = deg2rad(lat2-lat1);  // deg2rad below
+		var dLon = deg2rad(lon2-lon1); 
+		var a = 
+		   Math.sin(dLat/2) * Math.sin(dLat/2) +
+		   Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+		   Math.sin(dLon/2) * Math.sin(dLon/2)
+		   ; 
+		 var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+		 var d = R * c; // Distance in km
+		 var n = parseFloat(d);
+		 d = Math.round(n * 100)/100;
+		 return d;
+	}
+	
+	function deg2rad(deg) {
+	  return deg * (Math.PI/180)
+	}
 	</script>
 <jsp:include page="template_Footer.jsp"></jsp:include>

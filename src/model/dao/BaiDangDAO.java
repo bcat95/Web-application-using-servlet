@@ -36,7 +36,8 @@ public class BaiDangDAO extends DataBaseConnect{
 		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
 		try {
 			st=getConnect().createStatement();
-			rs=st.executeQuery("select * FROM BaiDang,DanhMuc where BaiDang.MaDanhMuc=DanhMuc.MaDanhMuc");
+			rs=st.executeQuery("select * FROM BaiDang,DanhMuc,TinhThanh where "
+					+ "BaiDang.MaDanhMuc=DanhMuc.MaDanhMuc and BaiDang.MaTinhThanh=TinhThanh.MaTinhThanh");
 			BaiDangBean BaiDang;
 			while(rs.next()){
 				BaiDang = new BaiDangBean();
@@ -49,7 +50,11 @@ public class BaiDangDAO extends DataBaseConnect{
 				BaiDang.setAnhBia(rs.getString("AnhBia"));
 				BaiDang.setMaDanhMuc(rs.getInt("maDanhMuc"));
 				BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
+				BaiDang.setMaTinhThanh(rs.getInt("MaTinhThanh"));
+				BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
 				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+				BaiDang.setGiaThapNhat(rs.getInt("GiaThapNhat"));
+				BaiDang.setGiaCaoNhat(rs.getInt("GiaCaoNhat"));
 				BaiDang.setViDo(rs.getString("ViDo"));
 				BaiDang.setKinhDo(rs.getString("KinhDO"));
 				list.add(BaiDang);
@@ -100,291 +105,291 @@ public class BaiDangDAO extends DataBaseConnect{
 		return list;
 	}
 	//---------------TÌM KIẾM---------------//
-			public ArrayList<BaiDangBean> getListBaiDangDanhMuc(String maDanhMuc) {
-				Connection connection = common.DataBaseConnect.getConnect();
-				String sql=	"SELECT * FROM BaiDang bd "
-							+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
-							+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
-							+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
-							+"WHERE bd.MaDanhMuc='"+maDanhMuc+"'";
-				
-				ResultSet rs = null;
-				try {
-					Statement stmt = connection.createStatement();
-					rs = stmt.executeQuery(sql);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				
-				ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
-				BaiDangBean BaiDang;
-				try {
-					while(rs.next()){
-						BaiDang = new BaiDangBean();
-						BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
-						BaiDang.setTieuDe(rs.getString("TieuDe"));
-						BaiDang.setNoiDung(rs.getString("NoiDung"));
-						BaiDang.setDiaChi(rs.getString("DiaChi"));
-						BaiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
-						BaiDang.setsDT(rs.getString("SDT"));
-						BaiDang.setAnhBia(rs.getString("AnhBia"));
-						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
-						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
-						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
-						BaiDang.setViDo(rs.getString("ViDo"));
-						BaiDang.setKinhDo(rs.getString("KinhDO"));
-						list.add(BaiDang);
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				return list;
+	public ArrayList<BaiDangBean> getListBaiDangDanhMuc(String maDanhMuc) {
+		Connection connection = common.DataBaseConnect.getConnect();
+		String sql=	"SELECT * FROM BaiDang bd "
+					+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
+					+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
+					+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
+					+"WHERE bd.MaDanhMuc='"+maDanhMuc+"'";
+		
+		ResultSet rs = null;
+		try {
+			Statement stmt = connection.createStatement();
+			rs = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
+		BaiDangBean BaiDang;
+		try {
+			while(rs.next()){
+				BaiDang = new BaiDangBean();
+				BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
+				BaiDang.setTieuDe(rs.getString("TieuDe"));
+				BaiDang.setNoiDung(rs.getString("NoiDung"));
+				BaiDang.setDiaChi(rs.getString("DiaChi"));
+				BaiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
+				BaiDang.setsDT(rs.getString("SDT"));
+				BaiDang.setAnhBia(rs.getString("AnhBia"));
+				BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
+				BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
+				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+				BaiDang.setViDo(rs.getString("ViDo"));
+				BaiDang.setKinhDo(rs.getString("KinhDO"));
+				list.add(BaiDang);
 			}
-			public ArrayList<BaiDangBean> getListBaiDangTinhThanh(String maTinhThanh) {
-				Connection connection = common.DataBaseConnect.getConnect();
-				String sql=	"SELECT * FROM BaiDang bd "
-							+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
-							+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
-							+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
-							+"WHERE bd.MaTinhThanh='"+maTinhThanh+"'";
-				
-				ResultSet rs = null;
-				try {
-					Statement stmt = connection.createStatement();
-					rs = stmt.executeQuery(sql);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				
-				ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
-				BaiDangBean BaiDang;
-				try {
-					while(rs.next()){
-						BaiDang = new BaiDangBean();
-						BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
-						BaiDang.setTieuDe(rs.getString("TieuDe"));
-						BaiDang.setNoiDung(rs.getString("NoiDung"));
-						BaiDang.setDiaChi(rs.getString("DiaChi"));
-						BaiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
-						BaiDang.setsDT(rs.getString("SDT"));
-						BaiDang.setAnhBia(rs.getString("AnhBia"));
-						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
-						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
-						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
-						BaiDang.setViDo(rs.getString("ViDo"));
-						BaiDang.setKinhDo(rs.getString("KinhDO"));
-						list.add(BaiDang);
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public ArrayList<BaiDangBean> getListBaiDangTinhThanh(String maTinhThanh) {
+		Connection connection = common.DataBaseConnect.getConnect();
+		String sql=	"SELECT * FROM BaiDang bd "
+					+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
+					+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
+					+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
+					+"WHERE bd.MaTinhThanh='"+maTinhThanh+"'";
+		
+		ResultSet rs = null;
+		try {
+			Statement stmt = connection.createStatement();
+			rs = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
+		BaiDangBean BaiDang;
+		try {
+			while(rs.next()){
+				BaiDang = new BaiDangBean();
+				BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
+				BaiDang.setTieuDe(rs.getString("TieuDe"));
+				BaiDang.setNoiDung(rs.getString("NoiDung"));
+				BaiDang.setDiaChi(rs.getString("DiaChi"));
+				BaiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
+				BaiDang.setsDT(rs.getString("SDT"));
+				BaiDang.setAnhBia(rs.getString("AnhBia"));
+				BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
+				BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
+				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+				BaiDang.setViDo(rs.getString("ViDo"));
+				BaiDang.setKinhDo(rs.getString("KinhDO"));
+				list.add(BaiDang);
 			}
-			public ArrayList<BaiDangBean> getListBaiDangDanhMucTinhThanh(String maDanhMuc,String maTinhThanh) {
-				Connection connection = common.DataBaseConnect.getConnect();
-				String sql=	"SELECT * FROM BaiDang bd "
-							+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
-							+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
-							+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
-							+"WHERE bd.MaDanhMuc='"+maDanhMuc+"' AND bd.MaTinhThanh='"+maTinhThanh+"'";
-				
-				ResultSet rs = null;
-				try {
-					Statement stmt = connection.createStatement();
-					rs = stmt.executeQuery(sql);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				
-				ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
-				BaiDangBean BaiDang;
-				try {
-					while(rs.next()){
-						BaiDang = new BaiDangBean();
-						BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
-						BaiDang.setTieuDe(rs.getString("TieuDe"));
-						BaiDang.setNoiDung(rs.getString("NoiDung"));
-						BaiDang.setDiaChi(rs.getString("DiaChi"));
-						BaiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
-						BaiDang.setsDT(rs.getString("SDT"));
-						BaiDang.setAnhBia(rs.getString("AnhBia"));
-						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
-						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
-						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
-						BaiDang.setViDo(rs.getString("ViDo"));
-						BaiDang.setKinhDo(rs.getString("KinhDO"));
-						list.add(BaiDang);
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public ArrayList<BaiDangBean> getListBaiDangDanhMucTinhThanh(String maDanhMuc,String maTinhThanh) {
+		Connection connection = common.DataBaseConnect.getConnect();
+		String sql=	"SELECT * FROM BaiDang bd "
+					+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
+					+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
+					+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
+					+"WHERE bd.MaDanhMuc='"+maDanhMuc+"' AND bd.MaTinhThanh='"+maTinhThanh+"'";
+		
+		ResultSet rs = null;
+		try {
+			Statement stmt = connection.createStatement();
+			rs = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
+		BaiDangBean BaiDang;
+		try {
+			while(rs.next()){
+				BaiDang = new BaiDangBean();
+				BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
+				BaiDang.setTieuDe(rs.getString("TieuDe"));
+				BaiDang.setNoiDung(rs.getString("NoiDung"));
+				BaiDang.setDiaChi(rs.getString("DiaChi"));
+				BaiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
+				BaiDang.setsDT(rs.getString("SDT"));
+				BaiDang.setAnhBia(rs.getString("AnhBia"));
+				BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
+				BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
+				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+				BaiDang.setViDo(rs.getString("ViDo"));
+				BaiDang.setKinhDo(rs.getString("KinhDO"));
+				list.add(BaiDang);
 			}
-			
-			public ArrayList<BaiDangBean> getListBaiDangNoiDung(String noiDung) {
-				Connection connection = common.DataBaseConnect.getConnect();
-				String sql=	"SELECT * FROM BaiDang bd "
-							+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
-							+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
-							+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
-							+"WHERE (bd.TieuDe LIKE N'%"+noiDung+"%' OR bd.NoiDung LIKE N'%"+noiDung+"%')";
-				
-				ResultSet rs = null;
-				try {
-					Statement stmt = connection.createStatement();
-					rs = stmt.executeQuery(sql);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				
-				ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
-				BaiDangBean BaiDang;
-				try {
-					while(rs.next()){
-						BaiDang = new BaiDangBean();
-						BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
-						BaiDang.setTieuDe(rs.getString("TieuDe"));
-						BaiDang.setNoiDung(rs.getString("NoiDung"));
-						BaiDang.setDiaChi(rs.getString("DiaChi"));
-						BaiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
-						BaiDang.setsDT(rs.getString("SDT"));
-						BaiDang.setAnhBia(rs.getString("AnhBia"));
-						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
-						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
-						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
-						BaiDang.setViDo(rs.getString("ViDo"));
-						BaiDang.setKinhDo(rs.getString("KinhDO"));
-						list.add(BaiDang);
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public ArrayList<BaiDangBean> getListBaiDangNoiDung(String noiDung) {
+		Connection connection = common.DataBaseConnect.getConnect();
+		String sql=	"SELECT * FROM BaiDang bd "
+					+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
+					+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
+					+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
+					+"WHERE (bd.TieuDe LIKE N'%"+noiDung+"%' OR bd.NoiDung LIKE N'%"+noiDung+"%')";
+		
+		ResultSet rs = null;
+		try {
+			Statement stmt = connection.createStatement();
+			rs = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
+		BaiDangBean BaiDang;
+		try {
+			while(rs.next()){
+				BaiDang = new BaiDangBean();
+				BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
+				BaiDang.setTieuDe(rs.getString("TieuDe"));
+				BaiDang.setNoiDung(rs.getString("NoiDung"));
+				BaiDang.setDiaChi(rs.getString("DiaChi"));
+				BaiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
+				BaiDang.setsDT(rs.getString("SDT"));
+				BaiDang.setAnhBia(rs.getString("AnhBia"));
+				BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
+				BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
+				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+				BaiDang.setViDo(rs.getString("ViDo"));
+				BaiDang.setKinhDo(rs.getString("KinhDO"));
+				list.add(BaiDang);
 			}
-			
-			public ArrayList<BaiDangBean> getListBaiDangDanhMucNoiDung(String maDanhMuc,String noiDung) {
-				Connection connection = common.DataBaseConnect.getConnect();
-				String sql=	"SELECT * FROM BaiDang bd "
-							+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
-							+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
-							+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
-							+"WHERE (bd.TieuDe LIKE N'%"+noiDung+"%' OR bd.NoiDung LIKE N'%"+noiDung+"%') AND bd.MaDanhMuc='"+maDanhMuc+"'";
-				
-				ResultSet rs = null;
-				try {
-					Statement stmt = connection.createStatement();
-					rs = stmt.executeQuery(sql);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				
-				ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
-				BaiDangBean BaiDang;
-				try {
-					while(rs.next()){
-						BaiDang = new BaiDangBean();
-						BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
-						BaiDang.setTieuDe(rs.getString("TieuDe"));
-						BaiDang.setNoiDung(rs.getString("NoiDung"));
-						BaiDang.setDiaChi(rs.getString("DiaChi"));
-						BaiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
-						BaiDang.setsDT(rs.getString("SDT"));
-						BaiDang.setAnhBia(rs.getString("AnhBia"));
-						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
-						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
-						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
-						BaiDang.setViDo(rs.getString("ViDo"));
-						BaiDang.setKinhDo(rs.getString("KinhDO"));
-						list.add(BaiDang);
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public ArrayList<BaiDangBean> getListBaiDangDanhMucNoiDung(String maDanhMuc,String noiDung) {
+		Connection connection = common.DataBaseConnect.getConnect();
+		String sql=	"SELECT * FROM BaiDang bd "
+					+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
+					+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
+					+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
+					+"WHERE (bd.TieuDe LIKE N'%"+noiDung+"%' OR bd.NoiDung LIKE N'%"+noiDung+"%') AND bd.MaDanhMuc='"+maDanhMuc+"'";
+		
+		ResultSet rs = null;
+		try {
+			Statement stmt = connection.createStatement();
+			rs = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
+		BaiDangBean BaiDang;
+		try {
+			while(rs.next()){
+				BaiDang = new BaiDangBean();
+				BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
+				BaiDang.setTieuDe(rs.getString("TieuDe"));
+				BaiDang.setNoiDung(rs.getString("NoiDung"));
+				BaiDang.setDiaChi(rs.getString("DiaChi"));
+				BaiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
+				BaiDang.setsDT(rs.getString("SDT"));
+				BaiDang.setAnhBia(rs.getString("AnhBia"));
+				BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
+				BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
+				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+				BaiDang.setViDo(rs.getString("ViDo"));
+				BaiDang.setKinhDo(rs.getString("KinhDO"));
+				list.add(BaiDang);
 			}
-			
-			public ArrayList<BaiDangBean> getListBaiDangTinhThanhNoiDung(String maTinhThanh,String noiDung) {
-				Connection connection = common.DataBaseConnect.getConnect();
-				String sql=	"SELECT * FROM BaiDang bd "
-							+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
-							+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
-							+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
-							+"WHERE (bd.TieuDe LIKE N'%"+noiDung+"%' OR bd.NoiDung LIKE N'%"+noiDung+"%' AND bd.MaTinhThanh='"+maTinhThanh+"')";
-				
-				ResultSet rs = null;
-				try {
-					Statement stmt = connection.createStatement();
-					rs = stmt.executeQuery(sql);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				
-				ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
-				BaiDangBean BaiDang;
-				try {
-					while(rs.next()){
-						BaiDang = new BaiDangBean();
-						BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
-						BaiDang.setTieuDe(rs.getString("TieuDe"));
-						BaiDang.setNoiDung(rs.getString("NoiDung"));
-						BaiDang.setDiaChi(rs.getString("DiaChi"));
-						BaiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
-						BaiDang.setsDT(rs.getString("SDT"));
-						BaiDang.setAnhBia(rs.getString("AnhBia"));
-						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
-						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
-						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
-						BaiDang.setViDo(rs.getString("ViDo"));
-						BaiDang.setKinhDo(rs.getString("KinhDO"));
-						list.add(BaiDang);
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public ArrayList<BaiDangBean> getListBaiDangTinhThanhNoiDung(String maTinhThanh,String noiDung) {
+		Connection connection = common.DataBaseConnect.getConnect();
+		String sql=	"SELECT * FROM BaiDang bd "
+					+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
+					+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
+					+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
+					+"WHERE (bd.TieuDe LIKE N'%"+noiDung+"%' OR bd.NoiDung LIKE N'%"+noiDung+"%' AND bd.MaTinhThanh='"+maTinhThanh+"')";
+		
+		ResultSet rs = null;
+		try {
+			Statement stmt = connection.createStatement();
+			rs = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
+		BaiDangBean BaiDang;
+		try {
+			while(rs.next()){
+				BaiDang = new BaiDangBean();
+				BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
+				BaiDang.setTieuDe(rs.getString("TieuDe"));
+				BaiDang.setNoiDung(rs.getString("NoiDung"));
+				BaiDang.setDiaChi(rs.getString("DiaChi"));
+				BaiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
+				BaiDang.setsDT(rs.getString("SDT"));
+				BaiDang.setAnhBia(rs.getString("AnhBia"));
+				BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
+				BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
+				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+				BaiDang.setViDo(rs.getString("ViDo"));
+				BaiDang.setKinhDo(rs.getString("KinhDO"));
+				list.add(BaiDang);
 			}
-			
-			public ArrayList<BaiDangBean> getListBaiDangDanhMucTinhThanhNoiDung(String maDanhMuc,String maTinhThanh,String noiDung) {
-				Connection connection = common.DataBaseConnect.getConnect();
-				String sql=	"SELECT * FROM BaiDang bd "
-							+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
-							+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
-							+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
-							+"WHERE (bd.TieuDe LIKE N'%"+noiDung+"%' OR bd.NoiDung LIKE N'%"+noiDung+"%') AND bd.MaDanhMuc='"+maDanhMuc+"' AND bd.MaTinhThanh='"+maTinhThanh+"'";
-				
-				ResultSet rs = null;
-				try {
-					Statement stmt = connection.createStatement();
-					rs = stmt.executeQuery(sql);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				
-				ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
-				BaiDangBean BaiDang;
-				try {
-					while(rs.next()){
-						BaiDang = new BaiDangBean();
-						BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
-						BaiDang.setTieuDe(rs.getString("TieuDe"));
-						BaiDang.setNoiDung(rs.getString("NoiDung"));
-						BaiDang.setDiaChi(rs.getString("DiaChi"));
-						BaiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
-						BaiDang.setsDT(rs.getString("SDT"));
-						BaiDang.setAnhBia(rs.getString("AnhBia"));
-						BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
-						BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
-						BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
-						BaiDang.setViDo(rs.getString("ViDo"));
-						BaiDang.setKinhDo(rs.getString("KinhDO"));
-						list.add(BaiDang);
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public ArrayList<BaiDangBean> getListBaiDangDanhMucTinhThanhNoiDung(String maDanhMuc,String maTinhThanh,String noiDung) {
+		Connection connection = common.DataBaseConnect.getConnect();
+		String sql=	"SELECT * FROM BaiDang bd "
+					+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
+					+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
+					+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
+					+"WHERE (bd.TieuDe LIKE N'%"+noiDung+"%' OR bd.NoiDung LIKE N'%"+noiDung+"%') AND bd.MaDanhMuc='"+maDanhMuc+"' AND bd.MaTinhThanh='"+maTinhThanh+"'";
+		
+		ResultSet rs = null;
+		try {
+			Statement stmt = connection.createStatement();
+			rs = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
+		BaiDangBean BaiDang;
+		try {
+			while(rs.next()){
+				BaiDang = new BaiDangBean();
+				BaiDang.setMaBaiDang(rs.getInt("MaBaiDang"));
+				BaiDang.setTieuDe(rs.getString("TieuDe"));
+				BaiDang.setNoiDung(rs.getString("NoiDung"));
+				BaiDang.setDiaChi(rs.getString("DiaChi"));
+				BaiDang.setDiaChiWeb(rs.getString("DiaChiWeb"));
+				BaiDang.setsDT(rs.getString("SDT"));
+				BaiDang.setAnhBia(rs.getString("AnhBia"));
+				BaiDang.setTenDanhMuc(rs.getString("TenDanhMuc"));
+				BaiDang.setTenTinhThanh(rs.getString("TenTinhThanh"));
+				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
+				BaiDang.setViDo(rs.getString("ViDo"));
+				BaiDang.setKinhDo(rs.getString("KinhDO"));
+				list.add(BaiDang);
 			}
-			//------------------END TIM KIEM------------------//
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	//------------------END TIM KIEM------------------//
 	public static void insertBaiDang(BaiDangBean baiDang) {
 		try {
 				String insertTableSQL = "insert into BaiDang values(?,?,?,?,?,?,?,?,?,?,?,NULL,NULL,NULL,?,?,?,?,?)";
