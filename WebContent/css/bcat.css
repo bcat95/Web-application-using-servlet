@@ -254,10 +254,11 @@ input.bc-search-listing_name {
 }
 
 .col-sm-12.cat_ites {
-    margin: 30px 0;
+    margin: 10px 0;
     padding: 20px;
     background-color: #fff;
     border-radius: 2px;
+    border-bottom: 1px solid #ccc;
 }
 
 .bc-featured-listings-item-inner {
@@ -281,4 +282,7 @@ a.link_out {
     display: block;
     z-index: 99;
     width: 100%;
+}
+.owl-carousel.owl-drag .owl-item {
+    z-index: 99;
 }
