@@ -76,10 +76,11 @@
 							</li>
 						</logic:equal>
 						<logic:equal name="headerForm" property="type" value="1">
-						<li class="dropdown"><a data-toggle="dropdown"> Quản lý <span class="caret"></span></a>
+						<li class="dropdown"><a data-toggle="dropdown"> Admin <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-                                <li><a href="danhSachBaiDangChuaDuyet.do">Duyệt bài đăng</a></li>
-								<li><a href="danhSachBaiDangDaDuyet.do">Quản lý bài đăng</a></li>
+                                 <li><a href="admin">Trang admin</a></li>
+                                <li><a href="admin/danhSachBaiDangChuaDuyet.do">Duyệt bài đăng</a></li>
+								<li><a href="admin/danhSachBaiDangDaDuyet.do">Quản lý bài đăng</a></li>
                            	</ul>
 						</li>
 						</logic:equal>
