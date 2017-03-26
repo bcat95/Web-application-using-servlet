@@ -3,264 +3,113 @@
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic"%>
 <%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-	<!-- thu -->
-
-		<style>
-		#div1 {
-		  	font-size:80px;
-		   	width: 300px;
-		    border: 25px;
-	        padding:25px;
-		    margin: 25px; 
-		}
-		.button {
-		    background-color: #4CAF50; /* Green */
-		    border: none;
-		    color: white;
-		    padding: 16px 32px;
-		    text-align: center;
-		    text-decoration: none;
-		    display: inline-block;
-		    font-size: 16px;
-		    margin: 4px 2px;
-		    -webkit-transition-duration: 0.4s; /* Safari */
-		    transition-duration: 0.4s;
-		    cursor: pointer;
-		    border-radius: 8px;
-		}
-		.button2 {
-	    background-color:  #008CBA; 
-	    color: white; 
-	    
-		}
-	
-		.button2:hover {
-		    background-color:white ;
-		    color:  #008CBA;
-		    border: 2px solid #008CBA;
-		} 
-		
-		.button3 {
-		    background-color: #f44336; 
-		    color: white; 
-		    border: 2px solid white ;
-		}
-		
-		.button3:hover {
-		    background-color: white;
-		    color: #f44336;
-		    border: 2px solid #f44336;
-		}
-		</style>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		
-	<!-- end thu -->
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Admin</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="admin/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="admin/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="admin/dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="admin/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <link href="admin/datatables/jquery.dataTables.min.css" rel="stylesheet">
-<title>Xác nhận gỡ bỏ</title>
+<title>Matrix Admin</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="css/uniform.css" />
+<link rel="stylesheet" href="css/select2.css" />
+<link rel="stylesheet" href="css/matrix-style.css" />
+<link rel="stylesheet" href="css/matrix-media.css" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
-		<div id="wrapper">
-                <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Admin Area</a>
-            </div>
-            <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right">
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
+<!--Header-part-->
+<div id="header">
+  <h1><a href="dashboard.html">Matrix Admin</a></h1>
+</div>
+<!--close-Header-part--> 
 
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Thống kê<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Bảng tin</a>
-                                </li>
-                                <li>
-                                    <a href="#">Lượt truy cập</a>
-                                </li>
-                                <li>
-                                    <a href="#">Doanh thu</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Danh mục<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Danh sách danh mục</a>
-                                </li>
-                                <li>
-                                    <a href="#"	>Thêm danh mục</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-cube fa-fw"></i> Bảng tin<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Danh sách bảng tin</a>
-                                </li>
-                                <li>
-                                    <a href="#">Thêm bảng tin</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> Tài khoản<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="danhSachTaiKhoan.do">Danh sách tài khoản</a>
-                                </li>
-                                <li>
-                                    <a href="user_add.html">Thêm tài khoản</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
-        </nav>
-    
-    <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <h1 class="page-header">Xác nhận gỡ bỏ bài đăng</h1>
-                    </div>    
-	<html:form action="/goBoTinDaDuyet">
-		<div class="row form-group">
-	         <div>
-	             <html:hidden property="maBaiDang"/>
-	         </div>
-	    </div>
-		<div class="col-lg-12">
-			<h3><label>Bạn chắc chắn muốn gỡ bỏ bài đăng "</label>
-			<b><i style="color:#8B0000"><bean:write name="danhSachBaiDangDaDuyetForm" property="tieuDe"/></i></b>
-			<label>" ? </label></h3> 
-		</div>
-		<center>
-		<div class="col-lg-10">
-			<!--  thu -->
-			<div id="div1" class="fa" ></div>
-			<!-- end thu -->
-		</div>
-		<br>
-		<div class="col-lg-10">
-			<button type="submit" name="submit" value="xnGoBo" class="button button2">Xác nhận</button>
-			<html:link action="/danhSachBaiDangDaDuyet.do"><span class="button button3">Hủy</span>
-			</html:link>
-		</div>
-		</center>
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+  <ul class="nav">
+    <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome User</span><b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
+        <li class="divider"></li>
+        <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
+        <li class="divider"></li>
+        <li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
+      </ul>
+    </li>
+    <li class="dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">Messages</span> <span class="label label-important">5</span> <b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><a class="sAdd" title="" href="#"><i class="icon-plus"></i> new message</a></li>
+        <li class="divider"></li>
+        <li><a class="sInbox" title="" href="#"><i class="icon-envelope"></i> inbox</a></li>
+        <li class="divider"></li>
+        <li><a class="sOutbox" title="" href="#"><i class="icon-arrow-up"></i> outbox</a></li>
+        <li class="divider"></li>
+        <li><a class="sTrash" title="" href="#"><i class="icon-trash"></i> trash</a></li>
+      </ul>
+    </li>
+    <li class=""><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Settings</span></a></li>
+    <li class=""><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+  </ul>
+</div>
 
-	</html:form>
-	</div>
-           <!-- /.row -->
-         </div>
-     <!-- /.container-fluid -->
+<!--start-top-serch-->
+<div id="search">
+  <input type="text" placeholder="Search here..."/>
+  <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
+</div>
+<!--close-top-serch--> 
+<jsp:include page="sidebar.jsp"></jsp:include>
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="danhSachBaiDangChuaDuyet.do" class="current">Duyệt bài</a> </div>
+    <h1>Xóa bỏ bài đăng</h1>
+  </div>
+  <div class="container-fluid">
+    <hr>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+			<div class="widget-title"><span class="icon"><i class="icon-bookmark"></i></span>
+			  <h5>Xác nhận xóa bài đăng</h5>
+			</div>
+			<div class="widget-content">
+				<html:form action="admin/goBoTinDaDuyet">
+					<div class="alert alert-block">
+						<a class="close" data-dismiss="alert" href="#">×</a>
+						<h4 class="alert-heading">Bạn chắc chắn muốn gỡ bỏ bài đăng !</h4>
+						<span class="label label-important"><bean:write name="danhSachBaiDangDaDuyetForm" property="tieuDe"/><span> sẽ bị xóa bỏ khỏi hệ thống
+		            </div>
+					<html:hidden property="maBaiDang"/>
+					<button type="submit" name="submit" value="xnGoBo" class="btn btn-warning btn-large">Xác nhận</button>
+					<html:link action="admin/danhSachBaiDangDaDuyet.do"><span class="btn btn-large">Quay lại</span></html:link>
+				</html:form>
+			</div>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
-	</div>
-	 <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="admin/bower_components/jquery/dist/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="admin/bower_components/metisMenu/dist/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="admin/dist/js/sb-admin-2.js"></script>
-
-    <!-- DataTables JavaScript -->
-    <script src="admin/datatables/jquery.dataTables.min.js"></script>
-
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <!-- thu -->
-<!-- 	<script type="text/javascript">    
-		function hourglass() {
-		  var a;
-		  a = document.getElementById("div1");
-		  a.innerHTML = "&#xf251;";
-		  setTimeout(function () {
-		      a.innerHTML = "&#xf252;";
-		    }, 1000);
-		  setTimeout(function () {
-		      a.innerHTML = "&#xf253;";
-		    }, 2000);
-		}
-		hourglass();
-		setInterval(hourglass, 3000);
-	</script> -->
-	<!-- end thu -->
-	
+    <script type="text/javascript">
+	window.onload = function(){ 
+		$("#baiDang").addClass( "active" );
+	}
+    </script>
+<!--Footer-part-->
+<div class="row-fluid">
+  <div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by <a href="http://themedesigner.in">Themedesigner.in</a> </div>
+</div>
+<!--end-Footer-part-->
+<script src="js/jquery.min.js"></script> 
+<script src="js/jquery.ui.custom.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/jquery.uniform.js"></script> 
+<script src="js/select2.min.js"></script> 
+<script src="js/jquery.dataTables.min.js"></script> 
+<script src="js/matrix.js"></script> 
+<script src="js/matrix.tables.js"></script>
+<script src="js/jquery.validate.js"></script> 
+<script src="js/matrix.form_validation.js"></script>
 </body>
 </html>

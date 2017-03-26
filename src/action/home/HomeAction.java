@@ -32,10 +32,10 @@ public class HomeAction extends Action{
 		BaiDangBO baiDangBO = new BaiDangBO();
 		ArrayList<BaiDangBean> listBaiDang = baiDangBO.getListBaiDang();
 		thisForm.setListBaiDang(listBaiDang);
-		//lay danh sach danh muc
+		//lay danh sach danh muc theo so luong home
 		DanhMucBO danhMucBO=new DanhMucBO();
 		ArrayList<DanhMucBean> listDanhMuc = danhMucBO.getListDanhMuc();
-		thisForm.setListDanhMuc(danhMucBO.getListDanhMuc());
+		thisForm.setListDanhMuc(danhMucBO.getListDanhMuc(7));
 		
 		//lay danh tinh thanh
 		TinhThanhBO tinhThanhBO=new TinhThanhBO();

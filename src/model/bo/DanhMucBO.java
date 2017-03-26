@@ -19,4 +19,7 @@ public class DanhMucBO {
 	public void xoaDanhMuc(int maDanhMuc) {
 		DanhMucDAO.xoaDanhMuc(maDanhMuc);
 	}
+	public ArrayList<DanhMucBean> getListDanhMuc(int i) {
+		return DanhMucDAO.getListDanhMuc(i);
+	}
 }
