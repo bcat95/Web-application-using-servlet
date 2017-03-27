@@ -299,7 +299,6 @@ public class TaiKhoanDAO extends DataBaseConnect{
 			st=getConnect().createStatement();
 			String sql= "select taikhoan.*, quyen.tenquyen, loaitaikhoan.TenLoaiTK FROM taikhoan inner join quyen on taikhoan.maquyen= quyen.maquyen inner join loaitaikhoan on taikhoan.maloaitk= loaitaikhoan.maloaitk";
 			rs=st.executeQuery(sql);
-			System.out.println("sql=" + sql);
 			TaiKhoanBean taiKhoanBean;
 			int i=0;
 			while(rs.next()){
@@ -330,12 +329,17 @@ public class TaiKhoanDAO extends DataBaseConnect{
 
 	public void xoaTaiKhoan(String user) {
 		String sql=	String.format("DELETE FROM taikhoan WHERE username = '%s'", user);
-		System.out.println("sql= "+sql);
 		try {
 			st=getConnect().createStatement();
 			st.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

@@ -4,7 +4,7 @@
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic"%>
 <%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <title>Matrix Admin</title>
 <meta charset="UTF-8" />
@@ -60,67 +60,110 @@
   <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
 </div>
 <!--close-top-serch--> 
+
+<!--sidebar-menu-->
 <jsp:include page="sidebar.jsp"></jsp:include>
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="danhSachBaiDangDaDuyet.do" class="current">Bài đăng đã duyệt</a> </div>
-    <h1>Bài đăng đã duyệt</h1>
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Form elements</a> <a href="#" class="current">Validation</a> </div>
+    <h1>Cập nhật tài khoản</h1>
   </div>
-  <div class="container-fluid">
-    <hr>
+  <div class="container-fluid"><hr>
     <div class="row-fluid">
       <div class="span12">
         <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>Quản Lý Bài Đăng</h5>
+          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+            <h5>Cập nhật thông tin tài khoản</h5>
           </div>
           <div class="widget-content nopadding">
-            <html:form action="admin/danhSachBaiDangDaDuyet" method="post">
-            <table class="table table-bordered data-table">
-              <thead>
-                <tr>
-                  <th>STT</th>
-                  <th>Tiêu đề</th>
-                  <th>Danh mục</th>
-                  <th>Ngày đăng</th>
-                  <th>Xem</th>
-                  <th>Xóa</th>
-                </tr>
-              </thead>
-              <tbody>
-                 <logic:iterate name="danhSachBaiDangDaDuyetForm" property="listBaiDang" id="bd">
-                 <tr class="gradeA">
-					 <td><bean:write name="bd" property="sTT"/></td>
-                     <td><bean:write name="bd" property="tieuDe"/></td>
-                     <td><bean:write name="bd" property="tenDanhMuc"/></td>
-                     <td><bean:write name="bd" property="ngayDang"/></td>
-                     <bean:define id="mbd" name="bd" property="maBaiDang"></bean:define>
-                     <td class="center">
-                             <html:link action="admin/xemtindaduyet?maBaiDang=${mbd}">
-                                 <i class="fa fa-pencil fa-fw"></i><span class="db-account-listing-option-hover"> Xem</span>
-                             </html:link>
-                     </td>
-                     <td class="center">
-                             <html:link action="admin/goBoTinDaDuyet?maBaiDang=${mbd}">
-                                 <i class="glyphicon glyphicon-trash"></i><span class="db-account-listing-option-hover"> Xóa</span>
-                             </html:link>
-                     </td>
-                </tr>
-                </logic:iterate>
-              </tbody>
-            </table>
-            </html:form>
+            <html:form action="admin/suaTaiKhoan" method="post" styleClass="form-horizontal" styleId="suaTaiKhoan">
+             <div class="control-group">
+                <label class="control-label">Username</label>
+                <div class="controls">
+                  <html:text property="userName" readonly="true"></html:text>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Mật khẩu</label>
+                <div class="controls">
+                  <html:password property="passWord" styleClass="required"></html:password>
+                </div>
+              </div>
+               <div class="control-group">
+                <label class="control-label">Quyền</label>
+                <div class="controls">
+					<html:select property="maQuyen">
+					    <html:optionsCollection name="danhSachTaiKhoanForm" property="listQuyen" label="tenQuyen" value="maQuyen"/>
+					</html:select>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Loại tài khoản</label>
+                <div class="controls">
+					<html:select property="maLoaiTaiKhoan">
+					     <html:optionsCollection name="danhSachTaiKhoanForm" property="listLoaiTaiKhoan" label="tenLoaiTaiKhoan" value="maLoaiTaiKhoan" />
+					</html:select>
+                </div>
+              </div>
+               <div class="control-group">
+                <label class="control-label">Họ tên</label>
+                <div class="controls">
+					<html:text property="hoTen" styleClass="required"></html:text>
+                </div>
+              </div>
+              <div class="control-group">
+              <label class="control-label">Giới tính</label>
+              <div class="controls">
+				<label>
+				  <div class="radio" id="uniform-undefined"><span class="checked">
+				  	<input type="radio" name="gioiTinh" style="opacity: 0;" value="1" checked></span></div>
+				  Nam</label>
+				<label>
+				  <div class="radio" id="uniform-undefined"><span class="">
+				  	<input type="radio" name="gioiTinh" style="opacity: 0;" value="0"></span></div>
+				      Nữ</label>
+				    <label>
+				  </div>
+				</div>
+              <div class="control-group">
+                <label class="control-label">Ngày sinh</label>
+                <div class="controls">
+                	<html:text property="ngaySinh" styleClass="date"></html:text>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Số điện thoại</label>
+                <div class="controls">
+                	 <html:text property="sDT"></html:text>
+                </div>
+              </div>
+               <div class="control-group">
+                <label class="control-label">Email</label>
+                <div class="controls">
+                	 <html:text property="eMail" styleId="email"></html:text>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Ngày đăng ký</label>
+                <div class="controls">
+                	<html:text property="ngayDangKy"></html:text>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="submit" name="submit" value="suaTK" class="btn btn-success">Cập nhật</button>
+              </div>
+           </html:form>
           </div>
-        </div>
         </div>
       </div>
     </div>
+  </div>
     <script type="text/javascript">
 	window.onload = function(){ 
-		$("#baiDang").addClass( "active" );
+		$("#taiKhoan").addClass( "active" );
 	}
     </script>
-  </div>
+</div>
 <!--Footer-part-->
 <div class="row-fluid">
   <div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by <a href="http://themedesigner.in">Themedesigner.in</a> </div>
@@ -131,10 +174,8 @@
 <script src="js/bootstrap.min.js"></script> 
 <script src="js/jquery.uniform.js"></script> 
 <script src="js/select2.min.js"></script> 
-<script src="js/jquery.dataTables.min.js"></script> 
-<script src="js/matrix.js"></script> 
-<script src="js/matrix.tables.js"></script>
 <script src="js/jquery.validate.js"></script> 
+<script src="js/matrix.js"></script> 
 <script src="js/matrix.form_validation.js"></script>
 </body>
 </html>

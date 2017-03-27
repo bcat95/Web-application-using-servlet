@@ -63,53 +63,29 @@
 <jsp:include page="sidebar.jsp"></jsp:include>
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="danhSachBaiDangDaDuyet.do" class="current">Bài đăng đã duyệt</a> </div>
-    <h1>Bài đăng đã duyệt</h1>
+    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="danhSachBaiDangChuaDuyet.do" class="current">Duyệt bài</a> </div>
+    <h1>Xóa bỏ tài khoản</h1>
   </div>
   <div class="container-fluid">
     <hr>
     <div class="row-fluid">
       <div class="span12">
         <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>Quản Lý Bài Đăng</h5>
-          </div>
-          <div class="widget-content nopadding">
-            <html:form action="admin/danhSachBaiDangDaDuyet" method="post">
-            <table class="table table-bordered data-table">
-              <thead>
-                <tr>
-                  <th>STT</th>
-                  <th>Tiêu đề</th>
-                  <th>Danh mục</th>
-                  <th>Ngày đăng</th>
-                  <th>Xem</th>
-                  <th>Xóa</th>
-                </tr>
-              </thead>
-              <tbody>
-                 <logic:iterate name="danhSachBaiDangDaDuyetForm" property="listBaiDang" id="bd">
-                 <tr class="gradeA">
-					 <td><bean:write name="bd" property="sTT"/></td>
-                     <td><bean:write name="bd" property="tieuDe"/></td>
-                     <td><bean:write name="bd" property="tenDanhMuc"/></td>
-                     <td><bean:write name="bd" property="ngayDang"/></td>
-                     <bean:define id="mbd" name="bd" property="maBaiDang"></bean:define>
-                     <td class="center">
-                             <html:link action="admin/xemtindaduyet?maBaiDang=${mbd}">
-                                 <i class="fa fa-pencil fa-fw"></i><span class="db-account-listing-option-hover"> Xem</span>
-                             </html:link>
-                     </td>
-                     <td class="center">
-                             <html:link action="admin/goBoTinDaDuyet?maBaiDang=${mbd}">
-                                 <i class="glyphicon glyphicon-trash"></i><span class="db-account-listing-option-hover"> Xóa</span>
-                             </html:link>
-                     </td>
-                </tr>
-                </logic:iterate>
-              </tbody>
-            </table>
-            </html:form>
+			<div class="widget-title"><span class="icon"><i class="icon-bookmark"></i></span>
+			  <h5>Xác nhận xóa tài khoản</h5>
+			</div>
+			<div class="widget-content">
+				<html:form action="admin/xoaTaiKhoan">
+					<div class="alert alert-block">
+						<a class="close" data-dismiss="alert" href="#">×</a>
+						<h4 class="alert-heading">Bạn chắc chắn muốn xóa tài khoản !</h4>
+						<span class="label label-important"><bean:write name="danhSachTaiKhoanForm" property="userName"/></span> sẽ bị xóa bỏ khỏi hệ thống
+		            </div>
+		            <html:hidden property="userName"/>
+		            <button type="submit" name="submit" value="xoaTaikhoan" class="btn btn-warning btn-large">Xác nhận</button>
+					<html:link action="admin/danhSachTaiKhoan.do"><span class="btn btn-large">Quay lại</span></html:link>
+				</html:form>
+			</div>
           </div>
         </div>
         </div>
@@ -120,7 +96,6 @@
 		$("#baiDang").addClass( "active" );
 	}
     </script>
-  </div>
 <!--Footer-part-->
 <div class="row-fluid">
   <div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by <a href="http://themedesigner.in">Themedesigner.in</a> </div>

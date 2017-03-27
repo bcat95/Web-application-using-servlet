@@ -48,9 +48,7 @@ public class ThemTaiKhoanAction extends Action{
 				return mapping.findForward("themTK");
 			} 
 			else if(StringProcess.equals(danhSachTaiKhoanForm.getSubmit(), "themTK")){
-				System.out.println("noy day");
 				taiKhoanBO.themTaiKhoan(danhSachTaiKhoanForm.getTaiKhoan());
-				System.out.println("noy day2");
 				return mapping.findForward("themTKxong");
 			}
 		}

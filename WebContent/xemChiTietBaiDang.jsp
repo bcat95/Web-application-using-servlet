@@ -6,8 +6,13 @@
 <%@taglib uri="http://displaytag.sf.net" prefix="display"%>
 <jsp:include page="header.do" flush="true"></jsp:include>
 <script>
-$(document.body).addClass('noheabac');
-$('.thr_inf_bot:not(:has(*))').remove();
+jQuery(document).ready(function($) {
+	$(document.body).addClass('noheabac');
+	
+	$('.thr_inf_bot:not(:has(*))').remove();
+	
+	$('.thr_inf_bot:not(:has(*))').remove();
+});
 </script>
 <style>
 body {

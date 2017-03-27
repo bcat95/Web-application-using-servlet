@@ -25,10 +25,9 @@ public class XacNhanXoaTaiKhoanAction extends Action{
 		DanhSachTaiKhoanForm danhSachTaiKhoanForm= (DanhSachTaiKhoanForm)form;
 		TaiKhoanBO taiKhoanBO= new TaiKhoanBO();
 		String user=danhSachTaiKhoanForm.getUserName();
-		System.out.println("phuong= "+ user);
+		System.out.println("xáo "+ user);
 		if (StringProcess.equals(danhSachTaiKhoanForm.getSubmit(), "xoaTaikhoan")){
 			taiKhoanBO.xoaTaiKhoan(user); 
-			 
 			return mapping.findForward("xoaTKxong");
 		}	
 		else {		

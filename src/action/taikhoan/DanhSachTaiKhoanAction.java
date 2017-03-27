@@ -22,12 +22,9 @@ public class DanhSachTaiKhoanAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
-		System.out.println("NOy ");
 		DanhSachTaiKhoanForm danhSachTaiKhoanForm = (DanhSachTaiKhoanForm) form;
 		TaiKhoanBO taiKhoanBO = new TaiKhoanBO();
-		System.out.println("NOy 1");
 		ArrayList<TaiKhoanBean> listTK = taiKhoanBO.getListTaiKhoan();
-		System.out.println("NOy2 ");
 		danhSachTaiKhoanForm.setListTaiKhoan(listTK);
 		return mapping.findForward("danhSachTaiKhoan");
 	}

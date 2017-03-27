@@ -1,5 +1,6 @@
 package form;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -185,6 +186,14 @@ public class DanhSachTaiKhoanForm extends ActionForm{
 
 	public void setListTaiKhoan(ArrayList<TaiKhoanBean> listTaiKhoan) {
 		this.listTaiKhoan = listTaiKhoan;
+	}
+	@Override
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public ActionErrors validateBaiDang(ActionMapping mapping, HttpServletRequest request) {

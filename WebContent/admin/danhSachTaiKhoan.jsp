@@ -63,8 +63,8 @@
 <jsp:include page="sidebar.jsp"></jsp:include>
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="danhSachBaiDangDaDuyet.do" class="current">Bài đăng đã duyệt</a> </div>
-    <h1>Bài đăng đã duyệt</h1>
+    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="danhSachTaiKhoan.do" class="current">Tài khoản</a> </div>
+    <h1>Danh sách tài khoản</h1>
   </div>
   <div class="container-fluid">
     <hr>
@@ -72,39 +72,49 @@
       <div class="span12">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>Quản Lý Bài Đăng</h5>
+            <h5>Quản lý tài khoản</h5>
           </div>
           <div class="widget-content nopadding">
-            <html:form action="admin/danhSachBaiDangDaDuyet" method="post">
+            <html:form action="admin/danhSachTaiKhoan" method="post">
             <table class="table table-bordered data-table">
               <thead>
                 <tr>
                   <th>STT</th>
-                  <th>Tiêu đề</th>
-                  <th>Danh mục</th>
-                  <th>Ngày đăng</th>
-                  <th>Xem</th>
+                  <th>Username</th>
+                  <th>Quyền</th>
+                  <th>Loại tài khoản</th>
+                  <th>Họ Tên</th>
+                  <th>Giới tính</th>
+                  <th>Ngày Sinh</th>
+                  <th>SĐT</th>
+                  <th>Email</th>
+                  <th>Sửa</th>
                   <th>Xóa</th>
                 </tr>
               </thead>
               <tbody>
-                 <logic:iterate name="danhSachBaiDangDaDuyetForm" property="listBaiDang" id="bd">
+                 <logic:iterate name="danhSachTaiKhoanForm" property="listTaiKhoan" id="tk">
                  <tr class="gradeA">
-					 <td><bean:write name="bd" property="sTT"/></td>
-                     <td><bean:write name="bd" property="tieuDe"/></td>
-                     <td><bean:write name="bd" property="tenDanhMuc"/></td>
-                     <td><bean:write name="bd" property="ngayDang"/></td>
-                     <bean:define id="mbd" name="bd" property="maBaiDang"></bean:define>
+					<bean:define id="taiKhoan" name="tk" property="userName" ></bean:define>
+                     <td><bean:write name="tk" property="sTT"/></td>
+                     <td><bean:write name="tk" property="userName"/></td>
+                     <td><bean:write name="tk" property="tenQuyen"/></td>
+                     <td><bean:write name="tk" property="tenLoaiTaiKhoan"/></td>
+                     <td><bean:write name="tk" property="hoTen"/></td>
+                     <td><bean:write name="tk" property="gioiTinh"/></td>
+                     <td><bean:write name="tk" property="ngaySinh"/></td>
+                     <td><bean:write name="tk" property="sDT"/></td>
+                     <td><bean:write name="tk" property="eMail"/></td>
                      <td class="center">
-                             <html:link action="admin/xemtindaduyet?maBaiDang=${mbd}">
-                                 <i class="fa fa-pencil fa-fw"></i><span class="db-account-listing-option-hover"> Xem</span>
-                             </html:link>
-                     </td>
-                     <td class="center">
-                             <html:link action="admin/goBoTinDaDuyet?maBaiDang=${mbd}">
-                                 <i class="glyphicon glyphicon-trash"></i><span class="db-account-listing-option-hover"> Xóa</span>
-                             </html:link>
-                     </td>
+						<html:link action="admin/suaTaiKhoan?userName=${taiKhoan}">
+							<i class="fa fa-pencil fa-fw"></i><span class="db-account-listing-option-hover"> Sửa</span>
+						</html:link>
+					</td>
+					<td class="center">
+						<html:link action="admin/xoaTaiKhoan?userName=${taiKhoan }">
+						<i class="glyphicon glyphicon-trash"></i><span class="db-account-listing-option-hover"> Xóa</span>
+					</html:link>
+					</td>
                 </tr>
                 </logic:iterate>
               </tbody>
@@ -117,7 +127,7 @@
     </div>
     <script type="text/javascript">
 	window.onload = function(){ 
-		$("#baiDang").addClass( "active" );
+		$("#taiKhoan").addClass( "active" );
 	}
     </script>
   </div>

@@ -140,6 +140,8 @@ public class BaiDangDAO extends DataBaseConnect{
 				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
 				BaiDang.setViDo(rs.getString("ViDo"));
 				BaiDang.setKinhDo(rs.getString("KinhDO"));
+				BaiDang.setGiaThapNhat(rs.getInt("GiaThapNhat"));
+				BaiDang.setGiaCaoNhat(rs.getInt("GiaCaoNhat"));
 				list.add(BaiDang);
 			}
 		} catch (SQLException e) {
@@ -180,6 +182,8 @@ public class BaiDangDAO extends DataBaseConnect{
 				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
 				BaiDang.setViDo(rs.getString("ViDo"));
 				BaiDang.setKinhDo(rs.getString("KinhDO"));
+				BaiDang.setGiaThapNhat(rs.getInt("GiaThapNhat"));
+				BaiDang.setGiaCaoNhat(rs.getInt("GiaCaoNhat"));
 				list.add(BaiDang);
 			}
 		} catch (SQLException e) {
@@ -220,6 +224,8 @@ public class BaiDangDAO extends DataBaseConnect{
 				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
 				BaiDang.setViDo(rs.getString("ViDo"));
 				BaiDang.setKinhDo(rs.getString("KinhDO"));
+				BaiDang.setGiaThapNhat(rs.getInt("GiaThapNhat"));
+				BaiDang.setGiaCaoNhat(rs.getInt("GiaCaoNhat"));
 				list.add(BaiDang);
 			}
 		} catch (SQLException e) {
@@ -261,6 +267,8 @@ public class BaiDangDAO extends DataBaseConnect{
 				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
 				BaiDang.setViDo(rs.getString("ViDo"));
 				BaiDang.setKinhDo(rs.getString("KinhDO"));
+				BaiDang.setGiaThapNhat(rs.getInt("GiaThapNhat"));
+				BaiDang.setGiaCaoNhat(rs.getInt("GiaCaoNhat"));
 				list.add(BaiDang);
 			}
 		} catch (SQLException e) {
@@ -302,6 +310,8 @@ public class BaiDangDAO extends DataBaseConnect{
 				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
 				BaiDang.setViDo(rs.getString("ViDo"));
 				BaiDang.setKinhDo(rs.getString("KinhDO"));
+				BaiDang.setGiaThapNhat(rs.getInt("GiaThapNhat"));
+				BaiDang.setGiaCaoNhat(rs.getInt("GiaCaoNhat"));
 				list.add(BaiDang);
 			}
 		} catch (SQLException e) {
@@ -343,6 +353,8 @@ public class BaiDangDAO extends DataBaseConnect{
 				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
 				BaiDang.setViDo(rs.getString("ViDo"));
 				BaiDang.setKinhDo(rs.getString("KinhDO"));
+				BaiDang.setGiaThapNhat(rs.getInt("GiaThapNhat"));
+				BaiDang.setGiaCaoNhat(rs.getInt("GiaCaoNhat"));
 				list.add(BaiDang);
 			}
 		} catch (SQLException e) {
@@ -384,6 +396,8 @@ public class BaiDangDAO extends DataBaseConnect{
 				BaiDang.setDiemDanhGia(rs.getInt("DiemDanhGia"));
 				BaiDang.setViDo(rs.getString("ViDo"));
 				BaiDang.setKinhDo(rs.getString("KinhDO"));
+				BaiDang.setGiaThapNhat(rs.getInt("GiaThapNhat"));
+				BaiDang.setGiaCaoNhat(rs.getInt("GiaCaoNhat"));
 				list.add(BaiDang);
 			}
 		} catch (SQLException e) {

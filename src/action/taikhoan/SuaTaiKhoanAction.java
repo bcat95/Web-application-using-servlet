@@ -39,7 +39,6 @@ public class SuaTaiKhoanAction extends Action{
 		
 		TaiKhoanBO taiKhoanBO= new TaiKhoanBO();
 		String username= danhSachTaiKhoanForm.getUserName();
-		System.out.println("user action" +username);
 		
 		//kiem tra du lieu nhap vao
 		if (StringProcess.equals(danhSachTaiKhoanForm.getSubmit(), "suaTK")){

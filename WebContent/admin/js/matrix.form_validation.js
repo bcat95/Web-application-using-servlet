@@ -6,7 +6,7 @@ $(document).ready(function(){
 	$('select').select2();
 	
 	// Form Validation
-    $("#basic_validate").validate({
+    $("#suaTaiKhoan").validate({
 		rules:{
 			required:{
 				required:true

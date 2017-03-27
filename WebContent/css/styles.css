@@ -150,7 +150,7 @@ header {
     background-color:transparent;
 }
 .header-content.page-with {
-    
+    padding: 0 10px;
 }
 .header-main {
     position: relative;

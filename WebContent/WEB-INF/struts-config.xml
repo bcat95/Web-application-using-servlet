@@ -169,26 +169,26 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="baiDangChuaDuyet" path="/admin/danhSachBaiDangChuaDuyet.do"  redirect="true"/>
 		</action>
 		
-		<action input="/admin/danhSachTaiKhoan.jsp" name="danhSachTaiKhoanForm" path="/danhSachTaiKhoan"
+		<action input="/admin/danhSachTaiKhoan.jsp" name="danhSachTaiKhoanForm" path="/admin/danhSachTaiKhoan"
 			scope="request" type="action.taikhoan.DanhSachTaiKhoanAction" validate="true">
 			<forward name="danhSachTaiKhoan" path="/admin/danhSachTaiKhoan.jsp"/>
 		</action>
 		
-		<action input="/admin/danhSachTaiKhoan.jsp" name="danhSachTaiKhoanForm" path="/xoaTaiKhoan"
+		<action input="/admin/danhSachTaiKhoan.jsp" name="danhSachTaiKhoanForm" path="/admin/xoaTaiKhoan"
 			scope="request" type="action.taikhoan.XacNhanXoaTaiKhoanAction">
 			<forward name="xoaTK" path="/admin/xacNhanXoaTaiKhoan.jsp" />
-			<forward name="xoaTKxong" path="/danhSachTaiKhoan.do" redirect="true" />
+			<forward name="xoaTKxong" path="/admin/danhSachTaiKhoan.do" redirect="true" />
 		</action>
 		
-		<action input="/admin/themTaiKhoan.jsp" name="danhSachTaiKhoanForm" path="/them-tai-khoan" 
+		<action input="/admin/themTaiKhoan.jsp" name="danhSachTaiKhoanForm" path="/admin/themTaiKhoan" 
 			scope="request" type="action.taikhoan.ThemTaiKhoanAction">
 			<forward name="themTK" path="/admin/themTaiKhoan.jsp" />
-			<forward name="themTKxong" path="/danhSachTaiKhoan.do" redirect="true"/>
+			<forward name="themTKxong" path="/admin/danhSachTaiKhoan.do" redirect="true"/>
 		</action>
-		<action name="danhSachTaiKhoanForm" path="/sua-tai-khoan" 
+		<action name="danhSachTaiKhoanForm" path="/admin/suaTaiKhoan" 
 			scope="request" type="action.taikhoan.SuaTaiKhoanAction">
 			<forward name="suaTK" path="/admin/suaTaiKhoan.jsp" />
-			<forward name="suaTKxong" path="/danhSachTaiKhoan.do" redirect="true"/>
+			<forward name="suaTKxong" path="/admin/danhSachTaiKhoan.do" redirect="true"/>
 		</action>
 		
 		

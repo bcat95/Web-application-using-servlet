@@ -131,10 +131,10 @@
 														});
 													</script>
 													</div>
-													
+													<%-- 
 													<div class="item__info"><!--so dien thoai bai dang-->
 														<span class="db-listing-icon" title="Phone number">${sDT}</span>
-													</div>
+													</div> --%>
 													<div class="item__info">
 														<logic:equal name="threads" property="diemDanhGia" value="0">
 															<img class="icon-rating" src="img/icon/norating.png"/><span style="color: #9ba2a6;">Hiện tại chưa có đánh giá</span>
