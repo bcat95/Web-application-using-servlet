@@ -36,7 +36,7 @@
 						                	<span class="db-account-listing-option-hover">Sửa</span><i class="fa fa-pencil" aria-hidden="true"></i>
 						             </span>
 								</display:column>
-								<display:column>
+								<display:column class="modal_edit">
 									<!-- Modal sua khuyen mai -->
 									<div class="modal fade" id="suaKhuyenMai_${bckhuyenmai.maKhuyenMai}" role="dialog">
 									  <div class="modal-dialog modal-lg">
