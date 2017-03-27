@@ -12,7 +12,7 @@ import org.apache.struts.action.ActionMapping;
 
 import common.StringProcess;
 import form.BaiDangForm;
-import model.bean.User;
+import model.bean.TaiKhoanBean;
 import model.bo.BaiDangBO;
 import model.bo.DanhMucBO;
 import model.bo.TinhThanhBO;
@@ -26,7 +26,7 @@ public class SuaBaiDangAction extends Action{
 		request.setCharacterEncoding("UTF-8");
 		BaiDangForm thisForm = (BaiDangForm) form;
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("userActivity");
+		TaiKhoanBean user = (TaiKhoanBean) session.getAttribute("userActivity");
 		if(user == null || user.getMaQuyen() == -1)
 			return mapping.findForward("login");
 		thisForm.setUserName(user.getUserName());

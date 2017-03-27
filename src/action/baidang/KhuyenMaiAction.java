@@ -12,7 +12,7 @@ import org.apache.struts.action.ActionMapping;
 
 import common.StringProcess;
 import form.KhuyenMaiForm;
-import model.bean.User;
+import model.bean.TaiKhoanBean;
 import model.bo.KhuyenMaiBO;
 
 public class KhuyenMaiAction extends Action{
@@ -22,7 +22,7 @@ public class KhuyenMaiAction extends Action{
 			HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("userActivity");
+		TaiKhoanBean user = (TaiKhoanBean) session.getAttribute("userActivity");
 		if(user == null || user.getMaQuyen() == -1)
 			return mapping.findForward("login");
 		KhuyenMaiForm thisForm = (KhuyenMaiForm) form;

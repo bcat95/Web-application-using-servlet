@@ -75,10 +75,10 @@
 	        <div class="modal-body">
 	          <form name="loginForm" method="post" action="Login.do">
 	    			<div class="form-group">
-	        			<input type="text" name="username" value="" id="username" class="form-control" placeholder="Enter username"> <br>
+	        			<input type="text" name="userName" value="" id="username" class="form-control" placeholder="Enter username"> <br>
 	        		</div>
 	        		<div class="form-group">
-	        			<input type="password" name="password" value="" id="pw" class="form-control" placeholder="Enter password"> <br>
+	        			<input type="password" name="pass" value="" id="pw" class="form-control" placeholder="Enter password"> <br>
 	        		</div>
 	       			<input type="submit" name="submit" value="Login" class="btn btn-pramery"><br>
 	       			<a href="Register.do"><ins>Bạn chưa có tài khoản</ins> Đăng ký</a>

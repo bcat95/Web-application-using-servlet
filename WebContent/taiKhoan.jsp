@@ -19,7 +19,7 @@
 										<div class="db-account-wrapper">
 											<ul class="db-account-menu nav-pills clearfix">
 												<li class="active"><a data-toggle="pill" href="#taiKhoan_thongTin" class="active">Thông tin</a></li>
-												<li><a data-toggle="pill" href="#taiKhoan_capNhap" class="">Cập nhật thông tin</a></li>
+												<li><a href="Update.do">Cập nhật thông tin</a></li>
 												<li><a href="dangtin.do">Đăng tin</a></li>
 												<li><a data-toggle="pill" href="#taiKhoan_tinDang" class="">Danh sách bài đã đăng</a></li>
 												<li><a data-toggle="pill" href="#taiKhoan_yeuThich" class="">Ưa thích</a></li>
@@ -44,7 +44,7 @@
 														<span class="db-account-label">Password:</span>
 														<span class="db-account-value"><bean:write name="thongTinTaiKhoanForm" property="passCu"/></span>
 													</span>
-													<a data-toggle="pill" href="#taiKhoan_capNhap" class="">Cập nhật</a>
+													<a data-toggle="pill" href="#taiKhoan_capNhap" class="">Đổi mật khẩu</a>
 													<div class="clearfix"></div>
 												</div>
 											</html:form>

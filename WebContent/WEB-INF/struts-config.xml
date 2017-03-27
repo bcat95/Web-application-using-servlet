@@ -15,9 +15,7 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<!-- endAnNBH form beans -->
 		
 		<!-- Vang form beans -->
-		<form-bean name="loginForm" type="form.LoginForm"/>
-		<form-bean name="registerForm" type="form.RegisterForm"/>
-		<form-bean name="headerForm" type="form.HeaderForm"/>
+		<form-bean name="taiKhoanForm" type="form.TaiKhoanForm"/>
 		<!-- end form beans -->
 		
 		<!-- Vannasone form beans -->
@@ -36,11 +34,11 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 	<action-mappings>
 		
 		<!-- Vang action -->
-        <action input="/login.jsp" name="loginForm" path="/Login" scope="request" type="action.LoginAction">
+        <action input="/login.jsp" name="taiKhoanForm" path="/Login" scope="request" type="action.LoginAction">
 			<forward name="login" path="/login.jsp" />
             <forward name="home" path="/index.jsp" redirect="true"/>
         </action>
-        <action input="/register.jsp"  name="registerForm"
+        <action input="/register.jsp"  name="taiKhoanForm"
 			path="/Register" scope="request" type="action.RegisterAction">
 			<forward name="home" path="/index.jsp" redirect="true"/>
 			<forward name="register" path="/register.jsp"/>
@@ -48,9 +46,13 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<action path="/Logout" scope="request" type="action.LogoutAction">
             <forward name="logout" path="/index.jsp" redirect="true"/>
         </action>
-        <action input="/template_Header.jsp"  name="headerForm"
+        <action input="/template_Header.jsp"  name="taiKhoanForm"
 			path="/header" scope="request" type="action.HeaderAction">
 			<forward name="header" path="/template_Header.jsp" />
+		</action>
+		<action input="/capnhattaikhoan.jsp"  name="taiKhoanForm"
+			path="/Update" scope="request" type="action.UpdateTaiKhoanAction">
+			<forward name="update" path="/capnhattaikhoan.jsp"/>
 		</action>			
 		<!-- end Vang action -->
 		

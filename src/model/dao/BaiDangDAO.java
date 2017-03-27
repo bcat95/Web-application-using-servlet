@@ -12,7 +12,6 @@ import common.DataBaseConnect;
 import common.StringProcess;
 import model.bean.BaiDangBean;
 import model.bean.HinhAnhBean;
-import model.bean.User;
 /**
  * BaiDangDAO
  *

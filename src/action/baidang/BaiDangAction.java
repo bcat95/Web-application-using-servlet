@@ -11,7 +11,7 @@ import org.apache.struts.action.ActionMapping;
 
 import common.StringProcess;
 import form.BaiDangForm;
-import model.bean.User;
+import model.bean.TaiKhoanBean;
 import model.bo.BaiDangBO;
 import model.bo.BinhLuanBO;
 import model.bo.ThichBO;
@@ -36,7 +36,7 @@ public class BaiDangAction extends Action{
 			HttpServletResponse response) throws Exception {
 		BaiDangForm thisForm = (BaiDangForm) form;
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("userActivity");
+		TaiKhoanBean user = (TaiKhoanBean) session.getAttribute("userActivity");
 		thisForm.setXemBaiDang(BaiDangBO.infoBaiDang(thisForm.getMaBaiDang()));
 		if(user==null && thisForm.getMaLoaiTin()==1){
 			return mapping.findForward("err404");

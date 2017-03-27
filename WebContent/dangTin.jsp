@@ -280,7 +280,7 @@
 															<span class="db-fee-sticky">Ảnh bìa</span>
 															<span class="db-package-extra">Tin ưu tiên</span>
 														</div>
-														<input type="hidden" name="userName" value="<bean:write name="headerForm" property="userName"/>">
+														<input type="hidden" name="userName" value="<bean:write name="taiKhoanForm" property="userName"/>">
 														<button type="submit" name="submit" value="dangTin" class="btn btn-primary">Đăng Tin</button>
 													</div>
 												</div>

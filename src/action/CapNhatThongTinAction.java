@@ -13,7 +13,6 @@ import org.apache.struts.action.ActionMapping;
 import common.StringProcess;
 import form.ThongTinTaiKhoanForm;
 import model.bean.TaiKhoanBean;
-import model.bean.User;
 import model.bo.TaiKhoanBO;
 
 public class CapNhatThongTinAction extends Action{
@@ -25,7 +24,7 @@ public class CapNhatThongTinAction extends Action{
 		ThongTinTaiKhoanForm thongTinTaiKhoanForm = (ThongTinTaiKhoanForm) form;
 		TaiKhoanBO taiKhoanBO= new TaiKhoanBO(); 
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("userActivity");
+		TaiKhoanBean user = (TaiKhoanBean) session.getAttribute("userActivity");
 		String username = user.getUserName();
 		TaiKhoanBean taiKhoanBean= taiKhoanBO.getThongTinTaiKhoan(username);
 		if (StringProcess.equals(thongTinTaiKhoanForm.getSubmit(), "CapNhapPass")){

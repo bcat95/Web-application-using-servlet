@@ -12,7 +12,6 @@ import common.DataBaseConnect;
 import common.StringProcess;
 import model.bean.BaiDangBean;
 import model.bean.TaiKhoanBean;
-import model.bean.User;
 
 public class TaiKhoanDAO extends DataBaseConnect{
 	private static Statement st=null;
@@ -57,6 +56,26 @@ public class TaiKhoanDAO extends DataBaseConnect{
 		}
 		return false;
 	}
+	public boolean checkEmailUpdate(String email, String username) {
+		Connection conn = common.DataBaseConnect.getConnect();
+		String sql=	"SELECT Username FROM TaiKhoan WHERE Email = '"+email+"' and Username <> '"+username+"'";
+		ResultSet rs = null;
+		try {
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			if(rs.next()){
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 	public boolean checkLogin(String tenDangNhap, String matKhau) {
 		Connection conn = common.DataBaseConnect.getConnect();
 		String sql=	"SELECT Username FROM TaiKhoan WHERE Username = '"+tenDangNhap+"' AND Pass = '"+matKhau+"'";
@@ -77,6 +96,20 @@ public class TaiKhoanDAO extends DataBaseConnect{
 		return false;
 	}
 	
+	public void updateTK(String username, String pass, String email, String avatar, String hoTen, String gioiTinh, String ngaySinh, String SDT) {
+		Connection conn = common.DataBaseConnect.getConnect();
+		String sql=	String.format("UPDATE TaiKhoan "+
+					" SET Pass = '%s', Email = '%s', Avatar = '%s', HoTen = N'%s', GioiTinh = %s, NgaySinh = '%s', SDT = '%s' " +
+					" WHERE Username = '%s'", pass, email, avatar, hoTen, gioiTinh, ngaySinh, SDT, username);
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	
 	public void themTaiKhoan(String tenDangNhap, String matKhau, String email, String avatar, String hoTen, int MaQuyen, int MaLoaiTK) {
 		Connection conn = common.DataBaseConnect.getConnect();
 		String sql= String.format("INSERT INTO TaiKhoan(Username, Pass, Email, Avatar, HoTen, MaQuyen, MaLoaiTK)"
@@ -90,9 +123,10 @@ public class TaiKhoanDAO extends DataBaseConnect{
 	}
 	public TaiKhoanBean selectOne(String username) {
 		Connection conn = common.DataBaseConnect.getConnect();
-		String sql=	"SELECT Username, Pass, HoTen, MaQuyen FROM TaiKhoan where Username = '"+username+"'";
+		String sql=	"SELECT Username, Pass, Email, Avatar, HoTen, GioiTinh, NgaySinh, SDT, NgayDangKy, MaQuyen, MaLoaiTk"
+				+ " FROM TaiKhoan WHERE Username = '"+username+"'";
 		ResultSet resultSet = null;
-		TaiKhoanBean item = null;
+		TaiKhoanBean item = new TaiKhoanBean();
 		try {
 			Statement stmt = conn.createStatement();
 			resultSet = stmt.executeQuery(sql);
@@ -102,10 +136,17 @@ public class TaiKhoanDAO extends DataBaseConnect{
 		try {
 			if(resultSet.next())
 			{
-				item  = new TaiKhoanBean (resultSet.getString("Username"), 
-						resultSet.getString("Pass"),
-						resultSet.getString("HoTen"),
-						resultSet.getInt("MaQuyen"));
+				item.setUserName(resultSet.getString("Username"));
+				item.setPassWord(resultSet.getString("Pass"));
+				item.seteMail(resultSet.getString("Email"));
+				item.setAvatar(resultSet.getString("Avatar"));
+				item.setHoTen(resultSet.getString("HoTen"));
+				item.setGioiTinh(resultSet.getString("GioiTinh"));
+				item.setNgaySinh(resultSet.getString("NgaySinh"));
+				item.setsDT(resultSet.getString("SDT"));
+				item.setNgayDangKy(resultSet.getString("NgayDangKy"));
+				item.setMaQuyen(resultSet.getInt("MaQuyen"));
+				item.setMaLoaiTaiKhoan(resultSet.getInt("MaLoaiTK"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -185,7 +226,7 @@ public class TaiKhoanDAO extends DataBaseConnect{
 		}
 	}
 
-	public static ArrayList<BaiDangBean> danhSachYeuThich(User user) {
+	public static ArrayList<BaiDangBean> danhSachYeuThich(TaiKhoanBean user) {
 		ArrayList<BaiDangBean> listYeuThich = new ArrayList<BaiDangBean>();
 		BaiDangBean baiDang;
 		try {
@@ -220,7 +261,7 @@ public class TaiKhoanDAO extends DataBaseConnect{
 		return listYeuThich;
 	}
 	//danh sach bai dang by user
-	public static ArrayList<BaiDangBean> danhSachBaiDang(User username){
+	public static ArrayList<BaiDangBean> danhSachBaiDang(TaiKhoanBean username){
 		Connection con= DataBaseConnect.getConnect();
 		String sql=	"select * from baidang inner join loaitin on baidang.maloaitin= loaitin.maloaitin inner join danhmuc on baidang.madanhmuc= danhmuc.madanhmuc where username='"+username.getUserName() +"'";
 		ResultSet rs = null;

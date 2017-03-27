@@ -18,19 +18,19 @@
 				<div class="login-form">
 		    		<html:form action="/Login">
 		    			<div class="form-group">
-		        			<html:text name="loginForm" property="username" styleClass="form-control" styleId="username"/> <br/>
+		        			<html:text name="taiKhoanForm" property="userName" styleClass="form-control" styleId="username"/> <br/>
 		        		</div>
 		        		<div class="form-group">
-		        			<html:password name="loginForm" property="password" styleClass="form-control" styleId="pw"/> <br/>
+		        			<html:password name="taiKhoanForm" property="pass" styleClass="form-control" styleId="pw"/> <br/>
 		        		</div>	
-		        		<logic:equal name="loginForm" property="thongBao" value="1">
+		        		<logic:equal name="taiKhoanForm" property="thongBao" value="1">
 							<h4 style="color:red;"> Vui lòng điền đầy đủ thông tin!!! </h4>
 						</logic:equal>
-						<logic:equal name="loginForm" property="thongBao" value="2">
+						<logic:equal name="taiKhoanForm" property="thongBao" value="2">
 							<h4 style="color:red;"> Mật khẩu hoặc tài khoản không đúng, vui lòng kiểm tra lại!!! </h4>
 						</logic:equal>
 		       			<html:submit property="submit" value="Login" styleClass="btn btn-pramery"/><br/>
-		       			<a href="Register.do"><ins>Bạn chưa có tài khoản</ins> Đăng ký</a>
+		       			Bạn chưa có tài khoản <a href="Register.do">Đăng ký</a>
 		        	</html:form>	
 		        </div>
    			</div>

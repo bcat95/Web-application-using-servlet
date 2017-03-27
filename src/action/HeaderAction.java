@@ -1,7 +1,5 @@
 package action;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -10,28 +8,24 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import form.HeaderForm;
-import model.bean.DanhMucBean;
-import model.bean.TinhThanhBean;
-import model.bean.User;
-import model.bo.DanhMucBO;
-import model.bo.TinhThanhBO;
+import form.TaiKhoanForm;
+import model.bean.TaiKhoanBean;
 
 public class HeaderAction extends Action{
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		HeaderForm thisForm = (HeaderForm) form;
+		TaiKhoanForm thisForm = (TaiKhoanForm) form;
 		HttpSession session = request.getSession();
 		
-		User user = (User) session.getAttribute("userActivity");
+		TaiKhoanBean user = (TaiKhoanBean) session.getAttribute("userActivity");
 		
 		if(user != null){
-			thisForm.setUser(user);
+			thisForm.setTK(user);
 			
 		}
 		else
-			thisForm.setType(-1);
+			thisForm.setMaQuyen(-1);
 		return mapping.getInputForward();
 	}
 }
