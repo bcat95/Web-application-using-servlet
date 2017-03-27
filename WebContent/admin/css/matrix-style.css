@@ -468,7 +468,7 @@ hr{ border-top-color:#dadada;}
 }
 .site-stats li {
 	cursor: pointer; display:inline-block;
-	margin: 0 5px 10px; text-align:center; width:42%;
+	margin: 0 5px 10px; text-align:center; width:100%;
 	padding:10px 0; color:#fff;
 	position: relative;
 }

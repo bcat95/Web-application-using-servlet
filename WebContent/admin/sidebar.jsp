@@ -3,7 +3,7 @@
 
 <div id="sidebar"> <a href="#" class="visible-phone"><i class="icon icon-th"></i>Tables</a>
   <ul>
-    <li><a href="index.jsp"><i class="icon icon-home"></i> <span>Bảng điều khiển</span></a> </li>
+    <li><a href="adminpanel.do"><i class="icon icon-home"></i> <span>Bảng điều khiển</span></a> </li>
     <li><a href="../index.jsp"><i class="icon icon-home"></i> <span>Trang chủ</span></a> </li>
     <li id="danhMuc"><a href="danhMuc.do"><i class="icon icon-signal"></i> <span>Danh mục</span></a> </li>
     <li id="baiDang" class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Bài đăng</span> <span class="label label-important">2</span></a>

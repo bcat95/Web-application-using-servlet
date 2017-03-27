@@ -6,6 +6,7 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<!-- DonNA form beans -->
 		<form-bean name="baiDangForm" type="form.BaiDangForm" />
 		<form-bean name="khuyenMaiForm" type="form.KhuyenMaiForm" />
+		<form-bean name="adminPanelForm" type="form.AdminPanelForm" />
 		<!-- end DonNA form beans -->
 		
 		<!-- AnNBH form beans -->
@@ -97,6 +98,9 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<action input="/banDo.jsp"  name="timKiemForm"
 			path="/banDo" scope="session" type="action.TimKiemAction" validate="true">
 			<forward name="/banDo" path="/banDo.jsp" />
+		</action>
+		<action input="/admin/index.jsp" name="adminPanelForm" path="/admin/adminpanel" scope="session" type="action.admin.AdminPanelAction" validate="true">
+			<forward name="/admin/adminpanel" path="/admin/index.jsp" />
 		</action>
 		<!-- end DonNA tao action -->
 		<!-- AnNBH action -->
