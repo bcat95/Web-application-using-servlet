@@ -1,10 +1,12 @@
 package model.dao;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import common.DataBaseConnect;
+import common.StringProcess;
 
 /**
  * ThichDao
@@ -48,8 +50,8 @@ public class ThichDAO extends DataBaseConnect{
 			sql=String.format("delete from Thich where MaBaiDang = '%s' and  userName = '%s'",maBaiDang, userName);
 		}
 		if (checkThich == false){
-			sql=String.format("INSERT INTO Thich(MaBaiDang, userName) "+
-					" VALUES ( '%s','%s' )", maBaiDang, userName);
+			sql=String.format("INSERT INTO Thich(MaBaiDang, userName, NgayThich) "+
+					" VALUES ( '%s','%s','%s' )", maBaiDang, userName,new Date(StringProcess.getNgayDangDate().getTime()));
 		}
 		if (sql!=""){
 			try {

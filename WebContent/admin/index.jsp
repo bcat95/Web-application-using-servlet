@@ -128,7 +128,7 @@
   </div>
   <script type="text/javascript">
 		window.onload = function () {
-			var chart = new CanvasJS.Chart("chartContainer", {
+			var chart1 = new CanvasJS.Chart("chartContainer", {
 				title: {
 					text: "Tháng Gân Nhât",
 					fontSize: 30
@@ -155,7 +155,7 @@
 				{
 					type: "line",
 					showInLegend: true,
-					toolTipContent: "Thời gian: {x} - Số lượng: {y}",
+					/* toolTipContent: "Thời gian: {x} - Số lượng: {y}", */
 					lineThickness: 2,
 					name: "Bài viết",
 					markerType: "square",
@@ -216,54 +216,55 @@
 						else {
 							e.dataSeries.visible = true;
 						}
-						chart.render();
+						chart1.render();
 					}
 				}
 			});
 
-			chart.render();
-			var chart = new CanvasJS.Chart("tKTinhThanh",
-					{
-						theme: "theme2",
-						title:{
-							text: "Tinh Thành / Bài Đăng"
-						},
-						data: [
-						{
-							type: "pie",
-							showInLegend: true,
-							toolTipContent: "Bài đăng: {y} - #percent %",
-							legendText: "{indexLabel}",
-							dataPoints: [
-								<logic:iterate name="adminPanelForm" property="tKTinhThanh" id="tt">
-								{  y: <bean:write name="tt" property="soLuong"/>, indexLabel: '<bean:write name="tt" property="cotMot"/>' },
-								</logic:iterate>
-							]
-						}
-						]
-					});
-					chart.render();
-					var chart = new CanvasJS.Chart("tKDanhMuc",
-							{
-								theme: "theme2",
-								title:{
-									text: "Danh Muc / Bài Đăng"
-								},
-								data: [
-								{
-									type: "pie",
-									showInLegend: true,
-									toolTipContent: "Bài đăng:{y} - #percent %",
-									legendText: "{indexLabel}",
-									dataPoints: [
-										<logic:iterate name="adminPanelForm" property="tKDanhMuc" id="dm">
-										{  y: <bean:write name="dm" property="soLuong"/>, indexLabel: '<bean:write name="dm" property="cotMot"/>' },
-										</logic:iterate>
-									]
-								}
-								]
-							});
-							chart.render();
+			chart1.render();
+			var chart2 = new CanvasJS.Chart("tKTinhThanh",
+			{
+				theme: "theme2",
+				title:{
+					text: "Tinh Thành / Bài Đăng"
+				},
+				data: [
+				{
+					type: "pie",
+					showInLegend: true,
+					toolTipContent: "Bài đăng: {y} - #percent %",
+					legendText: "{indexLabel}",
+					dataPoints: [
+						<logic:iterate name="adminPanelForm" property="tKTinhThanh" id="tt">
+						{  y: <bean:write name="tt" property="soLuong"/>, indexLabel: '<bean:write name="tt" property="cotMot"/>' },
+						</logic:iterate>
+					]
+				}
+				]
+			});
+			chart2.render();
+			
+			var chart3 = new CanvasJS.Chart("tKDanhMuc",
+			{
+				theme: "theme2",
+				title:{
+					text: "Danh Muc / Bài Đăng"
+				},
+				data: [
+				{
+					type: "pie",
+					showInLegend: true,
+					toolTipContent: "Bài đăng:{y} - #percent %",
+					legendText: "{indexLabel}",
+					dataPoints: [
+						<logic:iterate name="adminPanelForm" property="tKDanhMuc" id="dm">
+						{  y: <bean:write name="dm" property="soLuong"/>, indexLabel: '<bean:write name="dm" property="cotMot"/>' },
+						</logic:iterate>
+					]
+				}
+				]
+			});
+			chart3.render();
 		}
 	</script>
 	<script src="bcat/js/canvasjs.min.js"></script>
