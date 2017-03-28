@@ -317,8 +317,6 @@ body {
 												<a class='link_out' href='xemtin.do?mabaiDang=${maBaiDang}'></a>
 												<div class="item__image" style="width: 100%; height: 100%; background: url('${anhBia}');" ></div>
 												<!--gia tri mac dinh-->
-												<span class="bc-featured-listings-image-note"><i class="fa fa-heart-o wolf-zoom alway-active" aria-hidden="true"></i></span>
-												
 												<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-item-image" 
 													style="background: url('${anhBia}')"></a>
 												<div class="bc-featured-image-overlay"></div>
@@ -495,28 +493,19 @@ body {
 												<a class='link_out' href='xemtin.do?mabaiDang=${maBaiDang}'></a>
 												<div class="item__image" style="width: 529%; height: 100%; background: url('${anhBia}');" ></div>
 												<!--gia tri mac dinh-->
-												<span class="bc-featured-listings-image-note"><i class="fa fa-heart-o wolf-zoom alway-active" aria-hidden="true"></i></span>
 											</div>
 											<div class="listBlock main item__flex-column" >
 												<div style="color: white; width: 90%;" class="item__details">
 													<div class="item__name"><!--tieu de bai dang-->
 														<a style="font-size: 15px;color: white;" href="xemtin.do?maBaiDang=${maBaiDang}" class="name__copytext">${tieuDe}</a>
 													</div>
-													<div style="font-size: 15px;color: white;" class="item__info"><!--so dien thoai bai dang-->
-														<span class="db-listing-icon" title="Phone number">${tenTinhThanh}</span>
-													
-													</div>
-													
-													<div style="font-size: 15px;color: white;" class="item__info"><!--so dien thoai bai dang-->
-														<span class="db-listing-icon" title="Phone number">${sDT}</span>
-													</div>
 													<div style="font-size: 15px;color: white;" class="item__info">
-														<logic:equal name="threads" property="diemDanhGia" value="0">
-															<span style="color: white;">Chưa có đánh giá</span>
-														</logic:equal>
-														<span id="bl_${diemDanhGia}" class="ratings rating-lv<bean:write name="threads" property="diemDanhGia" format="#,0"/>" title="${diemDanhGia}">
-															${diemDanhGia}
-														</span>
+													<logic:equal name="threads" property="diemDanhGia" value="0">
+														<span style="color: white;">Chưa có đánh giá</span>
+													</logic:equal>
+													<span id="bl_${diemDanhGia}" class="ratings rating-lv<bean:write name="threads" property="diemDanhGia" format="#,0"/>" title="${diemDanhGia}">
+														${diemDanhGia}
+													</span>
 													</div>
 												</div>
 											</div>
