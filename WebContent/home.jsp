@@ -78,74 +78,76 @@ jQuery(document).ready(function($) {
 			<!--begin danh sách nổi bật-->
 			<logic:iterate id="danhmuc" name="homeForm" property="listDanhMuc">
 			<bean:define id="maDanhMuc" name="danhmuc" property="maDanhMuc"></bean:define>
-			<div class="col-sm-12 cat_ites fade out ">
-					<div class="column-inner cat_ite">
-						<div class="cat_inf">
-							<div class="cat_tit clearfix"><h1><bean:write name="danhmuc" property="tenDanhMuc"/></h1><html:link styleClass="vie_all" href="timKiem.do?maDanhMuc=${maDanhMuc}">xem toàn bộ</html:link></div>
-							<div class="cat_des_${maDanhMuc}">💅Biến hoá bản thân từ chân tới tóc với đủ dịch vụ: tóc, móng, spa nha💇</div>
-						</div>
-						<div class="bc-featured-listings cate_${maDanhMuc} owl-carousel owl-theme">
-							<!--begin list item nổi bật -->
-							<logic:notEmpty name="homeForm" property="listBaiDang_${maDanhMuc}">
-							<logic:iterate id="bd" name="homeForm" property="listBaiDang_${maDanhMuc}">
-							<bean:define id="maBaiDang" name="bd" property="maBaiDang"></bean:define>
-							<div class="bc-featured-listings-item">
-								<div class="bc-featured-listings-item-inner">
-									<div class="bc-featured-listings-image">
-										<!--Anh dai dien bai dang-->
-										<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-item-image" 
-											style="background: url('<bean:write name="bd" property="anhBia"/>')"></a>
-										<div class="bc-featured-image-overlay"></div>
-										<!--gia tri mac dinh-->
-										<!-- <span class="bc-featured-listings-image-note">Featured</span> -->
-										<div class="bc-featured-listings-image-meta">
-											<span class="bc-featured-listings-custom-fields">
-												<span class="bc-featured">
-													<!--dia chi bai dang-->
-													<span class="db-listing-icon wl-location" title="Address"></span>
-													<bean:write name="bd" property="diaChi"/>, 
-													<bean:write name="bd" property="tenTinhThanh"/>
+				<logic:lessThan value="7" name="danhmuc" property="maDanhMuc">
+				<div class="col-sm-12 cat_ites fade out ">
+						<div class="column-inner cat_ite">
+							<div class="cat_inf">
+								<div class="cat_tit clearfix"><h1><bean:write name="danhmuc" property="tenDanhMuc"/></h1><html:link styleClass="vie_all" href="timKiem.do?maDanhMuc=${maDanhMuc}">xem toàn bộ</html:link></div>
+								<div class="cat_des_${maDanhMuc}">💅Biến hoá bản thân từ chân tới tóc với đủ dịch vụ: tóc, móng, spa nha💇</div>
+							</div>
+							<div class="bc-featured-listings cate_${maDanhMuc} owl-carousel owl-theme">
+								<!--begin list item nổi bật -->
+								<logic:notEmpty name="homeForm" property="listBaiDang_${maDanhMuc}">
+								<logic:iterate id="bd" name="homeForm" property="listBaiDang_${maDanhMuc}">
+								<bean:define id="maBaiDang" name="bd" property="maBaiDang"></bean:define>
+								<div class="bc-featured-listings-item">
+									<div class="bc-featured-listings-item-inner">
+										<div class="bc-featured-listings-image">
+											<!--Anh dai dien bai dang-->
+											<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-item-image" 
+												style="background: url('<bean:write name="bd" property="anhBia"/>')"></a>
+											<div class="bc-featured-image-overlay"></div>
+											<!--gia tri mac dinh-->
+											<!-- <span class="bc-featured-listings-image-note">Featured</span> -->
+											<div class="bc-featured-listings-image-meta">
+												<span class="bc-featured-listings-custom-fields">
+													<span class="bc-featured">
+														<!--dia chi bai dang-->
+														<span class="db-listing-icon wl-location" title="Address"></span>
+														<bean:write name="bd" property="diaChi"/>, 
+														<bean:write name="bd" property="tenTinhThanh"/>
+													</span>
+													<span class="bc-featured">
+														<!--so dien thoai bai dang-->
+														<span class="db-listing-icon wl-phone" title="Phone number"></span>
+														<bean:write name="bd" property="sDT"/>
+													</span>
 												</span>
-												<span class="bc-featured">
-													<!--so dien thoai bai dang-->
-													<span class="db-listing-icon wl-phone" title="Phone number"></span>
-													<bean:write name="bd" property="sDT"/>
-												</span>
-											</span>
+											</div>
 										</div>
-									</div>
-									<div class="bc-featured-listings-data" >
-										<!--tieu de bai dang-->
-										<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-listings-title">
-											<bean:write name="bd" property="tieuDe"/>
-										</a>
-										<!--to ta ngan bai dang-->
-										<div class="bc-featured-listings-description">
-										</div>
-										<div class="bc-featured-listings-meta clearfix">
-											<!--so luot thich bai dang-->
-												<i class="fa fa-heart-o" aria-hidden="true"></i> 
-												<bean:write name="bd" property="soLuotThich"/>
-											<span class="bc-featured-listings-rating">
-												<span id="bl_<bean:write name="bd" property="maBaiDang"/>" class="ratings rating-lv<bean:write name="bd" property="diemDanhGia" format="#,0"/>" title="<bean:write name="bd" property="diemDanhGia"/>">
-													<bean:write name="bd" property="diemDanhGia"/>
+										<div class="bc-featured-listings-data" >
+											<!--tieu de bai dang-->
+											<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-listings-title">
+												<bean:write name="bd" property="tieuDe"/>
+											</a>
+											<!--to ta ngan bai dang-->
+											<div class="bc-featured-listings-description">
+											</div>
+											<div class="bc-featured-listings-meta clearfix">
+												<!--so luot thich bai dang-->
+													<i class="fa fa-heart-o" aria-hidden="true"></i> 
+													<bean:write name="bd" property="soLuotThich"/>
+												<span class="bc-featured-listings-rating">
+													<span id="bl_<bean:write name="bd" property="maBaiDang"/>" class="ratings rating-lv<bean:write name="bd" property="diemDanhGia" format="#,0"/>" title="<bean:write name="bd" property="diemDanhGia"/>">
+														<bean:write name="bd" property="diemDanhGia"/>
+													</span>
 												</span>
-											</span>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							</logic:iterate>
-							</logic:notEmpty>
-							<div class="bc-featured-listings-item">
-								<div class="bc-featured-listings-item-inner bc_vie_mor">
-									Click để khám phá thêm nhiều điều thú vị nữa nhé!
+								</logic:iterate>
+								</logic:notEmpty>
+								<div class="bc-featured-listings-item">
+									<div class="bc-featured-listings-item-inner bc_vie_mor">
+										Click để khám phá thêm nhiều điều thú vị nữa nhé!
+									</div>
 								</div>
+								<!--end list item nổi bật -->
 							</div>
-							<!--end list item nổi bật -->
 						</div>
-					</div>
-			</div>
+				</div>
+				</logic:lessThan>
 			</logic:iterate>
 			<!--end danh sách nổi bật-->
 		</div>

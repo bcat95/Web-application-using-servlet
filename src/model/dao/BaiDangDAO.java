@@ -31,6 +31,10 @@ public class BaiDangDAO extends DataBaseConnect{
 	private static Statement st=null;
 	private static ResultSet rs=null;
 	
+	/**
+	 * Ham lay danh sach bai dang
+	 * @return
+	 */
 	public ArrayList<BaiDangBean> getListBaiDang() {
 		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
 		try {
@@ -70,6 +74,12 @@ public class BaiDangDAO extends DataBaseConnect{
 		}
 		return list;
 	}
+	
+	/**
+	 * Ham lay danh sach bai dang theo Danh muc bai dang
+	 * @param i
+	 * @return
+	 */
 	public ArrayList<BaiDangBean> getListBaiDangByDM(int i) {
 		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
 		try {
@@ -106,7 +116,13 @@ public class BaiDangDAO extends DataBaseConnect{
 		}
 		return list;
 	}
-	//---------------TÌM KIẾM---------------//
+	
+	//------------------TIM KIEM------------------//
+	/**
+	 * Ham lay danh sach bai dang theo ma danh muc (Tim kiem)
+	 * @param maDanhMuc
+	 * @return
+	 */
 	public ArrayList<BaiDangBean> getListBaiDangDanhMuc(String maDanhMuc) {
 		Connection connection = common.DataBaseConnect.getConnect();
 		String sql=	"SELECT * FROM BaiDang bd "
@@ -149,6 +165,12 @@ public class BaiDangDAO extends DataBaseConnect{
 		}
 		return list;
 	}
+	
+	/**
+	 * Ham lay danh sach bai dang theo ma tinh thanh (Tim kiem)
+	 * @param maTinhThanh
+	 * @return
+	 */
 	public ArrayList<BaiDangBean> getListBaiDangTinhThanh(String maTinhThanh) {
 		Connection connection = common.DataBaseConnect.getConnect();
 		String sql=	"SELECT * FROM BaiDang bd "
@@ -191,6 +213,13 @@ public class BaiDangDAO extends DataBaseConnect{
 		}
 		return list;
 	}
+	
+	/**
+	 * Ham lay danh sach bai dang theo danh muc va Tinh thanh
+	 * @param maDanhMuc
+	 * @param maTinhThanh
+	 * @return
+	 */
 	public ArrayList<BaiDangBean> getListBaiDangDanhMucTinhThanh(String maDanhMuc,String maTinhThanh) {
 		Connection connection = common.DataBaseConnect.getConnect();
 		String sql=	"SELECT * FROM BaiDang bd "
@@ -234,6 +263,11 @@ public class BaiDangDAO extends DataBaseConnect{
 		return list;
 	}
 	
+	/**
+	 * Ham lay danh sach bai dang theo noi dung ma user nhap vao
+	 * @param noiDung
+	 * @return
+	 */
 	public ArrayList<BaiDangBean> getListBaiDangNoiDung(String noiDung) {
 		Connection connection = common.DataBaseConnect.getConnect();
 		String sql=	"SELECT * FROM BaiDang bd "
@@ -277,6 +311,12 @@ public class BaiDangDAO extends DataBaseConnect{
 		return list;
 	}
 	
+	/**
+	 * Ham lay danh sach bai dang theo Danh muc va Noi dung ma user nhap vao
+	 * @param maDanhMuc
+	 * @param noiDung
+	 * @return
+	 */
 	public ArrayList<BaiDangBean> getListBaiDangDanhMucNoiDung(String maDanhMuc,String noiDung) {
 		Connection connection = common.DataBaseConnect.getConnect();
 		String sql=	"SELECT * FROM BaiDang bd "
@@ -320,6 +360,12 @@ public class BaiDangDAO extends DataBaseConnect{
 		return list;
 	}
 	
+	/**
+	 * Ham lay danh sach bai dang theo tinh thanh va noi dung ma user nhap vao
+	 * @param maTinhThanh
+	 * @param noiDung
+	 * @return
+	 */
 	public ArrayList<BaiDangBean> getListBaiDangTinhThanhNoiDung(String maTinhThanh,String noiDung) {
 		Connection connection = common.DataBaseConnect.getConnect();
 		String sql=	"SELECT * FROM BaiDang bd "
@@ -363,6 +409,13 @@ public class BaiDangDAO extends DataBaseConnect{
 		return list;
 	}
 	
+	/**
+	 * Ham lay danh sach bai dang theo Danh muc, Tinh thanh va noi dung ma user nhap vao
+	 * @param maDanhMuc
+	 * @param maTinhThanh
+	 * @param noiDung
+	 * @return
+	 */
 	public ArrayList<BaiDangBean> getListBaiDangDanhMucTinhThanhNoiDung(String maDanhMuc,String maTinhThanh,String noiDung) {
 		Connection connection = common.DataBaseConnect.getConnect();
 		String sql=	"SELECT * FROM BaiDang bd "
@@ -406,6 +459,11 @@ public class BaiDangDAO extends DataBaseConnect{
 		return list;
 	}
 	//------------------END TIM KIEM------------------//
+	
+	/**
+	 * Ham them moi bai dang
+	 * @param baiDang
+	 */
 	public static void insertBaiDang(BaiDangBean baiDang) {
 		try {
 				String insertTableSQL = "insert into BaiDang values(?,?,?,?,?,?,?,?,?,?,?,NULL,NULL,NULL,?,?,?,?,?)";
@@ -447,7 +505,11 @@ public class BaiDangDAO extends DataBaseConnect{
 			}
 		}
 	
-	//them hinh anh vao data
+	/**
+	 * Ham them hinh anh vao CSDL
+	 * @param baiDang
+	 * @param hinhAnhBean
+	 */
 	public static void insertHinhAnh(BaiDangBean baiDang, HinhAnhBean hinhAnhBean) {
 		System.out.println("loi anh"+hinhAnhBean.getHinhAnh().length);
 		if(baiDang.getMaBaiDang()!=0){
@@ -480,7 +542,12 @@ public class BaiDangDAO extends DataBaseConnect{
         }
 		
 	}
-	//get thong tin xem chi tiet bai dang 
+	
+	/**
+	 * Lay thong tin chi tiet bai dang 
+	 * @param maBaiDang
+	 * @return
+	 */
 	public static BaiDangBean infobaiDang(int maBaiDang) {
 		BaiDangBean baiDang= new BaiDangBean();
 		KhuyenMaiDAO khuyenMaiDAO=new KhuyenMaiDAO();
@@ -526,6 +593,12 @@ public class BaiDangDAO extends DataBaseConnect{
 		baiDang.setListBinhLuan(BinhLuanDAO.infoBinhLuanByMa(maBaiDang));
 		return baiDang;
 	}
+	
+	/**
+	 * Ham sua thong tin chi tiet bai dang
+	 * @param maBaiDang
+	 * @return
+	 */
 	public static BaiDangBean infoSuaBaiDang(int maBaiDang) {
 		BaiDangBean baiDang= new BaiDangBean();
 		baiDang = new BaiDangBean();
@@ -565,6 +638,12 @@ public class BaiDangDAO extends DataBaseConnect{
 		return baiDang;
 	}
 	
+	
+	/**
+	 * Ham lay anh bia theo Ma
+	 * @param maBaiDang
+	 * @return
+	 */
 	public static String getAnhBiaByMa(int maBaiDang) {
 		String path = "";
 		try {
@@ -585,6 +664,11 @@ public class BaiDangDAO extends DataBaseConnect{
 		System.out.println("path: "+path);
 		return path;
 	}
+	
+	/**
+	 * Ham sua bai dang
+	 * @param baiDang
+	 */
 	public static void updateBaiDang(BaiDangBean baiDang) {
 		try {
 			String updateTableSQL  = "update BaiDang set TieuDe=?,NoiDung=?,DiaChi=?,DiaChiWeb=?,ViDo=?,KinhDo=?,SDT=?,GiaCaoNhat=?,GiaThapNhat=?,NgayDang=?,MaDanhMuc=?,MaLoaiTin=?,MaTinhThanh=? where MaBaiDang="+baiDang.getMaBaiDang()+"";
@@ -600,7 +684,6 @@ public class BaiDangDAO extends DataBaseConnect{
 			prepSt.setInt(9, baiDang.getGiaThapNhat());
 			prepSt.setDate(10, new Date(StringProcess.getNgayDangDate().getTime()));
 			prepSt.setInt(11, baiDang.getMaDanhMuc());
-			//prepSt.setInt(12, baiDang.getMaLoaiTin());
 			prepSt.setInt(12, 1);
 			prepSt.setInt(13, baiDang.getMaTinhThanh());
 			prepSt.executeUpdate();
@@ -615,6 +698,12 @@ public class BaiDangDAO extends DataBaseConnect{
 		}
 		
 	}
+	
+	/**
+	 * Ham gan anh bia cho tung bai dang theo ma bai dang tuong ung
+	 * @param maBaiDang
+	 * @param anhBia
+	 */
 	public static void setAnhBia(int maBaiDang, String anhBia) {
 		if (anhBia != null){
 			try {
@@ -634,7 +723,11 @@ public class BaiDangDAO extends DataBaseConnect{
 		}
 		
 	}
-	//danh sạh bai dang da duyet
+
+	/**
+	 * ham lay danh sach bai dang da duyet
+	 * @return
+	 */
 	public ArrayList<BaiDangBean> getListBaiDangDaDuyet() {
 		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
 		int i=0;
@@ -668,9 +761,11 @@ public class BaiDangDAO extends DataBaseConnect{
 		return list;
 	}
 
-	
-
-//xem chi tiet danh sạh bai dang da duyet
+	/**
+	 * Ham xem chi tiet bai dang da duyet
+	 * @param maBaiDang
+	 * @return
+	 */
 	public BaiDangBean getListChiTietBaiDangDaDuyet(int maBaiDang) {
 		
 		BaiDangBean baiDang=null;
@@ -720,6 +815,11 @@ public class BaiDangDAO extends DataBaseConnect{
 		return baiDang;
 	}
 
+	/**
+	 * Ham lay danh sach bai dang da duyet theo ma bai dang
+	 * @param maBaiDang
+	 * @return
+	 */
 	public BaiDangBean getListBaiDangDaDuyet(int maBaiDang) {
 		BaiDangBean BaiDang=null;
 		try {
@@ -744,6 +844,11 @@ public class BaiDangDAO extends DataBaseConnect{
 		return BaiDang;
 	}
 	
+	/**
+	 * Ham lay danh sach bai dang chua duyet theo ma bai dang
+	 * @param maBaiDang
+	 * @return
+	 */
 	public BaiDangBean getListBaiDangChuaDuyet(int maBaiDang) {
 		BaiDangBean BaiDang=null;
 		try {
@@ -768,6 +873,10 @@ public class BaiDangDAO extends DataBaseConnect{
 		return BaiDang;
 	}
 	
+	/**
+	 * Ham lay danh sach bai dang chua duyet
+	 * @return
+	 */
 	public ArrayList<BaiDangBean> getListBaiDangChuaDuyet() {
 		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
 		int i=0;
@@ -810,7 +919,12 @@ public class BaiDangDAO extends DataBaseConnect{
 		
 	}
 	
-	//xem chi tiet danh sạh bai dang chua duyet
+	
+	/**
+	 * Ham xem chi tiet bai dang chua duyet
+	 * @param maBaiDang
+	 * @return
+	 */
 	public BaiDangBean getListChiTietBaiDangChuaDuyet(int maBaiDang) {
 		
 		BaiDangBean baiDang=null;
@@ -859,6 +973,11 @@ public class BaiDangDAO extends DataBaseConnect{
 		}
 		return baiDang;
 	}
+	
+	/**
+	 * Ham Duyet Bai dang trong trang chi tiet bai dang chua duyet
+	 * @param maBaiDang
+	 */
 	public void setDuyetTin(int maBaiDang) {
 		try {
 			String updateTableSQL  = "update BaiDang set MaLoaiTin=2 where MaBaiDang="+maBaiDang+"";
@@ -874,6 +993,11 @@ public class BaiDangDAO extends DataBaseConnect{
 			}
 		}
 	}
+	
+	/**
+	 * Ham huy duyet tin trong trang chi tiet bai dang da duyet
+	 * @param maBaiDang
+	 */
 	public void goDuyetTin(int maBaiDang) {
 		try {
 			String updateTableSQL  = "update BaiDang set MaLoaiTin=1 where MaBaiDang="+maBaiDang+"";
@@ -890,6 +1014,11 @@ public class BaiDangDAO extends DataBaseConnect{
 		}
 	}
 	
+	/**
+	 * Ham lay danh sach bai dang cung tinh thanh theo ma bai dang
+	 * @param maBaiDang
+	 * @return
+	 */
 	public ArrayList<BaiDangBean> getListBaiDangCungTinhThanh(int maBaiDang) {
 		Connection connection = common.DataBaseConnect.getConnect();
 		String sql=	"SELECT top 5 * "
@@ -932,6 +1061,11 @@ public class BaiDangDAO extends DataBaseConnect{
 		return list;
 	}
 	
+	/**
+	 * Ham get danh sach bai dang cung danh muc theo ma bai dang
+	 * @param maBaiDang
+	 * @return
+	 */
 	public ArrayList<BaiDangBean> getListBaiDangCungDanhMuc(int maBaiDang) {
 		Connection connection = common.DataBaseConnect.getConnect();
 		String sql=	"SELECT top 3 * "

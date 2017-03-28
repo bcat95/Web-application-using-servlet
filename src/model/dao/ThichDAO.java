@@ -24,7 +24,13 @@ import common.StringProcess;
  */
 public class ThichDAO extends DataBaseConnect{
 	private static Statement st=null;
-	//kiem tra thich
+
+	/**
+	 * kiem tra thich
+	 * @param maBaiDang
+	 * @param userName
+	 * @return
+	 */
 	public static boolean checkThich(int maBaiDang, String userName) {
 		String sql=	String.format("SELECT maBaiDang FROM Thich WHERE maBaiDang = '%s' AND userName = '%s'", maBaiDang, userName);
 		ResultSet rs = null;
@@ -43,7 +49,13 @@ public class ThichDAO extends DataBaseConnect{
 		}
 		return false;
 	}
-	//set thich
+
+	/**
+	 * ham gan du lieu cho Thich
+	 * @param checkThich
+	 * @param maBaiDang
+	 * @param userName
+	 */
 	public static void setThich(boolean checkThich, int maBaiDang, String userName) {
 		String sql="";
 		if (checkThich == true){

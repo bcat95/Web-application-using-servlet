@@ -1,6 +1,5 @@
 package model.dao;
 
-//import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,10 +22,14 @@ import model.bean.HinhAnhBean;
  * 14-3-2017         DonNA            Create
  */
 public class HinhAnhDAO extends DataBaseConnect{
-	//private static PreparedStatement prepSt=null;
 	private static Statement st=null;
 	private static ResultSet rs=null;
-	//lay du lieu hinh anh
+	
+	/**
+	 * Ham Lay du lieu hinh anh
+	 * @param maBaiDang
+	 * @return
+	 */
 	public static ArrayList<HinhAnhBean> infoHinhAnhByMa(int maBaiDang) {
 		ArrayList<HinhAnhBean> listHinhAnh = new ArrayList<HinhAnhBean>();
 		HinhAnhBean hinhAnh;
@@ -52,6 +55,12 @@ public class HinhAnhDAO extends DataBaseConnect{
 		}
 		return listHinhAnh;
 	}
+	
+	/**
+	 * Ham lay ra hinh anh theo ma
+	 * @param mahinhAnh
+	 * @return
+	 */
 	public static String getAnhByMa(String mahinhAnh) {
 		String hinhAnh="";
 		try {
@@ -73,6 +82,11 @@ public class HinhAnhDAO extends DataBaseConnect{
 		return hinhAnh;
 		
 	}
+	
+	/**
+	 * Ham xoa hinh anh theo ma
+	 * @param mahinhAnh
+	 */
 	public static void deleteAnhByMa(String mahinhAnh) {
 		try {
 			st=getConnect().createStatement();

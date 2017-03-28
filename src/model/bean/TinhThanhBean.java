@@ -1,6 +1,6 @@
 package model.bean;
 /**
- * KhoaDAO.java
+ * TinhThanhBean
  *
  * Version 1.0
  *

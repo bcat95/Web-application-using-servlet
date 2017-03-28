@@ -11,13 +11,29 @@ import java.util.ArrayList;
 import common.StringProcess;
 import model.bean.LienHe;
 
-
+/**
+ * LienHeDAO
+ *
+ * Version 1.0
+ *
+ * Date: 14-3-2017
+ *
+ * Copyright 
+ *
+ * Modification Logs:
+ * DATE                 AUTHOR          DESCRIPTION
+ * -----------------------------------------------------------------------
+ * 14-3-2017         ThinhDM            Create
+ */
 public class LienHeDAO {
 	String url = "jdbc:sqlserver://localhost:1433;databaseName=SE12";
 	String userName = "sa";
 	String password = "12345678-";
 	Connection connection;
 	
+	/**
+	 * Ham ket noi CSDL tu SQL
+	 */
 	void connect(){
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -32,6 +48,11 @@ public class LienHeDAO {
 		}
 	}
 	
+	
+	/**
+	 * Ham lay danh sach lien he
+	 * @return
+	 */
 	public ArrayList<LienHe> getListLienHe() {
 		connect();
 		String sql=	"SELECT lh.MaLienHe, lh.TieuDe, lh.NoiDung, convert(varchar(10),lh.NgayGui,103) as ngaygui,"
@@ -64,6 +85,12 @@ public class LienHeDAO {
 		return list;
 	}
 	
+	
+	/**
+	 * Ham lay danh sach lien he theo ma Van de
+	 * @param maVanDe
+	 * @return
+	 */
 	public ArrayList<LienHe> getListLienHe(String maVanDe) {
 		connect();
 		String sql=	String.format("SELECT lh.MaLienHe, lh.TieuDe, lh.NoiDung, convert(varchar(10),lh.NgayGui,103) as ngaygui,"
@@ -97,6 +124,12 @@ public class LienHeDAO {
 		return list;
 	}
 	
+	/**
+	 * Ham tim kiem lien he theo ma van de
+	 * @param tim
+	 * @param maVanDe
+	 * @return
+	 */
 	public ArrayList<LienHe> timLienHe1(String tim,String maVanDe) {
 		connect();
 		String sql=	"SELECT lh.MaLienHe, lh.TieuDe, lh.NoiDung, convert(varchar(10),lh.NgayGui,103) as ngaygui,"
@@ -130,6 +163,11 @@ public class LienHeDAO {
 		return list;
 	}
 	
+	/**
+	 * Ham tim kiem lien he
+	 * @param tim
+	 * @return
+	 */
 	public ArrayList<LienHe> timLienHe2(String tim) {
 		connect();
 		String sql=	"SELECT lh.MaLienHe, lh.TieuDe, lh.NoiDung, convert(varchar(10),lh.NgayGui,103) as ngaygui,"
@@ -163,6 +201,15 @@ public class LienHeDAO {
 		return list;
 	}
 	
+	/**
+	 * Ham them lien he
+	 * @param tieuDe
+	 * @param noiDung
+	 * @param ngayGui
+	 * @param soDT
+	 * @param email
+	 * @param maVanDe
+	 */
 	public void themLienHe(String tieuDe, String noiDung, String ngayGui, String soDT, String email, int maVanDe) {
 		connect();
 		String sql=	String.format("INSERT INTO LienHe(TieuDe,NoiDung,NgayGui,SDT,Email,MaVanDe) "+
@@ -175,6 +222,11 @@ public class LienHeDAO {
 		}
 	}
 
+	/**
+	 * Ham lay thong tin chi tiet lien he
+	 * @param maLienHe
+	 * @return
+	 */
 	public LienHe getThongTinLienHe(int maLienHe) {
 		connect();
 		String sql=	String.format("SELECT TieuDe, NoiDung, NgayGui, SDT, Email, MaVanDe, MaLienHe "+
@@ -204,6 +256,10 @@ public class LienHeDAO {
 		return lienHe;
 	}
 
+	/**
+	 * Ham xoa lien he
+	 * @param maLienHe
+	 */
 	public  void xoaLienHe(int maLienHe) {
 		connect();
 		String sql=	String.format("DELETE FROM LienHe WHERE MaLienHe = '%s'", maLienHe);

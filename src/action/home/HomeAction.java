@@ -46,7 +46,7 @@ public class HomeAction extends Action{
 		KhuyenMaiBO khuyenMaiBO=new KhuyenMaiBO();
 		thisForm.setListBaiDangKM(khuyenMaiBO.getListBaiDangKM());
 		
-		//Lay danh sach bai dang 1- LÃ m Ä‘áº¹p 2- Kinh doanh 3- Dich vá»¥ Äƒn uá»‘ng 4- TÃ i chÃ¡nh 5- Sá»©c khá»�e 6-KhÃ¡ch sáº¡n 7-Giáº£i trÃ­;
+		//Lay danh sach bai dang of 7 danh muc
 		ArrayList<BaiDangBean> listBaiDang1 = baiDangBO.getListBaiDangByDM(1);
 		thisForm.setListBaiDang_1(listBaiDang1);
 		ArrayList<BaiDangBean> listBaiDang2 = baiDangBO.getListBaiDangByDM(2);

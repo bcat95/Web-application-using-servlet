@@ -6,17 +6,34 @@ import java.sql.Statement;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 
 import common.DataBaseConnect;
 import model.bean.AdminPanelBean;
 
+/**
+ * AdminPanelDAO
+ *
+ * Version 1.0
+ *
+ * Date: 14-3-2017
+ *
+ * Copyright 
+ *
+ * Modification Logs:
+ * DATE                 AUTHOR          DESCRIPTION
+ * -----------------------------------------------------------------------
+ * 14-3-2017         DonNA            Create
+ */
 public class AdminPanelDAO extends DataBaseConnect{
 	private static Statement st=null;
 	private static ResultSet rs=null;
 	
+	/**
+	 * Ham lay danh sach bai dang
+	 * @return
+	 */
 	public ArrayList<AdminPanelBean> getListTKBaiDang() {
 		ArrayList<AdminPanelBean> list = new ArrayList<AdminPanelBean>();
 		try {
@@ -49,6 +66,10 @@ public class AdminPanelDAO extends DataBaseConnect{
 		return list;
 	}
 
+	/**
+	 * Ham lay danh sach binh luan
+	 * @return
+	 */
 	public ArrayList<AdminPanelBean> getListTKBinhLuan() {
 		ArrayList<AdminPanelBean> list = new ArrayList<AdminPanelBean>();
 		try {
@@ -81,6 +102,11 @@ public class AdminPanelDAO extends DataBaseConnect{
 		return list;
 	}
 
+	
+	/**
+	 * Ham lay danh sach luot yeu thich
+	 * @return
+	 */
 	public ArrayList<AdminPanelBean> getListTKYeuThich() {
 		ArrayList<AdminPanelBean> list = new ArrayList<AdminPanelBean>();
 		try {
@@ -113,6 +139,10 @@ public class AdminPanelDAO extends DataBaseConnect{
 		return list;
 	}
 
+	/**
+	 * Ham lay danh sach Tai khoan
+	 * @return
+	 */
 	public ArrayList<AdminPanelBean> getListTKTaiKhoan() {
 		ArrayList<AdminPanelBean> list = new ArrayList<AdminPanelBean>();
 		try {
@@ -129,6 +159,7 @@ public class AdminPanelDAO extends DataBaseConnect{
 				thoiGianD.setMonth(thoiGianD.getMonth()-1);
 				Format formatter = new SimpleDateFormat("yyyy,MM,dd");
 				String thoiGian = formatter.format(thoiGianD);
+				thongKeBean.setCotMot(thoiGian);
 				thongKeBean.setSoLuong(rs.getInt("soLuong"));
 				list.add(thongKeBean);
 			}
@@ -144,6 +175,10 @@ public class AdminPanelDAO extends DataBaseConnect{
 		return list;
 	}
 
+	/**
+	 * Ham lay danh sach tinh than
+	 * @return
+	 */
 	public ArrayList<AdminPanelBean> getListTKTinhThanh() {
 		ArrayList<AdminPanelBean> list = new ArrayList<AdminPanelBean>();
 		try {
@@ -173,6 +208,10 @@ public class AdminPanelDAO extends DataBaseConnect{
 		return list;
 	}
 
+	/**
+	 * Ham lay danh sach danh muc
+	 * @return
+	 */
 	public ArrayList<AdminPanelBean> getListTKDanhMuc() {
 		ArrayList<AdminPanelBean> list = new ArrayList<AdminPanelBean>();
 		try {

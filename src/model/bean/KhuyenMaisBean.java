@@ -76,7 +76,14 @@ public class KhuyenMaisBean {
 		// TODO Auto-generated constructor stub
 	}
 
-
+	/**
+	 * Ham tao
+	 * @param maBaiDang
+	 * @param tieuDe
+	 * @param anhBia
+	 * @param noiDung
+	 * @param maKhuyenMai
+	 */
 	public KhuyenMaisBean(int maBaiDang, String tieuDe, String anhBia, String noiDung, int maKhuyenMai) {
 		super();
 		this.maBaiDang = maBaiDang;

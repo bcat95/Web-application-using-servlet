@@ -1,7 +1,6 @@
 package form;
 
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,6 +9,20 @@ import org.apache.struts.action.ActionMapping;
 
 import model.bean.TaiKhoanBean;
 
+/**
+ * TaiKhoanForm
+ *
+ * Version 1.0
+ *
+ * Date: 14-3-2017
+ *
+ * Copyright 
+ *
+ * Modification Logs:
+ * DATE                 AUTHOR          DESCRIPTION
+ * -----------------------------------------------------------------------
+ * 14-3-2017         Vannasone            Create
+ */
 public class TaiKhoanForm extends ActionForm{
 	/**
 	 * 
@@ -37,6 +50,11 @@ public class TaiKhoanForm extends ActionForm{
 	public void setTacVu(String tacVu) {
 		this.tacVu = tacVu;
 	}
+	
+	/**
+	 * Ham set thuoc tinh Tai khoan
+	 * @param user
+	 */
 	public void setTK(TaiKhoanBean user)
 	{
 		this.userName = user.getUserName();
@@ -79,8 +97,6 @@ public class TaiKhoanForm extends ActionForm{
 		return hoTen;
 	}
 	public void setHoTen(String hoTen) {
-		/*byte[] bytes = hoTen.getBytes(StandardCharsets.ISO_8859_1);
-		hoTen = new String(bytes, StandardCharsets.UTF_8);*/
 		this.hoTen = hoTen;
 	}
 	public String getGioiTinh() {

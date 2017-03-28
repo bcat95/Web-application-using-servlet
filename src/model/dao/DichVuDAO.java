@@ -51,7 +51,12 @@ public class DichVuDAO extends DataBaseConnect{
 		}
 		return list;
 	}
-	//lay du lieu dich vu tu ma bai dang
+
+	/**
+	 * Ham lay du lieu dich vu tu ma bai dang
+	 * @param maBaiDang
+	 * @return
+	 */
 	public static ArrayList<DichVuBean> infoDichVuByMa(int maBaiDang) {
 		ArrayList<DichVuBean> listDichVu = new ArrayList<DichVuBean>();
 		DichVuBean dichVu;
@@ -79,6 +84,11 @@ public class DichVuDAO extends DataBaseConnect{
 		return listDichVu;
 	}
 
+	/**
+	 * Ham Them dich vu
+	 * @param baiDang
+	 * @param dichVu
+	 */
 	public static void insertDichVu(BaiDangBean baiDang,String[] dichVu) {
 		if(baiDang.getMaBaiDang()!=0){
 			int dichvulen=dichVu.length;
@@ -110,6 +120,11 @@ public class DichVuDAO extends DataBaseConnect{
         }
 		
 	}
+	
+	/**
+	 * Ham xoa dich vu
+	 * @param maBaiDang
+	 */
 	public static void deleteDichVu(int maBaiDang) {
 		
 		try {
@@ -126,6 +141,12 @@ public class DichVuDAO extends DataBaseConnect{
 		}
 		
 	}
+	
+	/**
+	 * Ham sua dich vu
+	 * @param baiDang
+	 * @param dichVu
+	 */
 	public static void updateDichVu(BaiDangBean baiDang, String[] dichVu) {
 		deleteDichVu(baiDang.getMaBaiDang());
 		int dichvulen=dichVu.length;

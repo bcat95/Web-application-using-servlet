@@ -1,7 +1,6 @@
 package form;
 
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,12 +8,27 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
 
 import common.StringProcess;
 import model.bean.LoaiTaiKhoanBean;
 import model.bean.QuyenBean;
 import model.bean.TaiKhoanBean;
 
+/**
+ * DanhSachTaiKhoanForm
+ *
+ * Version 1.0
+ *
+ * Date: 14-3-2017
+ *
+ * Copyright 
+ *
+ * Modification Logs:
+ * DATE                 AUTHOR          DESCRIPTION
+ * -----------------------------------------------------------------------
+ * 14-3-2017         Vannasone            Create
+ */
 public class DanhSachTaiKhoanForm extends ActionForm{
 	/**
 	 * 
@@ -40,6 +54,10 @@ public class DanhSachTaiKhoanForm extends ActionForm{
 	private ArrayList<QuyenBean>listQuyen;
 	private ArrayList<LoaiTaiKhoanBean> listLoaiTaiKhoan;
 
+	/**
+	 * ham get thuoc tinh class taikhoan
+	 * @return
+	 */
 	public TaiKhoanBean getTaiKhoan() {
 		return new TaiKhoanBean(userName, passWord, eMail, avatar, hoTen, gioiTinh, ngaySinh, sDT, ngayDangKy, maQuyen, maLoaiTaiKhoan);
 	}
@@ -132,8 +150,6 @@ public class DanhSachTaiKhoanForm extends ActionForm{
 	}
 
 	public void setHoTen(String hoTen) {
-		byte[] bytes = hoTen.getBytes(StandardCharsets.ISO_8859_1);
-		hoTen = new String(bytes, StandardCharsets.UTF_8);
 		this.hoTen = hoTen;
 	}
 
@@ -200,14 +216,20 @@ public class DanhSachTaiKhoanForm extends ActionForm{
 		}
 	}
 
+	/**
+	 * Kiem tra hop le
+	 * @param mapping
+	 * @param request
+	 * @return
+	 */
 	public ActionErrors validateBaiDang(ActionMapping mapping, HttpServletRequest request) {
 		ActionErrors errors =new ActionErrors();
 		if (StringProcess.equals(submit, "themTK")){
-			/*if (StringProcess.checkRong(tieuDe)){
-				errors.add("tieuDeError",new ActionMessage("err.tieude.trong"));
+			/*if (StringProcess.checkRong(hoTen)){
+				errors.add("tieuDeError",new ActionMessage("err.hoTen.trong"));
 			}
-			if (StringProcess.checkRong(diaChi)){
-				errors.add("diaChiError",new ActionMessage("err.diachi.trong"));
+			if (StringProcess.checkRong(eMail)){
+				errors.add("diaChiError",new ActionMessage("err.email.trong"));
 			}*/
 		}
 		return errors;

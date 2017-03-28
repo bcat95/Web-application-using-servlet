@@ -15,6 +15,11 @@ public class KhuyenMaiDAO  extends DataBaseConnect{
 	private static Statement st=null;
 	private static ResultSet rs=null;
 
+	/**
+	 * Ham lay danh sach khuyen mai theo bai dang
+	 * @param maBaiDang
+	 * @return
+	 */
 	public ArrayList<KhuyenMaiBean> getListKhuyenMai(int maBaiDang) {
 		ArrayList<KhuyenMaiBean> list = new ArrayList<KhuyenMaiBean>();
 		try {
@@ -44,15 +49,16 @@ public class KhuyenMaiDAO  extends DataBaseConnect{
 	}
 
 	public ArrayList<KhuyenMaiBean> infoKhuyenMai(int maKhuyenMai) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public void deleteKhuyenMai(int maKhuyenMai) {
-		// TODO Auto-generated method stub
-		
 	}
 
+	/**
+	 * Ham them khuyen mai
+	 * @param khuyenMai
+	 */
 	public void insertKhuyenMai(KhuyenMaiBean khuyenMai) {
 		try {
 			String insertTableSQL = "insert into KhuyenMai values(?,?,?,?,?)";
@@ -75,6 +81,10 @@ public class KhuyenMaiDAO  extends DataBaseConnect{
 		
 	}
 
+	/**
+	 * Ham sua thong tin khuyen mai
+	 * @param khuyenMai
+	 */
 	public void editKhuyenMai(KhuyenMaiBean khuyenMai) {
 		try {
 			String updateTableSQL  = "update KhuyenMai set "
@@ -98,6 +108,11 @@ public class KhuyenMaiDAO  extends DataBaseConnect{
 		}
 		
 	}
+	
+	/**
+	 * Ham lay danh sach khuyen mai
+	 * @return
+	 */
 	public ArrayList<KhuyenMaisBean> getListBaiDangKM() {
 		ArrayList<KhuyenMaisBean> list = new ArrayList<KhuyenMaisBean>();
 		try {

@@ -5,7 +5,20 @@ import java.util.ArrayList;
 import org.apache.struts.action.ActionForm;
 import model.bean.LienHe;
 import model.bean.VanDe;
-
+/**
+ * DanhSachLienHeForm
+ *
+ * Version 1.0
+ *
+ * Date: 14-3-2017
+ *
+ * Copyright 
+ *
+ * Modification Logs:
+ * DATE                 AUTHOR          DESCRIPTION
+ * -----------------------------------------------------------------------
+ * 14-3-2017         ThinhDM            Create
+ */
 public class DanhSachLienHeForm extends ActionForm{
 	private String maVanDe;
 	private String tim;

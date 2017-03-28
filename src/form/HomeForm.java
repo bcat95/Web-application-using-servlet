@@ -13,6 +13,20 @@ import model.bean.DanhMucBean;
 import model.bean.KhuyenMaisBean;
 import model.bean.TinhThanhBean;
 
+/**
+ * HomeForm
+ *
+ * Version 1.0
+ *
+ * Date: 14-3-2017
+ *
+ * Copyright 
+ *
+ * Modification Logs:
+ * DATE                 AUTHOR          DESCRIPTION
+ * -----------------------------------------------------------------------
+ * 14-3-2017         DonNA            Create
+ */
 public class HomeForm extends ActionForm{
 	
 	private static final long serialVersionUID = 1L;
@@ -24,26 +38,17 @@ public class HomeForm extends ActionForm{
 	private String maTinhThanh;
 	private String tenTinhThanh;
 	private ArrayList<TinhThanhBean> listTinhThanh;
-	
 	private int maBaiDang;
 	private String soLuotThich;
 	private ArrayList<KhuyenMaisBean>  listBaiDangKM;
 	private ArrayList<BaiDangBean> listBaiDang;
-	//LÃ m Ä‘áº¹p
 	private ArrayList<BaiDangBean> listBaiDang_1;
-	//Kinh doanh
 	private ArrayList<BaiDangBean> listBaiDang_2;
-	//Dich vá»¥ Äƒn uá»‘ng
 	private ArrayList<BaiDangBean> listBaiDang_3;
-	//TÃ i chÃ¡nh
 	private ArrayList<BaiDangBean> listBaiDang_4;
-	//Sá»©c khá»�e
 	private ArrayList<BaiDangBean> listBaiDang_5;
-	//KhÃ¡ch sáº¡n
 	private ArrayList<BaiDangBean> listBaiDang_6;
-	//Giáº£i trÃ­
 	private ArrayList<BaiDangBean> listBaiDang_7;
-	
 	private String[] sao;
 	
 	public HomeForm() {

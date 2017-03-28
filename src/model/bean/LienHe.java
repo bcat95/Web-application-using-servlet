@@ -1,5 +1,19 @@
 package model.bean;
 
+/**
+ * LienHe
+ *
+ * Version 1.0
+ *
+ * Date: 14-3-2017
+ *
+ * Copyright 
+ *
+ * Modification Logs:
+ * DATE                 AUTHOR          DESCRIPTION
+ * -----------------------------------------------------------------------
+ * 14-3-2017         ThinhDM            Create
+ */
 public class LienHe {
 	private int maLienHe;
 	private String tieuDe;

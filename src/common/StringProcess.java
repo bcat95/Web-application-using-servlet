@@ -136,7 +136,7 @@ public class StringProcess {
 	 * @return boolean
 	 */
 	public boolean notSDT(String s){
-		String r = "^[0-9]*$";
+		String r = "^(\\+84|0)[0-9]*$";
 		if(s.matches(r) && (s.length() == 10 || s.length() == 11)) return false;
 		return true;
 	}

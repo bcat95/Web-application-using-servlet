@@ -13,11 +13,31 @@ import common.StringProcess;
 import model.bean.BaiDangBean;
 import model.bean.TaiKhoanBean;
 
+
+/**
+ * TaiKhoanDAO
+ *
+ * Version 1.0
+ *
+ * Date: 14-3-2017
+ *
+ * Copyright 
+ *
+ * Modification Logs:
+ * DATE                 AUTHOR          DESCRIPTION
+ * -----------------------------------------------------------------------
+ * 14-3-2017         VangLVD            Create
+ */
 public class TaiKhoanDAO extends DataBaseConnect{
 	private static Statement st=null;
 	private static ResultSet rs=null;
 	private ArrayList<TaiKhoanBean> arrTaiKhoan;
 
+	/**
+	 * Ham kiem tra username co ton tai chua
+	 * @param username
+	 * @return
+	 */
 	public boolean checkUsername(String username) {
 		Connection conn = common.DataBaseConnect.getConnect();
 		String sql=	"SELECT Username FROM TaiKhoan WHERE Username = '"+username+"'";
@@ -37,6 +57,13 @@ public class TaiKhoanDAO extends DataBaseConnect{
 		}
 		return false;
 	}
+	
+	/**
+	 * 
+	 * Kiem tra email co ton tai trong CSDL hay chua
+	 * @param email
+	 * @return
+	 */
 	public boolean checkEmail(String email) {
 		Connection conn = common.DataBaseConnect.getConnect();
 		String sql=	"SELECT Username FROM TaiKhoan WHERE Email = '"+email+"'";
@@ -56,6 +83,13 @@ public class TaiKhoanDAO extends DataBaseConnect{
 		}
 		return false;
 	}
+	
+	/**
+	 * Ham kiem tra bi trung email hay k 
+	 * @param email
+	 * @param username
+	 * @return
+	 */
 	public boolean checkEmailUpdate(String email, String username) {
 		Connection conn = common.DataBaseConnect.getConnect();
 		String sql=	"SELECT Username FROM TaiKhoan WHERE Email = '"+email+"' and Username <> '"+username+"'";
@@ -76,6 +110,12 @@ public class TaiKhoanDAO extends DataBaseConnect{
 		return false;
 	}
 
+	/**
+	 * Ham kiem tra dang nhap
+	 * @param tenDangNhap
+	 * @param matKhau
+	 * @return
+	 */
 	public boolean checkLogin(String tenDangNhap, String matKhau) {
 		Connection conn = common.DataBaseConnect.getConnect();
 		String sql=	"SELECT Username FROM TaiKhoan WHERE Username = '"+tenDangNhap+"' AND Pass = '"+matKhau+"'";
@@ -109,7 +149,16 @@ public class TaiKhoanDAO extends DataBaseConnect{
 		}
 	}
 
-	
+	/**
+	 * Ham them tai khoan cua User
+	 * @param tenDangNhap
+	 * @param matKhau
+	 * @param email
+	 * @param avatar
+	 * @param hoTen
+	 * @param MaQuyen
+	 * @param MaLoaiTK
+	 */
 	public void themTaiKhoan(String tenDangNhap, String matKhau, String email, String avatar, String hoTen, int MaQuyen, int MaLoaiTK) {
 		Connection conn = common.DataBaseConnect.getConnect();
 		String sql= String.format("INSERT INTO TaiKhoan(Username, Pass, Email, Avatar, HoTen, MaQuyen, MaLoaiTK)"
@@ -121,6 +170,12 @@ public class TaiKhoanDAO extends DataBaseConnect{
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Ham lay thong tin cua 1 tai khoan
+	 * @param username
+	 * @return
+	 */
 	public TaiKhoanBean selectOne(String username) {
 		Connection conn = common.DataBaseConnect.getConnect();
 		String sql=	"SELECT Username, Pass, Email, Avatar, HoTen, GioiTinh, NgaySinh, SDT, NgayDangKy, MaQuyen, MaLoaiTk"
@@ -155,12 +210,10 @@ public class TaiKhoanDAO extends DataBaseConnect{
 	}
 	
 	/**
-	 * get all list thanh vien create by 
-	 * 
-	 * @return list thanh vien
+	 * Ham lay danh sach tai khoan
+	 * @return
 	 * @throws SQLException
 	 */
-
 	public ArrayList<TaiKhoanBean> danhSachTaiKhoan() throws SQLException {
 		arrTaiKhoan = new ArrayList<>();
 		Connection conn = common.DataBaseConnect.getConnect();
@@ -169,9 +222,9 @@ public class TaiKhoanDAO extends DataBaseConnect{
 		ResultSet rs = stm.executeQuery(query);
 		while (rs.next()) {
 //			String maTaiKhoan = rs.getString("MaTaiKhoan");
-			String email = rs.getString("Email");
+/*			String email = rs.getString("Email");
 			String hoTen = rs.getString("HoTen");
-			String matKhau = rs.getString("MatKhau");
+			String matKhau = rs.getString("MatKhau");*/
 //			String diaChi = rs.getString("DiaChi");
 //			String soDienThoai = rs.getString("SoDienThoai");
 //			int trangThai = rs.getInt("TrangThai");
@@ -260,7 +313,12 @@ public class TaiKhoanDAO extends DataBaseConnect{
 		}
 		return listYeuThich;
 	}
-	//danh sach bai dang by user
+
+	/**
+	 * Ham danh sach bai dang by user
+	 * @param username
+	 * @return
+	 */
 	public static ArrayList<BaiDangBean> danhSachBaiDang(TaiKhoanBean username){
 		Connection con= DataBaseConnect.getConnect();
 		String sql=	"select * from baidang inner join loaitin on baidang.maloaitin= loaitin.maloaitin inner join danhmuc on baidang.madanhmuc= danhmuc.madanhmuc where username='"+username.getUserName() +"'";
@@ -290,7 +348,10 @@ public class TaiKhoanDAO extends DataBaseConnect{
 		}
 		return listBD;
 	}
+
+
 	/**
+	 * Ham lay danh sach tai khoan
 	 * @return
 	 */
 	public ArrayList<TaiKhoanBean> getListTaiKhoan() {
@@ -327,6 +388,10 @@ public class TaiKhoanDAO extends DataBaseConnect{
 		return list;
 	}
 
+	/**
+	 * Ham xoa tai khoan
+	 * @param user
+	 */
 	public void xoaTaiKhoan(String user) {
 		String sql=	String.format("DELETE FROM taikhoan WHERE username = '%s'", user);
 		try {
@@ -343,7 +408,11 @@ public class TaiKhoanDAO extends DataBaseConnect{
 		}
 	}
 	
-	//(Username, Pass, Email, Avatar, HoTen, GioiTinh, NgaySinh, SDT, NgayDangKy, MaQuyen,MaLoaiTK)
+
+	/**
+	 * Ham them tai khoan cua Admin
+	 * @param taiKhoan
+	 */
 		public void themTaiKhoan(TaiKhoanBean taiKhoan) {
 			String sql= "insert into taikhoan values('"+taiKhoan.getUserName()+"', '"+taiKhoan.getPassWord()+"',"
 					+ "'"+taiKhoan.geteMail()+"','"+taiKhoan.getAvatar()+"','"+taiKhoan.getHoTen()+"',"
@@ -354,7 +423,7 @@ public class TaiKhoanDAO extends DataBaseConnect{
 				System.out.println("sql themtaikhoan= "+sql);
 				prepSt.executeUpdate();
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
+				 
 				e1.printStackTrace();
 			}
 			System.out.println("sql themtaikhoan= "+sql);
@@ -372,13 +441,18 @@ public class TaiKhoanDAO extends DataBaseConnect{
 		}
 		}
 		
+		/**
+		 * Ham lay danh sach tai khoan theo user
+		 * @param username
+		 * @return
+		 */
 		public TaiKhoanBean getListTaiKhoan(String username){
 			String sql= String.format("select * from taikhoan where username= '%s'", username);
 			try {
 				st=getConnect().createStatement();
 				rs= st.executeQuery(sql);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				 
 				e.printStackTrace();
 			}
 			
@@ -396,16 +470,19 @@ public class TaiKhoanDAO extends DataBaseConnect{
 					taiKhoanBean.setNgayDangKy(rs.getString("NgayDangKy"));
 				}
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				 
 				e.printStackTrace();
 			}
 			return taiKhoanBean;
 		}
 		
-		// taiKhoan.getNgaySinh(), taiKhoan.getNgayDangKy()
+		/**
+		 * Ham sua thong tin tai khoan
+		 * @param taiKhoan
+		 */
 		public void suaTaiKhoan(TaiKhoanBean taiKhoan){
 			String sql="update taikhoan set pass='"+taiKhoan.getPassWord()+"', email='"+taiKhoan.geteMail()+"',"
-					+ " avatar='Avatar', hoten='"+taiKhoan.getHoTen()+"', gioitinh='"+taiKhoan.getGioiTinh()+"', "
+					+ " avatar='Avatar', hoten=N'"+taiKhoan.getHoTen()+"', gioitinh='"+taiKhoan.getGioiTinh()+"', "
 							+ "ngaysinh='"+new Date(taiKhoan.getNgayDangDate().getTime())+"', "
 									+ "sdt='"+taiKhoan.getsDT()+"', "
 											+ "ngaydangky='"+new Date(taiKhoan.getNgayDangDate().getTime())+"',"
@@ -416,7 +493,6 @@ public class TaiKhoanDAO extends DataBaseConnect{
 				prepSt = getConnect().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				prepSt.executeUpdate();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			

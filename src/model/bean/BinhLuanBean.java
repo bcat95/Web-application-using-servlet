@@ -27,11 +27,22 @@ public class BinhLuanBean {
 	private String noiDung;
 	private Date ngayBinhLuan;
 	private int diemDanhGia;
-	//ngay dinh dang
+
 	public BinhLuanBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	/**
+	 * Ham tao
+	 * @param maBinhLuan
+	 * @param maBaiDang
+	 * @param userName
+	 * @param tieuDe
+	 * @param noiDung
+	 * @param ngayBinhLuan
+	 * @param diemDanhGia
+	 */
 	public BinhLuanBean(int maBinhLuan, int maBaiDang, String userName, String tieuDe, String noiDung,
 			Date ngayBinhLuan, int diemDanhGia) {
 		super();

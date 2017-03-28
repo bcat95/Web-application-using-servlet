@@ -1,6 +1,6 @@
 package model.bean;
 /**
- * KhoaDAO.java
+ * DichVuBaiDangBean
  *
  * Version 1.0
  *
@@ -33,6 +33,4 @@ public class DichVuBaiDangBean {
 	public void setTenDichVu(String tenDichVu) {
 		this.tenDichVu = tenDichVu;
 	}
-	
-
 }

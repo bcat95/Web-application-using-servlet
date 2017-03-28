@@ -20,7 +20,6 @@ public class DanhMucBean {
 	
 	public DanhMucBean() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public DanhMucBean(int maDanhMuc, String tenDanhMuc) {
 		super();

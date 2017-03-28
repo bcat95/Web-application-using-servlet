@@ -1,5 +1,19 @@
 package model.dao;
 
+/**
+ * DanhMucDAO
+ *
+ * Version 1.0
+ *
+ * Date: 14-3-2017
+ *
+ * Copyright 
+ *
+ * Modification Logs:
+ * DATE                 AUTHOR          DESCRIPTION
+ * -----------------------------------------------------------------------
+ * 14-3-2017         AnNBH            Create
+ */
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,6 +27,10 @@ public class DanhMucDAO extends DataBaseConnect{
 	private static Statement st=null;
 	private static ResultSet rs=null;
 	
+	/**
+	 * Ham lay danh sach cac danh muc
+	 * @return
+	 */
 	public static ArrayList<DanhMucBean> getListDanhMuc() {
 		ArrayList<DanhMucBean> list = new ArrayList<DanhMucBean>();
 		DanhMucBean danhMucBean;
@@ -26,18 +44,20 @@ public class DanhMucDAO extends DataBaseConnect{
 				list.add(danhMucBean);
 			}
 		}catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
 			try {
 				getConnect().close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		return list;
 	}
+	
+	/**
+	 * Ham them moi danh muc
+	 */
 	public static void themDanhMuc(String tenDanhMuc) {
 		
 		try {
@@ -50,11 +70,16 @@ public class DanhMucDAO extends DataBaseConnect{
 			try {
 				getConnect().close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
+	
+	/**
+	 * Ham sua danh muc
+	 * @param maDanhMuc
+	 * @param tenDanhMuc
+	 */
 	public static void suaDanhMuc(int maDanhMuc,String tenDanhMuc) {
 		String sql=	String.format("UPDATE DanhMuc SET TenDanhMuc=('"+tenDanhMuc+"') WHERE MaDanhMuc='"+maDanhMuc+"'");
 		try {
@@ -66,7 +91,6 @@ public class DanhMucDAO extends DataBaseConnect{
 			try {
 				getConnect().close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -82,12 +106,16 @@ public class DanhMucDAO extends DataBaseConnect{
 			try {
 				getConnect().close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
-	//Lay 7 danh muc cho trang chu
+	
+	/**
+	 * Ham Lay 7 danh muc cho trang chu
+	 * @param i
+	 * @return
+	 */
 	public static ArrayList<DanhMucBean> getListDanhMuc(int i) {
 		ArrayList<DanhMucBean> list = new ArrayList<DanhMucBean>();
 		DanhMucBean danhMucBean;
@@ -101,13 +129,11 @@ public class DanhMucDAO extends DataBaseConnect{
 				list.add(danhMucBean);
 			}
 		}catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
 			try {
 				getConnect().close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

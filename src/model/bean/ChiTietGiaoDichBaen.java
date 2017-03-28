@@ -1,6 +1,6 @@
 package model.bean;
 /**
- * KhoaDAO.java
+ * ChiTietGiaoDichBaen
  *
  * Version 1.0
  *
@@ -41,8 +41,5 @@ public class ChiTietGiaoDichBaen {
 	}
 	public void setSoLuong(int soLuong) {
 		this.soLuong = soLuong;
-	}
-	
-	
-	
+	}	
 }

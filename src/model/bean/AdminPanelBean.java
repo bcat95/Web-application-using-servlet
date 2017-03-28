@@ -15,8 +15,6 @@ package model.bean;
  */
 
 public class AdminPanelBean {
-
-	//thoi gian, ten
 	private String cotMot;
 	private int soLuong;
 
@@ -43,8 +41,5 @@ public class AdminPanelBean {
 
 	public void setSoLuong(int soLuong) {
 		this.soLuong = soLuong;
-	}
-	
-	
-	
+	}	
 }

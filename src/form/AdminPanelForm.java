@@ -24,9 +24,7 @@ import model.bean.AdminPanelBean;
  * 27-3-2017         DonNA            Create
  */
 public class AdminPanelForm extends ActionForm{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private ArrayList<AdminPanelBean> tKBaiDang;
 	private ArrayList<AdminPanelBean> tKBinhLuan;
@@ -100,7 +98,9 @@ public class AdminPanelForm extends ActionForm{
 		this.tKBinhLuan = tKBinhLuan;
 	}
 
-
+	/**
+	 * ham reset
+	 */
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		try

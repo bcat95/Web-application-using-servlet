@@ -5,7 +5,20 @@ import java.util.ArrayList;
 import org.apache.struts.action.ActionForm;
 
 import model.bean.BaiDangBean;
-
+/**
+ * DanhMucForm
+ *
+ * Version 1.0
+ *
+ * Date: 14-3-2017
+ *
+ * Copyright 
+ *
+ * Modification Logs:
+ * DATE                 AUTHOR          DESCRIPTION
+ * -----------------------------------------------------------------------
+ * 14-3-2017         Vannasone            Create
+ */
 public class DanhSachBaiDangDaDuyetForm extends ActionForm{
 	/**
 	 * 
@@ -205,25 +218,6 @@ public class DanhSachBaiDangDaDuyetForm extends ActionForm{
 		this.maTinhThanh = maTinhThanh;
 	}
 	
-	
-	public void setBaiDangDaDuyet(BaiDangBean item)
-	{
-		this.maBaiDang= item.getMaBaiDang();
-		this.tieuDe = item.getTieuDe();
-		this.noiDung = item.getNoiDung();
-		this.anhBia= item.getAnhBia();
-		this.diaChi = item.getDiaChi();
-		this.diaChiWeb = item.getDiaChiWeb();
-		this.sDT = item.getsDT();
-		this.ngayDang= item.getNgayDang().toString();
-		//this.ngayHetHan= item.getNgayHetHan().toString();
-		this.giaCaoNhat = item.getGiaCaoNhat();
-		this.giaThapNhat = item.getGiaThapNhat();
-		this.userName = item.getUserName();
-		this.tenDanhMuc = item.getTenDanhMuc();
-		this.tenTinhThanh = item.getTenTinhThanh();
-		this.tenLoaiTin= item.getTenLoaiTin();
-	}
 	public String getTenDanhMuc() {
 		return tenDanhMuc;
 	}
@@ -241,5 +235,28 @@ public class DanhSachBaiDangDaDuyetForm extends ActionForm{
 	}
 	public void setTenLoaiTin(String tenLoaiTin) {
 		this.tenLoaiTin = tenLoaiTin;
+	}
+	
+	/**
+	 * Ham set thuoc tinh bai dang da duyet
+	 * @param item
+	 */
+	public void setBaiDangDaDuyet(BaiDangBean item)
+	{
+		this.maBaiDang= item.getMaBaiDang();
+		this.tieuDe = item.getTieuDe();
+		this.noiDung = item.getNoiDung();
+		this.anhBia= item.getAnhBia();
+		this.diaChi = item.getDiaChi();
+		this.diaChiWeb = item.getDiaChiWeb();
+		this.sDT = item.getsDT();
+		this.ngayDang= item.getNgayDang().toString();
+		//this.ngayHetHan= item.getNgayHetHan().toString();
+		this.giaCaoNhat = item.getGiaCaoNhat();
+		this.giaThapNhat = item.getGiaThapNhat();
+		this.userName = item.getUserName();
+		this.tenDanhMuc = item.getTenDanhMuc();
+		this.tenTinhThanh = item.getTenTinhThanh();
+		this.tenLoaiTin= item.getTenLoaiTin();
 	}
 }

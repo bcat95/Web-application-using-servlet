@@ -1,5 +1,20 @@
 package model.bean;
 
+
+/**
+ * TaiKhoanBean
+ *
+ * Version 1.0
+ *
+ * Date: 14-3-2017
+ *
+ * Copyright 
+ *
+ * Modification Logs:
+ * DATE                 AUTHOR          DESCRIPTION
+ * -----------------------------------------------------------------------
+ * 14-3-2017         Vannasone            Create
+ */
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -48,6 +63,20 @@ public class TaiKhoanBean {
 		super();
 	}
 
+	/**
+	 * Ham tao tat ca cac truong
+	 * @param userName
+	 * @param passWord
+	 * @param eMail
+	 * @param avatar
+	 * @param hoTen
+	 * @param gioiTinh
+	 * @param ngaySinh
+	 * @param sDT
+	 * @param ngayDangKy
+	 * @param maQuyen
+	 * @param maLoaiTaiKhoan
+	 */
 	public TaiKhoanBean(String userName, String passWord, String eMail, String avatar, String hoTen, String gioiTinh,
 			String ngaySinh, String sDT, String ngayDangKy, int maQuyen, int maLoaiTaiKhoan) {
 		super();
@@ -64,12 +93,25 @@ public class TaiKhoanBean {
 		this.maLoaiTaiKhoan = maLoaiTaiKhoan;
 	}
 	
+	/**
+	 * Ham tao cho trang thong tin tai khoan
+	 * @param user
+	 * @param pass
+	 * @param eMail2
+	 */
 	public TaiKhoanBean(String user, String pass, String eMail2) {
 		this.userName = user;
 		this.passWord = pass;
 		this.eMail = eMail2;
 	}
-	//su dung cho dang nhap 
+ 
+	/**
+	 * Ham tao su dung cho dang nhap
+	 * @param userName
+	 * @param passWord
+	 * @param hoTen
+	 * @param maQuyen
+	 */
 	public TaiKhoanBean(String userName, String passWord, String hoTen, int maQuyen) {
 		super();
 		this.userName = userName;
@@ -78,6 +120,10 @@ public class TaiKhoanBean {
 		this.maQuyen = maQuyen;
 	}
 	
+	/**
+	 * Ham set dinh dang ngay
+	 * @return
+	 */
 	public SimpleDateFormat getSdf()
 	{
 		if(sdf == null)
@@ -86,7 +132,11 @@ public class TaiKhoanBean {
 	}
 	
 
-	//lay ngay hien tai
+	
+	/**
+	 * Ham lay ngay hien tai
+	 * @return
+	 */
 		public Date getNgayDangDate() 
 		{
 			Date date=new Date();

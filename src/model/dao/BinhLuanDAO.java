@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import common.DataBaseConnect;
 import common.StringProcess;
 import model.bean.BinhLuanBean;
-import model.bean.HinhAnhBean;
 /**
  * BinhLuanDAO
  *
@@ -30,6 +29,10 @@ public class BinhLuanDAO extends DataBaseConnect{
 	private static Statement st=null;
 	private static ResultSet rs=null;
 
+	/**
+	 * Ham them binh luan
+	 * @param binhLuan
+	 */
 	public static void insertBinhLuan(BinhLuanBean binhLuan) {
 		try {
 			String insertTableSQL = "insert into BinhLuan values(?,?,?,?,?,?)";
@@ -52,6 +55,11 @@ public class BinhLuanDAO extends DataBaseConnect{
 		}
 	}
 
+	/**
+	 * Ham thong tin chi tiet cua binh luan theo bai dang tuong ung
+	 * @param maBaiDang
+	 * @return
+	 */
 	public static ArrayList<BinhLuanBean> infoBinhLuanByMa(int maBaiDang) {
 		ArrayList<BinhLuanBean> listBinhLuan = new ArrayList<BinhLuanBean>();
 		BinhLuanBean binhLuan;

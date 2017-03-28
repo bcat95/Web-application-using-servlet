@@ -11,10 +11,8 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
 import common.StringProcess;
-import model.bean.BaiDangBean;
 import model.bean.KhuyenMaiBean;
-import model.bean.LienHe;
-import model.bean.VanDe;
+
 /**
  * KhuyenMaiForm
  *
@@ -45,7 +43,11 @@ public class KhuyenMaiForm extends ActionForm{
 	private String submit;
 	
 	
-	//ham get thuoc tinh Khuyen Mai
+	
+	/**
+	 * Ham get thuoc tinh Khuyen Mai
+	 * @return
+	 */
 	public KhuyenMaiBean getKhuyenMai() {
 		return new KhuyenMaiBean(maKhuyenMai,tieuDe,noiDung,ngayBatDau,ngayKetThuc,maBaiDang);
 	}
@@ -109,6 +111,13 @@ public class KhuyenMaiForm extends ActionForm{
 		}
 		super.reset(mapping, request);
 	}
+	
+	/**
+	 * Ham kiem tra hop le truoc khi them vao CSDL
+	 * @param mapping
+	 * @param request
+	 * @return
+	 */
 	public ActionErrors validateBaiDang(ActionMapping mapping, HttpServletRequest request) {
 		ActionErrors errors =new ActionErrors();
 		if (StringProcess.equals(submit, "dangTin")){

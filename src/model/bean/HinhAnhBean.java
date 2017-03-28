@@ -1,5 +1,19 @@
 package model.bean;
 
+/**
+ * HinhAnhBean
+ *
+ * Version 1.0
+ *
+ * Date: 14-3-2017
+ *
+ * Copyright 
+ *
+ * Modification Logs:
+ * DATE                 AUTHOR          DESCRIPTION
+ * -----------------------------------------------------------------------
+ * 14-3-2017         DonNA            Create
+ */
 public class HinhAnhBean {
 	private int maHinh;
 	private String tenHinh;

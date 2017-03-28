@@ -9,9 +9,28 @@ import common.DataBaseConnect;
 import model.bean.QuyenBean;
 
 
+/**
+ * QuyenDAO
+ *
+ * Version 1.0
+ *
+ * Date: 14-3-2017
+ *
+ * Copyright 
+ *
+ * Modification Logs:
+ * DATE                 AUTHOR          DESCRIPTION
+ * -----------------------------------------------------------------------
+ * 14-3-2017         Vannasone            Create
+ */
 public class QuyenDAO extends DataBaseConnect{
 	private static Statement st=null;
 	private static ResultSet rs=null;
+	
+	/**
+	 * Ham lay danh sach quyen
+	 * @return
+	 */
 	public  ArrayList<QuyenBean> getListQuyen() {
 		ArrayList<QuyenBean> list = new ArrayList<QuyenBean>();
 		QuyenBean quyenBean;

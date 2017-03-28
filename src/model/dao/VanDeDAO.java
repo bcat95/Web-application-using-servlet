@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
-import model.bean.LienHe;
 import model.bean.VanDe;
 
 public class VanDeDAO {
@@ -16,6 +14,9 @@ public class VanDeDAO {
 	String password = "12345678";
 	Connection connection;
 	
+	/**
+	 * Ham ket noi SQL
+	 */
 	void connect(){
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -30,6 +31,10 @@ public class VanDeDAO {
 		}
 	}
 	
+	/**
+	 * Ham lay danh sach Van de
+	 * @return
+	 */
 	public ArrayList<VanDe> getListVanDe() {
 		connect();
 		String sql=	"SELECT MaVanDe, TenVanDe FROM VanDe";
@@ -56,6 +61,11 @@ public class VanDeDAO {
 		return list;
 	}
 	
+	/**
+	 * Ham lay thong tin chi tiet cua Van De
+	 * @param maVanDe
+	 * @return
+	 */
 	public VanDe getThongTinVanDe(int maVanDe) {
 		connect();
 		String sql=	String.format("SELECT MaVanDe, TenVanDe "+

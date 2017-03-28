@@ -95,15 +95,16 @@ public class BaiDangForm  extends ActionForm{
 	private ArrayList<BaiDangBean> listBaiDang;
 	private ArrayList<BaiDangBean> listBaiDangDanhMuc;
 	
-	//ngay 
+	/**
+	 * ngay
+	 */
 	public SimpleDateFormat getSdf()
 	{
 		if(sdf == null)
 			sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf;
 	}
-	//get set
-	
+
 	public boolean isAnhBiaXoa() {
 		return anhBiaXoa;
 	}
@@ -443,7 +444,11 @@ public class BaiDangForm  extends ActionForm{
 	public void setSubmit(String submit) {
 		this.submit = submit;
 	}
-	//ham set thuoc tinh bai dang khi xem bai dang
+	
+	/**
+	 * ham set thuoc tinh bai dang khi xem bai dang
+	 * @param itemBD
+	 */
 	public void setXemBaiDang(BaiDangBean itemBD) {
 		//this.set
 		this.maBaiDang = itemBD.getMaBaiDang();
@@ -471,7 +476,11 @@ public class BaiDangForm  extends ActionForm{
 		this.listKhuyenMai=itemBD.getListKhuyenMai();
 	}
 	
-	//ham set thuoc tinh bai dang khi them bai dang
+
+	/**
+	 * ham set thuoc tinh bai dang khi them bai dang
+	 * @param item
+	 */
 	public void setBaiDang(BaiDangBean item)
 	{
 		this.maBaiDang = item.getMaBaiDang();
@@ -489,7 +498,11 @@ public class BaiDangForm  extends ActionForm{
 		this.maTinhThanh = item.getMaTinhThanh();
 		this.ngayDang=item.getNgayDang();
 	}
-	//ham set thuoc tinh bai dang khi sua bai dang
+	
+	/**
+	 * ham set thuoc tinh bai dang khi sua bai dang
+	 * @param item
+	 */
 	public void setSuaBaiDang(BaiDangBean item) {
 		this.maBaiDang = item.getMaBaiDang();
 		this.maLoaiTin=item.getMaLoaiTin();
@@ -510,11 +523,19 @@ public class BaiDangForm  extends ActionForm{
 		this.anhBia=item.getAnhBia();
 		this.listHinhAnh=item.getListHinhAnh();
 	}
-	//ham get thuoc tinh bai dang 
+	
+	/**
+	 * ham get thuoc tinh bai dang 
+	 * @return
+	 */
 	public BaiDangBean getBaiDang() {
 		return new BaiDangBean(maBaiDang,tieuDe,noiDung,diaChi,diaChiWeb,viDo,kinhDo,sDT,giaCaoNhat,giaThapNhat,getNgayDangDate(),userName,maDanhMuc,maTinhThanh);
 	}
-	//ham set thuoc tinh binh luan
+	
+	/**
+	 * ham set thuoc tinh binh luan
+	 * @param item
+	 */
 	public void setBinhLuan(BinhLuanBean item)
 	{
 		this.bl_maBinhLuan=item.getMaBinhLuan();
@@ -525,7 +546,11 @@ public class BaiDangForm  extends ActionForm{
 		this.bl_userName = item.getUserName();
 		this.bl_diemDanhGia=item.getDiemDanhGia();
 	}
-	//ham get thuoc tinh binh luan 	
+	
+	/**
+	 * ham get thuoc tinh binh luan 	
+	 * @return
+	 */
 	public BinhLuanBean getBinhLuan() {
 		return new BinhLuanBean(bl_maBinhLuan,maBaiDang,bl_userName,bl_tieuDe,bl_noiDung,bl_ngayBinhLuan,bl_diemDanhGia);
 	}
