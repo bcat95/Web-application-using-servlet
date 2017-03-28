@@ -1807,6 +1807,7 @@ ul.review-list {
     padding: 0;
     margin: 0;
     padding-top: 30px;
+    width: 100%;
 }
 .pagination>li>a, .pagination>li>span , .pagination>li>strong{
 	float: none !important;

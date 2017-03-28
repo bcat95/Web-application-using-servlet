@@ -79,8 +79,8 @@ public class TaiKhoanForm extends ActionForm{
 		return hoTen;
 	}
 	public void setHoTen(String hoTen) {
-		byte[] bytes = hoTen.getBytes(StandardCharsets.ISO_8859_1);
-		hoTen = new String(bytes, StandardCharsets.UTF_8);
+		/*byte[] bytes = hoTen.getBytes(StandardCharsets.ISO_8859_1);
+		hoTen = new String(bytes, StandardCharsets.UTF_8);*/
 		this.hoTen = hoTen;
 	}
 	public String getGioiTinh() {

@@ -78,7 +78,7 @@
 						<logic:equal name="taiKhoanForm" property="maQuyen" value="1">
 						<li class="dropdown"><a data-toggle="dropdown"> Admin <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-                                 <li><a href="admin/">Trang admin</a></li>
+                                 <li><a href="admin/adminpanel.do">Trang admin</a></li>
                                 <li><a href="admin/danhSachBaiDangChuaDuyet.do">Duyệt bài đăng</a></li>
 								<li><a href="admin/danhSachBaiDangDaDuyet.do">Quản lý bài đăng</a></li>
                            	</ul>

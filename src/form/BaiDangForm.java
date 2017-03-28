@@ -91,6 +91,10 @@ public class BaiDangForm  extends ActionForm{
 	
 	private String submit;
 	private SimpleDateFormat sdf;
+	
+	private ArrayList<BaiDangBean> listBaiDang;
+	private ArrayList<BaiDangBean> listBaiDangDanhMuc;
+	
 	//ngay 
 	public SimpleDateFormat getSdf()
 	{
@@ -561,4 +565,21 @@ public class BaiDangForm  extends ActionForm{
 	public void setSetThich(boolean setThich) {
 		this.setThich = setThich;
 	}
+
+	public ArrayList<BaiDangBean> getListBaiDang() {
+		return listBaiDang;
+	}
+
+	public void setListBaiDang(ArrayList<BaiDangBean> listBaiDang) {
+		this.listBaiDang = listBaiDang;
+	}
+
+	public ArrayList<BaiDangBean> getListBaiDangDanhMuc() {
+		return listBaiDangDanhMuc;
+	}
+
+	public void setListBaiDangDanhMuc(ArrayList<BaiDangBean> listBaiDangDanhMuc) {
+		this.listBaiDangDanhMuc = listBaiDangDanhMuc;
+	}
+	
 }

@@ -9,9 +9,11 @@
 		$("#datepicker").attr("type", "date");
 	});
 </script>
-<section>
-	<div style="padding:20px 20px 20px 50px;">
-		<h2 style="color:#337ab7; padding-left:80px;">Thông tin tài khoản cá nhân</h2>
+<div id="main" class="site-main container">
+		<div id="main-content" class="main-content row">
+			<div class="entry-header"><h1 class="entry-title">Thông tin tài khoản cá nhân.</h1></div>
+			<div id="primary" class="content-area sidebar-no clearfix ">
+				<div id="content" class="site-content " role="main">
 		<html:form action="/Update">
 		<div class="row" style="padding-top:20px;">
 		<div class="col-sm-6">
@@ -99,6 +101,8 @@
 		</div>
 		</div>
 		</html:form>
+		</div> 
+			</div>
+		</div>
 	</div>
-</section>
 <jsp:include page="template_Footer.jsp"></jsp:include>

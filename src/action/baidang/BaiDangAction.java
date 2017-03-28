@@ -38,6 +38,13 @@ public class BaiDangAction extends Action{
 		HttpSession session = request.getSession();
 		TaiKhoanBean user = (TaiKhoanBean) session.getAttribute("userActivity");
 		thisForm.setXemBaiDang(BaiDangBO.infoBaiDang(thisForm.getMaBaiDang()));
+		
+		//AnNBH
+		BaiDangBO baiDangBO = new BaiDangBO();
+		thisForm.setListBaiDang(baiDangBO.getListBaiDangCungTinhThanh(thisForm.getMaBaiDang()));
+		thisForm.setListBaiDangDanhMuc(baiDangBO.getListBaiDangCungDanhMuc(thisForm.getMaBaiDang()));
+		//END AnNBH
+		
 		if(user==null && thisForm.getMaLoaiTin()==1){
 			return mapping.findForward("err404");
 		}else if (thisForm.getMaLoaiTin()==1 && (StringProcess.equals(thisForm.getUserName(), user.getUserName())) == false){

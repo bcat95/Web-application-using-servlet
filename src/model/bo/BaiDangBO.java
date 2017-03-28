@@ -149,4 +149,11 @@ public class BaiDangBO extends BussinessObject{
 		
 	}
 	
+	public ArrayList<BaiDangBean> getListBaiDangCungTinhThanh(int maBaiDang)  throws SQLException {
+		return baiDangDAO.getListBaiDangCungTinhThanh(maBaiDang);
+	}
+	public ArrayList<BaiDangBean> getListBaiDangCungDanhMuc(int maBaiDang)  throws SQLException {
+		return baiDangDAO.getListBaiDangCungDanhMuc(maBaiDang);
+	}
+	
 }

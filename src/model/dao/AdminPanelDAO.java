@@ -3,7 +3,12 @@ package model.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 
 import common.DataBaseConnect;
 import model.bean.AdminPanelBean;
@@ -24,8 +29,10 @@ public class AdminPanelDAO extends DataBaseConnect{
 			AdminPanelBean thongKeBean;
 			while(rs.next()){
 				thongKeBean = new AdminPanelBean();
-				String thoiGian=rs.getString("ThoiGian");
-				thoiGian = thoiGian.replaceAll("-", ",");
+				Date thoiGianD=rs.getDate("ThoiGian");
+				thoiGianD.setMonth(thoiGianD.getMonth()-1);
+				Format formatter = new SimpleDateFormat("yyyy,MM,dd");
+				String thoiGian = formatter.format(thoiGianD);
 				thongKeBean.setCotMot(thoiGian);
 				thongKeBean.setSoLuong(rs.getInt("soLuong"));
 				list.add(thongKeBean);
@@ -54,8 +61,10 @@ public class AdminPanelDAO extends DataBaseConnect{
 			AdminPanelBean thongKeBean;
 			while(rs.next()){
 				thongKeBean = new AdminPanelBean();
-				String thoiGian=rs.getString("ThoiGian");
-				thoiGian = thoiGian.replaceAll("-", ",");
+				Date thoiGianD=rs.getDate("ThoiGian");
+				thoiGianD.setMonth(thoiGianD.getMonth()-1);
+				Format formatter = new SimpleDateFormat("yyyy,MM,dd");
+				String thoiGian = formatter.format(thoiGianD);
 				thongKeBean.setCotMot(thoiGian);
 				thongKeBean.setSoLuong(rs.getInt("soLuong"));
 				list.add(thongKeBean);
@@ -84,8 +93,10 @@ public class AdminPanelDAO extends DataBaseConnect{
 			AdminPanelBean thongKeBean;
 			while(rs.next()){
 				thongKeBean = new AdminPanelBean();
-				String thoiGian=rs.getString("ThoiGian");
-				thoiGian = thoiGian.replaceAll("-", ",");
+				Date thoiGianD=rs.getDate("ThoiGian");
+				thoiGianD.setMonth(thoiGianD.getMonth()-1);
+				Format formatter = new SimpleDateFormat("yyyy,MM,dd");
+				String thoiGian = formatter.format(thoiGianD);
 				thongKeBean.setCotMot(thoiGian);
 				thongKeBean.setSoLuong(rs.getInt("soLuong"));
 				list.add(thongKeBean);
@@ -114,9 +125,10 @@ public class AdminPanelDAO extends DataBaseConnect{
 			AdminPanelBean thongKeBean;
 			while(rs.next()){
 				thongKeBean = new AdminPanelBean();
-				String thoiGian=rs.getString("ThoiGian");
-				thoiGian = thoiGian.replaceAll("-", ",");
-				thongKeBean.setCotMot(thoiGian);
+				Date thoiGianD=rs.getDate("ThoiGian");
+				thoiGianD.setMonth(thoiGianD.getMonth()-1);
+				Format formatter = new SimpleDateFormat("yyyy,MM,dd");
+				String thoiGian = formatter.format(thoiGianD);
 				thongKeBean.setSoLuong(rs.getInt("soLuong"));
 				list.add(thongKeBean);
 			}

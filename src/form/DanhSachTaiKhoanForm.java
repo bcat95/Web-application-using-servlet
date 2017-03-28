@@ -1,6 +1,7 @@
 package form;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -126,10 +127,13 @@ public class DanhSachTaiKhoanForm extends ActionForm{
 	}
 
 	public String getHoTen() {
+		
 		return hoTen;
 	}
 
 	public void setHoTen(String hoTen) {
+		byte[] bytes = hoTen.getBytes(StandardCharsets.ISO_8859_1);
+		hoTen = new String(bytes, StandardCharsets.UTF_8);
 		this.hoTen = hoTen;
 	}
 
