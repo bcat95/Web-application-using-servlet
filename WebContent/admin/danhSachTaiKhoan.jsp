@@ -106,12 +106,12 @@
                      <td><bean:write name="tk" property="sDT"/></td>
                      <td><bean:write name="tk" property="eMail"/></td>
                      <td class="center">
-						<html:link action="admin/suaTaiKhoan?userName=${taiKhoan}">
+						<html:link action="admin/suaTaiKhoan?userName=${taiKhoan}" styleClass="btn btn-info btn-mini">
 							<i class="fa fa-pencil fa-fw"></i><span class="db-account-listing-option-hover"> Sửa</span>
 						</html:link>
 					</td>
 					<td class="center">
-						<html:link action="admin/xoaTaiKhoan?userName=${taiKhoan }">
+						<html:link action="admin/xoaTaiKhoan?userName=${taiKhoan }" styleClass="btn btn-warning btn-mini">
 						<i class="glyphicon glyphicon-trash"></i><span class="db-account-listing-option-hover"> Xóa</span>
 					</html:link>
 					</td>

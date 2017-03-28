@@ -90,7 +90,7 @@
                    <html:form action="admin/danhMuc" method="post">
 						<td><bean:write name="dm" property="maDanhMuc"/></td>
 						<td><bean:write name="dm" property="tenDanhMuc"/></td>
-						<td><a href="#"><i class="icon-pencil"></i></a></td>
+						<td><a href="#" class="btn btn-info" ><i class="icon-pencil"></i></a></td>
 						<td class="center">
 						    <bean:define id="maDanhMuc" name="dm" property="maDanhMuc"></bean:define>
 							<a href="#rmDM_${maDanhMuc}" data-toggle="modal" class="btn btn-warning"><i class="icon-remove"></i></a>							
