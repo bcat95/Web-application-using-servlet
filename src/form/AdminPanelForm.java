@@ -32,8 +32,20 @@ public class AdminPanelForm extends ActionForm{
 	private ArrayList<AdminPanelBean> tKTaiKhoan;
 	private ArrayList<AdminPanelBean> tKTinhThanh;
 	private ArrayList<AdminPanelBean> tKDanhMuc;
+	private int admin;
 	
 	
+	
+	public int getAdmin() {
+		return admin;
+	}
+
+
+	public void setAdmin(int admin) {
+		this.admin = admin;
+	}
+
+
 	public ArrayList<AdminPanelBean> gettKDanhMuc() {
 		return tKDanhMuc;
 	}

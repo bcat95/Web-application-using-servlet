@@ -102,6 +102,10 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<action input="/admin/index.jsp" name="adminPanelForm" path="/admin/adminpanel" scope="session" type="action.admin.AdminPanelAction" validate="true">
 			<forward name="/admin/adminpanel" path="/admin/index.jsp" />
 		</action>
+		<action input="/admin/header.jsp" name="adminPanelForm" path="/admin/header" scope="session" type="action.admin.AdminHeaderAction" validate="true">
+			<forward name="/admin/header" path="/admin/index.jsp" />
+			<forward name="login" path="/Login.do" redirect="true"/>
+		</action>
 		<!-- end DonNA tao action -->
 		<!-- AnNBH action -->
 		<action input="/home.jsp" name="homeForm"

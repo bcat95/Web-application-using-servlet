@@ -38,7 +38,9 @@ public class BaiDangAction extends Action{
 		HttpSession session = request.getSession();
 		TaiKhoanBean user = (TaiKhoanBean) session.getAttribute("userActivity");
 		thisForm.setXemBaiDang(BaiDangBO.infoBaiDang(thisForm.getMaBaiDang()));
-		
+		//Neyu khong tim thay bai dang tu action xem
+		if(thisForm.getMaBaiDang()==0)
+			return mapping.findForward("err404");
 		//AnNBH
 		BaiDangBO baiDangBO = new BaiDangBO();
 		thisForm.setListBaiDang(baiDangBO.getListBaiDangCungTinhThanh(thisForm.getMaBaiDang()));
@@ -60,7 +62,6 @@ public class BaiDangAction extends Action{
 						/*saveErrors(request, errors);
 						return mapping.getInputForward();*/
 					}
-
 					else if(StringProcess.equals(thisForm.getSubmit(), "binhLuan")){
 						thisForm.setSubmit("");
 						thisForm.setBl_userName((user.getUserName()));

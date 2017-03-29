@@ -4,7 +4,9 @@
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic"%>
 <%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
 <%@taglib uri="http://displaytag.sf.net" prefix="display"%>
-<jsp:include page="header.do" flush="true"></jsp:include>
+<jsp:include page="header.do" flush="true">
+	<jsp:param name="bcTitle" value="Tìm kiếm bản đồ -"/>
+</jsp:include>
 <div id="page"class="bcbanDo">
 	<!-- Tim kiem jsp  -->
 		<div id="db-main-listing-search">
@@ -59,7 +61,7 @@
 								<!-- tim kiem 2 -->
 								<div class="db-search-row clearfix">
 									<html:submit styleClass="bc-create-listing bc-button bc-button-invert" >Xem</html:submit>
-									<div class="form-group db-slider-field-wrapper">
+									<!-- <div class="form-group db-slider-field-wrapper">
 										<label class="form-group-label" for="listing_search_radius">Search radius (Kilometers)</label>
 										<div class="db-slider-field ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all text-added" data-value=" km">
 											<span class="db-slider-left" style="width: 50%;"></span>
@@ -67,7 +69,7 @@
 											<span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" data-value="150 km" style="left: 50%;"></span>
 											
 										</div>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						<!-- </div> -->
@@ -84,7 +86,7 @@
 						var zoom=6;
 						<logic:equal name="timKiemForm" property="maTinhThanh" value="1">
 						var myLatLng = {lat: 16.0474325, lng: 108.1712203};
-						var zoom=10;
+						var zoom=11;
 						</logic:equal>
 						<logic:equal name="timKiemForm" property="maTinhThanh" value="2">
 						var myLatLng = {lat: 11.9038763, lng: 108.3106383};
@@ -92,27 +94,27 @@
 						</logic:equal>
 						<logic:equal name="timKiemForm" property="maTinhThanh" value="3">
 						var myLatLng = {lat: 16.4534748, lng: 107.5419039};
-						var zoom=13;
+						var zoom=11;
 						</logic:equal>
 						<logic:equal name="timKiemForm" property="maTinhThanh" value="4">
 						var myLatLng = {lat: 10.7680339, lng: 106.4141804};
-						var zoom=10;
+						var zoom=9;
 						</logic:equal>
 						<logic:equal name="timKiemForm" property="maTinhThanh" value="5">
 						var myLatLng = {lat: 21.0227003, lng: 105.8019443};
-						var zoom=13;
+						var zoom=11;
 						</logic:equal>
 						<logic:equal name="timKiemForm" property="maTinhThanh" value="6">
 						var myLatLng = {lat: 12.2595881, lng: 109.17073};
-						var zoom=12;
+						var zoom=11;
 						</logic:equal>
 						<logic:equal name="timKiemForm" property="maTinhThanh" value="7">
 						var myLatLng = {lat: 14.9779335, lng: 108.3790455};
-						var zoom=10;
+						var zoom=11;
 						</logic:equal>
 						<logic:equal name="timKiemForm" property="maTinhThanh" value="8">
 						var myLatLng = {lat: 17.5043687, lng: 105.7418899};
-						var zoom=9;
+						var zoom=11;
 						</logic:equal>
 						var map = new google.maps.Map(document.getElementById('db-main-search-map'), {
 					    zoom: zoom,
@@ -166,5 +168,50 @@
 	NProgress.start();
 	setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
 	</script>
+	<!-- Modal login-->
+	  <div class="modal fade" id="modalLogin" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Đăng nhập</h4>
+	        </div>
+	        <div class="modal-body">
+	          <form name="loginForm" method="post" action="Login.do">
+	    			<div class="form-group">
+	        			<input type="text" name="userName" value="" id="username" class="form-control" placeholder="Enter username"> <br>
+	        		</div>
+	        		<div class="form-group">
+	        			<input type="password" name="pass" value="" id="pw" class="form-control" placeholder="Enter password"> <br>
+	        		</div>
+	       			<input type="submit" name="submit" value="Login" class="btn btn-pramery"><br>
+	       			<a href="Register.do"><ins>Bạn chưa có tài khoản</ins> Đăng ký</a>
+		        </form>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+	<script>
+	function imgError(image) {
+	    image.onerror = "";
+	    image.src = "img/noimage.png";
+	    return true;
+	}
+	</script>
+	<div class="bcOverlay timedMessage" style="top: -100px;left: 0px;position: fixed;">
+		<div class="content baseHtml"></div>
+	</div>
+	<script>
+    $('body').show();
+    $('.version').text(NProgress.version);
+    NProgress.start();
+    setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
+  </script>
 </body>
 </html>

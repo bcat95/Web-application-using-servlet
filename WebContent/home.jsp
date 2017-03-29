@@ -19,7 +19,11 @@ jQuery(document).ready(function($) {
 	    loop:true,
 	    smartSpeed:450
 	})
-  $( ".cat_des_3" ).html('😳 Mắt đẫn đờ, dạ dày rỗng, con tim rối bời chỉ vì không biết ăn gì ở đâu? Đừng lo, vào đây có hết! 🧀🍰🍦🍼 🍒🍭🍣');
+	 $( ".cat_des_3" ).html('😳 Mắt đẫn đờ, dạ dày rỗng, con tim rối bời chỉ vì không biết ăn gì ở đâu? Đừng lo, vào đây có hết! 🧀🍰🍦🍼 🍒🍭🍣');
+	 $( ".cat_des_2" ).html('Thương trường là chiến trương!!!');
+	 $( ".cat_des_4" ).html('Hiện nay cả thế giới đang đau đầu về vấn đề giải quyết nợ công,Việt Nam cũng đang thực hiên chiến lược');
+	 $( ".cat_des_5" ).html('Ăn được ngủ được là tiên,không ăn không ngủ mất tiền thêm lo.Tập thể thao điểu độ nhá...:D');
+	 $( ".cat_des_6" ).html('Bạn cần chỗ ăn,ở,nghỉ ngủ, hãy tìm đến với chúng tôi..Cực kỳ thỏa mái..:D');
 });
 </script>
 <div id="page" class="noheadbg">
@@ -140,7 +144,7 @@ jQuery(document).ready(function($) {
 								</logic:notEmpty>
 								<div class="bc-featured-listings-item">
 									<div class="bc-featured-listings-item-inner bc_vie_mor">
-										Click để khám phá thêm nhiều điều thú vị nữa nhé!
+										<html:link styleClass="vie_all" href="timKiem.do?maDanhMuc=${maDanhMuc}">Click để khám phá thêm nhiều điều thú vị nữa nhé!</html:link>
 									</div>
 								</div>
 								<!--end list item nổi bật -->

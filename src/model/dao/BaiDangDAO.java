@@ -84,7 +84,7 @@ public class BaiDangDAO extends DataBaseConnect{
 		ArrayList<BaiDangBean> list = new ArrayList<BaiDangBean>();
 		try {
 			st=getConnect().createStatement();
-			rs=st.executeQuery("select Top 8 * FROM BaiDang,DanhMuc where "
+			rs=st.executeQuery("select Top 7 * FROM BaiDang,DanhMuc where "
 					+ " BaiDang.MaDanhMuc=DanhMuc.MaDanhMuc and BaiDang.MaDanhMuc= "+i+"  "
 							+ "and MaLoaiTin=2 order by NgayDang desc");
 			BaiDangBean BaiDang;
@@ -936,7 +936,6 @@ public class BaiDangDAO extends DataBaseConnect{
 					+ "from baidang inner join danhmuc on baidang.madanhmuc= danhmuc.madanhmuc inner join loaitin "
 					+ "on baidang.maloaitin= loaitin.maloaitin inner join tinhthanh on baidang.matinhthanh= tinhthanh.matinhthanh "
 					+ "where loaitin.TenLoaiTin=N'Chưa duyệt' and baidang.mabaidang= %d", maBaiDang);
-			System.out.println(sql);
 			rs=st.executeQuery(sql);
 			
 			while(rs.next()){
@@ -1026,7 +1025,7 @@ public class BaiDangDAO extends DataBaseConnect{
 					+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
 					+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
 					+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
-					+"WHERE bd.MaTinhThanh= (select MaTinhThanh from BaiDang where MaBaiDang='"+maBaiDang+"') and bd.MaBaiDang<>'"+maBaiDang+"'";
+					+"WHERE bd.MaLoaiTin=2 and bd.MaTinhThanh= (select MaTinhThanh from BaiDang where MaBaiDang='"+maBaiDang+"') and bd.MaBaiDang<>'"+maBaiDang+"'";
 		
 		ResultSet rs = null;
 		try {
@@ -1073,7 +1072,7 @@ public class BaiDangDAO extends DataBaseConnect{
 					+"INNER JOIN TinhThanh tt ON tt.MaTinhThanh=bd.MaTinhThanh "
 					+"INNER JOIN DanhMuc dm ON bd.MaDanhMuc=dm.MaDanhMuc "
 					+"INNER JOIN LoaiTin lt ON bd.MaLoaiTin=lt.MaLoaiTin "
-					+"WHERE bd.MaDanhMuc= (select MaDanhMuc from BaiDang where MaBaiDang='"+maBaiDang+"') and bd.MaBaiDang<>'"+maBaiDang+"'";
+					+"WHERE bd.MaLoaiTin=2 and  bd.MaDanhMuc= (select MaDanhMuc from BaiDang where MaBaiDang='"+maBaiDang+"') and bd.MaBaiDang<>'"+maBaiDang+"'";
 		
 		ResultSet rs = null;
 		try {

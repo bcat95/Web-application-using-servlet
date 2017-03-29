@@ -52,10 +52,12 @@ public class SuaBaiDangAction extends Action{
 		thisForm.setListTinhThanh(TinhThanhBO.getListTinhThanh());
 		thisForm.setListDichVu(DichVuBO.getListDichVu());
 		thisForm.setSuaBaiDang(BaiDangBO.infoSuaBaiDang(thisForm.getMaBaiDang()));
-		if(thisForm.getMaLoaiTin()==2){
-			return mapping.findForward("err404");
-		}else if (thisForm.getMaLoaiTin()==1 && (StringProcess.equals(thisForm.getUserName(), user.getUserName())) == false){
-			return mapping.findForward("err404");
+		if(user.getMaQuyen() != 1) {
+			if(thisForm.getMaLoaiTin()==2){
+				return mapping.findForward("err404");
+			}else if (thisForm.getMaLoaiTin()==1 && (StringProcess.equals(thisForm.getUserName(), user.getUserName())) == false){
+				return mapping.findForward("err404");
+			}
 		}
 		return mapping.getInputForward();
 	}

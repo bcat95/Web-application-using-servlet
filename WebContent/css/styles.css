@@ -73,7 +73,7 @@ a {
     clear: both;
 }
 .page-with{
-	max-width: 960px;
+	max-width: 1080px;
 	margin: 0px auto;
 	display: block;
 }
@@ -968,7 +968,7 @@ body {
     padding: 49px 15px;
 }
 .footer-bottom-inner {
-    max-width: 960px;
+    max-width: 1080px;
     margin: 0 auto;
 }
 .site-footer-wrapper.minimal .site-footer-container {
@@ -1079,7 +1079,7 @@ body .site-footer-wrapper.minimal footer .widget_socials {
     padding: 0;
 }
 .footer-menu-wrapper>div {
-    max-width: 960px;
+    max-width: 1080px;
     margin: 0 auto;
     padding: 0 15px;
 }
@@ -1234,9 +1234,6 @@ select.multiple {
     position: relative;
     bottom: -10px;
 }
-.db-found-count.total-hidden:before {
-    content: attr(data-found);
-}
 .dt-sort-row {
     position: relative;
     float: right;
@@ -1319,7 +1316,7 @@ table#threads thead{
     background: #37454d;
 }
 .db-search-side-two.bottom {
-    max-width: 960px;
+    max-width: 1080px;
     margin: 0 auto;
     float: none;
     width: 100%;
@@ -1360,7 +1357,7 @@ table#threads thead{
 	padding: 10px;
 }
 .db-search-side-rig {
-    margin-left: 266px;
+    _margin-left: 266px;
 }
 .sidebox-container {
     box-shadow: 0 1px 4px rgba(41,51,57,.5);
@@ -1374,6 +1371,10 @@ table#threads thead{
     padding: 16px 0;
     cursor: pointer;
     text-align: center;
+}
+.db-field-row.custom-select .map-access--bg{
+	padding: 0;
+	height: 44px;
 }
 .btn--tertiary {
     background-color: #fff;
@@ -1438,7 +1439,7 @@ table#threads thead{
     height: 100%;
 }
 .db-single-listing-container {
-    max-width: 960px;
+    max-width: 1080px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
@@ -2180,7 +2181,7 @@ body.page .site-main.container {
     min-height: calc(100vh - 428px);
 }
 .site-main.container {
-    max-width: 960px;
+    max-width: 1080px;
     margin: 0 auto;
 }
 h1.entry-title {
@@ -3033,4 +3034,30 @@ input.horus-btn-search{
 }
 .bc_map_rig{
     padding: 0;
+}
+.dia_diem_tuong_tu .bc-featured-listings-image{
+	height: 150px;
+}
+.dia_diem_gan .bc-featured-listings-image {
+    flex: 1;
+    height: 100px;
+}
+.dia_diem_gan .bc-featured-listings-data {
+    flex: 2;
+    padding-top: 0;
+}
+.dia_diem_gan .bc-featured-listings-image-meta span{
+	color: #333;
+}
+.dia_diem_gan .bc-featured-listings-title{
+	white-space: normal;
+	line-height: 1.5;
+}
+.dia_diem_gan .bc-featured-listings-item-inner.flexbox {
+    max-height: 100px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.dia_diem_gan .bc-featured-listings-meta{
+	border: 0
 }

@@ -4,7 +4,9 @@
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic"%>
 <%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
 <%@taglib uri="http://displaytag.sf.net" prefix="display"%>
-<jsp:include page="header.do" flush="true"></jsp:include>
+<jsp:include page="header.do" flush="true">
+	<jsp:param name="bcTitle" value="Tìm kiếm -"/>
+</jsp:include>
 <div id="page">
 	<!-- Tim kiem jsp  -->
 		<div id="db-main-listing-search">
@@ -41,6 +43,13 @@
 										label="tenTinhThanh" value="maTinhThanh" />
 									</html:select>		
 								</div>
+								<div class="db-field-row custom-select">
+									<div class="map-access sidebox-container ta-center" >
+										<div class="map-access--bg">
+											<button class="btn btn-default"><a href="banDo.do">Đến bản đồ</a></button>
+										</div>
+									</div>
+								</div>
 								<!--end tim kiem theo khu vuc -->
 							</div>
 							<!-- end tim kiem 1 -->
@@ -50,7 +59,7 @@
 					</div>
 			</div>
 			<div class="db-search-side-two bottom">
-					<div class="db-search-side-lef">
+					<!-- <div class="db-search-side-lef">
 						<div class="map-access sidebox-container ta-center" >
 							<div class="map-access--bg">
 								<a href="banDo.do"><button class="btn btn-default">Đến bản đồ</button></a>
@@ -74,10 +83,15 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<div class="db-search-side-rig fade out">
 						<div class="db-search-sort-container">
 							<span class="db-found-count total-hidden">8 results</span>
+							<script>
+							window.onload = function(){ 
+								$('.db-found-count.total-hidden').html($('.threadItem').length+" địa điểm / trang")
+							};
+							</script>
 							<div class="dt-sort-row single-select">
 								<div class="dropdown">
 									  <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Sắp xếp
@@ -116,7 +130,7 @@
 												<a class='link_out' href='xemtin.do?mabaiDang=${maBaiDang}'></a>
 												<div class="item__image" style="background: url('${anhBia}')"></div>
 												<!--gia tri mac dinh-->
-												<span class="bc-featured-listings-image-note"><i class="fa fa-heart-o wolf-zoom alway-active" aria-hidden="true"></i></span>
+												<!-- <span class="bc-featured-listings-image-note"><i class="fa fa-heart-o wolf-zoom alway-active" aria-hidden="true"></i></span> -->
 											</div>
 											<div class="listBlock main item__flex-column" >
 												<div class="item__details">

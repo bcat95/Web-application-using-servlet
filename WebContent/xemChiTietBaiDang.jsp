@@ -7,6 +7,7 @@
 <jsp:include page="header.do" flush="true"></jsp:include>
 <script>
 jQuery(document).ready(function($) {
+	document.title = '<bean:write name="baiDangForm" property="tieuDe"/>';
 	$(document.body).addClass('noheabac');
 	
 	$('.thr_inf_bot:not(:has(*))').remove();
@@ -283,42 +284,22 @@ body {
 					<!-- end chi tiet tin binh luan-->
 				</div>
 				<!-- Địa điểm cùng danh mục-->
-				<div class="db-main-search-listings lis_ful">
+				<logic:notEmpty name="baiDangForm" property="listBaiDangDanhMuc">
+				<div class="db-main-search-listings lis_ful dia_diem_tuong_tu">
 				
 				<h3 style="white-space: nowrap;overflow: hidden;" class="db-single-amenities-title">Địa điểm tương tự <bean:write name="baiDangForm" property="tieuDe"/></h3>
 							<!--begin list item nổi bật -->
-							<display:table id="threads" name="sessionScope.baiDangForm.listBaiDangDanhMuc"
-									requestURI="/xemtin.do" pagesize="8" class="discussionListItems">
-									<logic:notEmpty name="baiDangForm" property="listBaiDangDanhMuc">
-											<bean:define id="maBaiDang" name="threads" property="maBaiDang"/>
-											<bean:define id="anhBia" name="threads" property="anhBia"/>
-											<bean:define id="diaChi" name="threads" property="diaChi"/>
-											<bean:define id="tenDanhMuc" name="threads" property="tenDanhMuc"/>
-											<bean:define id="maTinhThanh" name="threads" property="maTinhThanh"/>
-											<bean:define id="tenTinhThanh" name="threads" property="tenTinhThanh"/>
-											<bean:define id="sDT" name="threads" property="sDT"/>
-											<bean:define id="giaThapNhat" name="threads" property="giaThapNhat"/>
-											<bean:define id="tieuDe" name="threads" property="tieuDe"/>
-											<bean:define id="diemDanhGia" name="threads" property="diemDanhGia"/>
-											<bean:define id="diaChiWeb" name="threads" property="diaChiWeb"/>
-											<bean:define id="viDo" name="threads" property="viDo"/>
-											<bean:define id="kinhDo" name="threads" property="kinhDo"/>
-											<bean:define id="diemDanhGia" name="threads" property="diemDanhGia"/>
-											<bean:define id="soLuotThich" name="threads" property="soLuotThich"/>
-									</logic:notEmpty>
-									<display:column sortable="true" title="diemDanhGia" headerClass="sor_ddg"/>
-									<display:column class="threadItem">
-									<div class="col-sm-4 cat_ites fade out ">
+							<logic:iterate id="bd" name="baiDangForm" property="listBaiDangDanhMuc">
+										<div class="col-sm-4 cat_ites fade out ">
 									<div class="column-inner cat_ite">
-										<div class="bc-featured-listings-item" id="thr_${maBaiDang}">
+										<div class="bc-featured-listings-item" id='<bean:write name="bd" property="maBaiDang" />'>
 										<div class="bc-featured-listings-item-inner">
 											<div class="bc-featured-listings-image">
 												<!--Anh dai dien bai dang-->
-												<a class='link_out' href='xemtin.do?mabaiDang=${maBaiDang}'></a>
-												<div class="item__image" style="width: 100%; height: 100%; background: url('${anhBia}');" ></div>
-												<!--gia tri mac dinh-->
-												<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-item-image" 
-													style="background: url('${anhBia}')"></a>
+												<a class='link_out' href='xemtin.do?mabaiDang=<bean:write name="bd" property="maBaiDang" />'></a>
+												<div class="item__image" style="width: 100%; height: 100%; background: url('<bean:write name="bd" property="anhBia" />);" ></div>
+												<a href="xemtin.do?maBaiDang=<bean:write name="bd" property="maBaiDang" />" class="bc-featured-item-image" 
+													style="background: url('<bean:write name="bd" property="anhBia" />')"></a>
 												<div class="bc-featured-image-overlay"></div>
 												<!--gia tri mac dinh-->
 												<!-- <span class="bc-featured-listings-image-note">Featured</span> -->
@@ -327,12 +308,12 @@ body {
 														<span class="bc-featured">
 															<!--dia chi bai dang-->
 															<span class="db-listing-icon wl-location" title="Address"></span>
-															${diaChi}
+															<bean:write name="bd" property="diaChi" />
 														</span>
 														<span class="bc-featured">
 															<!--so dien thoai bai dang-->
 															<span class="db-listing-icon wl-phone" title="Phone number"></span>
-															${sDT}
+															<bean:write name="bd" property="sDT" />
 														</span>
 													</span>
 												</div>
@@ -340,16 +321,16 @@ body {
 											</div>
 											<div style="background-color: white;" class="bc-featured-listings-data" >
 												<!--tieu de bai dang-->
-												<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-listings-title">
-													${tieuDe}
+												<a href="xemtin.do?maBaiDang=<bean:write name="bd" property="maBaiDang" />" class="bc-featured-listings-title">
+													<bean:write name="bd" property="tieuDe" />
 												</a>
 												<div class="bc-featured-listings-meta clearfix">
 												<!--so luot thich bai dang-->
 													<i class="fa fa-heart-o" aria-hidden="true"></i>
-													${soLuotThich}
+													<bean:write name="bd" property="soLuotThich" />
 													<span class="bc-featured-listings-rating">
-														<span id="bl_${maBaiDang}" class="ratings rating-lv${diemDanhGia}" title="${diemDanhGia}">
-															${diemDanhGia}
+														<span id="bl_<bean:write name="bd" property="maBaiDang" />" class="ratings rating-lv<bean:write name="bd" property="diemDanhGia" format="#" />" title="<bean:write name="bd" property="diemDanhGia" />">
+															<bean:write name="bd" property="diemDanhGia" />
 														</span>
 													</span>
 												</div>
@@ -358,15 +339,11 @@ body {
 										</div>
 										</div>
 										</div>
-										
-									</display:column>
-									<display:setProperty name="paging.banner.placement" value="bottom" />
-									<display:setProperty name="paging.banner.all_items_found"><span class="pagebanner"> </span></display:setProperty>
-									
-								</display:table>
+								</logic:iterate>	
 							<!--end list item nổi bật -->
 							<div class="clearfix"></div>
 						</div>
+					</logic:notEmpty>
 				<!-- END Địa điểm cùng danh mục- -->
 			</div>
 			<!-- chi tiet tin cot phai-->
@@ -464,61 +441,62 @@ body {
 				<!--end quang cao cot phai-->
 				
 				<!-- Địa điểm gần đó -->
-				<div class="db-main-search-listings lis_ful">
+				<logic:notEmpty name="baiDangForm" property="listBaiDang">
+				<div class="db-main-search-listings lis_ful dia_diem_gan">
+				
 				<h3 style="white-space: nowrap;overflow: hidden;" class="db-single-amenities-title">Địa điểm gần <bean:write name="baiDangForm" property="tieuDe"/></h3>
 							<!--begin list item nổi bật -->
-							<display:table id="threads" name="sessionScope.baiDangForm.listBaiDang"
-									requestURI="/xemtin.do" pagesize="8" class="discussionListItems">
-									<logic:notEmpty name="baiDangForm" property="listBaiDang">
-											<bean:define id="maBaiDang" name="threads" property="maBaiDang"/>
-											<bean:define id="anhBia" name="threads" property="anhBia"/>
-											<bean:define id="diaChi" name="threads" property="diaChi"/>
-											<bean:define id="tenDanhMuc" name="threads" property="tenDanhMuc"/>
-											<bean:define id="maTinhThanh" name="threads" property="maTinhThanh"/>
-											<bean:define id="tenTinhThanh" name="threads" property="tenTinhThanh"/>
-											<bean:define id="sDT" name="threads" property="sDT"/>
-											<bean:define id="giaThapNhat" name="threads" property="giaThapNhat"/>
-											<bean:define id="tieuDe" name="threads" property="tieuDe"/>
-											<bean:define id="diemDanhGia" name="threads" property="diemDanhGia"/>
-											<bean:define id="diaChiWeb" name="threads" property="diaChiWeb"/>
-											<bean:define id="viDo" name="threads" property="viDo"/>
-											<bean:define id="kinhDo" name="threads" property="kinhDo"/>
-									</logic:notEmpty>
-									<display:column sortable="true" title="diemDanhGia" headerClass="sor_ddg"/>
-									<display:column class="threadItem">
-										<div class="discussionListItem flexbox" id="thr_${maBaiDang}">
-										
-											<div class="listBlock posterAvatar item__image-area pos-relative">
+							<logic:iterate id="bd" name="baiDangForm" property="listBaiDang">
+										<div class="cat_ites fade out ">
+									<div class="column-inner cat_ite">
+										<div class="bc-featured-listings-item" id='<bean:write name="bd" property="maBaiDang" />'>
+										<div class="bc-featured-listings-item-inner flexbox">
+											<div class="bc-featured-listings-image">
 												<!--Anh dai dien bai dang-->
-												<a class='link_out' href='xemtin.do?mabaiDang=${maBaiDang}'></a>
-												<div class="item__image" style="width: 529%; height: 100%; background: url('${anhBia}');" ></div>
+												<a class='link_out' href='xemtin.do?mabaiDang=<bean:write name="bd" property="maBaiDang" />'></a>
+												<div class="item__image" style="width: 100%; height: 100%; background: url('<bean:write name="bd" property="anhBia" />);" ></div>
+												<a href="xemtin.do?maBaiDang=<bean:write name="bd" property="maBaiDang" />" class="bc-featured-item-image" 
+													style="background: url('<bean:write name="bd" property="anhBia" />')"></a>
+												<div class="bc-featured-image-overlay"></div>
 												<!--gia tri mac dinh-->
+												<!-- <span class="bc-featured-listings-image-note">Featured</span> -->
+												
 											</div>
-											<div class="listBlock main item__flex-column" >
-												<div style="color: white; width: 90%;" class="item__details">
-													<div class="item__name"><!--tieu de bai dang-->
-														<a style="font-size: 15px;color: white;" href="xemtin.do?maBaiDang=${maBaiDang}" class="name__copytext">${tieuDe}</a>
-													</div>
-													<div style="font-size: 15px;color: white;" class="item__info">
-													<logic:equal name="threads" property="diemDanhGia" value="0">
-														<span style="color: white;">Chưa có đánh giá</span>
-													</logic:equal>
-													<span id="bl_${diemDanhGia}" class="ratings rating-lv<bean:write name="threads" property="diemDanhGia" format="#,0"/>" title="${diemDanhGia}">
-														${diemDanhGia}
+											<div style="background-color: white;" class="bc-featured-listings-data" >
+												<!--tieu de bai dang-->
+												<a href="xemtin.do?maBaiDang=<bean:write name="bd" property="maBaiDang" />" class="bc-featured-listings-title">
+													<bean:write name="bd" property="tieuDe" />
+												</a>
+												<div class="bc-featured-listings-image-meta">
+													<span class="bc-featured-listings-custom-fields">
+														<span class="bc-featured">
+															<!--dia chi bai dang-->
+															<span class="db-listing-icon wl-location" title="Address"></span>
+															<bean:write name="bd" property="diaChi" />
+														</span>
 													</span>
-													</div>
+												</div>
+												<div class="bc-featured-listings-meta clearfix">
+												<!--so luot thich bai dang-->
+													<i class="fa fa-heart-o" aria-hidden="true"></i>
+													<bean:write name="bd" property="soLuotThich" />
+													<span class="bc-featured-listings-rating">
+														<span id="bl_<bean:write name="bd" property="maBaiDang" />" class="ratings rating-lv<bean:write name="bd" property="diemDanhGia" format="#" />" title="<bean:write name="bd" property="diemDanhGia" />">
+															<bean:write name="bd" property="diemDanhGia" />
+														</span>
+													</span>
 												</div>
 											</div>
 										</div>
-									</display:column>
-									<display:setProperty name="paging.banner.placement" value="bottom" />
-									<display:setProperty name="paging.banner.all_items_found"><span class="pagebanner"> </span></display:setProperty>
-									
-								</display:table>
+										</div>
+										</div>
+										</div>
+								</logic:iterate>	
 							<!--end list item nổi bật -->
 							<div class="clearfix"></div>
 						</div>
-
+					</logic:notEmpty>
+				<!-- END Địa điểm cùng danh mục- -->
 				<!-- END Địa điểm gần đó -->
 				
 				

@@ -10,7 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>Địa Điểm Hấp Dẫn</title>
+	<title>${param.bcTitle} SE12 Địa Điểm Hấp Dẫn</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<script src="js/jquery-3.1.1.min.js"></script>
@@ -23,7 +23,6 @@
 	<link href="css/wolf-animation.css?v=1.0" rel="stylesheet">
 	<link rel="stylesheet" href="css/bcat.css">
 	<script src="js/nprogress.js"></script>
-	<script src="js/jquery.validate.js"></script>
 	<link rel="stylesheet" href="css/nprogress.css"/>
 	<script>
 		$(function() {
@@ -69,14 +68,6 @@
 						<li><a href="timKiem.do">Tìm kiếm</a></li>
 						<li><a href="banDo.do">Bản đồ</a></li>
 						<logic:equal name="taiKhoanForm" property="maQuyen" value="1">
-							<li class="dropdown"><a data-toggle="dropdown"> Thống kê <span class="caret"></span></a>
-								<ul class="dropdown-menu">
-                                   <li><a href="#">Doanh số</a></li>
-								<li><a href="#">Doanh thu</a></li> 
-                            	</ul>
-							</li>
-						</logic:equal>
-						<logic:equal name="taiKhoanForm" property="maQuyen" value="1">
 						<li class="dropdown"><a data-toggle="dropdown"> Admin <span class="caret"></span></a>
 							<ul class="dropdown-menu">
                                  <li><a href="admin/adminpanel.do">Trang admin</a></li>
@@ -91,8 +82,6 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li><a href="themlh.do">Liên hệ</a></li>
-								<li><a href="#">Về chúng tôi</a></li>
-								<li><a href="#">Thanh toán</a></li>
 							</ul>
 						</li>
 						<logic:notEqual name="taiKhoanForm" property="maQuyen" value="-1">
