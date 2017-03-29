@@ -8,7 +8,7 @@
 <script>
 jQuery(document).ready(function($) {
 	 $('.bc-featured-listings').owlCarousel({
-	    items: 5,
+	    items: 4,
 	    lazyLoad: true,
 	    margin: 10
 	});

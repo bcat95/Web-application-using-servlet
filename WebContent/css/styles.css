@@ -73,7 +73,7 @@ a {
     clear: both;
 }
 .page-with{
-	max-width: 1170px;
+	max-width: 960px;
 	margin: 0px auto;
 	display: block;
 }
@@ -968,7 +968,7 @@ body {
     padding: 49px 15px;
 }
 .footer-bottom-inner {
-    max-width: 1170px;
+    max-width: 960px;
     margin: 0 auto;
 }
 .site-footer-wrapper.minimal .site-footer-container {
@@ -1079,7 +1079,7 @@ body .site-footer-wrapper.minimal footer .widget_socials {
     padding: 0;
 }
 .footer-menu-wrapper>div {
-    max-width: 1170px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 0 15px;
 }
@@ -1139,11 +1139,6 @@ body .site-footer-wrapper.minimal footer .widget_socials {
 }
 .db-search-custom-fields {
     margin: 15px 0;
-}
-.db-field-row {
-    float: left;
-    width: 33.33%;
-    padding: 0 15px;
 }
 .db-main-wrapper .db-search-side-two input[type="text"], .db-main-wrapper .db-search-side-two input[type="email"], .db-main-wrapper .db-search-side-two input[type="url"], .db-main-wrapper .db-search-side-two input[type="number"], .db-main-wrapper .db-search-side-two input[type="time"], .db-main-wrapper .db-search-side-two input[type="date"], .db-main-wrapper .db-search-side-two textarea {
     height: 45px;
@@ -1324,7 +1319,7 @@ table#threads thead{
     background: #37454d;
 }
 .db-search-side-two.bottom {
-    max-width: 1170px;
+    max-width: 960px;
     margin: 0 auto;
     float: none;
     width: 100%;
@@ -1443,7 +1438,7 @@ table#threads thead{
     height: 100%;
 }
 .db-single-listing-container {
-    max-width: 1170px;
+    max-width: 960px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
@@ -2185,7 +2180,7 @@ body.page .site-main.container {
     min-height: calc(100vh - 428px);
 }
 .site-main.container {
-    max-width: 1170px;
+    max-width: 960px;
     margin: 0 auto;
 }
 h1.entry-title {

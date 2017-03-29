@@ -23,6 +23,7 @@
 	<link href="css/wolf-animation.css?v=1.0" rel="stylesheet">
 	<link rel="stylesheet" href="css/bcat.css">
 	<script src="js/nprogress.js"></script>
+	<script src="js/jquery.validate.js"></script>
 	<link rel="stylesheet" href="css/nprogress.css"/>
 	<script>
 		$(function() {
