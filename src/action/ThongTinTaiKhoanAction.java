@@ -11,7 +11,6 @@ import org.apache.struts.action.ActionMapping;
 
 import form.ThongTinTaiKhoanForm;
 import model.bean.TaiKhoanBean;
-import model.bean.User;
 import model.bo.TaiKhoanBO;
 
 public class ThongTinTaiKhoanAction extends Action{
@@ -24,12 +23,13 @@ public class ThongTinTaiKhoanAction extends Action{
 		ThongTinTaiKhoanForm thisForm= (ThongTinTaiKhoanForm)form;
 		TaiKhoanBO taiKhoanBO= new TaiKhoanBO();
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("userActivity");
-		System.err.println("uss "+user.getUserName());
+		TaiKhoanBean user = (TaiKhoanBean) session.getAttribute("userActivity");
+		if(user == null || user.getMaQuyen() == -1)
+			return mapping.findForward("login");
 		TaiKhoanBean taiKhoan= taiKhoanBO.getThongTinTaiKhoan(user.getUserName());
-		thisForm.setUserName(taiKhoan.getUsername());
-		thisForm.setPassCu(taiKhoan.getPass());
-		thisForm.seteMail(taiKhoan.getEmail());
+		thisForm.setUserName(taiKhoan.getUserName());
+		thisForm.setPassCu(taiKhoan.getPassWord());
+		thisForm.seteMail(taiKhoan.geteMail());
 		//danh sach bai dang
 		thisForm.setListBaiDang(TaiKhoanBO.danhSachBaiDang(user));
 		//danh sach yeu thich

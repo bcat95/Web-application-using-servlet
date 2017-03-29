@@ -27,7 +27,7 @@ public class ThichBO {
 	public static boolean checkThich(int maBaiDang, String userName) {
 		return ThichDAO.checkThich(maBaiDang,userName);
 	}
-	public static void setThich(boolean checkThich, int maBaiDang, String userName, boolean yeuThich) {
-		ThichDAO.setThich(checkThich,maBaiDang,userName,yeuThich);
+	public static void setThich(boolean checkThich, int maBaiDang, String userName) {
+		ThichDAO.setThich(checkThich,maBaiDang,userName);
 	}
 }

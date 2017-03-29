@@ -9,19 +9,19 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import common.StringProcess;
-import form.RegisterForm;
+import form.TaiKhoanForm;
 import model.bo.TaiKhoanBO;
 
 public class RegisterAction extends Action{
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		RegisterForm registerForm = (RegisterForm) form;
+		TaiKhoanForm registerForm = (TaiKhoanForm) form;
 		TaiKhoanBO taiKhoanBO = new TaiKhoanBO();
 		StringProcess check = new StringProcess();
 		
-		String tenDangNhap = registerForm.getTenDangNhap();
-		String matKhau = registerForm.getMatKhau();
+		String tenDangNhap = registerForm.getUserName();
+		String matKhau = registerForm.getPass();
 		String confirmMatKhau = registerForm.getConfirmMatKhau();
 		String hoTen = registerForm.getHoTen();
 		String email = registerForm.getEmail();

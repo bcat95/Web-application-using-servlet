@@ -13,7 +13,6 @@ import org.apache.struts.action.ActionMapping;
 import common.StringProcess;
 import form.ThongTinTaiKhoanForm;
 import model.bean.TaiKhoanBean;
-import model.bean.User;
 import model.bo.TaiKhoanBO;
 
 public class CapNhatThongTinAction extends Action{
@@ -25,23 +24,20 @@ public class CapNhatThongTinAction extends Action{
 		ThongTinTaiKhoanForm thongTinTaiKhoanForm = (ThongTinTaiKhoanForm) form;
 		TaiKhoanBO taiKhoanBO= new TaiKhoanBO(); 
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("userActivity");
+		TaiKhoanBean user = (TaiKhoanBean) session.getAttribute("userActivity");
 		String username = user.getUserName();
 		TaiKhoanBean taiKhoanBean= taiKhoanBO.getThongTinTaiKhoan(username);
 		if (StringProcess.equals(thongTinTaiKhoanForm.getSubmit(), "CapNhapPass")){
 			ActionErrors errors = new ActionErrors();
 			errors = thongTinTaiKhoanForm.validateBaiDang(mapping, request);
-			System.out.println("noy1");
 			if (!errors.isEmpty()) {
 				saveErrors(request, errors);
-				thongTinTaiKhoanForm.setPassMoiXN(taiKhoanBean.getPass());
-				System.out.println("noy2");
+				thongTinTaiKhoanForm.setPassMoiXN(taiKhoanBean.getPassWord());
 				return mapping.getInputForward();
 			}
 			else if(StringProcess.equals(thongTinTaiKhoanForm.getSubmit(), "CapNhapPass")){
 				String passwordMoi= thongTinTaiKhoanForm.getPassMoiXN();
 				System.out.println(passwordMoi);
-				System.out.println("noy3");
 				taiKhoanBO.capNhatThongTinTaiKhoan(username, passwordMoi);
 				return mapping.findForward("suaTKxong");
 			}

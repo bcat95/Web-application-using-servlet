@@ -17,10 +17,13 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery-te-1.4.0.min.js"></script>
 	<link rel="stylesheet" href="css/styles.css">
-	<link rel="stylesheet" href="engine0/style.css">
 	<link rel="stylesheet" href="css/jquery-te-1.4.0.css">
 	<link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
 	<link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
+	<link href="css/wolf-animation.css?v=1.0" rel="stylesheet">
+	<link rel="stylesheet" href="css/bcat.css">
+	<script src="js/nprogress.js"></script>
+	<link rel="stylesheet" href="css/nprogress.css"/>
 	<script>
 		$(function() {
     		$("#username").attr("placeholder", "Enter username");
@@ -29,11 +32,11 @@
 	</script>
 	<script>
 	$(document).ready(function() {
-		if ('<bean:write name="headerForm" property="tacVu"/>' == "success") {
+		if ('<bean:write name="taiKhoanForm" property="tacVu"/>' == "success") {
 			$('.content.baseHtml').html("Tác vụ thành công");
 			$('.timedMessage').animate({'opacity': 'show', 'top': 0}, 800);
 			setTimeout(function() {$('.timedMessage').animate({'opacity': 'hide', 'top': -100}, 800);}, 1500);
-		}else if ('<bean:write name="headerForm" property="tacVu"/>' == "that bai") {
+		}else if ('<bean:write name="taiKhoanForm" property="tacVu"/>' == "that bai") {
 			$('.content.baseHtml').html("Tác vụ thất bại");
 			$('.timedMessage').animate({'opacity': 'show', 'top': 0}, 800);
 			setTimeout(function() {$('.timedMessage').animate({'opacity': 'hide', 'top': -100}, 800);}, 1500);
@@ -41,7 +44,7 @@
 	});
 	</script>
 </head>
-<body id="page" class="<logic:equal name="headerForm" property="type" value="-1">LoggedOut</logic:equal><logic:notEqual name="headerForm" property="type" value="-1">LoggedInt</logic:notEqual>">
+<body style='display: none' id="page" class="<logic:equal name="taiKhoanForm" property="maQuyen" value="-1">LoggedOut</logic:equal><logic:notEqual name="taiKhoanForm" property="maQuyen" value="-1">LoggedInt</logic:notEqual>">
 <!--Begin header-->
 	<header>
 		<div class="header-content page-with">
@@ -52,27 +55,19 @@
 					</a>
 				</div>
 				<div class="head_nav">
-					<logic:notEqual name="headerForm" property="type" value="-1">
+					<logic:notEqual name="taiKhoanForm" property="maQuyen" value="-1">
 						<a href="dangtin.do" class="bc-create-listing bc-button bc-button-invert">Đăng tin mới</a>
 					</logic:notEqual>
-					<logic:equal name="headerForm" property="type" value="-1">
+					<logic:equal name="taiKhoanForm" property="maQuyen" value="-1">
 						<a href="Login.do" id ="bccrea_login" class="bc-create-listing bc-button bc-button-invert">Đăng tin mới</a>
-						<a href="Login.do" class="bc-login-register" id="bcLogin">
+						<a href="#modalLogin" data-toggle="modal" data-target="#modalLogin" class="bc-login-register" id="bcLogin">
 							<i class="fa fa-sign-in" aria-hidden="true"></i>Đăng nhập / Đăng ký
 						</a>
 					</logic:equal>
-					
 					<ul class="nav navbar-nav main-header-right-side">
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Trang
-								<span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Blog</a></li>
-								<li><a href="timKiem.do">Tìm kiếm</a></li>
-							</ul>
-						</li>
-						<logic:equal name="headerForm" property="type" value="1">
+						<li><a href="timKiem.do">Tìm kiếm</a></li>
+						<li><a href="banDo.do">Bản đồ</a></li>
+						<logic:equal name="taiKhoanForm" property="maQuyen" value="1">
 							<li class="dropdown"><a data-toggle="dropdown"> Thống kê <span class="caret"></span></a>
 								<ul class="dropdown-menu">
                                    <li><a href="#">Doanh số</a></li>
@@ -80,38 +75,27 @@
                             	</ul>
 							</li>
 						</logic:equal>
-						<logic:notEqual name="headerForm" property="type" value="-1">
-							<li class="dropdown"><a data-toggle="dropdown"> Quản lý <span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<logic:equal name="headerForm" property="type" value="admin">
-	                                    <li><a href="#">Quản lý thành viên</a></li>
-										<li><a href="#">Quản lý bài đăng</a></li>
-									</logic:equal>
-                            	</ul>
-							</li>
-						</logic:notEqual>
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Danh mục
-								<span class="caret"></span>
-							</a>
+						<logic:equal name="taiKhoanForm" property="maQuyen" value="1">
+						<li class="dropdown"><a data-toggle="dropdown"> Admin <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Danh mục 1</a></li>
-								<li><a href="#">Danh mục 2</a></li>
-								<li><a href="#">Danh mục 3</a></li>
-							</ul>
+                                 <li><a href="admin/adminpanel.do">Trang admin</a></li>
+                                <li><a href="admin/danhSachBaiDangChuaDuyet.do">Duyệt bài đăng</a></li>
+								<li><a href="admin/danhSachBaiDangDaDuyet.do">Quản lý bài đăng</a></li>
+                           	</ul>
 						</li>
+						</logic:equal>
 						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Trợ giúp
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Thanh toán</a></li>
+								<li><a href="themlh.do">Liên hệ</a></li>
 								<li><a href="#">Về chúng tôi</a></li>
-								<li><a href="#">FAQ</a></li>
+								<li><a href="#">Thanh toán</a></li>
 							</ul>
 						</li>
-						<logic:notEqual name="headerForm" property="type" value="-1">
-							<li class="dropdown"><a data-toggle="dropdown"> <bean:write name="headerForm" property="hoTen"/> <span class="caret"></span></a>
+						<logic:notEqual name="taiKhoanForm" property="maQuyen" value="-1">
+							<li class="dropdown"><a data-toggle="dropdown"> <bean:write name="taiKhoanForm" property="hoTen"/> <span class="caret"></span></a>
 								<ul class="dropdown-menu">
                                     <li><a href="thong-tin.do">Thông tin cá nhân</a></li>
 									<li><a href="Logout.do">Đăng xuất</a></li>

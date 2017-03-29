@@ -130,6 +130,16 @@ public class StringProcess {
 		if(s.matches(r)) return false;
 		return true;
 	}
-	
+	/**
+	 * Ham kiem tra so dien thoai
+	 * @param s
+	 * @return boolean
+	 */
+	public boolean notSDT(String s){
+		String r = "^(\\+84|0)[0-9]*$";
+		if(s.matches(r) && (s.length() == 10 || s.length() == 11)) return false;
+		return true;
+	}
+
 }
 

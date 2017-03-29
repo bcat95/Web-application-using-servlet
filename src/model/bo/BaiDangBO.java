@@ -45,21 +45,21 @@ public class BaiDangBO extends BussinessObject{
 	{
 		//them anh bia
 		try {
-			if(file != null){
+			if(file.getFileSize() != 0){
 				baiDang.setAnhBia(
 					"upload/img/bai-dang/" + BussinessObject.saveFile("/upload/img/bai-dang", file,"", action));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		//them thong tin bai viet
 		BaiDangDAO.insertBaiDang(baiDang);
 		//them dich vu
 		if (dichVu != null){
 			DichVuDAO.insertDichVu(baiDang,dichVu);
 		}
-		//them anh bai viet
-		if (fileHinhAnh != null){
+		if (fileHinhAnh.get(0).getFileSize() != 0){
 			try {
 				hinhAnhBean.setHinhAnh(BussinessObject.saveMultiFile("upload/img/bai-dang", fileHinhAnh, action));
 				BaiDangDAO.insertHinhAnh(baiDang,hinhAnhBean);
@@ -87,6 +87,7 @@ public class BaiDangBO extends BussinessObject{
 				BaiDangDAO.setAnhBia(baiDang.getMaBaiDang(),
 					"upload/img/bai-dang/" + BussinessObject.saveFile("/upload/img/bai-dang", file,"", action));
 			}
+			else BaiDangDAO.setAnhBia(baiDang.getMaBaiDang(), null);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -100,7 +101,7 @@ public class BaiDangBO extends BussinessObject{
 		}
 		
 		//them anh bai viet
-		if (fileHinhAnh != null){
+		if (fileHinhAnh.get(0).getFileSize() != 0){
 			try {
 				hinhAnhBean.setHinhAnh(BussinessObject.saveMultiFile("upload/img/bai-dang", fileHinhAnh, action));
 				BaiDangDAO.insertHinhAnh(baiDang,hinhAnhBean);
@@ -112,4 +113,47 @@ public class BaiDangBO extends BussinessObject{
 	public ArrayList<BaiDangBean> getListBaiDangByDM(int i) {
 		return baiDangDAO.getListBaiDangByDM(i);
 	}
+	//danh sạh bai dang da duyet
+	public ArrayList<BaiDangBean> getListBaiDangDaDuyet() {
+		return baiDangDAO.getListBaiDangDaDuyet();
+	}
+	
+	public BaiDangBean getListChiTietBaiDangDaDuyet(int maBaiDang) {
+		return baiDangDAO.getListChiTietBaiDangDaDuyet(maBaiDang);
+	}
+	
+	public BaiDangBean getListBaiDangChuaDuyet(int maBaiDang) {
+		return baiDangDAO.getListBaiDangChuaDuyet(maBaiDang);
+	}
+	//xem chi tiet danh sạh bai dang da duyet
+	public BaiDangBean getListBaiDangDaDuyet(int maBaiDang) {
+		return baiDangDAO.getListBaiDangDaDuyet(maBaiDang);
+	}
+	//danh sạh bai dang chua duyet
+	public ArrayList<BaiDangBean> getListBaiDangChuaDuyet() {
+		return baiDangDAO.getListBaiDangChuaDuyet();
+	}
+	
+	public void goBoBaiDang(int maBaiDang){
+		baiDangDAO.goBoBaiDang(maBaiDang);
+	}
+	
+	public BaiDangBean getListChiTietBaiDangChuaDuyet(int maBaiDang) {
+		return baiDangDAO.getListChiTietBaiDangChuaDuyet(maBaiDang);
+	}
+	public void setDuyetTin(int maBaiDang) {
+		baiDangDAO.setDuyetTin(maBaiDang);
+	}
+	public void goDuyetTin(int maBaiDang) {
+		baiDangDAO.goDuyetTin(maBaiDang);
+		
+	}
+	
+	public ArrayList<BaiDangBean> getListBaiDangCungTinhThanh(int maBaiDang)  throws SQLException {
+		return baiDangDAO.getListBaiDangCungTinhThanh(maBaiDang);
+	}
+	public ArrayList<BaiDangBean> getListBaiDangCungDanhMuc(int maBaiDang)  throws SQLException {
+		return baiDangDAO.getListBaiDangCungDanhMuc(maBaiDang);
+	}
+	
 }

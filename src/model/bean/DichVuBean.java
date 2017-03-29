@@ -1,6 +1,6 @@
 package model.bean;
 /**
- * KhoaDAO.java
+ * DichVuBean
  *
  * Version 1.0
  *
@@ -20,7 +20,6 @@ public class DichVuBean {
 	
 	public DichVuBean() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public DichVuBean(int maDichVu, String tenDichVu) {
 		super();
@@ -39,8 +38,5 @@ public class DichVuBean {
 	public void setTenDichVu(String tenDichVu) {
 		this.tenDichVu = tenDichVu;
 	}
-	
-	
-	
 	
 }

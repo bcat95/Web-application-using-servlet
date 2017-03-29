@@ -1,6 +1,6 @@
 package model.bean;
 /**
- * className
+ * LoaiTinBean
  *
  * Version 1.0
  *

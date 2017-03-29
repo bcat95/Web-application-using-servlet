@@ -13,7 +13,20 @@ import org.apache.struts.action.ActionMessage;
 import common.StringProcess;
 import model.bean.BaiDangBean;
 import model.bean.TaiKhoanBean;
-
+/**
+ * ThongTinTaiKhoanForm
+ *
+ * Version 1.0
+ *
+ * Date: 14-3-2017
+ *
+ * Copyright 
+ *
+ * Modification Logs:
+ * DATE                 AUTHOR          DESCRIPTION
+ * -----------------------------------------------------------------------
+ * 14-3-2017         Vannasone            Create
+ */
 public class ThongTinTaiKhoanForm  extends ActionForm{
 	/**
 	 * 
@@ -25,13 +38,17 @@ public class ThongTinTaiKhoanForm  extends ActionForm{
 	private String passCu;
 	private String passMoi;
 	private String passMoiXN;
-	
 	private ArrayList<BaiDangBean> listBaiDang;
 	private ArrayList<BaiDangBean> listYeuThich;
-	//name
 	private ArrayList<TaiKhoanBean> listTaiKhoan;
+	private int thongBao;
 	
-
+	public int getThongBao() {
+		return thongBao;
+	}
+	public void setThongBao(int thongBao) {
+		this.thongBao = thongBao;
+	}
 	public ArrayList<BaiDangBean> getListYeuThich() {
 		return listYeuThich;
 	}
@@ -101,6 +118,12 @@ public class ThongTinTaiKhoanForm  extends ActionForm{
 		}
 	}
 
+	/**
+	 * Ham kiem tra hop le cac thuoc tinh truoc khi them vao CSDL
+	 * @param mapping
+	 * @param request
+	 * @return
+	 */
 	public ActionErrors validateBaiDang(ActionMapping mapping, HttpServletRequest request) {
 		ActionErrors errors =new ActionErrors();
 		if (StringProcess.equals(submit, "CapNhapPass")){

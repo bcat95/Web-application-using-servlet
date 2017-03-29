@@ -11,7 +11,7 @@ import org.apache.struts.action.ActionMapping;
 
 import common.StringProcess;
 import form.BaiDangForm;
-import model.bean.User;
+import model.bean.TaiKhoanBean;
 import model.bo.BaiDangBO;
 import model.bo.BinhLuanBO;
 import model.bo.ThichBO;
@@ -36,16 +36,19 @@ public class BaiDangAction extends Action{
 			HttpServletResponse response) throws Exception {
 		BaiDangForm thisForm = (BaiDangForm) form;
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("userActivity");
-		//thich > set and get yeuThich
-		if(user!=null){
-			boolean like=ThichBO.checkThich(thisForm.getMaBaiDang(),user.getUserName());
-			if (like) {
-				ThichBO.setThich(like,thisForm.getMaBaiDang(),user.getUserName(),thisForm.isYeuThich());
-				thisForm.setYeuThich(like);
-			}else{
-				ThichBO.setThich(like,thisForm.getMaBaiDang(),user.getUserName(),thisForm.isYeuThich());
-			}
+		TaiKhoanBean user = (TaiKhoanBean) session.getAttribute("userActivity");
+		thisForm.setXemBaiDang(BaiDangBO.infoBaiDang(thisForm.getMaBaiDang()));
+		
+		//AnNBH
+		BaiDangBO baiDangBO = new BaiDangBO();
+		thisForm.setListBaiDang(baiDangBO.getListBaiDangCungTinhThanh(thisForm.getMaBaiDang()));
+		thisForm.setListBaiDangDanhMuc(baiDangBO.getListBaiDangCungDanhMuc(thisForm.getMaBaiDang()));
+		//END AnNBH
+		
+		if(user==null && thisForm.getMaLoaiTin()==1){
+			return mapping.findForward("err404");
+		}else if (thisForm.getMaLoaiTin()==1 && (StringProcess.equals(thisForm.getUserName(), user.getUserName())) == false){
+			return mapping.findForward("err404");
 		}
 		if (StringProcess.equals(thisForm.getSubmit(), "binhLuan")){
 			if(user==null)
@@ -67,8 +70,21 @@ public class BaiDangAction extends Action{
 					}
 			}
 		}
-		
-		thisForm.setXemBaiDang(BaiDangBO.infoBaiDang(thisForm.getMaBaiDang()));
+		//thich > set and get yeuThich
+		if(user!=null){
+			boolean like=ThichBO.checkThich(thisForm.getMaBaiDang(),user.getUserName());
+			thisForm.setYeuThich(like);
+			if(thisForm.isSetThich()){
+				thisForm.setSetThich(false);
+				ThichBO.setThich(like, thisForm.getMaBaiDang(), user.getUserName());
+				like=ThichBO.checkThich(thisForm.getMaBaiDang(),user.getUserName());
+				thisForm.setYeuThich(like);
+				thisForm.setXemBaiDang(BaiDangBO.infoBaiDang(thisForm.getMaBaiDang()));
+				return mapping.getInputForward();
+			}
+			
+			
+		}
 		return mapping.getInputForward();
 	}
 

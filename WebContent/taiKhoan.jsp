@@ -19,8 +19,8 @@
 										<div class="db-account-wrapper">
 											<ul class="db-account-menu nav-pills clearfix">
 												<li class="active"><a data-toggle="pill" href="#taiKhoan_thongTin" class="active">Thông tin</a></li>
-												<li><a data-toggle="pill" href="#taiKhoan_capNhap" class="">Cập nhật thông tin</a></li>
-												<li><a href="dangTin.do">Đăng tin</a></li>
+												<li><a href="Update.do">Cập nhật thông tin</a></li>
+												<li><a href="dangtin.do">Đăng tin</a></li>
 												<li><a data-toggle="pill" href="#taiKhoan_tinDang" class="">Danh sách bài đã đăng</a></li>
 												<li><a data-toggle="pill" href="#taiKhoan_yeuThich" class="">Ưa thích</a></li>
 												<li><a href="Logout.do" class="db-logout dt-button dt-button-danger dt-button-middle">Đăng xuất</a></li>
@@ -44,7 +44,7 @@
 														<span class="db-account-label">Password:</span>
 														<span class="db-account-value"><bean:write name="thongTinTaiKhoanForm" property="passCu"/></span>
 													</span>
-													<a data-toggle="pill" href="#taiKhoan_capNhap" class="">Cập nhật</a>
+													<a data-toggle="pill" href="#taiKhoan_capNhap" class="">Đổi mật khẩu</a>
 													<div class="clearfix"></div>
 												</div>
 											</html:form>
@@ -81,6 +81,7 @@
             										<span id="passError"></span>
             										<html:errors property="passError"/>
 												</div class="db-field-row text-added">
+												
 												<div>
 													<button type="submit" name="submit" value="CapNhapPass" class="btn btn-primary">Cập nhật</button>
 													<%-- <html:submit styleClass="btn btn-primary">submit</html:submit> --%>
@@ -106,9 +107,7 @@
 													else
 														$("#passError").html("Mật khẩu mới chưa giống nhau !");	
 												});
-											    });
 											});
-												
 											</script>
 											<!-- end tai khoan cap nhat tai khoan -->
 											
@@ -118,19 +117,25 @@
 													<h2 class="db-account-title">Danh sách các bài đăng của bạn</h2>
 													<display:table id="bcbaidang" name="sessionScope.thongTinTaiKhoanForm.listBaiDang" class="db-account-listings table table-striped table-hover"
 															requestURI="/thong-tin.do" pagesize="5">
-															<display:column property="maBaiDang" title="ID bài đăng" sortable="true" class="bcblock mabaidang" href="/xemtin.do" paramId="maBaiDang"/>
+															<display:column property="maBaiDang" title="ID" sortable="true" class="bcblock mabaidang" href="/xemtin.do" paramId="maBaiDang"/>
 															<display:column property="tieuDe" title="Tiêu đề" class="bcblock tieude" />
 															<display:column property="tenLoaiTin" title="Trạng thái" class="bcblock tenlt"/>
 															<display:column property="tenDanhMuc" title="Danh mục" class="bcblock tendm"/>
 															<display:column property="ngayHetHan" title="Hết hạn vào" class="bcblock ngayhh"></display:column>
 															<display:column property="tenLoaiTin" title="Dán lên cao"></display:column>
+															<%-- <bean:define id="maLoaiTin" name="bcbaidang" property="maLoaiTin"></bean:define> --%>
 															<display:column title="Hành động">
-																<html:link action="/xemtin?maBaiDang=${bcbaidang.maBaiDang}"  styleClass="db-edit-listing db-account-listing-option edit">
+																<html:link action="/khuyenmai?maBaiDang=${bcbaidang.maBaiDang}" styleClass="db-edit-listing db-account-listing-option gift">
+													                	<span class="db-account-listing-option-hover">Khuyến Mãi</span><i class="fa fa-gift fa-2 alway-active wolf-surprise bc_gre" aria-hidden="true"></i>
+													            </html:link>
+																<html:link action="/xemtin?maBaiDang=${bcbaidang.maBaiDang}"  styleClass="db-edit-listing db-account-listing-option view">
 													                	<span class="db-account-listing-option-hover">Xem</span><i class="fa fa-eye" aria-hidden="true"></i>
 													            </html:link>
-													            <html:link action="/suatin?maBaiDang=${bcbaidang.maBaiDang}"  styleClass="db-edit-listing db-account-listing-option edit">
-													                	<span class="db-account-listing-option-hover">Sửa</span><i class="fa fa-pencil" aria-hidden="true"></i>
-													                </html:link>
+																<logic:equal name="bcbaidang" property="maLoaiTin" value="1">
+																<html:link action="/suatin?maBaiDang=${bcbaidang.maBaiDang}"  styleClass="db-edit-listing db-account-listing-option edit">
+																	<span class="db-account-listing-option-hover">Sửa</span><i class="fa fa-pencil" aria-hidden="true"></i>
+																</html:link>
+																</logic:equal>
 															</display:column>
 															
 															<display:setProperty name="paging.banner.placement" value="bottom" />

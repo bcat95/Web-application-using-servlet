@@ -1,7 +1,12 @@
 eclipse.preferences.version=1
+encoding//WebContent/admin/index.jsp=UTF-8
 encoding//WebContent/css/styles.css=UTF-8
 encoding//WebContent/index.jsp=UTF-8
 encoding//WebContent/template_Header.jsp=UTF-8
 encoding//WebContent/template_Tag.jsp=UTF-8
 encoding//WebContent/tinDangThanhCong.jsp=UTF-8
+encoding//src/action/home/HomeAction.java=UTF-8
+encoding//src/common/StringProcess.java=UTF-8
+encoding//src/form/HomeForm.java=UTF-8
+encoding//src/model/bo/BaiDangBO.java=UTF-8
 encoding//src/model/dao/BaiDangDAO.java=UTF-8

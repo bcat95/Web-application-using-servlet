@@ -10,6 +10,7 @@ import model.bean.DanhMucBean;
 import model.bean.TinhThanhBean;
 import model.bo.BaiDangBO;
 import model.bo.DanhMucBO;
+import model.bo.KhuyenMaiBO;
 import model.bo.TinhThanhBO;
 
 import org.apache.struts.action.Action;
@@ -25,40 +26,41 @@ public class HomeAction extends Action{
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
-		HomeForm homeForm = (HomeForm) form;
-		//lay danh sach danh muc
-		DanhMucBO danhMucBO=new DanhMucBO();
-		ArrayList<DanhMucBean> listDanhMuc = danhMucBO.getListDanhMuc();
-		homeForm.setListDanhMuc(danhMucBO.getListDanhMuc());
-		
-		//lay danh tinh thanh
-		TinhThanhBO tinhThanhBO=new TinhThanhBO();
-		ArrayList<TinhThanhBean> listTinhThanh = tinhThanhBO.getListTinhThanh();
-		homeForm.setListTinhThanh(listTinhThanh);
+		HomeForm thisForm = (HomeForm) form;
 		
 		//Lay danh sach bai dang
 		BaiDangBO baiDangBO = new BaiDangBO();
 		ArrayList<BaiDangBean> listBaiDang = baiDangBO.getListBaiDang();
-		homeForm.setListBaiDang(listBaiDang);
+		thisForm.setListBaiDang(listBaiDang);
+		//lay danh sach danh muc theo so luong home
+		DanhMucBO danhMucBO=new DanhMucBO();
+		ArrayList<DanhMucBean> listDanhMuc = danhMucBO.getListDanhMuc();
+		thisForm.setListDanhMuc(danhMucBO.getListDanhMuc(7));
 		
-		//Lay danh sach bai dang 1- Làm đẹp 2- Kinh doanh 3- Dich vụ ăn uống 4- Tài chánh 5- Sức khỏe 6-Khách sạn 7-Giải trí;
+		//lay danh tinh thanh
+		TinhThanhBO tinhThanhBO=new TinhThanhBO();
+		ArrayList<TinhThanhBean> listTinhThanh = tinhThanhBO.getListTinhThanh();
+		thisForm.setListTinhThanh(listTinhThanh);
+		String maDanhMuc = thisForm.getMaDanhMuc();
+		String maTinhThanh = thisForm.getMaTinhThanh();
+		KhuyenMaiBO khuyenMaiBO=new KhuyenMaiBO();
+		thisForm.setListBaiDangKM(khuyenMaiBO.getListBaiDangKM());
+		
+		//Lay danh sach bai dang of 7 danh muc
 		ArrayList<BaiDangBean> listBaiDang1 = baiDangBO.getListBaiDangByDM(1);
-		homeForm.setListBaiDang_1(listBaiDang1);
+		thisForm.setListBaiDang_1(listBaiDang1);
 		ArrayList<BaiDangBean> listBaiDang2 = baiDangBO.getListBaiDangByDM(2);
-		homeForm.setListBaiDang_2(listBaiDang2);
+		thisForm.setListBaiDang_2(listBaiDang2);
 		ArrayList<BaiDangBean> listBaiDang3 = baiDangBO.getListBaiDangByDM(3);
-		homeForm.setListBaiDang_3(listBaiDang3);
+		thisForm.setListBaiDang_3(listBaiDang3);
 		ArrayList<BaiDangBean> listBaiDang4 = baiDangBO.getListBaiDangByDM(4);
-		homeForm.setListBaiDang_4(listBaiDang4);
+		thisForm.setListBaiDang_4(listBaiDang4);
 		ArrayList<BaiDangBean> listBaiDang5 = baiDangBO.getListBaiDangByDM(5);
-		homeForm.setListBaiDang_5(listBaiDang5);
+		thisForm.setListBaiDang_5(listBaiDang5);
 		ArrayList<BaiDangBean> listBaiDang6 = baiDangBO.getListBaiDangByDM(6);
-		homeForm.setListBaiDang_6(listBaiDang6);
+		thisForm.setListBaiDang_6(listBaiDang6);
 		ArrayList<BaiDangBean> listBaiDang7 = baiDangBO.getListBaiDangByDM(7);
-		homeForm.setListBaiDang_7(listBaiDang7);
-				
-		String maDanhMuc = homeForm.getMaDanhMuc();
-		String maTinhThanh = homeForm.getMaTinhThanh();
+		thisForm.setListBaiDang_7(listBaiDang7);
 		
 		return mapping.findForward("home");
 	}

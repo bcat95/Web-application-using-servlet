@@ -31,7 +31,13 @@ import model.dao.HinhAnhDAO;
  */
 public abstract class BussinessObject
 {
-	//phan trang
+	/**
+	 * phan trang
+	 * @param size
+	 * @param show
+	 * @param index
+	 * @return
+	 */
 	public ArrayList<PageBean> paginate(int size, int show, int index)
 	{
 		ArrayList<PageBean> pages = new ArrayList<PageBean>();
@@ -47,13 +53,20 @@ public abstract class BussinessObject
 		
 		return pages;
 	}
-	//luu file > tra ve duong dan
+	/**
+	 * luu file > tra ve duong dan
+	 * @param path
+	 * @param file
+	 * @param sttfile
+	 * @param action
+	 * @return
+	 * @throws IOException
+	 */
 	public static String saveFile(String path, FormFile file,String sttfile, ActionServlet action) throws IOException
 	{
 		String filePath = action.getServletContext().getRealPath(path);
 	    File folder = new File(filePath);
-	    //dat ten lai theo thoi gian hien tai
-	    SimpleDateFormat df=new SimpleDateFormat("yyyyMMdd_HH_mm_ss");
+	    SimpleDateFormat df=new SimpleDateFormat("yyyyMMdd_HH_mm_ss"); //dat ten lai theo thoi gian hien tai
 		String currentSec=df.format(new Date());
 	    if(!folder.exists()) folder.mkdir();
 	    String[] doiFile = file.getFileName().split("\\.");
@@ -70,7 +83,16 @@ public abstract class BussinessObject
         }
 	    return null;
 	}
-	//luu nhieu file > tra ve list duong dan
+	
+	/**
+	 * luu nhieu file > tra ve list duong dan
+	 * @param path
+	 * @param fileHinhAnh
+	 * @param action
+	 * @return
+	 * @throws IOException
+	 */
+	
 	public static String[] saveMultiFile(String path, ArrayList<FormFile> fileHinhAnh, ActionServlet action) throws IOException
 	{
 		String[] lshinhanh=new String[ fileHinhAnh.size() ];
@@ -94,6 +116,12 @@ public abstract class BussinessObject
 		 }
 		
 	}
+	
+	/**
+	 * Xoa nhieu file
+	 * @param hinhXoa
+	 * @param action
+	 */
 	public static void deleteMultiFile(String[] hinhXoa, ActionServlet action) {
 		int hinhXoalen=hinhXoa.length;
 		for (int i=0;i<hinhXoalen;i++){

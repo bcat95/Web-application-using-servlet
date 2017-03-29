@@ -1,5 +1,6 @@
 package model.dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import common.DataBaseConnect;
 import model.bean.BaiDangBean;
 import model.bean.DichVuBean;
+import model.bean.TaiKhoanBean;
 /**
  * DichVuDAO
  *
@@ -51,7 +53,12 @@ public class DichVuDAO extends DataBaseConnect{
 		}
 		return list;
 	}
-	//lay du lieu dich vu tu ma bai dang
+
+	/**
+	 * Ham lay du lieu dich vu tu ma bai dang
+	 * @param maBaiDang
+	 * @return
+	 */
 	public static ArrayList<DichVuBean> infoDichVuByMa(int maBaiDang) {
 		ArrayList<DichVuBean> listDichVu = new ArrayList<DichVuBean>();
 		DichVuBean dichVu;
@@ -79,6 +86,11 @@ public class DichVuDAO extends DataBaseConnect{
 		return listDichVu;
 	}
 
+	/**
+	 * Ham Them dich vu
+	 * @param baiDang
+	 * @param dichVu
+	 */
 	public static void insertDichVu(BaiDangBean baiDang,String[] dichVu) {
 		if(baiDang.getMaBaiDang()!=0){
 			int dichvulen=dichVu.length;
@@ -110,6 +122,11 @@ public class DichVuDAO extends DataBaseConnect{
         }
 		
 	}
+	
+	/**
+	 * Ham xoa dich vu
+	 * @param maBaiDang
+	 */
 	public static void deleteDichVu(int maBaiDang) {
 		
 		try {
@@ -126,6 +143,12 @@ public class DichVuDAO extends DataBaseConnect{
 		}
 		
 	}
+	
+	/**
+	 * Ham sua dich vu
+	 * @param baiDang
+	 * @param dichVu
+	 */
 	public static void updateDichVu(BaiDangBean baiDang, String[] dichVu) {
 		deleteDichVu(baiDang.getMaBaiDang());
 		int dichvulen=dichVu.length;
@@ -149,4 +172,87 @@ public class DichVuDAO extends DataBaseConnect{
 		}
 		
 	}
+	
+	
+	/**
+	 * Ham them moi dich vu (admin)
+	 */
+	public static void themDichVu(String tenDichVu) {
+		
+		try {
+			String sql=	String.format("INSERT INTO dichvu(TenDichVu) VALUES (N'"+tenDichVu+"')");
+			PreparedStatement prepSt = getConnect().prepareStatement(sql);
+			prepSt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * Ham sua moi dich vu (admin)
+	 */
+	public static void suaDichVu(String tenDichVu, int maDichVu) {
+		
+		try {
+			String sql=	String.format("update dichvu set tendichvu= N'"+tenDichVu+"' where MaDichVu='"+maDichVu+"'");
+			PreparedStatement prepSt = getConnect().prepareStatement(sql);
+			prepSt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static void xoaDichVu(int maDichVu) {
+		String sql=	String.format("DELETE FROM dichvu WHERE madichvu = '"+maDichVu+"'");
+		try {
+			PreparedStatement prepSt = getConnect().prepareStatement(sql);
+			prepSt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * lay thong tin cua 1 dich vu
+	 * @param maDichVu
+	 */
+	public static DichVuBean getThongTinDichVu(int maDichVu) {
+		Connection conn = common.DataBaseConnect.getConnect();
+		DichVuBean dichVuBean=null;
+		String sql=	String.format("select * from dichvu where madichvu= %d", maDichVu);
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs= stmt.executeQuery(sql);
+			while(rs.next()){
+				dichVuBean= new DichVuBean();
+				dichVuBean.setMaDichVu(rs.getInt("MaDichVu"));
+				dichVuBean.setTenDichVu(rs.getString("MaDichVu"));
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return dichVuBean;
+	}
+	
+	
 }

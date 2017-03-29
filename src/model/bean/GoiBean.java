@@ -1,6 +1,6 @@
 package model.bean;
 /**
- * KhoaDAO.java
+ * GoiBean
  *
  * Version 1.0
  *

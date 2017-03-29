@@ -1,10 +1,12 @@
 package model.dao;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import common.DataBaseConnect;
+import common.StringProcess;
 
 /**
  * ThichDao
@@ -22,7 +24,13 @@ import common.DataBaseConnect;
  */
 public class ThichDAO extends DataBaseConnect{
 	private static Statement st=null;
-	//kiem tra thich
+
+	/**
+	 * kiem tra thich
+	 * @param maBaiDang
+	 * @param userName
+	 * @return
+	 */
 	public static boolean checkThich(int maBaiDang, String userName) {
 		String sql=	String.format("SELECT maBaiDang FROM Thich WHERE maBaiDang = '%s' AND userName = '%s'", maBaiDang, userName);
 		ResultSet rs = null;
@@ -41,15 +49,21 @@ public class ThichDAO extends DataBaseConnect{
 		}
 		return false;
 	}
-	//set thich
-	public static void setThich(boolean checkThich, int maBaiDang, String userName, boolean yeuThich) {
+
+	/**
+	 * ham gan du lieu cho Thich
+	 * @param checkThich
+	 * @param maBaiDang
+	 * @param userName
+	 */
+	public static void setThich(boolean checkThich, int maBaiDang, String userName) {
 		String sql="";
-		if (checkThich && yeuThich == false){
+		if (checkThich == true){
 			sql=String.format("delete from Thich where MaBaiDang = '%s' and  userName = '%s'",maBaiDang, userName);
 		}
-		if (checkThich == false && yeuThich == true){
-			sql=String.format("INSERT INTO Thich(MaBaiDang, userName) "+
-					" VALUES ( '%s','%s' )", maBaiDang, userName);
+		if (checkThich == false){
+			sql=String.format("INSERT INTO Thich(MaBaiDang, userName, NgayThich) "+
+					" VALUES ( '%s','%s','%s' )", maBaiDang, userName,new Date(StringProcess.getNgayDangDate().getTime()));
 		}
 		if (sql!=""){
 			try {

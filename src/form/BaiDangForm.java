@@ -11,6 +11,7 @@ import model.bean.BinhLuanBean;
 import model.bean.DanhMucBean;
 import model.bean.DichVuBean;
 import model.bean.HinhAnhBean;
+import model.bean.KhuyenMaiBean;
 import model.bean.TinhThanhBean;
 
 import org.apache.struts.action.ActionErrors;
@@ -40,26 +41,38 @@ public class BaiDangForm  extends ActionForm{
 	 */
 	private static final long serialVersionUID = 1L;
 	private int maBaiDang;
+	private int maLoaiTin;
 	private String tieuDe;
 	private String anhBia;
 	private boolean anhBiaXoa;
 	private String noiDung;
 	private String diaChi;
 	private String diaChiWeb;
-	private String viDO;
+	private String viDo;
 	private String kinhDo;
 	private String sDT;
 	private int giaCaoNhat;
 	private int giaThapNhat;
-	private String ngayDang;
+	private Date ngayDang;
 	private String ngayHetHan;
 	private FormFile fileAnhBia;
-	//khuyen mai
-	//private String maKhuyenMai;
-	//private ArrayList<KhuyenMaiBean> listKhuyenMai;
+	private int thongBao;
+	
+	
+
+	public int getThongBao() {
+		return thongBao;
+	}
+
+	public void setThongBao(int thongBao) {
+		this.thongBao = thongBao;
+	}
+
+	private ArrayList<KhuyenMaiBean> listKhuyenMai;
 	
 	private String userName;
 	private boolean yeuThich;
+	private boolean setThich;
 	
 	private int maDanhMuc;
 	private String tenDanhMuc;
@@ -68,6 +81,8 @@ public class BaiDangForm  extends ActionForm{
 	private int maTinhThanh;
 	private String tenTinhThanh;
 	private ArrayList<TinhThanhBean> listTinhThanh;
+	
+	private float diemDanhGia;
 	
 	private String[] dichVu;
 	private ArrayList<DichVuBean> listDichVu;
@@ -87,17 +102,54 @@ public class BaiDangForm  extends ActionForm{
 	
 	private String submit;
 	private SimpleDateFormat sdf;
-	//ngay 
+	
+	private ArrayList<BaiDangBean> listBaiDang;
+	private ArrayList<BaiDangBean> listBaiDangDanhMuc;
+	
+	/**
+	 * ngay
+	 */
 	public SimpleDateFormat getSdf()
 	{
 		if(sdf == null)
 			sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf;
 	}
-	//get set
-	
+
 	public boolean isAnhBiaXoa() {
 		return anhBiaXoa;
+	}
+
+	public int getMaLoaiTin() {
+		return maLoaiTin;
+	}
+
+	public void setMaLoaiTin(int maLoaiTin) {
+		this.maLoaiTin = maLoaiTin;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public void setSdf(SimpleDateFormat sdf) {
+		this.sdf = sdf;
+	}
+
+	public ArrayList<KhuyenMaiBean> getListKhuyenMai() {
+		return listKhuyenMai;
+	}
+
+	public void setListKhuyenMai(ArrayList<KhuyenMaiBean> listKhuyenMai) {
+		this.listKhuyenMai = listKhuyenMai;
+	}
+
+	public float getDiemDanhGia() {
+		return diemDanhGia;
+	}
+
+	public void setDiemDanhGia(float diemDanhGia) {
+		this.diemDanhGia = diemDanhGia;
 	}
 
 	public ArrayList<FormFile> getFileHinhAnh() {
@@ -278,13 +330,13 @@ public class BaiDangForm  extends ActionForm{
 	public void setDiaChiWeb(String diaChiWeb) {
 		this.diaChiWeb = diaChiWeb;
 	}
-
-	public String getViDO() {
-		return viDO;
+	
+	public String getViDo() {
+		return viDo;
 	}
 
-	public void setViDO(String viDO) {
-		this.viDO = viDO;
+	public void setViDo(String viDo) {
+		this.viDo = viDo;
 	}
 
 	public String getKinhDo() {
@@ -332,14 +384,14 @@ public class BaiDangForm  extends ActionForm{
 		}
 		return currentDate;
 	}
-	public String getNgayDang() {
+	public Date getNgayDang() {
 		return ngayDang;
 	}
 
-	public void setNgayDang(String ngayDang) {
+	public void setNgayDang(Date ngayDang) {
 		this.ngayDang = ngayDang;
 	}
-
+	
 	public String getNgayHetHan() {
 		return ngayHetHan;
 	}
@@ -403,31 +455,43 @@ public class BaiDangForm  extends ActionForm{
 	public void setSubmit(String submit) {
 		this.submit = submit;
 	}
-	//ham set thuoc tinh bai dang khi xem bai dang
+	
+	/**
+	 * ham set thuoc tinh bai dang khi xem bai dang
+	 * @param itemBD
+	 */
 	public void setXemBaiDang(BaiDangBean itemBD) {
 		//this.set
 		this.maBaiDang = itemBD.getMaBaiDang();
+		this.maLoaiTin=itemBD.getMaLoaiTin();
 		this.tieuDe = itemBD.getTieuDe();
 		this.noiDung = itemBD.getNoiDung();
 		this.anhBia=itemBD.getAnhBia();
 		this.diaChi = itemBD.getDiaChi();
 		this.diaChiWeb = itemBD.getDiaChiWeb();
-		this.viDO = itemBD.getViDo();
+		this.viDo = itemBD.getViDo();
 		this.kinhDo = itemBD.getKinhDo();
 		this.sDT = itemBD.getsDT();
 		this.giaCaoNhat = itemBD.getGiaCaoNhat();
 		this.giaThapNhat = itemBD.getGiaThapNhat();
+		this.ngayDang=itemBD.getNgayDang();
 		this.userName = itemBD.getUserName();
 		this.maDanhMuc = itemBD.getMaDanhMuc();
 		this.tenDanhMuc=itemBD.getTenDanhMuc();
 		this.maTinhThanh = itemBD.getMaTinhThanh();
 		this.tenTinhThanh=itemBD.getTenTinhThanh();
+		this.diemDanhGia=itemBD.getDiemDanhGia();
 		this.listHinhAnh=itemBD.getListHinhAnh();
 		this.listDichVu=itemBD.getListDichVu();
 		this.listBinhLuan=itemBD.getListBinhLuan();
+		this.listKhuyenMai=itemBD.getListKhuyenMai();
 	}
 	
-	//ham set thuoc tinh bai dang khi them bai dang
+
+	/**
+	 * ham set thuoc tinh bai dang khi them bai dang
+	 * @param item
+	 */
 	public void setBaiDang(BaiDangBean item)
 	{
 		this.maBaiDang = item.getMaBaiDang();
@@ -435,7 +499,7 @@ public class BaiDangForm  extends ActionForm{
 		this.noiDung = item.getNoiDung();
 		this.diaChi = item.getDiaChi();
 		this.diaChiWeb = item.getDiaChiWeb();
-		this.viDO = item.getViDo();
+		this.viDo = item.getViDo();
 		this.kinhDo = item.getKinhDo();
 		this.sDT = item.getsDT();
 		this.giaCaoNhat = item.getGiaCaoNhat();
@@ -443,15 +507,21 @@ public class BaiDangForm  extends ActionForm{
 		this.userName = item.getUserName();
 		this.maDanhMuc = item.getMaDanhMuc();
 		this.maTinhThanh = item.getMaTinhThanh();
+		this.ngayDang=item.getNgayDang();
 	}
-	//ham set thuoc tinh bai dang khi sua bai dang
+	
+	/**
+	 * ham set thuoc tinh bai dang khi sua bai dang
+	 * @param item
+	 */
 	public void setSuaBaiDang(BaiDangBean item) {
 		this.maBaiDang = item.getMaBaiDang();
+		this.maLoaiTin=item.getMaLoaiTin();
 		this.tieuDe = item.getTieuDe();
 		this.noiDung = item.getNoiDung();
 		this.diaChi = item.getDiaChi();
 		this.diaChiWeb = item.getDiaChiWeb();
-		this.viDO = item.getViDo();
+		this.viDo = item.getViDo();
 		this.kinhDo = item.getKinhDo();
 		this.sDT = item.getsDT();
 		this.giaCaoNhat = item.getGiaCaoNhat();
@@ -464,11 +534,19 @@ public class BaiDangForm  extends ActionForm{
 		this.anhBia=item.getAnhBia();
 		this.listHinhAnh=item.getListHinhAnh();
 	}
-	//ham get thuoc tinh bai dang 
+	
+	/**
+	 * ham get thuoc tinh bai dang 
+	 * @return
+	 */
 	public BaiDangBean getBaiDang() {
-		return new BaiDangBean(maBaiDang,tieuDe,noiDung,diaChi,diaChiWeb,viDO,kinhDo,sDT,giaCaoNhat,giaThapNhat,getNgayDangDate(),userName,maDanhMuc,maTinhThanh);
+		return new BaiDangBean(maBaiDang,tieuDe,noiDung,diaChi,diaChiWeb,viDo,kinhDo,sDT,giaCaoNhat,giaThapNhat,getNgayDangDate(),userName,maDanhMuc,maTinhThanh);
 	}
-	//ham set thuoc tinh binh luan
+	
+	/**
+	 * ham set thuoc tinh binh luan
+	 * @param item
+	 */
 	public void setBinhLuan(BinhLuanBean item)
 	{
 		this.bl_maBinhLuan=item.getMaBinhLuan();
@@ -479,7 +557,11 @@ public class BaiDangForm  extends ActionForm{
 		this.bl_userName = item.getUserName();
 		this.bl_diemDanhGia=item.getDiemDanhGia();
 	}
-	//ham get thuoc tinh binh luan 	
+	
+	/**
+	 * ham get thuoc tinh binh luan 	
+	 * @return
+	 */
 	public BinhLuanBean getBinhLuan() {
 		return new BinhLuanBean(bl_maBinhLuan,maBaiDang,bl_userName,bl_tieuDe,bl_noiDung,bl_ngayBinhLuan,bl_diemDanhGia);
 	}
@@ -512,6 +594,28 @@ public class BaiDangForm  extends ActionForm{
 		return errors;
 	}
 
-	
+	public boolean isSetThich() {
+		return setThich;
+	}
+
+	public void setSetThich(boolean setThich) {
+		this.setThich = setThich;
+	}
+
+	public ArrayList<BaiDangBean> getListBaiDang() {
+		return listBaiDang;
+	}
+
+	public void setListBaiDang(ArrayList<BaiDangBean> listBaiDang) {
+		this.listBaiDang = listBaiDang;
+	}
+
+	public ArrayList<BaiDangBean> getListBaiDangDanhMuc() {
+		return listBaiDangDanhMuc;
+	}
+
+	public void setListBaiDangDanhMuc(ArrayList<BaiDangBean> listBaiDangDanhMuc) {
+		this.listBaiDangDanhMuc = listBaiDangDanhMuc;
+	}
 	
 }

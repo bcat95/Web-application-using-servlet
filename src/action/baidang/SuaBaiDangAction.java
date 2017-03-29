@@ -12,7 +12,7 @@ import org.apache.struts.action.ActionMapping;
 
 import common.StringProcess;
 import form.BaiDangForm;
-import model.bean.User;
+import model.bean.TaiKhoanBean;
 import model.bo.BaiDangBO;
 import model.bo.DanhMucBO;
 import model.bo.TinhThanhBO;
@@ -26,7 +26,7 @@ public class SuaBaiDangAction extends Action{
 		request.setCharacterEncoding("UTF-8");
 		BaiDangForm thisForm = (BaiDangForm) form;
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("userActivity");
+		TaiKhoanBean user = (TaiKhoanBean) session.getAttribute("userActivity");
 		if(user == null || user.getMaQuyen() == -1)
 			return mapping.findForward("login");
 		thisForm.setUserName(user.getUserName());
@@ -42,7 +42,7 @@ public class SuaBaiDangAction extends Action{
 			}
 			else if(StringProcess.equals(thisForm.getSubmit(), "suaTin")){
 				//thong tin bai dang, anh bia xoa, hinh anh xoa..
-				System.out.println("ss of "+user.getUserName()+" la"+ thisForm.getBaiDang());
+				
 				BaiDangBO.updateBaiDang(thisForm.getBaiDang(),thisForm.isAnhBiaXoa(),thisForm.getHinhXoa(),thisForm.getFileAnhBia(),thisForm.getFileHinhAnh(),thisForm.getDichVu(),getServlet());
 				return mapping.findForward("suaTinxong");
 			}
@@ -52,6 +52,11 @@ public class SuaBaiDangAction extends Action{
 		thisForm.setListTinhThanh(TinhThanhBO.getListTinhThanh());
 		thisForm.setListDichVu(DichVuBO.getListDichVu());
 		thisForm.setSuaBaiDang(BaiDangBO.infoSuaBaiDang(thisForm.getMaBaiDang()));
+		if(thisForm.getMaLoaiTin()==2){
+			return mapping.findForward("err404");
+		}else if (thisForm.getMaLoaiTin()==1 && (StringProcess.equals(thisForm.getUserName(), user.getUserName())) == false){
+			return mapping.findForward("err404");
+		}
 		return mapping.getInputForward();
 	}
 	

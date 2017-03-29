@@ -6,26 +6,36 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="header.do" flush="true"></jsp:include>
 <script>
-$(document.body).addClass('noheabac');
-</script>
-<script>
 jQuery(document).ready(function($) {
-  $('.owl-carousel').owlCarousel({
+	 $('.bc-featured-listings').owlCarousel({
 	    items: 5,
 	    lazyLoad: true,
 	    margin: 10
 	});
+	 $('.thr_kma_sli').owlCarousel({
+		items:3,
+		animateOut: 'slideOutDown',
+		margin:0,
+	    loop:true,
+	    smartSpeed:450
+	})
   $( ".cat_des_3" ).html('😳 Mắt đẫn đờ, dạ dày rỗng, con tim rối bời chỉ vì không biết ăn gì ở đâu? Đừng lo, vào đây có hết! 🧀🍰🍦🍼 🍒🍭🍣');
 });
 </script>
 <div id="page" class="noheadbg">
 	<div class="bc-rs-container">
-		<div class="bc-header-slogan">
-			<span class="hea-slo-big">Chào mừng bạn đến với <b>Hoàn hảo</b> của danh bạ thương mại </span>
-			<span class="hea-slo-sma">
-				<p>Đây là là <b>điểm đến</b> cao cấp cho các nhà sản xuất quyết định.</p>
-				<p>Tìm một sản phẩm, dịch vụ, hoặc công ty mà bạn đang tìm kiếm.</p>
-			</span>
+		<div class="slotholder">
+			<div class="owl-carousel owl-theme thr_kma_sli fade out">
+				<logic:iterate id="km" name="homeForm" property="listBaiDangKM">
+					<div class="item ite<bean:write name="km" property="maBaiDang"/>" style="background-image:url(<bean:write name="km" property="anhBia"/>)">
+						<a class='link_out' href='xemtin.do?maBaiDang=<bean:write name="km" property="maBaiDang"/>'></a>
+						<div class="km_inf">
+							<h4><bean:write name="km" property="tieuDe"/></h4>
+							<span><bean:write name="km" property="noiDung"/></span>
+						</div>
+					</div>
+				</logic:iterate>
+			</div>
 		</div>
 		<div class="bc-header-search">
 			<div class="bc-header-search-inner">
@@ -57,53 +67,9 @@ jQuery(document).ready(function($) {
 						</html:select>
 					</div>
 				</div>
-            	<html:submit styleClass="bc-header-search-submit bc-button bc-button-danger" >
-            	Tìm
-            	</html:submit>
+            	<html:submit styleClass="bc-search-row btn btn-primary center" >Tìm</html:submit>
         	</html:form>
 			</div>
-		</div>
-		<div class="bc-header-categories">
-			<div class="bc-header-category-item" data-id="14">
-				<span class="bc-header-category-icon wl-beauty"></span>
-				<span class="bc-header-category-name">Sắc đẹp</span>
-			</div>
-			<div class="bc-header-category-item" data-id="13">
-				<span class="bc-header-category-icon wl-catering"></span>
-				<span class="bc-header-category-name">Ăn uống</span>
-			</div>
-			<div class="bc-header-category-item" data-id="16">
-				<span class="bc-header-category-icon wl-finances"></span>
-				<span class="bc-header-category-name">Tài chánh</span>
-			</div>
-			<div class="bc-header-category-item" data-id="15">
-				<span class="bc-header-category-icon wl-health"></span>
-				<span class="bc-header-category-name">Sức khỏe</span>
-			</div>
-			<div class="bc-header-category-item" data-id="17">
-				<span class="bc-header-category-icon wl-plants"></span>
-				<span class="bc-header-category-name">Cây cảnh</span>
-			</div>
-		</div>
-		<div class="slotholder">
-			<!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
-			<div id="wowslider-container0">
-			<div class="ws_images"><ul>
-			<li><img src="data0/images/dalat.jpg" alt="Đà Lạt" title="Đà Lạt" id="wows0_0"/>Đà Lạt mộng mơ và nên thơ nhờ cái lạnh cao nguyên ban đêm,  sương mù buổi sớm và những dải rừng thông bao quanh thành phố.</li>
-			<li><img src="data0/images/hanoi1.jpg" alt="Hà Nội" title="Hà Nội" id="wows0_1"/>Hà Nội thủ đô ngàn năm văn hiến luôn cuốn hút du khách bởi nét cổ kính, yên bình lạ kỳ. Với 36 khu phố nghề cổ kính của Hà Nội.</li>
-			<li><img src="data0/images/hue.jpg" alt="Huế" title="Huế" id="wows0_2"/>Huế là thành phố có bề dày văn hóa lâu đời, cảnh quan thiên nhiên đẹp và hữu tình cùng quần thể di tích lịch sử được thế giới công nhận</li>
-			<li><img src="data0/images/nhatrang.jpg" alt="Nha Trang" title="Nha Trang" id="wows0_3"/>Được tôn vinh là một trong những vịnh đẹp nhất thế giới, Vịnh Nha Trang  trở thành một điểm đến khi muốn tìm đến với biển.</li>
-			<li><img src="data0/images/quangninh.jpg" alt="Quảng Ninh" title="Quảng Ninh" id="wows0_4"/>Quảng Ninh được biết đến với những danh lam thắng cảnh được xếp vào loại  bậc đẹp nhất nước ta. Di sản thế giới vịnh Hạ Long.</li>
-			<li><a href="http://wowslider.net"><img src="data0/images/hcm.jpg" alt="http://wowslider.net/" title="Hồ Chí Minh" id="wows0_5"/></a>Hồ Chí Minh là thành phố lớn nhất Việt Nam đồng thời cũng là đầu tàu kinh tế và là trung tâm văn hóa, giáo dục quan trọng nhất của nước.</li>
-			<li><img src="data0/images/danang.jpg" alt="Đà Nẵng" title="Đà Nẵng" id="wows0_6"/>Thành phố Đà Nẵng nằm ở miền Trung Việt Nam với khoảng cách gần như chia đều giữa thủ đô Hà Nội và thành phố Hồ Chí Minh.</li>
-			</ul></div>
-			<div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.com/vi">bootstrap slider</a> by WOWSlider.com v8.7</div>
-			<div class="ws_shadow"></div>
-			</div>	
-			<script type="text/javascript" src="engine0/wowslider.js"></script>
-			<script type="text/javascript" src="engine0/script.js"></script>
-			<!-- End WOWSlider.com BODY section -->
-			<!--Off slide <div class="bc-bgimg"></div>-->
 		</div>
 	</div>
 	<div class="clearfix"></div>
@@ -112,81 +78,76 @@ jQuery(document).ready(function($) {
 			<!--begin danh sách nổi bật-->
 			<logic:iterate id="danhmuc" name="homeForm" property="listDanhMuc">
 			<bean:define id="maDanhMuc" name="danhmuc" property="maDanhMuc"></bean:define>
-			
-			<div class="col-sm-12 cat_ites">
-					<div class="column-inner cat_ite">
-						<div class="cat_inf">
-							<div class="cat_tit clearfix"><h1><bean:write name="danhmuc" property="tenDanhMuc"/></h1><html:link styleClass="vie_all" href="timKiem.do?maDanhMuc=${maDanhMuc}">xem toàn bộ</html:link></div>
-							<div class="cat_des_${maDanhMuc}">💅Biến hoá bản thân từ chân tới tóc với đủ dịch vụ: tóc, móng, spa nha💇</div>
-						</div>
-						<div class="bc-featured-listings cate_${maDanhMuc} owl-carousel owl-theme">
-							<!--begin list item nổi bật -->
-							<logic:notEmpty name="homeForm" property="listBaiDang_${maDanhMuc}">
-							<logic:iterate id="bd" name="homeForm" property="listBaiDang_${maDanhMuc}">
-							<bean:define id="maBaiDang" name="bd" property="maBaiDang"></bean:define>
-							<div class="bc-featured-listings-item">
-								<div class="bc-featured-listings-item-inner">
-									<div class="bc-featured-listings-image">
-										<!--Anh dai dien bai dang-->
-										<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-item-image" 
-											style="background: url('<bean:write name="bd" property="anhBia"/>')"></a>
-										<div class="bc-featured-image-overlay"></div>
-										<!--gia tri mac dinh-->
-										<!-- <span class="bc-featured-listings-image-note">Featured</span> -->
-										<div class="bc-featured-listings-image-meta">
-											<span class="bc-featured-listings-custom-fields">
-												<span class="bc-featured">
-													<!--dia chi bai dang-->
-													<span class="db-listing-icon wl-location" title="Address"></span>
-													<bean:write name="bd" property="diaChi"/>, 
-													<bean:write name="bd" property="tenTinhThanh"/>
+				<logic:lessThan value="7" name="danhmuc" property="maDanhMuc">
+				<div class="col-sm-12 cat_ites fade out ">
+						<div class="column-inner cat_ite">
+							<div class="cat_inf">
+								<div class="cat_tit clearfix"><h1><bean:write name="danhmuc" property="tenDanhMuc"/></h1><html:link styleClass="vie_all" href="timKiem.do?maDanhMuc=${maDanhMuc}">xem toàn bộ</html:link></div>
+								<div class="cat_des_${maDanhMuc}">💅Biến hoá bản thân từ chân tới tóc với đủ dịch vụ: tóc, móng, spa nha💇</div>
+							</div>
+							<div class="bc-featured-listings cate_${maDanhMuc} owl-carousel owl-theme">
+								<!--begin list item nổi bật -->
+								<logic:notEmpty name="homeForm" property="listBaiDang_${maDanhMuc}">
+								<logic:iterate id="bd" name="homeForm" property="listBaiDang_${maDanhMuc}">
+								<bean:define id="maBaiDang" name="bd" property="maBaiDang"></bean:define>
+								<div class="bc-featured-listings-item">
+									<div class="bc-featured-listings-item-inner">
+										<div class="bc-featured-listings-image">
+											<!--Anh dai dien bai dang-->
+											<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-item-image" 
+												style="background: url('<bean:write name="bd" property="anhBia"/>')"></a>
+											<div class="bc-featured-image-overlay"></div>
+											<!--gia tri mac dinh-->
+											<!-- <span class="bc-featured-listings-image-note">Featured</span> -->
+											<div class="bc-featured-listings-image-meta">
+												<span class="bc-featured-listings-custom-fields">
+													<span class="bc-featured">
+														<!--dia chi bai dang-->
+														<span class="db-listing-icon wl-location" title="Address"></span>
+														<bean:write name="bd" property="diaChi"/>, 
+														<bean:write name="bd" property="tenTinhThanh"/>
+													</span>
+													<span class="bc-featured">
+														<!--so dien thoai bai dang-->
+														<span class="db-listing-icon wl-phone" title="Phone number"></span>
+														<bean:write name="bd" property="sDT"/>
+													</span>
 												</span>
-												<span class="bc-featured">
-													<!--so dien thoai bai dang-->
-													<span class="db-listing-icon wl-phone" title="Phone number"></span>
-													<bean:write name="bd" property="sDT"/>
-												</span>
-											</span>
+											</div>
 										</div>
-									</div>
-									<div class="bc-featured-listings-data" >
-										<!--tieu de bai dang-->
-										<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-listings-title">
-											<bean:write name="bd" property="tieuDe"/>
-										</a>
-										<!--to ta ngan bai dang-->
-										<div class="bc-featured-listings-description">
-											<bean:write name="bd" property="noiDung" filter="fasle"/>
-										</div>
-										<div class="bc-featured-listings-meta clearfix">
-											<!--so luot thich bai dang-->
-												<i class="fa fa-heart-o" aria-hidden="true"></i> 
-												<bean:write name="bd" property="soLuotThich"/>
-											<span class="bc-featured-listings-rating" data-original="5" data-id="91">
-												<span id="bl_<bean:write name="bd" property="maBaiDang"/>" class="ratings" title="<bean:write name="bd" property="diemDanhGia"/>">
-													<span class="star"></span>
-													<span class="star"></span>
-													<span class="star"></span>
-													<span class="star"></span>
-													<span class="star"></span>
+										<div class="bc-featured-listings-data" >
+											<!--tieu de bai dang-->
+											<a href="xemtin.do?maBaiDang=${maBaiDang}" class="bc-featured-listings-title">
+												<bean:write name="bd" property="tieuDe"/>
+											</a>
+											<!--to ta ngan bai dang-->
+											<div class="bc-featured-listings-description">
+											</div>
+											<div class="bc-featured-listings-meta clearfix">
+												<!--so luot thich bai dang-->
+													<i class="fa fa-heart-o" aria-hidden="true"></i> 
+													<bean:write name="bd" property="soLuotThich"/>
+												<span class="bc-featured-listings-rating">
+													<span id="bl_<bean:write name="bd" property="maBaiDang"/>" class="ratings rating-lv<bean:write name="bd" property="diemDanhGia" format="#,0"/>" title="<bean:write name="bd" property="diemDanhGia"/>">
+														<bean:write name="bd" property="diemDanhGia"/>
+													</span>
 												</span>
-											<script>
-												var ddg = $('#bl_<bean:write name="bd" property="maBaiDang"/>').attr('title');
-												for (i = 1; i <= ddg; i++) { 
-													$('#bl_<bean:write name="bd" property="maBaiDang"/> span:nth-child('+i+')').addClass(" Full");
-												}
-											</script>
-											</span>
+											</div>
 										</div>
 									</div>
 								</div>
+								</logic:iterate>
+								</logic:notEmpty>
+								<div class="bc-featured-listings-item">
+									<div class="bc-featured-listings-item-inner bc_vie_mor">
+										Click để khám phá thêm nhiều điều thú vị nữa nhé!
+									</div>
+								</div>
+								<!--end list item nổi bật -->
 							</div>
-							</logic:iterate>
-							</logic:notEmpty>
-							<!--end list item nổi bật -->
 						</div>
-					</div>
-			</div>
+				</div>
+				</logic:lessThan>
 			</logic:iterate>
 			<!--end danh sách nổi bật-->
 		</div>

@@ -44,8 +44,8 @@
 										<script>
 										function initAutocomplete() {
 										  var map = new google.maps.Map(document.getElementById('db-single-listing-map'), {
-										    center: {lat: -33.8688, lng: 151.2195},
-										    zoom: 13,
+										    center: {lat: 16.0474325, lng: 108.1712203},
+										    zoom: 5,
 										    mapTypeId: 'roadmap'
 										  });
 										  // Create the search box and link it to the UI element.
@@ -141,7 +141,7 @@
 										</div>
 										<div class="db-field-row text-added">
 											<label class="db-field-row-label" for="listing_address_lat">Vĩ độ</label>
-											<html:text property="viDO" styleId="listing_address_lat" value="0"></html:text>
+											<html:text property="viDo" styleId="listing_address_lat" value="0"></html:text>
 										</div>
 										<div class="db-field-row text-added">
 											<label class="db-field-row-label" for="listing_address_lng">Kinh độ</label>
@@ -160,7 +160,7 @@
 											<div class="db-field-upload-container dropzone-upload dropzone-gallery dz-clickable">
 												<h3>Thư viện ảnh</h3>
 												<div class="db-upload-placeholder">
-													<input type="file" name="fileHinhAnh" multiple="multiple" id="gallery-photo-add" accept="image/*"/>
+													<input type="file" name="fileHinhAnh" multiple="multiple" id="gallery-photo-add" accept="image/*" value="file"/>
 												</div>
 											</div>
 											<span class="db-file-upload-hint">JPG, GIF or PNG. Featured images are 1000x1000 pixels.</span>
@@ -187,10 +187,13 @@
 												<div class="db-field-row">
 													<label class="db-field-row-label" for="tin_gia_min">Giá thấp nhất</label>
 													<html:text property="giaThapNhat" styleId="tin_gia_min"></html:text>
+													<html:errors property="giaError1"/>
 												</div>
 												<div class="db-field-row">
 													<label class="db-field-row-label" for="tin_gia_max">Giá cao nhất</label>
 													<html:text property="giaCaoNhat" styleId="tin_gia_max"></html:text>
+													<html:errors property="giaError1"/>
+													<p id="text"></p>
 												</div>
 										</div>
 									</div>
@@ -207,6 +210,8 @@
 											</logic:iterate>
 										</div>
 									</div>
+									
+						
 									<!-- <div class="db-field-row db-hop-times-row clearfix">
 										<div id="db-listing-map" style="width: calc(66.66% - 10px); position: relative;">
 											<label class="db-field-row-label">Khuyễn Mãi</label>
@@ -245,7 +250,7 @@
 															<span class="db-package-extra">Bao gồm quảng cáo</span>
 														</div>
 														<%-- <html:submit styleClass="btn btn-primary" property="submit" value="Đăng tin">Thêm mới</html:submit> --%>
-														<button type="submit" name="submit" value="dangTin" class="btn btn-primary">Đăng Tin</button>
+														<button type="submit" name="submit" value="dangTin" class="btn btn-primary" id="dangBai" onclick="myFunction()">Đăng Tin</button>
 													</div>
 												</div>
 											</li>
@@ -263,7 +268,7 @@
 															<span class="db-package-extra">Tin ưu tiên</span>
 														</div>
 														<%-- <html:submit styleClass="btn btn-primary" property="submit" value="Đăng tin">Thêm mới</html:submit> --%>
-														<button type="submit" name="submit" value="dangTin" class="btn btn-default">Đăng Tin</button>
+														<button type="submit" name="submit" value="dangTin" class="btn btn-default" id="dangBai" onclick="myFunction()">Đăng Tin</button>
 													</div>
 												</div>
 											</li>
@@ -280,8 +285,8 @@
 															<span class="db-fee-sticky">Ảnh bìa</span>
 															<span class="db-package-extra">Tin ưu tiên</span>
 														</div>
-														<input type="hidden" name="userName" value="<bean:write name="headerForm" property="userName"/>">
-														<button type="submit" name="submit" value="dangTin" class="btn btn-primary">Đăng Tin</button>
+														<input type="hidden" name="userName" value="<bean:write name="taiKhoanForm" property="userName"/>">
+														<button type="submit" name="submit" value="dangTin" class="btn btn-primary" id="dangBai" onclick="myFunction()">Đăng Tin</button>
 													</div>
 												</div>
 											</li>
@@ -298,6 +303,19 @@
 			</div>
 		</div>
 	</div>
+	
+	<script type="text/javascript">
+	function myFunction() {
+	    var x, text;
+
+	    x = document.getElementById("tin_gia_min").value;
+	    y= document.getElementById("tin_thap_min").value;
+	    if (x>y) 
+	        text = "Giá thấp nhất phải nhỏ hơn giá cao nhất!!!";
+	    document.getElementById("text").innerHTML = text;
+	}
+	</script>
+	
 	<script>
 		$('#listing_content').jqte();
 		$('.alert:not(:has(*))').remove();

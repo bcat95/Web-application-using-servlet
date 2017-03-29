@@ -10,41 +10,108 @@ import org.apache.struts.action.ActionMapping;
 
 import model.bean.BaiDangBean;
 import model.bean.DanhMucBean;
+import model.bean.KhuyenMaisBean;
 import model.bean.TinhThanhBean;
 
+/**
+ * HomeForm
+ *
+ * Version 1.0
+ *
+ * Date: 14-3-2017
+ *
+ * Copyright 
+ *
+ * Modification Logs:
+ * DATE                 AUTHOR          DESCRIPTION
+ * -----------------------------------------------------------------------
+ * 14-3-2017         DonNA            Create
+ */
 public class HomeForm extends ActionForm{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private int maBaiDang;
+	
 	private String maDanhMuc;
 	private String tenDanhMuc;
 	private ArrayList<DanhMucBean> listDanhMuc;
 	private String maTinhThanh;
 	private String tenTinhThanh;
-	private String soLuotThich;
 	private ArrayList<TinhThanhBean> listTinhThanh;
+	private int maBaiDang;
+	private String soLuotThich;
+	private ArrayList<KhuyenMaisBean>  listBaiDangKM;
 	private ArrayList<BaiDangBean> listBaiDang;
-	//Làm đẹp
 	private ArrayList<BaiDangBean> listBaiDang_1;
-	//Kinh doanh
 	private ArrayList<BaiDangBean> listBaiDang_2;
-	//Dich vụ ăn uống
 	private ArrayList<BaiDangBean> listBaiDang_3;
-	//Tài chánh
 	private ArrayList<BaiDangBean> listBaiDang_4;
-	//Sức khỏe
 	private ArrayList<BaiDangBean> listBaiDang_5;
-	//Khách sạn
 	private ArrayList<BaiDangBean> listBaiDang_6;
-	//Giải trí
 	private ArrayList<BaiDangBean> listBaiDang_7;
-	
 	private String[] sao;
 	
 	public HomeForm() {
 	}
 	
+	public String getMaDanhMuc() {
+		return maDanhMuc;
+	}
+
+	public void setMaDanhMuc(String maDanhMuc) {
+		this.maDanhMuc = maDanhMuc;
+	}
+
+	public String getTenDanhMuc() {
+		return tenDanhMuc;
+	}
+
+	public void setTenDanhMuc(String tenDanhMuc) {
+		this.tenDanhMuc = tenDanhMuc;
+	}
+
+	public ArrayList<DanhMucBean> getListDanhMuc() {
+		return listDanhMuc;
+	}
+
+	public void setListDanhMuc(ArrayList<DanhMucBean> listDanhMuc) {
+		this.listDanhMuc = listDanhMuc;
+	}
+
+	public String getMaTinhThanh() {
+		return maTinhThanh;
+	}
+
+	public void setMaTinhThanh(String maTinhThanh) {
+		this.maTinhThanh = maTinhThanh;
+	}
+
+	public String getTenTinhThanh() {
+		return tenTinhThanh;
+	}
+
+	public void setTenTinhThanh(String tenTinhThanh) {
+		this.tenTinhThanh = tenTinhThanh;
+	}
+
+	public ArrayList<TinhThanhBean> getListTinhThanh() {
+		return listTinhThanh;
+	}
+
+	public void setListTinhThanh(ArrayList<TinhThanhBean> listTinhThanh) {
+		this.listTinhThanh = listTinhThanh;
+	}
+
+	public ArrayList<KhuyenMaisBean> getListBaiDangKM() {
+		return listBaiDangKM;
+	}
+
+
+	public void setListBaiDangKM(ArrayList<KhuyenMaisBean> listBaiDangKM) {
+		this.listBaiDangKM = listBaiDangKM;
+	}
+
+
 	public String getSoLuotThich() {
 		return soLuotThich;
 	}
@@ -136,51 +203,6 @@ public class HomeForm extends ActionForm{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-
-	public String getMaDanhMuc() {
-		return maDanhMuc;
-	}
-	public String getTenDanhMuc() {
-		return tenDanhMuc;
-	}
-	public void setTenDanhMuc(String tenDanhMuc) {
-		this.tenDanhMuc = tenDanhMuc;
-	}
-	public void setMaDanhMuc(String maDanhMuc) {
-		this.maDanhMuc = maDanhMuc;
-	}
-	public ArrayList<DanhMucBean> getListDanhMuc() {
-		return listDanhMuc;
-	}
-	public void setListDanhMuc(ArrayList<DanhMucBean> listDanhMuc) {
-		this.listDanhMuc = listDanhMuc;
-	}
-
-	public String getMaTinhThanh() {
-		return maTinhThanh;
-	}
-
-	public void setMaTinhThanh(String maTinhThanh) {
-		this.maTinhThanh = maTinhThanh;
-	}
-
-	public String getTenTinhThanh() {
-		return tenTinhThanh;
-	}
-
-	public void setTenTinhThanh(String tenTinhThanh) {
-		this.tenTinhThanh = tenTinhThanh;
-	}
-
-	public ArrayList<TinhThanhBean> getListTinhThanh() {
-		return listTinhThanh;
-	}
-
-	public void setListTinhThanh(ArrayList<TinhThanhBean> listTinhThanh) {
-		this.listTinhThanh = listTinhThanh;
-	}
-
 	public ArrayList<BaiDangBean> getListBaiDang() {
 		return listBaiDang;
 	}
@@ -209,5 +231,4 @@ public class HomeForm extends ActionForm{
 		}
 		super.reset(mapping, request);
 	}
-
 }

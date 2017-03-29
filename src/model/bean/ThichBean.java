@@ -23,7 +23,6 @@ public class ThichBean {
 	
 	public ThichBean() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public ThichBean(String maBaiDang, String userName, String ngayThich) {
 		super();

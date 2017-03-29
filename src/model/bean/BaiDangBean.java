@@ -19,6 +19,7 @@ import java.util.Date;
  */
 
 public class BaiDangBean {
+	private int sTT;
 	private int maBaiDang;
 	private String tieuDe;
 	private String noiDung;
@@ -33,7 +34,7 @@ public class BaiDangBean {
 	private Date ngayHetHan;
 	private int soLuongTruyCap;
 	private int soLuotThich;
-	private int diemDanhGia;
+	private float diemDanhGia;
 	
 	private String userName;
 	private int maDanhMuc;
@@ -46,8 +47,13 @@ public class BaiDangBean {
 	private ArrayList<HinhAnhBean> listHinhAnh;
 	private ArrayList<DichVuBean> listDichVu;
 	private ArrayList<BinhLuanBean> listBinhLuan;
+	private ArrayList<KhuyenMaiBean> listKhuyenMai;
 	private SimpleDateFormat sdf;
-	//ngay dinh dang
+	
+	/**
+	 * dinh dang ngay
+	 * @return
+	 */
 	public SimpleDateFormat getSdf()
 	{
 		if(sdf == null)
@@ -59,7 +65,10 @@ public class BaiDangBean {
 		super();
 	}
 	
-	//lay ngay hien tai
+	/**
+	 * Ham lay ngay hien tai
+	 * @return
+	 */
 	public Date getNgayDangDate() 
 	{
 		Date date=new Date();
@@ -73,14 +82,29 @@ public class BaiDangBean {
 		}
 		return currentDate;
 	}
-	//toan bo du lieu
 	
 	public String getNoiDung() {
 		return noiDung;
 	}
 
-	//dung cho form dang bai len
-	public BaiDangBean(int maBaiDang, String tieuDe, String noiDung, String diaChi, String diaChiWeb, String viDO,
+	/**
+	 * Ham set thuoc tinh dung cho form dang bai len
+	 * @param maBaiDang
+	 * @param tieuDe
+	 * @param noiDung
+	 * @param diaChi
+	 * @param diaChiWeb
+	 * @param viDo
+	 * @param kinhDo
+	 * @param sDT
+	 * @param giaCaoNhat
+	 * @param giaThapNhat
+	 * @param ngayDang
+	 * @param userName
+	 * @param maDanhMuc
+	 * @param maTinhThanh
+	 */
+	public BaiDangBean(int maBaiDang, String tieuDe, String noiDung, String diaChi, String diaChiWeb, String viDo,
 			String kinhDo, String sDT, int giaCaoNhat, int giaThapNhat, Date ngayDang, String userName, int maDanhMuc,
 			int maTinhThanh) {
 		super();
@@ -89,7 +113,7 @@ public class BaiDangBean {
 		this.noiDung = noiDung;
 		this.diaChi = diaChi;
 		this.diaChiWeb = diaChiWeb;
-		this.viDo = viDO;
+		this.viDo = viDo;
 		this.kinhDo = kinhDo;
 		this.sDT = sDT;
 		this.giaCaoNhat = giaCaoNhat;
@@ -99,9 +123,35 @@ public class BaiDangBean {
 		this.maDanhMuc = maDanhMuc;
 		this.maTinhThanh = maTinhThanh;
 	}
-	//tat ca cac truong
 	
-	public BaiDangBean(int maBaiDang, String tieuDe, String noiDung, String diaChi, String diaChiWeb, String viDO,
+	/**
+	 * Ham set thuoc tinh tat ca cac truong
+	 * @param maBaiDang
+	 * @param tieuDe
+	 * @param noiDung
+	 * @param diaChi
+	 * @param diaChiWeb
+	 * @param viDo
+	 * @param kinhDo
+	 * @param sDT
+	 * @param giaCaoNhat
+	 * @param giaThapNhat
+	 * @param ngayDang
+	 * @param ngayHetHan
+	 * @param soLuongTruyCap
+	 * @param soLuotThich
+	 * @param diemDanhGia
+	 * @param userName
+	 * @param maDanhMuc
+	 * @param tenDanhMuc
+	 * @param maLoaiTin
+	 * @param maTinhThanh
+	 * @param tenTinhThanh
+	 * @param anhBia
+	 * @param listHinhAnh
+	 * @param listDichVu
+	 */
+	public BaiDangBean(int maBaiDang, String tieuDe, String noiDung, String diaChi, String diaChiWeb, String viDo,
 			String kinhDo, String sDT, int giaCaoNhat, int giaThapNhat, Date ngayDang, Date ngayHetHan,
 			int soLuongTruyCap, int soLuotThich, int diemDanhGia, String userName, int maDanhMuc, String tenDanhMuc,
 			int maLoaiTin, int maTinhThanh, String tenTinhThanh, String anhBia, ArrayList<HinhAnhBean> listHinhAnh,ArrayList<DichVuBean> listDichVu) {
@@ -111,7 +161,7 @@ public class BaiDangBean {
 		this.noiDung = noiDung;
 		this.diaChi = diaChi;
 		this.diaChiWeb = diaChiWeb;
-		this.viDo = viDO;
+		this.viDo = viDo;
 		this.kinhDo = kinhDo;
 		this.sDT = sDT;
 		this.giaCaoNhat = giaCaoNhat;
@@ -132,10 +182,31 @@ public class BaiDangBean {
 		this.listDichVu=listDichVu;
 	}
 	
-	//get and set
 	
+	//get and set
 	public String getTenLoaiTin() {
 		return tenLoaiTin;
+	}
+
+	public ArrayList<KhuyenMaiBean> getListKhuyenMai() {
+		return listKhuyenMai;
+	}
+
+	public void setListKhuyenMai(ArrayList<KhuyenMaiBean> listKhuyenMai) {
+		this.listKhuyenMai = listKhuyenMai;
+	}
+
+	public int getsTT() {
+		return sTT;
+	}
+
+	public void setsTT(int sTT) {
+		this.sTT = sTT;
+	}
+
+	
+	public void setSdf(SimpleDateFormat sdf) {
+		this.sdf = sdf;
 	}
 
 	public ArrayList<BinhLuanBean> getListBinhLuan() {
@@ -173,12 +244,11 @@ public class BaiDangBean {
 	public void setListHinhAnh(ArrayList<HinhAnhBean> listHinhAnh) {
 		this.listHinhAnh = listHinhAnh;
 	}
-
-	public int getDiemDanhGia() {
+	public float getDiemDanhGia() {
 		return diemDanhGia;
 	}
 
-	public void setDiemDanhGia(int diemDanhGia) {
+	public void setDiemDanhGia(float diemDanhGia) {
 		this.diemDanhGia = diemDanhGia;
 	}
 
@@ -229,7 +299,7 @@ public class BaiDangBean {
 		return viDo;
 	}
 
-	public void setViDO(String viDo) {
+	public void setViDo(String viDo) {
 		this.viDo = viDo;
 	}
 

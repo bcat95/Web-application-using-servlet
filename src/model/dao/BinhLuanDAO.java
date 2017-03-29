@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import common.DataBaseConnect;
 import common.StringProcess;
 import model.bean.BinhLuanBean;
-import model.bean.HinhAnhBean;
 /**
  * BinhLuanDAO
  *
@@ -30,15 +29,18 @@ public class BinhLuanDAO extends DataBaseConnect{
 	private static Statement st=null;
 	private static ResultSet rs=null;
 
+	/**
+	 * Ham them binh luan
+	 * @param binhLuan
+	 */
 	public static void insertBinhLuan(BinhLuanBean binhLuan) {
 		try {
 			String insertTableSQL = "insert into BinhLuan values(?,?,?,?,?,?)";
-			System.out.println(insertTableSQL);
 			prepSt = getConnect().prepareStatement(insertTableSQL);
 			prepSt.setString(1, binhLuan.getTieuDe());
 			prepSt.setString(2, binhLuan.getNoiDung());
-			prepSt.setDate(3, new Date(StringProcess.getNgayDangDate().getTime()));
-			prepSt.setInt(4, binhLuan.getDiemDanhGia());
+			prepSt.setInt(3,binhLuan.getDiemDanhGia());
+			prepSt.setDate(4, new Date(StringProcess.getNgayDangDate().getTime()));
 			prepSt.setInt(5, binhLuan.getMaBaiDang());
 			prepSt.setString(6, binhLuan.getUserName());
 			prepSt.executeUpdate();
@@ -53,6 +55,11 @@ public class BinhLuanDAO extends DataBaseConnect{
 		}
 	}
 
+	/**
+	 * Ham thong tin chi tiet cua binh luan theo bai dang tuong ung
+	 * @param maBaiDang
+	 * @return
+	 */
 	public static ArrayList<BinhLuanBean> infoBinhLuanByMa(int maBaiDang) {
 		ArrayList<BinhLuanBean> listBinhLuan = new ArrayList<BinhLuanBean>();
 		BinhLuanBean binhLuan;
