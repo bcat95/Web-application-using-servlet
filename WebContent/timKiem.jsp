@@ -28,7 +28,7 @@
 								<!--tim kiem theo danh muc -->
 								
 								<div class="db-field-row db-search-categories custom-select">
-									<html:select onchange="this.form.submit()"  property="maDanhMuc">
+									<html:select property="maDanhMuc">
 										<option value="">-- Chọn danh mục --</option>
 										<html:optionsCollection name="timKiemForm" property="listDanhMuc" 
 										label="tenDanhMuc" value="maDanhMuc" />
@@ -37,7 +37,7 @@
 								<!--end tim kiem theo danh muc -->
 								<!--tim kiem theo khu vuc -->
 								<div class="db-field-row custom-select">
-									<html:select onchange="this.form.submit()" property="maTinhThanh">
+									<html:select property="maTinhThanh">
 										<option value="">-- Chọn khu vực --</option>
 										<html:optionsCollection name="timKiemForm" property="listTinhThanh"
 										label="tenTinhThanh" value="maTinhThanh" />

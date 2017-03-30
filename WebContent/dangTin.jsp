@@ -30,6 +30,7 @@
 										<div class="alert alert-warning">
 											<html:errors property="noiDungError"/>
 										</div>
+										<span class='required_sys'>*</span>
 									</div>
 									<div class="db-field-row flexbox">
 											<html:select property="maDanhMuc" styleClass="required" style="margin-right: 10px;">

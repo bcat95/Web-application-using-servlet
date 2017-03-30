@@ -2973,6 +2973,10 @@ td.bcblock.noidung {
     width: 250px;
     z-index: 2;
     float: left;
+    
+}
+ .bc_map_lef .db-search-input{
+	padding-top: 30px;
 }
 .db-search-controls{
 	max-width: 820px;

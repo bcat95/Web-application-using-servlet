@@ -32,7 +32,7 @@
 							<div class="db-search-row clearfix">
 								<!--tim kiem theo khu vuc -->
 								<div class="form-group custom-select">
-									<html:select onchange="this.form.submit()" property="maTinhThanh" styleId="tenTinhThanh">
+									<html:select property="maTinhThanh" styleId="tenTinhThanh">
 										<option value="">-- Chọn khu vực --</option>
 										<html:optionsCollection name="timKiemForm" property="listTinhThanh"
 										label="tenTinhThanh" value="maTinhThanh" />
@@ -42,7 +42,7 @@
 								<!--tim kiem theo danh muc -->
 								
 								<div class="form-group db-search-categories custom-select">
-									<html:select onchange="this.form.submit()"  property="maDanhMuc" styleId="tenDanhMuc">
+									<html:select property="maDanhMuc" styleId="tenDanhMuc">
 										<option value="">-- Chọn danh mục --</option>
 										<html:optionsCollection name="timKiemForm" property="listDanhMuc" 
 										label="tenDanhMuc" value="maDanhMuc" />
@@ -60,7 +60,7 @@
 							<!-- end tim kiem 1 -->
 								<!-- tim kiem 2 -->
 								<div class="db-search-row clearfix">
-									<html:submit styleClass="bc-create-listing bc-button bc-button-invert" >Xem</html:submit>
+									<html:submit styleClass="bc-create-listing bc-button bc-button-invert" >Tìm kiếm</html:submit>
 									<!-- <div class="form-group db-slider-field-wrapper">
 										<label class="form-group-label" for="listing_search_radius">Search radius (Kilometers)</label>
 										<div class="db-slider-field ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all text-added" data-value=" km">
