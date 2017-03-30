@@ -28,7 +28,7 @@ import model.bean.LienHe;
 public class LienHeDAO {
 	String url = "jdbc:sqlserver://localhost:1433;databaseName=SE12";
 	String userName = "sa";
-	String password = "12345678-";
+	String password = "12345678";
 	Connection connection;
 	
 	/**
@@ -38,7 +38,6 @@ public class LienHeDAO {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			connection = DriverManager.getConnection(url, userName, password);
-			System.out.println("Ket noi thanh cong");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("Ket noi loi");
@@ -214,11 +213,18 @@ public class LienHeDAO {
 		connect();
 		String sql=	String.format("INSERT INTO LienHe(TieuDe,NoiDung,NgayGui,SDT,Email,MaVanDe) "+
 					" VALUES ( N'%s',N'%s','%s','%s','%s','%s' )", tieuDe, noiDung, new Date(StringProcess.getNgayDangDate().getTime()), soDT, email, maVanDe);
+		System.out.println("sql "+sql);
 		try {
 			Statement stmt = connection.createStatement();
 			stmt.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

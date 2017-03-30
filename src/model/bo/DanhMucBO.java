@@ -13,7 +13,7 @@ public class DanhMucBO {
 	public void themDanhMuc(String tenDanhMuc) {
 		DanhMucDAO.themDanhMuc(tenDanhMuc);;
 	}
-	public static void suaDanhMuc(int maDanhMuc,String tenDanhMuc) {
+	public void suaDanhMuc(int maDanhMuc,String tenDanhMuc) {
 		DanhMucDAO.suaDanhMuc(maDanhMuc, tenDanhMuc);;
 	}
 	public void xoaDanhMuc(int maDanhMuc) {

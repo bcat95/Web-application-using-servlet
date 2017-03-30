@@ -587,7 +587,7 @@ public class BaiDangDAO extends DataBaseConnect{
 				e.printStackTrace();
 			}
 		}
-		baiDang.setListKhuyenMai(khuyenMaiDAO.getListKhuyenMai(maBaiDang));
+		baiDang.setListKhuyenMai(khuyenMaiDAO.getListKhuyenMaiExp(maBaiDang));
 		baiDang.setListHinhAnh(HinhAnhDAO.infoHinhAnhByMa(maBaiDang));
 		baiDang.setListDichVu(DichVuDAO.infoDichVuByMa(maBaiDang));
 		baiDang.setListBinhLuan(BinhLuanDAO.infoBinhLuanByMa(maBaiDang));

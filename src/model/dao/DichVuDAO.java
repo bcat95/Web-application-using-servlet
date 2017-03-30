@@ -1,5 +1,6 @@
 package model.dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -170,4 +171,87 @@ public class DichVuDAO extends DataBaseConnect{
 		}
 		
 	}
+	
+	
+	/**
+	 * Ham them moi dich vu (admin)
+	 */
+	public static void themDichVu(String tenDichVu) {
+		
+		try {
+			String sql=	String.format("INSERT INTO dichvu(TenDichVu) VALUES (N'"+tenDichVu+"')");
+			PreparedStatement prepSt = getConnect().prepareStatement(sql);
+			prepSt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * Ham sua moi dich vu (admin)
+	 */
+	public static void suaDichVu(String tenDichVu, int maDichVu) {
+		
+		try {
+			String sql=	String.format("update dichvu set tendichvu= N'"+tenDichVu+"' where MaDichVu='"+maDichVu+"'");
+			PreparedStatement prepSt = getConnect().prepareStatement(sql);
+			prepSt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static void xoaDichVu(int maDichVu) {
+		String sql=	String.format("DELETE FROM dichvu WHERE madichvu = '"+maDichVu+"'");
+		try {
+			PreparedStatement prepSt = getConnect().prepareStatement(sql);
+			prepSt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * lay thong tin cua 1 dich vu
+	 * @param maDichVu
+	 */
+	public static DichVuBean getThongTinDichVu(int maDichVu) {
+		Connection conn = common.DataBaseConnect.getConnect();
+		DichVuBean dichVuBean=null;
+		String sql=	String.format("select * from dichvu where madichvu= %d", maDichVu);
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs= stmt.executeQuery(sql);
+			while(rs.next()){
+				dichVuBean= new DichVuBean();
+				dichVuBean.setMaDichVu(rs.getInt("MaDichVu"));
+				dichVuBean.setTenDichVu(rs.getString("MaDichVu"));
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return dichVuBean;
+	}
+	
+	
 }

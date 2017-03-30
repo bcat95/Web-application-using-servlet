@@ -82,7 +82,7 @@ jQuery(document).ready(function($) {
 			<!--begin danh sách nổi bật-->
 			<logic:iterate id="danhmuc" name="homeForm" property="listDanhMuc">
 			<bean:define id="maDanhMuc" name="danhmuc" property="maDanhMuc"></bean:define>
-				<logic:lessThan value="7" name="danhmuc" property="maDanhMuc">
+				<logic:lessThan value="8" name="danhmuc" property="maDanhMuc">
 				<div class="col-sm-12 cat_ites fade out ">
 						<div class="column-inner cat_ite">
 							<div class="cat_inf">

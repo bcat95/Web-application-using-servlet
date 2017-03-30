@@ -440,9 +440,10 @@ header {
     line-height: 1.2;
     max-width: 80%;
     left:10px;
+    font-size: 15px;]
 }
 .slotholder .owl-carousel .km_inf h4 {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.7);
     display: inline-block;
     padding: 5px 10px;
     white-space: nowrap;
@@ -456,7 +457,7 @@ header {
 	display: block;
 }
 .slotholder .owl-carousel .km_inf span {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.8);
     display: inline-block;
     padding: 5px 10px;
     max-height: 34px;
@@ -1730,6 +1731,9 @@ h3 {
 }
 .db-amenitie-item a {
     color: #53666D;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .db-amenitie-item img {
     margin-right: 12px;

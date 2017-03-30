@@ -24,7 +24,34 @@ public class KhuyenMaiDAO  extends DataBaseConnect{
 		ArrayList<KhuyenMaiBean> list = new ArrayList<KhuyenMaiBean>();
 		try {
 			st=getConnect().createStatement();
-			rs=st.executeQuery("select * FROM KhuyenMai where MaBaiDang = "+maBaiDang+" and  GETDATE() between NgayBatDau and NgayKetThuc order by MaKhuyenMai ");
+			rs=st.executeQuery("select * FROM KhuyenMai where MaBaiDang = "+maBaiDang+" order by MaKhuyenMai ");
+			KhuyenMaiBean khuyenMai;
+			while(rs.next()){
+				khuyenMai = new KhuyenMaiBean();
+				khuyenMai.setMaKhuyenMai(rs.getInt("maKhuyenMai"));
+				khuyenMai.setTieuDe(rs.getString("TieuDe"));
+				khuyenMai.setNoiDung(rs.getString("NoiDung"));
+				khuyenMai.setNgayBatDau(rs.getString("NgayBatDau"));
+				khuyenMai.setNgayKetThuc(rs.getString("NgayKetThuc"));
+				khuyenMai.setMaBaiDang(rs.getInt("MaBaiDang"));
+				list.add(khuyenMai);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				getConnect().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	public ArrayList<KhuyenMaiBean> getListKhuyenMaiExp(int maBaiDang) {
+		ArrayList<KhuyenMaiBean> list = new ArrayList<KhuyenMaiBean>();
+		try {
+			st=getConnect().createStatement();
+			rs=st.executeQuery("select * FROM KhuyenMai where MaBaiDang = "+maBaiDang+" and GETDATE() between NgayBatDau and NgayKetThuc order by MaKhuyenMai ");
 			KhuyenMaiBean khuyenMai;
 			while(rs.next()){
 				khuyenMai = new KhuyenMaiBean();

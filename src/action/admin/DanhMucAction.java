@@ -34,6 +34,10 @@ public class DanhMucAction extends Action{
 			danhMucBO.themDanhMuc(tenDanhMuc);
 			danhMucForm.setTenDanhMuc("");
 		}
+		//Sua
+		if("Sua".equals(danhMucForm.getSubmit())){
+			danhMucBO.suaDanhMuc(maDanhMuc, tenDanhMuc);
+		}
 		ArrayList<DanhMucBean> listDanhMuc = danhMucBO.getListDanhMuc();
 		danhMucForm.setListDanhMuc(listDanhMuc);
 		return mapping.findForward("dsDanhMuc");

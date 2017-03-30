@@ -79,6 +79,11 @@
 									    </div>
 									  </div>
 									</div>
+									<script>
+									window.onload = function(){
+										$("#suaKhuyenMai_${bckhuyenmai.maKhuyenMai}").appendTo("#bc_edit_km");
+									};
+									</script>
 								</display:column>
 								<display:setProperty name="paging.banner.placement" value="bottom" />
 								<display:setProperty name="basic.msg.empty_list">
@@ -147,6 +152,7 @@
 					<!-- end khuyen mai them moi khuyen mai -->
 					</div>
 				</div>
+				<div id="bc_edit_km"></div>
 			</div>
 		</div>
 	</div>
@@ -156,8 +162,8 @@
 		$("#add_noiDung").attr("placeholder", "Nội dung của bạn");
 		$("input").prop('required',true);
 		$("textarea").prop('required',true);
-		$("#ngayBatDau").prop('type','date');
-		$("#ngayKetThuc").prop('type','date');
+		$("#khuyenmai_themkhuyenmai #ngayBatDau").prop('type','date');
+		$("#khuyenmai_themkhuyenmai #ngayKetThuc").prop('type','date');
 	});
 	</script>
 	<!-- end gui lien he -->

@@ -24,6 +24,7 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<!-- Vannasone admin form beans -->
 		<form-bean name="danhSachBaiDangDaDuyetForm" type="form.DanhSachBaiDangDaDuyetForm" />
 		<form-bean name="danhSachTaiKhoanForm" type="form.DanhSachTaiKhoanForm" />
+		<form-bean name="danhSachDichVuForm" type="form.DanhSachDichVuForm" />
 		<!-- end Vannasone admin form beans -->
 		<!-- end Vannasone form beans -->
 		
@@ -198,8 +199,15 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="suaTK" path="/admin/suaTaiKhoan.jsp" />
 			<forward name="suaTKxong" path="/admin/danhSachTaiKhoan.do" redirect="true"/>
 		</action>
-		
-		
+		<action input="/admin/danhSachDichVu.jsp" name="danhSachDichVuForm" 
+			path="/admin/danhSachDichVu" scope="request" type="action.dichvu.DanhSachDichVuAction" validate="true">
+			<forward name="dsDichVu" path="/admin/danhSachDichVu.jsp"/>
+			<forward name="themDichVu" path="/admin/danhSachDichVu.jsp" />
+		</action>
+		<action name="danhSachDichVuForm"
+			path="/admin/xoaDichVu" scope="request" type="action.dichvu.XoaDichVuAction" validate="true">
+			<forward name="xoaDichVu" path="/admin/danhSachDichVu.do" redirect="true"/>
+		</action>
 		<!-- end Vannasone tao action -->
 		<!-- ThinhDM action -->
 		<action input="/guiLienHe.jsp" name="lienHeForm"
@@ -208,15 +216,15 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="themlherror" path="/guiLienHe.jsp" />
 			<forward name="themlhxong" path="/tinDangThanhCong.jsp" redirect="true"/>
 		</action>
-		<action input="/danhsachlienhe.jsp" name="danhSachLienHeForm"
-			path="/danhsachlh" scope="request" type="action.DanhSachLienHeAction">
-			<forward name="dsLienHe" path="/danhsachlienhe.jsp" redirect="true"/>
+		<action input="/admin/danhsachlienhe.jsp" name="danhSachLienHeForm"
+			path="/admin/danhsachlh" scope="request" type="action.DanhSachLienHeAction">
+			<forward name="dsLienHe" path="/admin/danhsachlienhe.jsp" redirect="true"/>
 		</action>
-		<!--<action input="/danhsachlienhe.jsp" name="lienHeForm"
-			path="/xoalh" scope="request" type="action.XoaLienHeAction">
-			<forward name="xoalh" path="/xoaLienHe.jsp" />
-			<forward name="xoalhxong" path="/danhsachlh.do" redirect="true"/>
-		</action>-->
+		<action input="/admin/danhsachlienhe.jsp" name="lienHeForm"
+			path="/admin/xoalh" scope="request" type="action.XoaLienHeAction">
+			<forward name="xoalh" path="/admin/xoaLienHe.jsp" />
+			<forward name="xoalhxong" path="/admin/danhsachlh.do" redirect="true"/>
+		</action>
 		<action input="/danhsachlienhe.jsp" name="lienHeForm" path="/xoalh"
 			scope="request" type="action.XoaLienHeAction">
 			<forward name="xoaLHxong" path="/danhsachlh.do" redirect="true" />

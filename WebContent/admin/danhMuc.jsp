@@ -33,7 +33,42 @@
                    <html:form action="admin/danhMuc" method="post">
 						<td><bean:write name="dm" property="maDanhMuc"/></td>
 						<td><bean:write name="dm" property="tenDanhMuc"/></td>
-						<td><a href="#" class="btn btn-info" ><i class="icon-pencil"></i></a></td>
+						<td class="center">
+						   	<a href="#sDM_${maDanhMuc}" data-toggle="modal" class="btn btn-info" ><i class="icon-pencil"></i></a>
+							<div id="sDM_${maDanhMuc}" class="modal hide">
+							       <div class="modal-header">
+							         <button data-dismiss="modal" class="close" type="button">×</button>
+							         <h3>Sửa danh mục</h3>
+							       </div>
+							       <div class="modal-body">
+							       
+							        	<!-- <form action="suaDichVu.do" name="danhSachDichVuForm" method="get" class="form-horizontal"> -->
+							        	<%-- <html:form action="admin/suaDichVu" name="danhSachDichVuForm" > --%>
+							        		<div class="control-group">
+								              <label class="control-label">Mã danh mục :</label>
+								              <div class="controls">
+								                <html:text name="dm" property="maDanhMuc" readonly="true" ></html:text>
+								              </div>
+								            </div>
+								            <div class="control-group">
+								              <label class="control-label">Tên danh mục :</label>
+								              <div class="controls">
+								                <html:text styleClass="span11" name="dm" property="tenDanhMuc" ></html:text>
+								              </div>
+								            </div>
+								            <div class="form-actions">
+								              <button type="submit" name="submit" value="Sua" class="btn btn-success">
+								              <%-- <a class="btn btn-primary" href="suaDichVu.do?maDichVu=${maDichVu}tenDichVu=${tenDichVu}"> --%>
+								              Cập nhật
+								              </button>
+								              <a data-dismiss="modal" class="btn btn-warning" href="#">Hủy</a>
+								            </div>
+								       <%--  </html:form> --%>
+							         
+							       </div>
+							       <%-- <div class="modal-footer"> <a class="btn btn-primary" href="xoaDichVu.do?maDichVu=${maDichVu}">Xác nhận</a> <a data-dismiss="modal" class="btn" href="#">Hủy</a> </div> --%>
+						</div>
+						</td>
 						<td class="center">
 						    <bean:define id="maDanhMuc" name="dm" property="maDanhMuc"></bean:define>
 							<a href="#rmDM_${maDanhMuc}" data-toggle="modal" class="btn btn-warning"><i class="icon-remove"></i></a>							
@@ -64,7 +99,7 @@
             <div class="control-group">
               <label class="control-label">Tên danh mục (<span class="inp_req">*</span>):</label>
               <div class="controls">
-                <input type="text" class="span11" name="tenDanhMuc" placeholder="Tên danh mục" required="required" pattern="^[a-zA-Z_0-9 ]+$"/>
+                <input type="text" class="span11" name="tenDanhMuc" placeholder="Tên danh mục" required="required" pattern="^[a-zA-Z0-9 \u0080-\u9fff , .]+$"/>
               </div>
             </div>
             <div class="form-actions">

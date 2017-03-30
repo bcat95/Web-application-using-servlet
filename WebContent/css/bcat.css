@@ -331,3 +331,6 @@ a.link_out {
 .owl-carousel.owl-drag .owl-item {
     z-index: 99;
 }
+.LoggedOut #respond{
+	display: none;
+}
