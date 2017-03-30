@@ -6,7 +6,7 @@
 <jsp:include page="header.do" flush="true"></jsp:include>
 	<div id="main" class="site-main container">
 		<div id="main-content" class="main-content row">
-			<div class="entry-header"><h1 class="entry-title">Đăng tin</h1></div>
+			<div class="entry-header"><h1 class="entry-title">Thêm mới địa điểm</h1></div>
 			<div id="primary" class="content-area sidebar-no clearfix ">
 				<div id="content" class="site-content " role="main">
 					<!--dang tin-->
@@ -161,7 +161,7 @@
 													<input type="file" name="fileHinhAnh" multiple="multiple" id="gallery-photo-add" accept="image/*" value="file"/>
 												</div>
 											</div>
-											<span class="db-file-upload-hint">JPG, GIF or PNG. Featured images are 1000x1000 pixels.</span>
+											<span class="db-file-upload-hint">Nên sử dụng định dạng ảnh JPG, GIF or PNG, chất lượng ảnh trên 1000x1000 pixels.</span>
 										</div>
 										<div class="thr_thumb col-md-8">
 											<div class="thr_thumb">
@@ -185,11 +185,25 @@
 												<div class="db-field-row">
 													<label class="db-field-row-label" for="tin_gia_min">Giá thấp nhất</label>
 													<html:text property="giaThapNhat" styleId="tin_gia_min"></html:text>
+													<span id="vie_gia_min"></span>
 												</div>
 												<div class="db-field-row">
 													<label class="db-field-row-label" for="tin_gia_max">Giá cao nhất</label>
 													<html:text property="giaCaoNhat" styleId="tin_gia_max"></html:text>
+													<span id="vie_gia_max"></span>
 												</div>
+												<script>
+												$( "#tin_gia_min" ).change(function() {
+												 	var vie_min=$( "#tin_gia_min" ).val();
+												 	var vie_min=vie_min.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+												  $('#vie_gia_min').html(vie_min+" vnđ");
+												});
+												$( "#tin_gia_max" ).change(function() {
+												 	var vie_max=$( "#tin_gia_max" ).val();
+												 	var vie_max=vie_max.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+												  $('#vie_gia_max').html(vie_max+" vnđ");
+												});
+												</script>
 										</div>
 									</div>
 									<div class="db-field-row control-group db-hop-times-row bor_row clearfix">

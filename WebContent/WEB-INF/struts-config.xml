@@ -225,10 +225,6 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="xoalh" path="/admin/xoaLienHe.jsp" />
 			<forward name="xoalhxong" path="/admin/danhsachlh.do" redirect="true"/>
 		</action>
-		<action input="/danhsachlienhe.jsp" name="lienHeForm" path="/xoalh"
-			scope="request" type="action.XoaLienHeAction">
-			<forward name="xoaLHxong" path="/danhsachlh.do" redirect="true" />
-		</action>
 		<action input="/xemLienHe.jsp" name="lienHeForm"
 			path="/xemlh" scope="request" type="action.ChiTietLHAction">
 			<!-- path="/xemlh" scope="request" type="action.ChiTietLHAction"> -->

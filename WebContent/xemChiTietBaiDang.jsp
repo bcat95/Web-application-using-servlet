@@ -96,7 +96,7 @@ body {
 						<div class="hea_inf_thr clearfix">
 							<div class="rating rating-lv<bean:write name="baiDangForm" property="diemDanhGia" format="#,0"/>">
 								<meta itemprop="reviewCount" content="26">
-								<span itemprop="ratingValue"><bean:write name="baiDangForm" property="diemDanhGia"/></span>
+								<span itemprop="ratingValue"><bean:write name="baiDangForm" property="diemDanhGia" format="0.0"/></span>
 							</div>
 						</div>
 					<!-- end  head noi dung tin-->

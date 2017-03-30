@@ -451,6 +451,7 @@ header {
     font-size: 13px;
 	text-overflow: ellipsis;
 	margin: 0;
+	max-width: 100%;
 }
 .slotholder .owl-carousel .km_inf h4:after{
 	content: "";
@@ -1539,7 +1540,7 @@ table#threads thead{
     font-family: 'Poppins',tahoma;
     padding: 0;
     margin: 0;
-    font-size: 30px;
+    font-size: 24px;
     margin-bottom: 10px;
     line-height: 1.3;
     margin-right: 390px;
@@ -2586,6 +2587,7 @@ body:not(.home) .bc-create-listing, body:not(.home) .bc-author-account, body.blo
 }
 .old_anhBia div{
 	position: relative;
+	overflow: hidden;
 }
 .old_anhBia input[type="checkbox"] {
     position: absolute;

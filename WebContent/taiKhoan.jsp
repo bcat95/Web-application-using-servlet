@@ -121,7 +121,7 @@
 															<display:column property="tenLoaiTin" title="Trạng thái" class="bcblock tenlt"/>
 															<display:column property="tenDanhMuc" title="Danh mục" class="bcblock tendm"/>
 															<display:column property="ngayHetHan" title="Hết hạn vào" class="bcblock ngayhh"></display:column>
-															<display:column property="tenLoaiTin" title="Dán lên cao"></display:column>
+															<%-- <display:column property="tenLoaiTin" title="Dán lên cao"></display:column> --%>
 															<%-- <bean:define id="maLoaiTin" name="bcbaidang" property="maLoaiTin"></bean:define> --%>
 															<display:column title="Hành động">
 																<html:link action="/khuyenmai?maBaiDang=${bcbaidang.maBaiDang}" styleClass="db-edit-listing db-account-listing-option gift">

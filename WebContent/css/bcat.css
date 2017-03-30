@@ -334,3 +334,13 @@ a.link_out {
 .LoggedOut #respond{
 	display: none;
 }
+span#vie_gia_min {
+    position: absolute;
+    right: 0;
+    font-size: 12px;
+}
+span#vie_gia_max {
+    position: absolute;
+    right: 0;
+    font-size: 12px;
+}

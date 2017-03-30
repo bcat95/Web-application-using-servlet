@@ -38,10 +38,15 @@
 						<td><bean:write name="bd" property="ngayDang"/></td>
 						<bean:define id="mbd" name="bd" property="maBaiDang"></bean:define>
 						<td class="center">
-						<html:link action="admin/xemtinchuaduyet?maBaiDang=${mbd}" styleClass="btn btn-info btn-mini">
+						<html:link action="admin/xemtinchuaduyet?maBaiDang=${mbd}" styleClass="btn btn-success btn-mini">
 							<i class="fa fa-pencil fa-fw"></i><span class="db-account-listing-option-hover"> Xem</span>
 						</html:link>
 						</td>
+						 <td class="center">
+                             <html:link action="/suatin?maBaiDang=${mbd}" styleClass="btn btn-info btn-mini">
+                                 <i class="glyphicon glyphicon-trash"></i><span class="db-account-listing-option-hover"> Sửa</span>
+                             </html:link>
+                     	</td>
 						<td class="center">
                              <html:link action="admin/goBoTinChuaDuyet?maBaiDang=${mbd}" styleClass="btn btn-warning btn-mini">
                                  <i class="glyphicon glyphicon-trash"></i><span class="db-account-listing-option-hover"> Xóa</span>

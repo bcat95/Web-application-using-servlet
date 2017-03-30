@@ -37,7 +37,7 @@
 			            	</html:select>
 			        </div>
 			        <div class="form-group">
-			            	<html:submit styleClass="btn btn-primary" property="submit" value="submit">Thêm liên hệ</html:submit>
+			            	 <button type="submit" class="btn btn-primary" name="submit" value="submit" style="max-width: 170px;height: 39px;">Thêm liên hệ</button>
 			                <button class="btn btn-primary" onclick="history.go(-1);">Quay lại</button>
 			        </div>
 			    </html:form>
