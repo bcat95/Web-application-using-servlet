@@ -1,8 +1,6 @@
-# MockProject-SE12
+# Web application using servlet
 
-Xây dựng hệ thống website rao vặt
-
-Java servlet code website
+Xây dựng website chia sẻ địa điểm hấp dẫn - Java Servlet
 
 ![Giới thiêu](https://github.com/bcat95/MockProject-SE12/blob/master/screenshot/Slide.PNG?raw=true)
 
@@ -28,8 +26,6 @@ Hệ thống có chức năng phân cấp người sử dụng nên:
 ![Bản đồ](https://github.com/bcat95/MockProject-SE12/blob/master/screenshot/ban%20do.png?raw=true)
 
 ![Bài viết](https://github.com/bcat95/MockProject-SE12/blob/master/screenshot/bai%20viet.png?raw=true)
-
-![Slide](https://github.com/bcat95/MockProject-SE12/blob/master/screenshot/ban%20do.png?raw=true)
 
 ![Admin](https://github.com/bcat95/MockProject-SE12/blob/master/screenshot/admin.png?raw=true)
 
